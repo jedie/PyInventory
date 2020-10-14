@@ -1,0 +1,69 @@
+= PyInventory
+
+Web based management to catalog things including state and location etc. using Python/Django.
+
+Current status: Just start the project. Nothing is done, nothing is useable, yet ;)
+
+Pull requests welcome!
+
+| {{https://github.com/jedie/PyInventory/workflows/test/badge.svg?branch=master|Build Status on github}} | [[https://github.com/jedie/PyInventory/actions|github.com/jedie/PyInventory/actions]] |
+| {{https://travis-ci.org/jedie/PyInventory.svg|Build Status on travis-ci.org}} | [[https://travis-ci.org/jedie/PyInventory/|travis-ci.org/jedie/PyInventory]] |
+| {{https://codecov.io/gh/jedie/PyInventory/branch/master/graph/badge.svg|Coverage Status on codecov.io}} | [[https://codecov.io/gh/jedie/PyInventory|codecov.io/gh/jedie/PyInventory]] |
+| {{https://coveralls.io/repos/jedie/PyInventory/badge.svg|Coverage Status on coveralls.io}} | [[https://coveralls.io/r/jedie/PyInventory|coveralls.io/r/jedie/PyInventory]] |
+| {{https://landscape.io/github/jedie/PyInventory/master/landscape.svg|Status on landscape.io}} | [[https://landscape.io/github/jedie/PyInventory/master|landscape.io/github/jedie/PyInventory/master]] |
+
+== install
+
+tbd
+
+{{{
+~$ git clone https://github.com/jedie/PyInventory.git
+~$ cd PyInventory
+~/PyInventory$ make
+help                 List all commands
+install-poetry       install or update poetry
+install              install PyInventory via poetry
+update               update the sources and installation
+lint                 Run code formatters and linter
+fix-code-style       Fix code formatting
+tox-listenvs         List all tox test environments
+tox                  Run pytest via tox with all environments
+tox-py36             Run pytest via tox with *python v3.6*
+tox-py37             Run pytest via tox with *python v3.7*
+tox-py38             Run pytest via tox with *python v3.8*
+pytest               Run pytest
+update-rst-readme    update README.rst from README.creole
+publish              Release new version to PyPi
+run-dev-server       Run the django dev server in endless loop.
+run-server           Run the gunicorn server in endless loop.
+backup               Backup everything
+create-starter       Create starter file.
+~/PyInventory$ make install
+...
+}}}
+
+
+== Backwards-incompatible changes
+
+Nothing, yet ;)
+
+
+== history
+
+* [[https://github.com/jedie/PyInventory/compare/v0.0.1...master|compare v0.0.1...master]] **dev**
+** tbc
+* v0.0.1 - 14.10.2020
+** Just create a pre-alpha release to save the PyPi package name ;)
+
+
+== links ==
+
+| Homepage   | http://github.com/jedie/PyInventory
+| PyPi       | https://pypi.org/project/PyInventory/
+
+
+== donation ==
+
+* [[https://www.paypal.me/JensDiemer|paypal.me/JensDiemer]]
+* [[https://flattr.com/submit/auto?uid=jedie&url=https%3A%2F%2Fgithub.com%2Fjedie%2FPyInventory%2F|Flattr This!]]
+* Send [[http://www.bitcoin.org/|Bitcoins]] to [[https://blockexplorer.com/address/1823RZ5Md1Q2X5aSXRC5LRPcYdveCiVX6F|1823RZ5Md1Q2X5aSXRC5LRPcYdveCiVX6F]]

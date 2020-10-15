@@ -31,6 +31,44 @@ Pull requests welcome!
 .. |Status on landscape.io| image:: https://landscape.io/github/jedie/PyInventory/master/landscape.svg
 .. _landscape.io/github/jedie/PyInventory/master: https://landscape.io/github/jedie/PyInventory/master
 
+-----
+about
+-----
+
+The focus of this project is on the management of retro computing hardware.
+
+Plan:
+
+* Web-based
+
+* Multiuser ready
+
+* Chaotic warehousing
+
+    * Grouped "Storage": Graphics card is in computer XY
+
+* Data structure kept as general as possible
+
+* You should be able to add the following to the items:
+
+    * Storage location
+
+    * State
+
+    * Pictures
+
+    * URLs
+
+    * receiving and delivering (when, from whom, at what price, etc.)
+
+    * Information: Publicly visible yes/no
+
+* A public list of existing items (think about it, you can set in your profile if you want to)
+
+* administration a wish & exchange list
+
+any many more... ;)
+
 -------
 install
 -------
@@ -106,4 +144,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2020-10-14 10:06:52 with "python-creole"``
+``Note: this file is generated from README.creole 2020-10-15 18:02:11 with "python-creole"``

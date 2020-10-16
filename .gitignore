@@ -9,8 +9,8 @@
 !.coveralls.yml
 
 # from test projects:
-inventory_project/static/
-inventory_project/media/
+/static/
+/media/
 *.sqlite3
 
 # Coverage HTML Report files:

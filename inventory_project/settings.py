@@ -152,7 +152,7 @@ DEBUG_TOOLBAR_CONFIG['SHOW_COLLAPSED'] = True  # Show toolbar collapsed by defau
 # _____________________________________________________________________________
 # django-ckeditor
 
-CKEDITOR_BASEPATH = STATIC_URL + 'ckeditor/ckeditor/'
+CKEDITOR_BASEPATH = STATIC_URL + 'ckeditor/'
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_FILENAME_GENERATOR = 'utils.get_filename'
 CKEDITOR_CONFIGS = {

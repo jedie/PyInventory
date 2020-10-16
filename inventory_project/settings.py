@@ -1,9 +1,8 @@
-'''
+"""
     Django settings
-'''
+"""
 
 import logging
-import sys as __sys
 from pathlib import Path as __Path
 
 from debug_toolbar.settings import CONFIG_DEFAULTS as DEBUG_TOOLBAR_CONFIG

@@ -67,6 +67,24 @@ create-starter       Create starter file.
 ...
 }}}
 
+== Screenshots
+
+=== v0.0.1
+
+----
+
+{{https://raw.githubusercontent.com/jedie/jedie.github.io/master/screenshots/PyInventory/PyInventory v0.0.1 screenshot 3.png|PyInventory v0.0.1 screenshot 3.png}}
+
+----
+
+{{https://raw.githubusercontent.com/jedie/jedie.github.io/master/screenshots/PyInventory/PyInventory v0.0.1 screenshot 2.png|PyInventory v0.0.1 screenshot 2.png}}
+
+----
+
+{{https://raw.githubusercontent.com/jedie/jedie.github.io/master/screenshots/PyInventory/PyInventory v0.0.1 screenshot 1.png|PyInventory v0.0.1 screenshot 1.png}}
+
+----
+
 
 == Backwards-incompatible changes
 

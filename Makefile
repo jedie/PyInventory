@@ -77,6 +77,10 @@ publish: ## Release new version to PyPi
 run-dev-server:  ## Run the django dev server in endless loop.
 	./manage.sh runserver
 
+messages: ## Make and compile locales message files
+	./manage.sh makemessages --all
+	./manage.sh compilemessages
+
 run-server:  ## Run the gunicorn server in endless loop.
 	poetry run inventory run-server
 

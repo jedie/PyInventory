@@ -35,7 +35,7 @@ classifiers = [
 readme='README.rst'
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = ">=3.7,<4.0.0"
 colorama = "*"  # Console colors under windows: https://pypi.org/project/colorama/
 colorlog = "*"  # https://github.com/borntyping/python-colorlog
 gunicorn = "*"  # https://gunicorn.org/
@@ -45,6 +45,10 @@ gunicorn = "*"  # https://gunicorn.org/
 django = "2.2.*"
 django-debug-toolbar = "*"  # http://django-debug-toolbar.readthedocs.io/en/stable/changes.html
 django-import-export = "*"  # https://github.com/django-import-export/django-import-export
+django-tools = "*"  # https://github.com/jedie/django-tools/
+django-reversion-compare = "*"  # https://github.com/jedie/django-reversion-compare/
+django-ckeditor = "*"  # https://github.com/django-ckeditor/django-ckeditor
+bx_py_utils = "*"  # https://github.com/boxine/bx_py_utils
 
 [tool.poetry.dev-dependencies]
 poetry-publish = "*"  # https://github.com/jedie/poetry-publish
@@ -61,10 +65,7 @@ autopep8 = "*"
 pyupgrade = "*"
 
 [tool.poetry.scripts]
-# run the dev. server:
-inventory = "inventory_project.cli:cli"
-# run manage commands:
-manage = "inventory_project.__main__:manage"
+manage = "inventory_project.manage:main"
 update_rst_readme = "inventory_project.publish:update_readme"
 publish = "inventory_project.publish:publish"
 

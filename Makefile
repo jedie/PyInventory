@@ -28,6 +28,11 @@ install-poetry: ## install or update poetry
 install: check-poetry ## install PyInventory via poetry
 	poetry install
 
+manage-update: ## Collectstatic + makemigration + migrate
+	./manage.sh collectstatic --noinput --link
+	./manage.sh makemigrations
+	./manage.sh migrate
+
 update: check-poetry ## update the sources and installation
 	git fetch --all
 	git pull origin master
@@ -70,7 +75,7 @@ publish: ## Release new version to PyPi
 
 
 run-dev-server:  ## Run the django dev server in endless loop.
-	poetry run inventory run-dev-server
+	./manage.sh runserver
 
 run-server:  ## Run the gunicorn server in endless loop.
 	poetry run inventory run-server

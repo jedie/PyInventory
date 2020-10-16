@@ -68,37 +68,23 @@ MIDDLEWARE = (
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [str(__Path(BASE_PATH, 'templates/'))],
+        'DIRS': [],
+        'APP_DIRS': True,
         'OPTIONS': {
-            'loaders': [
-                (
-                    'django.template.loaders.cached.Loader',
-                    ('django.template.loaders.filesystem.Loader', 'django.template.loaders.app_directories.Loader'),
-                )
-            ],
             'context_processors': [
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.i18n',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
-                'django.template.context_processors.media',
-                'django.template.context_processors.csrf',
-                'django.template.context_processors.tz',
-                'django.template.context_processors.static',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
             ],
         },
-    }
+    },
 ]
 
 if DEBUG:
     # Disable caches:
     CACHES = {'default': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'}}
-    # Disable CacheLoader:
-    TEMPLATES[0]['OPTIONS']['loaders'] = (
-        'django.template.loaders.filesystem.Loader',
-        'django.template.loaders.app_directories.Loader',
-    )
+
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases

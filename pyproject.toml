@@ -48,6 +48,7 @@ django-import-export = "*"  # https://github.com/django-import-export/django-imp
 django-tools = "*"  # https://github.com/jedie/django-tools/
 django-reversion-compare = "*"  # https://github.com/jedie/django-reversion-compare/
 django-ckeditor = "*"  # https://github.com/django-ckeditor/django-ckeditor
+bx_py_utils = "*"  # https://github.com/boxine/bx_py_utils
 
 [tool.poetry.dev-dependencies]
 poetry-publish = "*"  # https://github.com/jedie/poetry-publish

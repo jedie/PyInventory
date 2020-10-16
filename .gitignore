@@ -11,7 +11,7 @@
 # from test projects:
 inventory_project/static/
 inventory_project/media/
-test_project_db.sqlite3
+*.sqlite3
 
 # Coverage HTML Report files:
 htmlcov

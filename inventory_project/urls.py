@@ -1,5 +1,4 @@
 from django.conf.urls import include, static, url
-from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.urls import path
 from django.views.generic import RedirectView
@@ -9,13 +8,13 @@ from inventory_project import settings
 
 admin.autodiscover()
 
-urlpatterns = i18n_patterns(
+urlpatterns = [  # Don't use i18n_patterns() here
     path('admin/', admin.site.urls),
 
     url(r'^$', RedirectView.as_view(url='/admin/')),
 
     path('ckeditor/', include('ckeditor_uploader.urls')),  # TODO: check permissions?
-)
+]
 
 if settings.DEBUG:
     urlpatterns += static.static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

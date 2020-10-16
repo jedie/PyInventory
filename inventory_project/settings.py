@@ -13,7 +13,7 @@ print('Use settings:', __file__)
 
 
 # Build paths inside the project:
-BASE_PATH = __Path(__file__).resolve().parent
+BASE_PATH = __Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'TODO: Read secret.txt ;)'

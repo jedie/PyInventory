@@ -49,6 +49,7 @@ django-tools = "*"  # https://github.com/jedie/django-tools/
 django-reversion-compare = "*"  # https://github.com/jedie/django-reversion-compare/
 django-ckeditor = "*"  # https://github.com/django-ckeditor/django-ckeditor
 bx_py_utils = "*"  # https://github.com/boxine/bx_py_utils
+django-tagulous = "*"  # https://github.com/radiac/django-tagulous
 
 [tool.poetry.dev-dependencies]
 poetry-publish = "*"  # https://github.com/jedie/poetry-publish

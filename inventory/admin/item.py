@@ -1,9 +1,9 @@
 from django.contrib import admin
-from reversion_compare.admin import CompareVersionAdmin
 
+from inventory.admin.base import BaseUserAdmin
 from inventory.models import ItemModel
 
 
 @admin.register(ItemModel)
-class ItemModelAdmin(CompareVersionAdmin):
+class ItemModelAdmin(BaseUserAdmin):
     pass

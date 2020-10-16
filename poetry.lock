@@ -273,6 +273,22 @@ django = ">=2.2,<3.1"
 django-reversion = "*"
 
 [[package]]
+name = "django-tagulous"
+version = "1.0.0"
+description = "Fabulous Tagging for Django"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+Django = ">=1.11"
+
+[package.extras]
+dev = ["tox", "jasmine"]
+devdb = ["psycopg2", "mysqlclient"]
+i18n = ["unidecode"]
+
+[[package]]
 name = "django-tools"
 version = "0.46.1"
 description = "miscellaneous tools for django"
@@ -952,7 +968,7 @@ testing = ["pytest (>=3.5,<3.7.3 || >3.7.3)", "pytest-checkdocs (>=1.2.3)", "pyt
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7,<4.0.0"
-content-hash = "464ca363f2392ed7c45d131f91148bd1cffb4536f5f88c390d502054d06e95ea"
+content-hash = "81bfc3b102483db10838f298a425e9436883c93f06940662e7e7b85b4b9d8308"
 
 [metadata.files]
 appdirs = [
@@ -1138,6 +1154,9 @@ django-reversion = [
 django-reversion-compare = [
     {file = "django-reversion-compare-0.12.2.tar.gz", hash = "sha256:9ec6c764a2bcb2be52fa1b4ef4365f8226a89c7b572ab984afe24b76d6247b5f"},
     {file = "django_reversion_compare-0.12.2-py3-none-any.whl", hash = "sha256:5ce8d402add477a3c38aae8335af22b3abdfffa83ef5333c06c865abb89e9cbd"},
+]
+django-tagulous = [
+    {file = "django-tagulous-1.0.0.tar.gz", hash = "sha256:9b4fa1773845a1cf33d21b27f9cdafc6f3fe29a480428bdd8f8717e7d4742396"},
 ]
 django-tools = [
     {file = "django-tools-0.46.1.tar.gz", hash = "sha256:0a289c230d908417a0a72d1a7884ebc0508894b1ac7be888ed333170d4c97291"},

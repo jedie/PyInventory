@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'ckeditor',  # https://github.com/django-ckeditor/django-ckeditor
     'reversion',  # https://github.com/etianen/django-reversion
     'reversion_compare',  # https://github.com/jedie/django-reversion-compare
+    'tagulous',  # https://github.com/radiac/django-tagulous
 
     'inventory.apps.InventoryConfig',
 )
@@ -109,7 +110,9 @@ LANGUAGES = [
     ('de', _('German')),
     ('en', _('English')),
 ]
-
+LOCALE_PATHS = [
+    __Path(BASE_PATH, 'locale')
+]
 USE_I18N = True
 USE_L10N = True
 TIME_ZONE = 'Europe/Paris'
@@ -117,6 +120,7 @@ USE_TZ = True
 
 # _____________________________________________________________________________
 # Static files (CSS, JavaScript, Images)
+
 STATIC_URL = '/static/'
 STATIC_ROOT = str(__Path(BASE_PATH, 'static'))
 
@@ -138,37 +142,24 @@ DEBUG_TOOLBAR_CONFIG['SHOW_COLLAPSED'] = True  # Show toolbar collapsed by defau
 # _____________________________________________________________________________
 # django-ckeditor
 
-CKEDITOR_BASEPATH = STATIC_URL + 'ckeditor/'
+CKEDITOR_BASEPATH = STATIC_URL + 'ckeditor/ckeditor/'
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_FILENAME_GENERATOR = 'utils.get_filename'
 CKEDITOR_CONFIGS = {
-    # 'ItemModel.description': {
-    #     'toolbar': 'full',
-    #     'height': '25em',
-    #     'width': '100%',
-    #     'removeButtons': 'Language,Flash,iframes,bidiltr'
-    # },
     'ItemModel.description': {
         'skin': 'moono-lisa',
-        # 'toolbar_Basic': [['Source', '-', 'Bold', 'Italic']],
-        # 'toolbar_Full': [
-        #     [
-        #         'Styles',
-        #         'Format',
-        #         'Bold',
-        #         'Italic',
-        #         'Underline',
-        #         'Strike',
-        #         'SpellChecker',
-        #         'Undo',
-        #         'Redo',
-        #     ],
-        #     ['Link', 'Unlink', 'Anchor'],
-        #     ['Image', 'Flash', 'Table', 'HorizontalRule'],
-        #     ['TextColor', 'BGColor'],
-        #     ['Smiley', 'SpecialChar'],
-        #     ['Source'],
-        # ],
+        'removeButtons': 'Language',
+
+        # plugins are here: site-packages/ckeditor/static/ckeditor/ckeditor/plugins
+        'removePlugins': 'wsc,div,flash,iframe,bidi',
+        'toolbar': 'full',
+        'height': '25em',
+        'width': '100%',
+        'filebrowserWindowWidth': 940,
+        'filebrowserWindowHeight': 725,
+    },
+    'LocationModel.description': {
+        'skin': 'moono-lisa',
         'removeButtons': 'Language',
 
         # plugins are here: site-packages/ckeditor/static/ckeditor/ckeditor/plugins
@@ -180,6 +171,15 @@ CKEDITOR_CONFIGS = {
         'filebrowserWindowHeight': 725,
     }
 }
+
+# _____________________________________________________________________________
+# http://radiac.net/projects/django-tagulous/documentation/installation/#settings
+
+TAGULOUS_NAME_MAX_LENGTH = 255
+TAGULOUS_SLUG_MAX_LENGTH = 50
+TAGULOUS_LABEL_MAX_LENGTH = TAGULOUS_NAME_MAX_LENGTH
+TAGULOUS_SLUG_TRUNCATE_UNIQUE = 5
+TAGULOUS_SLUG_ALLOW_UNICODE = False
 
 # _____________________________________________________________________________
 # cut 'pathname' in log output

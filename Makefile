@@ -78,7 +78,7 @@ run-dev-server:  ## Run the django dev server in endless loop.
 	./manage.sh runserver
 
 messages: ## Make and compile locales message files
-	./manage.sh makemessages --all
+	./manage.sh makemessages --all --no-location --no-obsolete
 	./manage.sh compilemessages
 
 run-server:  ## Run the gunicorn server in endless loop.

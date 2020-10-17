@@ -69,8 +69,6 @@ create-starter       Create starter file.
 
 == Screenshots
 
-----
-
 {{https://raw.githubusercontent.com/jedie/jedie.github.io/master/screenshots/PyInventory/PyInventory v0.1.0 screenshot 1.png|PyInventory v0.1.0 screenshot 1.png}}
 
 ----

@@ -105,8 +105,6 @@ tbd
 Screenshots
 -----------
 
-----
-
 |PyInventory v0.1.0 screenshot 1.png|
 
 .. |PyInventory v0.1.0 screenshot 1.png| image:: https://raw.githubusercontent.com/jedie/jedie.github.io/master/screenshots/PyInventory/PyInventory v0.1.0 screenshot 1.png
@@ -172,4 +170,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2020-10-17 22:25:58 with "python-creole"``
+``Note: this file is generated from README.creole 2020-10-17 22:30:59 with "python-creole"``

@@ -30,11 +30,14 @@ class BaseModel(TimetrackingBaseModel):
     )
     tags = TagField(
         blank=True,
-        force_lowercase=True,
+        force_lowercase=False,
         max_count=10,
         verbose_name=_('BaseModel.tags.verbose_name'),
         help_text=_('BaseModel.tags.help_text')
     )
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         abstract = True

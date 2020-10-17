@@ -7,16 +7,48 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-16 19:49+0200\n"
-"PO-Revision-Date: 2020-10-16 19:56+0200\n"
+"POT-Creation-Date: 2020-10-17 18:03+0200\n"
+"PO-Revision-Date: 2020-10-17 18:05+0200\n"
+"Last-Translator: Jens Diemer\n"
+"Language-Team: \n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Last-Translator: Jens Diemer\n"
-"Language-Team: \n"
 "X-Generator: Poedit 2.3\n"
+
+#: inventory/admin/item.py:18 inventory/models/item.py:17
+msgid "ItemModel.kind.verbose_name"
+msgstr "Art"
+
+#: inventory/admin/item.py:23 inventory/models/item.py:23
+msgid "ItemModel.producer.verbose_name"
+msgstr "Hersteller"
+
+#: inventory/admin/item.py:34
+msgid "Internals"
+msgstr "Intern"
+
+#: inventory/admin/item.py:41
+msgid "Meta"
+msgstr ""
+
+#: inventory/admin/item.py:47
+msgid "Basic"
+msgstr ""
+
+#: inventory/admin/item.py:56
+msgid "Lent"
+msgstr "Verleih"
+
+#: inventory/admin/item.py:62
+msgid "Received"
+msgstr "Erhalt"
+
+#: inventory/admin/item.py:67
+msgid "Handed over"
+msgstr "Abgabe"
 
 #: inventory/models/base.py:15
 msgid "BaseModel.id.verbose_name"
@@ -32,7 +64,9 @@ msgstr "Benutzer"
 
 #: inventory/models/base.py:24
 msgid "BaseModel.user.help_text"
-msgstr "Der Benutzer dem dieser Eintrag gehört und verwalten kann (Wird automatisch gesetzt)"
+msgstr ""
+" Der Benutzer dem dieser Eintrag gehört und verwalten kann (Wird automatisch "
+"gesetzt)"
 
 #: inventory/models/base.py:28
 msgid "BaseModel.name.verbose_name"
@@ -50,37 +84,167 @@ msgstr "Tags"
 msgid "BaseModel.tags.help_text"
 msgstr " "
 
-#: inventory/models/item.py:14
+#: inventory/models/item.py:18
+msgid "ItemModel.kind.help_text"
+msgstr "Type / Sorte / Gattung"
+
+#: inventory/models/item.py:24
+msgid "ItemModel.producer.help_text"
+msgstr " "
+
+#: inventory/models/item.py:28
 msgid "ItemModel.description.verbose_name"
 msgstr "Beschreibung"
 
-#: inventory/models/item.py:15
+#: inventory/models/item.py:29
 msgid "ItemModel.description.help_text"
 msgstr " "
 
-#: inventory/models/item.py:20
+#: inventory/models/item.py:34
 msgid "ItemModel.fcc_id.verbose_name"
 msgstr "FCC ID"
 
-#: inventory/models/item.py:21
+#: inventory/models/item.py:35
 msgid "ItemModel.fcc_id.help_text"
 msgstr "Eindeutige Nummer der FCC"
 
-#: inventory/models/item.py:26
+#: inventory/models/item.py:40
 msgid "ItemModel.location.verbose_name"
 msgstr "Standort"
 
-#: inventory/models/item.py:27
+#: inventory/models/item.py:41
 msgid "ItemModel.location.help_text"
 msgstr "Wo ist dieser Gegenstand eingelagert?"
 
-#: inventory/models/item.py:34
+#: inventory/models/item.py:47
+msgid "ItemModel.parent.verbose_name"
+msgstr "Übergeordnet"
+
+#: inventory/models/item.py:48
+msgid "ItemModel.parent.help_text"
+msgstr ""
+"Eingebaut in einem anderen Gegenstand? (e.g.: Grafikkarte eingebaut in "
+"Rechner)"
+
+#: inventory/models/item.py:57
+msgid "ItemModel.lent_to.verbose_name"
+msgstr "Verliehen an"
+
+#: inventory/models/item.py:58
+msgid "ItemModel.lent_to.help_text"
+msgstr " "
+
+#: inventory/models/item.py:62
+msgid "ItemModel.lent_from_date.verbose_name"
+msgstr "Verleih Abgabe Datum"
+
+#: inventory/models/item.py:63
+msgid "ItemModel.lent_from_date.help_text"
+msgstr "Zeitpunkt ab dem dieser Gegenstand verliehen wurde"
+
+#: inventory/models/item.py:67
+msgid "ItemModel.lent_until_date.verbose_name"
+msgstr "Verliehen bis"
+
+#: inventory/models/item.py:68
+msgid "ItemModel.lent_until_date.help_text"
+msgstr "Bis wann sollte der Gegenstand wieder zurück sein?"
+
+#: inventory/models/item.py:77
+msgid "ItemModel.received_from.verbose_name"
+msgstr "Erhalten von"
+
+#: inventory/models/item.py:78
+msgid "ItemModel.received_from.help_text"
+msgstr "Von wem wurde dieser Gegenstand erhalten?"
+
+#: inventory/models/item.py:82
+msgid "ItemModel.received_date.verbose_name"
+msgstr "Erhalten am"
+
+#: inventory/models/item.py:83
+msgid "ItemModel.received_date.help_text"
+msgstr "Wann wurde dieser Gegenstand erhalten?"
+
+#: inventory/models/item.py:88
+msgid "ItemModel.received_price.verbose_name"
+msgstr "Preis"
+
+#: inventory/models/item.py:89
+msgid "ItemModel.received_price.help_text"
+msgstr "Welcher Preis wurde für diesen Gegenstand gezahlt?"
+
+#: inventory/models/item.py:98
+msgid "ItemModel.handed_over_to.verbose_name"
+msgstr "Abgabe an"
+
+#: inventory/models/item.py:99
+msgid "ItemModel.handed_over_to.help_text"
+msgstr "An wem wurde dieser Gegenstand abgegeben?"
+
+#: inventory/models/item.py:103
+msgid "ItemModel.handed_over_date.verbose_name"
+msgstr "Abgabedatum"
+
+#: inventory/models/item.py:104
+msgid "ItemModel.handed_over_date.help_text"
+msgstr "Zeitpunkt der Abgabe"
+
+#: inventory/models/item.py:109
+msgid "ItemModel.handed_over_price.verbose_name"
+msgstr "Abgabepreis"
+
+#: inventory/models/item.py:110
+msgid "ItemModel.handed_over_price.help_text"
+msgstr "Wurde bei der Abgabe Geld eingenommen?"
+
+#: inventory/models/item.py:128
 msgid "ItemModel.verbose_name"
 msgstr "Gegenstand"
 
-#: inventory/models/item.py:35
+#: inventory/models/item.py:129
 msgid "ItemModel.verbose_name_plural"
 msgstr "Gegenstände"
+
+#: inventory/models/item.py:144
+msgid "ItemLinkModel.verbose_name"
+msgstr "Link"
+
+#: inventory/models/item.py:145
+msgid "ItemLinkModel.verbose_name_plural"
+msgstr "Links"
+
+#: inventory/models/links.py:20
+msgid "BaseLink.name.verbose_name"
+msgstr "Name"
+
+#: inventory/models/links.py:21
+msgid "BaseLink.name.help_text"
+msgstr " "
+
+#: inventory/models/links.py:24 inventory/models/links.py:29
+msgid "Link.url.verbose_name"
+msgstr "URL"
+
+#: inventory/models/links.py:25 inventory/models/links.py:30
+msgid "Link.url.help_text"
+msgstr ""
+
+#: inventory/models/links.py:34
+msgid "Link.status_code.verbose_name"
+msgstr "Status-Code"
+
+#: inventory/models/links.py:35
+msgid "Link.status_code.help_text"
+msgstr "Der Server meldete diesen Status-Code beim letzten abruf zurück."
+
+#: inventory/models/links.py:39
+msgid "Link.page_title.verbose_name"
+msgstr "Seitentitel"
+
+#: inventory/models/links.py:40
+msgid "Link.page_title.help_text"
+msgstr "Der Seiten-Titel wird automatisch ermittelt."
 
 #: inventory/models/location.py:14
 msgid "LocationModel.description.verbose_name"
@@ -98,18 +262,38 @@ msgstr "Übergeordneter Standort"
 msgid "LocationModel.parent.help_text"
 msgstr "Standorte können verschachtelt werden. Bsp: Der Karton 12 in Schrank 3"
 
-#: inventory/models/location.py:29
+#: inventory/models/location.py:32
 msgid "LocationModel.verbose_name"
 msgstr "Standort"
 
-#: inventory/models/location.py:30
+#: inventory/models/location.py:33
 msgid "LocationModel.verbose_name_plural"
 msgstr "Standorte"
 
-#: inventory_project/settings.py:110
+#: inventory_project/settings.py:111
 msgid "German"
 msgstr ""
 
-#: inventory_project/settings.py:111
+#: inventory_project/settings.py:112
 msgid "English"
 msgstr ""
+
+#, fuzzy
+#~| msgid "ItemModel.fcc_id.verbose_name"
+#~ msgid "ItemModel.received_url.verbose_name"
+#~ msgstr "FCC ID"
+
+#, fuzzy
+#~| msgid "ItemModel.fcc_id.help_text"
+#~ msgid "ItemModel.received_url.help_text"
+#~ msgstr "Eindeutige Nummer der FCC"
+
+#, fuzzy
+#~| msgid "ItemModel.verbose_name"
+#~ msgid "ItemModel.handed_over_url.verbose_name"
+#~ msgstr "Gegenstand"
+
+#, fuzzy
+#~| msgid "ItemModel.location.help_text"
+#~ msgid "ItemModel.handed_over_url.help_text"
+#~ msgstr "Wo ist dieser Gegenstand eingelagert?"

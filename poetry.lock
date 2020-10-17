@@ -63,7 +63,7 @@ webencodings = "*"
 
 [[package]]
 name = "bx-py-utils"
-version = "0.0.1"
+version = "0.0.2"
 description = "Various Python / Django utility functions"
 category = "main"
 optional = false
@@ -203,6 +203,17 @@ sqlparse = ">=0.2.2"
 [package.extras]
 argon2 = ["argon2-cffi (>=16.1.0)"]
 bcrypt = ["bcrypt"]
+
+[[package]]
+name = "django-admin-sortable2"
+version = "0.7.7"
+description = "Generic drag-and-drop sorting for the List, the Stacked- and the Tabular-Inlines Views in the Django Admin"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+Django = ">=1.8,<3.2"
 
 [[package]]
 name = "django-ckeditor"
@@ -968,7 +979,7 @@ testing = ["pytest (>=3.5,<3.7.3 || >3.7.3)", "pytest-checkdocs (>=1.2.3)", "pyt
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7,<4.0.0"
-content-hash = "81bfc3b102483db10838f298a425e9436883c93f06940662e7e7b85b4b9d8308"
+content-hash = "d164a00462dfbb50f85ba6882679350cdfc82ff65e48a0d5d2b0fda6068a4b30"
 
 [metadata.files]
 appdirs = [
@@ -995,8 +1006,8 @@ bleach = [
     {file = "bleach-3.2.1.tar.gz", hash = "sha256:52b5919b81842b1854196eaae5ca29679a2f2e378905c346d3ca8227c2c66080"},
 ]
 bx-py-utils = [
-    {file = "bx_py_utils-0.0.1-py3-none-any.whl", hash = "sha256:f553db431f98482abf6a7cf4b416af882922ddd7487bcf0713fd3031b5855a09"},
-    {file = "bx_py_utils-0.0.1.tar.gz", hash = "sha256:8ed6cd3c6dd31da01ff72b06f2d85983f5680d494c37d058ae6ba2a82f0ab3e5"},
+    {file = "bx_py_utils-0.0.2-py3-none-any.whl", hash = "sha256:c39c6be8d18c959dd314febfc8a3b7d8f73315cd1cba91fbbb4e602e5e97fd0c"},
+    {file = "bx_py_utils-0.0.2.tar.gz", hash = "sha256:f956772cbf84329c3d9cd22b00d5e01a37ca578104bd9474e15dabc6e6bf6529"},
 ]
 certifi = [
     {file = "certifi-2020.6.20-py2.py3-none-any.whl", hash = "sha256:8fc0819f1f30ba15bdb34cceffb9ef04d99f420f68eb75d901e9560b8749fc41"},
@@ -1130,6 +1141,9 @@ distlib = [
 django = [
     {file = "Django-2.2.16-py3-none-any.whl", hash = "sha256:83ced795a0f239f41d8ecabf51cc5fad4b97462a6008dc12e5af3cb9288724ec"},
     {file = "Django-2.2.16.tar.gz", hash = "sha256:62cf45e5ee425c52e411c0742e641a6588b7e8af0d2c274a27940931b2786594"},
+]
+django-admin-sortable2 = [
+    {file = "django-admin-sortable2-0.7.7.tar.gz", hash = "sha256:65c8a02300e178b4a02c904b6f4dce6e528c58f5ecab3907dfba3540da51b862"},
 ]
 django-ckeditor = [
     {file = "django-ckeditor-6.0.0.tar.gz", hash = "sha256:29fd1a333cb9741ac2c3fd4e427a5c00115ed33a2389716a09af7656022dcdde"},

@@ -30,7 +30,9 @@ class BaseModel(TimetrackingBaseModel):
     )
     tags = tagulous.models.TagField(
         blank=True,
+        case_sensitive=False,
         force_lowercase=False,
+        space_delimiter=False,
         max_count=10,
         verbose_name=_('BaseModel.tags.verbose_name'),
         help_text=_('BaseModel.tags.help_text')

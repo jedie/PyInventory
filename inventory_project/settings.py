@@ -39,7 +39,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'debug_toolbar',  # https://github.com/jazzband/django-debug-toolbar/
+    'debug_toolbar',  # https://github.com/jazzband/django-debug-toolbar
+    'bx_py_utils',  # https://github.com/boxine/bx_py_utils
     'import_export',  # https://github.com/django-import-export/django-import-export
     'ckeditor',  # https://github.com/django-ckeditor/django-ckeditor
     'reversion',  # https://github.com/etianen/django-reversion

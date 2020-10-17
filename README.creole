@@ -93,8 +93,10 @@ Nothing, yet ;)
 
 == history
 
-* [[https://github.com/jedie/PyInventory/compare/v0.0.1...master|compare v0.0.1...master]] **dev**
+* [[https://github.com/jedie/PyInventory/compare/v0.1.0...master|compare v0.1.0...master]] **dev**
 ** tbc
+* [[https://github.com/jedie/PyInventory/compare/v0.0.1...v0.1.0|v0.1.0 - 17.10.2020]]
+** Enhance models, admin and finish project setup
 * v0.0.1 - 14.10.2020
 ** Just create a pre-alpha release to save the PyPi package name ;)
 

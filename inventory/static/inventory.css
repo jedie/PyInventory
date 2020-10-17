@@ -1,0 +1,10 @@
+#footer {
+    text-align: center;
+    font-size: 0.8em;
+    background: #eee;
+    border-top: 1px solid #555;
+}
+#footer p, #footer a {
+   	line-height: 0.3em;
+    color: #333;
+}

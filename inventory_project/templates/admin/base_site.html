@@ -1,0 +1,21 @@
+{% extends "admin/base.html" %}
+{% load i18n static %}
+
+{% block extrahead %}{{ block.super }}
+    <meta name="google" content="notranslate">
+    <link rel="stylesheet" type="text/css" href="{% static 'inventory.css' %}">
+{% endblock %}
+
+{% block title %}{{ title }} | PyInventory {{ version_string }}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}">PyInventory {{ version_string }}</a>
+</h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+{% block footer %}<div id="footer">
+    <a href="https://github.com/jedie/PyInventory">https://github.com/jedie/PyInventory</a>
+</div>{% endblock %}

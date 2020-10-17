@@ -12,13 +12,18 @@ class ItemModel(BaseModel):
     A Item that can be described and store somewhere ;)
     """
     kind = tagulous.models.TagField(
+        case_sensitive=False,
         force_lowercase=False,
+        space_delimiter=False,
         max_count=3,
         verbose_name=_('ItemModel.kind.verbose_name'),
         help_text=_('ItemModel.kind.help_text')
     )
     producer = tagulous.models.TagField(
-        force_lowercase=False, blank=True,
+        blank=True,
+        case_sensitive=False,
+        force_lowercase=False,
+        space_delimiter=False,
         max_count=1,
         verbose_name=_('ItemModel.producer.verbose_name'),
         help_text=_('ItemModel.producer.help_text')

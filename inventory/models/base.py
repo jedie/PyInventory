@@ -1,10 +1,10 @@
 import uuid
 
+import tagulous.models
 from bx_py_utils.models.timetracking import TimetrackingBaseModel
 from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from tagulous.models import TagField
 
 
 class BaseModel(TimetrackingBaseModel):
@@ -28,7 +28,7 @@ class BaseModel(TimetrackingBaseModel):
         verbose_name=_('BaseModel.name.verbose_name'),
         help_text=_('BaseModel.name.help_text')
     )
-    tags = TagField(
+    tags = tagulous.models.TagField(
         blank=True,
         force_lowercase=False,
         max_count=10,

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-17 18:03+0200\n"
-"PO-Revision-Date: 2020-10-16 19:58+0200\n"
+"POT-Creation-Date: 2020-10-17 19:12+0200\n"
+"PO-Revision-Date: 2020-10-17 19:12+0200\n"
 "Last-Translator: Jens Diemer\n"
 "Language-Team: \n"
 "Language: en\n"
@@ -18,348 +18,196 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.3\n"
 
-#: inventory/admin/item.py:18 inventory/models/item.py:17
-#, fuzzy
-#| msgid "ItemModel.verbose_name"
-msgid "ItemModel.kind.verbose_name"
-msgstr "Item"
-
-#: inventory/admin/item.py:23 inventory/models/item.py:23
-#, fuzzy
-#| msgid "ItemModel.verbose_name"
-msgid "ItemModel.producer.verbose_name"
-msgstr "Item"
-
-#: inventory/admin/item.py:34
 msgid "Internals"
 msgstr ""
 
-#: inventory/admin/item.py:41
 msgid "Meta"
 msgstr ""
 
-#: inventory/admin/item.py:47
 msgid "Basic"
 msgstr ""
 
-#: inventory/admin/item.py:56
 msgid "Lent"
 msgstr ""
 
-#: inventory/admin/item.py:62
 msgid "Received"
 msgstr ""
 
-#: inventory/admin/item.py:67
 msgid "Handed over"
 msgstr ""
 
-#: inventory/models/base.py:15
 msgid "BaseModel.id.verbose_name"
 msgstr "ID"
 
-#: inventory/models/base.py:16
 msgid "BaseModel.id.help_text"
-msgstr " "
+msgstr "ID"
 
-#: inventory/models/base.py:23
 msgid "BaseModel.user.verbose_name"
 msgstr "User"
 
-#: inventory/models/base.py:24
 msgid "BaseModel.user.help_text"
 msgstr ""
-" The user who is the owner of this entry and can manage it (will be set "
+"  The user who is the owner of this entry and can manage it (will be set "
 "automatically)"
 
-#: inventory/models/base.py:28
 msgid "BaseModel.name.verbose_name"
 msgstr "Name"
 
-#: inventory/models/base.py:29
 msgid "BaseModel.name.help_text"
-msgstr " "
+msgstr "Name"
 
-#: inventory/models/base.py:35
 msgid "BaseModel.tags.verbose_name"
 msgstr "Tags"
 
-#: inventory/models/base.py:36
 msgid "BaseModel.tags.help_text"
 msgstr " "
 
-#: inventory/models/item.py:18
-#, fuzzy
-#| msgid "ItemModel.fcc_id.help_text"
+msgid "ItemModel.kind.verbose_name"
+msgstr "Kind"
+
 msgid "ItemModel.kind.help_text"
-msgstr "Unique number from the FCC"
+msgstr ""
 
-#: inventory/models/item.py:24
-#, fuzzy
-#| msgid "ItemModel.fcc_id.help_text"
+msgid "ItemModel.producer.verbose_name"
+msgstr "Producer"
+
 msgid "ItemModel.producer.help_text"
-msgstr "Unique number from the FCC"
+msgstr " "
 
-#: inventory/models/item.py:28
 msgid "ItemModel.description.verbose_name"
 msgstr "Description"
 
-#: inventory/models/item.py:29
 msgid "ItemModel.description.help_text"
 msgstr " "
 
-#: inventory/models/item.py:34
 msgid "ItemModel.fcc_id.verbose_name"
 msgstr "FCC ID"
 
-#: inventory/models/item.py:35
 msgid "ItemModel.fcc_id.help_text"
 msgstr "Unique number from the FCC"
 
-#: inventory/models/item.py:40
 msgid "ItemModel.location.verbose_name"
 msgstr "Location"
 
-#: inventory/models/item.py:41
 msgid "ItemModel.location.help_text"
 msgstr " "
 
-#: inventory/models/item.py:47
-#, fuzzy
-#| msgid "ItemModel.fcc_id.verbose_name"
 msgid "ItemModel.parent.verbose_name"
-msgstr "FCC ID"
+msgstr "parent"
 
-#: inventory/models/item.py:48
-#, fuzzy
-#| msgid "ItemModel.fcc_id.help_text"
 msgid "ItemModel.parent.help_text"
-msgstr "Unique number from the FCC"
+msgstr " "
 
-#: inventory/models/item.py:57
-#, fuzzy
-#| msgid "ItemModel.location.verbose_name"
 msgid "ItemModel.lent_to.verbose_name"
-msgstr "Location"
+msgstr "Lent to"
 
-#: inventory/models/item.py:58
-#, fuzzy
-#| msgid "ItemModel.location.help_text"
 msgid "ItemModel.lent_to.help_text"
 msgstr " "
 
-#: inventory/models/item.py:62
-#, fuzzy
-#| msgid "ItemModel.location.verbose_name"
 msgid "ItemModel.lent_from_date.verbose_name"
-msgstr "Location"
+msgstr "Lent from date"
 
-#: inventory/models/item.py:63
-#, fuzzy
-#| msgid "ItemModel.location.help_text"
 msgid "ItemModel.lent_from_date.help_text"
 msgstr " "
 
-#: inventory/models/item.py:67
-#, fuzzy
-#| msgid "ItemModel.location.verbose_name"
 msgid "ItemModel.lent_until_date.verbose_name"
-msgstr "Location"
+msgstr "Lent until date"
 
-#: inventory/models/item.py:68
-#, fuzzy
-#| msgid "ItemModel.location.help_text"
 msgid "ItemModel.lent_until_date.help_text"
 msgstr " "
 
-#: inventory/models/item.py:77
-#, fuzzy
-#| msgid "ItemModel.fcc_id.verbose_name"
 msgid "ItemModel.received_from.verbose_name"
-msgstr "FCC ID"
+msgstr "Received from"
 
-#: inventory/models/item.py:78
-#, fuzzy
-#| msgid "ItemModel.fcc_id.help_text"
 msgid "ItemModel.received_from.help_text"
-msgstr "Unique number from the FCC"
+msgstr " "
 
-#: inventory/models/item.py:82
-#, fuzzy
-#| msgid "ItemModel.fcc_id.verbose_name"
 msgid "ItemModel.received_date.verbose_name"
-msgstr "FCC ID"
+msgstr "Received date"
 
-#: inventory/models/item.py:83
-#, fuzzy
-#| msgid "ItemModel.fcc_id.help_text"
 msgid "ItemModel.received_date.help_text"
-msgstr "Unique number from the FCC"
+msgstr " "
 
-#: inventory/models/item.py:88
-#, fuzzy
-#| msgid "ItemModel.description.verbose_name"
 msgid "ItemModel.received_price.verbose_name"
-msgstr "Description"
+msgstr "Received price"
 
-#: inventory/models/item.py:89
-#, fuzzy
-#| msgid "ItemModel.description.help_text"
 msgid "ItemModel.received_price.help_text"
 msgstr " "
 
-#: inventory/models/item.py:98
-#, fuzzy
-#| msgid "ItemModel.description.verbose_name"
 msgid "ItemModel.handed_over_to.verbose_name"
-msgstr "Description"
+msgstr "Handed over to"
 
-#: inventory/models/item.py:99
-#, fuzzy
-#| msgid "ItemModel.description.help_text"
 msgid "ItemModel.handed_over_to.help_text"
 msgstr " "
 
-#: inventory/models/item.py:103
-#, fuzzy
-#| msgid "ItemModel.description.verbose_name"
 msgid "ItemModel.handed_over_date.verbose_name"
-msgstr "Description"
+msgstr "Handed over date"
 
-#: inventory/models/item.py:104
-#, fuzzy
-#| msgid "ItemModel.description.help_text"
 msgid "ItemModel.handed_over_date.help_text"
 msgstr " "
 
-#: inventory/models/item.py:109
-#, fuzzy
-#| msgid "ItemModel.description.verbose_name"
 msgid "ItemModel.handed_over_price.verbose_name"
-msgstr "Description"
+msgstr "Handed over price"
 
-#: inventory/models/item.py:110
-#, fuzzy
-#| msgid "ItemModel.description.help_text"
 msgid "ItemModel.handed_over_price.help_text"
 msgstr " "
 
-#: inventory/models/item.py:128
 msgid "ItemModel.verbose_name"
 msgstr "Item"
 
-#: inventory/models/item.py:129
 msgid "ItemModel.verbose_name_plural"
 msgstr "Items"
 
-#: inventory/models/item.py:144
-#, fuzzy
-#| msgid "ItemModel.verbose_name"
 msgid "ItemLinkModel.verbose_name"
-msgstr "Item"
+msgstr "Link"
 
-#: inventory/models/item.py:145
-#, fuzzy
-#| msgid "ItemModel.verbose_name_plural"
 msgid "ItemLinkModel.verbose_name_plural"
-msgstr "Items"
+msgstr "Links"
 
-#: inventory/models/links.py:20
-#, fuzzy
-#| msgid "BaseModel.name.verbose_name"
 msgid "BaseLink.name.verbose_name"
 msgstr "Name"
 
-#: inventory/models/links.py:21
-#, fuzzy
-#| msgid "BaseModel.name.help_text"
 msgid "BaseLink.name.help_text"
 msgstr " "
 
-#: inventory/models/links.py:24 inventory/models/links.py:29
-#, fuzzy
-#| msgid "LocationModel.verbose_name"
 msgid "Link.url.verbose_name"
-msgstr "Location"
+msgstr "URL"
 
-#: inventory/models/links.py:25 inventory/models/links.py:30
-#, fuzzy
-#| msgid "LocationModel.parent.help_text"
 msgid "Link.url.help_text"
-msgstr "Locations can be nested. Example: The box 12 in cupboard 3"
+msgstr " "
 
-#: inventory/models/links.py:34
-#, fuzzy
-#| msgid "LocationModel.verbose_name"
 msgid "Link.status_code.verbose_name"
-msgstr "Location"
+msgstr "Status code"
 
-#: inventory/models/links.py:35
-#, fuzzy
-#| msgid "BaseModel.id.help_text"
 msgid "Link.status_code.help_text"
 msgstr " "
 
-#: inventory/models/links.py:39
-#, fuzzy
-#| msgid "LocationModel.parent.verbose_name"
 msgid "Link.page_title.verbose_name"
-msgstr "Parent"
+msgstr "Page title"
 
-#: inventory/models/links.py:40
-#, fuzzy
-#| msgid "LocationModel.parent.help_text"
 msgid "Link.page_title.help_text"
-msgstr "Locations can be nested. Example: The box 12 in cupboard 3"
+msgstr ""
 
-#: inventory/models/location.py:14
 msgid "LocationModel.description.verbose_name"
 msgstr "Description"
 
-#: inventory/models/location.py:15
 msgid "LocationModel.description.help_text"
 msgstr " "
 
-#: inventory/models/location.py:21
 msgid "LocationModel.parent.verbose_name"
 msgstr "Parent"
 
-#: inventory/models/location.py:22
 msgid "LocationModel.parent.help_text"
 msgstr "Locations can be nested. Example: The box 12 in cupboard 3"
 
-#: inventory/models/location.py:32
 msgid "LocationModel.verbose_name"
 msgstr "Location"
 
-#: inventory/models/location.py:33
 msgid "LocationModel.verbose_name_plural"
 msgstr "Locations"
 
-#: inventory_project/settings.py:111
 msgid "German"
 msgstr ""
 
-#: inventory_project/settings.py:112
 msgid "English"
 msgstr ""
-
-#, fuzzy
-#~| msgid "ItemModel.fcc_id.verbose_name"
-#~ msgid "ItemModel.received_url.verbose_name"
-#~ msgstr "FCC ID"
-
-#, fuzzy
-#~| msgid "ItemModel.fcc_id.help_text"
-#~ msgid "ItemModel.received_url.help_text"
-#~ msgstr "Unique number from the FCC"
-
-#, fuzzy
-#~| msgid "ItemModel.verbose_name"
-#~ msgid "ItemModel.handed_over_url.verbose_name"
-#~ msgstr "Item"
-
-#, fuzzy
-#~| msgid "ItemModel.location.help_text"
-#~ msgid "ItemModel.handed_over_url.help_text"
-#~ msgstr " "

@@ -101,6 +101,33 @@ tbd
     ~/PyInventory$ make install
     ...
 
+-----------
+Screenshots
+-----------
+
+v0.0.1
+======
+
+----
+
+|PyInventory v0.0.1 screenshot 3.png|
+
+.. |PyInventory v0.0.1 screenshot 3.png| image:: https://raw.githubusercontent.com/jedie/jedie.github.io/master/screenshots/PyInventory/PyInventory v0.0.1 screenshot 3.png
+
+----
+
+|PyInventory v0.0.1 screenshot 2.png|
+
+.. |PyInventory v0.0.1 screenshot 2.png| image:: https://raw.githubusercontent.com/jedie/jedie.github.io/master/screenshots/PyInventory/PyInventory v0.0.1 screenshot 2.png
+
+----
+
+|PyInventory v0.0.1 screenshot 1.png|
+
+.. |PyInventory v0.0.1 screenshot 1.png| image:: https://raw.githubusercontent.com/jedie/jedie.github.io/master/screenshots/PyInventory/PyInventory v0.0.1 screenshot 1.png
+
+----
+
 ------------------------------
 Backwards-incompatible changes
 ------------------------------
@@ -111,9 +138,13 @@ Nothing, yet ;)
 history
 -------
 
-* `compare v0.0.1...master <https://github.com/jedie/PyInventory/compare/v0.0.1...master>`_ **dev** 
+* `compare v0.1.0...master <https://github.com/jedie/PyInventory/compare/v0.1.0...master>`_ **dev** 
 
     * tbc
+
+* `v0.1.0 - 17.10.2020 <https://github.com/jedie/PyInventory/compare/v0.0.1...v0.1.0>`_ 
+
+    * Enhance models, admin and finish project setup
 
 * v0.0.1 - 14.10.2020
 
@@ -144,4 +175,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2020-10-15 18:02:11 with "python-creole"``
+``Note: this file is generated from README.creole 2020-10-17 19:37:03 with "python-creole"``

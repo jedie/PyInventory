@@ -1,7 +1,7 @@
+import tagulous.models
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from tagulous.models import TagField
 
 from inventory.models.base import BaseModel
 from inventory.models.links import BaseLink
@@ -11,19 +11,20 @@ class ItemModel(BaseModel):
     """
     A Item that can be described and store somewhere ;)
     """
-    kind = TagField(
+    kind = tagulous.models.TagField(
         force_lowercase=False,
         max_count=3,
         verbose_name=_('ItemModel.kind.verbose_name'),
         help_text=_('ItemModel.kind.help_text')
     )
-    producer = TagField(
+    producer = tagulous.models.TagField(
         force_lowercase=False, blank=True,
         max_count=1,
         verbose_name=_('ItemModel.producer.verbose_name'),
         help_text=_('ItemModel.producer.help_text')
     )
     description = RichTextUploadingField(
+        blank=True, null=True,
         config_name='ItemModel.description',
         verbose_name=_('ItemModel.description.verbose_name'),
         help_text=_('ItemModel.description.help_text')
@@ -42,6 +43,7 @@ class ItemModel(BaseModel):
     )
     parent = models.ForeignKey(
         'self',
+        limit_choices_to={'parent_id': None},
         on_delete=models.SET_NULL,
         blank=True, null=True,
         verbose_name=_('ItemModel.parent.verbose_name'),

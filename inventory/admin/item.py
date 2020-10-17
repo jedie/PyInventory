@@ -17,9 +17,11 @@ class ItemModelAdmin(BaseUserAdmin):
     date_hierarchy = 'create_dt'
     list_display = (
         'kind', 'producer',
-        'parent', 'name',
-        'location', 'received_date', 'update_dt'
+        'name',
+        'parent', 'location',
+        'received_date', 'update_dt'
     )
+    ordering = ('kind', 'producer', 'name')
     list_display_links = ('name',)
     list_filter = ('kind', 'location', 'producer', 'tags')
     search_fields = ('name', 'description')

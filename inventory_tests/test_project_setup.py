@@ -3,6 +3,8 @@ import shutil
 import subprocess
 from pathlib import Path
 
+from creole.setup_utils import update_rst_readme
+
 import inventory
 
 
@@ -58,3 +60,14 @@ def test_poetry_check(package_root=None):
     )
     print(output)
     assert output == 'All set!\n'
+
+
+def test_update_rst_readme(capsys):
+    rest_readme_path = update_rst_readme(
+        package_root=PACKAGE_ROOT, filename='README.creole'
+    )
+    captured = capsys.readouterr()
+    assert captured.out == 'Generate README.rst from README.creole...nothing changed, ok.\n'
+    assert captured.err == ''
+    assert isinstance(rest_readme_path, Path)
+    assert str(rest_readme_path).endswith('/README.rst')

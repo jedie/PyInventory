@@ -55,6 +55,7 @@ requests = "*"  # https://github.com/psf/requests
 
 [tool.poetry.dev-dependencies]
 poetry-publish = "*"  # https://github.com/jedie/poetry-publish
+python-creole = "*"  # https://github.com/jedie/python-creole
 tox = "*"
 pytest = "*"
 pytest-randomly = "*"

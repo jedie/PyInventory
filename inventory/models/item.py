@@ -43,6 +43,7 @@ class ItemModel(BaseModel):
     )
     parent = models.ForeignKey(
         'self',
+        limit_choices_to={'parent_id': None},
         on_delete=models.SET_NULL,
         blank=True, null=True,
         verbose_name=_('ItemModel.parent.verbose_name'),

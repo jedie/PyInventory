@@ -24,6 +24,7 @@ class ItemModel(BaseModel):
         help_text=_('ItemModel.producer.help_text')
     )
     description = RichTextUploadingField(
+        blank=True, null=True,
         config_name='ItemModel.description',
         verbose_name=_('ItemModel.description.verbose_name'),
         help_text=_('ItemModel.description.help_text')

@@ -78,5 +78,8 @@ class BaseLink(BaseModel):
             self.update_response_info()
         return super().full_clean(**kwargs)
 
+    def __str__(self):
+        return self.url
+
     class Meta:
         abstract = True

@@ -26,7 +26,7 @@ class LocationModel(BaseModel):
         if self.parent_id is None:
             return self.name
         else:
-            return f'{self.name} -> {self.parent}'
+            return f'{self.name} › {self.parent}'
 
     class Meta:
         verbose_name = _('LocationModel.verbose_name')

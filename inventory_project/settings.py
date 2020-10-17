@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'reversion',  # https://github.com/etianen/django-reversion
     'reversion_compare',  # https://github.com/jedie/django-reversion-compare
     'tagulous',  # https://github.com/radiac/django-tagulous
+    'adminsortable2',  # https://github.com/jrief/django-admin-sortable2
 
     'inventory.apps.InventoryConfig',
 )

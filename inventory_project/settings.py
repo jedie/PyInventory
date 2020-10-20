@@ -3,9 +3,10 @@
 """
 
 import logging
+import os as __os
 from pathlib import Path as __Path
 
-from debug_toolbar.settings import CONFIG_DEFAULTS as DEBUG_TOOLBAR_CONFIG
+
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -21,25 +22,22 @@ SECRET_KEY = 'TODO: Read secret.txt ;)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-SITE_ID = 1
-
 # Required for the debug toolbar to be displayed:
-INTERNAL_IPS = '*'
+INTERNAL_IPS = ('127.0.0.1', '0.0.0.0', 'localhost')
 
 ALLOWED_HOSTS = INTERNAL_IPS
 
 
 # Application definition
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
-    'debug_toolbar',  # https://github.com/jazzband/django-debug-toolbar
+
     'bx_py_utils',  # https://github.com/boxine/bx_py_utils
     'import_export',  # https://github.com/django-import-export/django-import-export
     'ckeditor',  # https://github.com/django-ckeditor/django-ckeditor
@@ -49,14 +47,12 @@ INSTALLED_APPS = (
     'adminsortable2',  # https://github.com/jrief/django-admin-sortable2
 
     'inventory.apps.InventoryConfig',
-)
+]
 
 ROOT_URLCONF = 'inventory_project.urls'
 WSGI_APPLICATION = 'inventory_project.wsgi.application'
 
-MIDDLEWARE = (
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
-
+MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -66,7 +62,7 @@ MIDDLEWARE = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django_tools.middlewares.ThreadLocal.ThreadLocalMiddleware',
-)
+]
 
 TEMPLATES = [
     {
@@ -93,15 +89,32 @@ if DEBUG:
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': str(__Path(BASE_PATH.parent, 'PyInventory-database.sqlite3')),
-        # 'NAME': ':memory:'
-        # https://docs.djangoproject.com/en/dev/ref/databases/#database-is-locked-errors
-        'timeout': 30,
+
+if 'DB_HOST' in __os.environ:
+    # docker-compose usage with postgres database
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': __os.environ['DB_NAME'],
+            'USER': __os.environ['DB_USER'],
+            'PASSWORD': __os.environ['DB_PASS'],
+            'HOST': __os.environ['DB_HOST'],
+            'PORT': __os.environ['DB_PORT'],
+            'DEBUG_NAME': 'default',
+            'CONN_MAX_AGE': 600,
+        },
     }
-}
+else:
+    # local run with SQLite
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': str(__Path(BASE_PATH.parent, 'PyInventory-database.sqlite3')),
+            # 'NAME': ':memory:'
+            # https://docs.djangoproject.com/en/dev/ref/databases/#database-is-locked-errors
+            'timeout': 30,
+        }
+    }
 print(f'Use Database: {DATABASES["default"]["NAME"]!r}')
 
 # _____________________________________________________________________________
@@ -133,14 +146,25 @@ MEDIA_ROOT = str(__Path(BASE_PATH, 'media'))
 # _____________________________________________________________________________
 # Django-Debug-Toolbar
 
-# Disable some more panels that will slow down the page:
-DEBUG_TOOLBAR_CONFIG['DISABLE_PANELS'].add('debug_toolbar.panels.sql.SQLPanel')
-DEBUG_TOOLBAR_CONFIG['DISABLE_PANELS'].add('debug_toolbar.panels.cache.CachePanel')
+ENABLE_DJDT = __os.environ.get('ENABLE_DJDT') in ('true', '1')
+if ENABLE_DJDT:
+    print('Enable Django-Debug-Toolbar')
+    INSTALLED_APPS += ['debug_toolbar']
+    MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
 
-# don't load jquery from ajax.googleapis.com, just use django's version:
-DEBUG_TOOLBAR_CONFIG['JQUERY_URL'] = STATIC_URL + 'admin/js/vendor/jquery/jquery.min.js'
+    DEBUG_TOOLBAR_PATCH_SETTINGS = True
+    from debug_toolbar.settings import CONFIG_DEFAULTS as DEBUG_TOOLBAR_CONFIG
 
-DEBUG_TOOLBAR_CONFIG['SHOW_COLLAPSED'] = True  # Show toolbar collapsed by default.
+    # Disable some more panels that will slow down the page:
+    DEBUG_TOOLBAR_CONFIG['DISABLE_PANELS'].add('debug_toolbar.panels.sql.SQLPanel')
+    DEBUG_TOOLBAR_CONFIG['DISABLE_PANELS'].add('debug_toolbar.panels.cache.CachePanel')
+
+    # don't load jquery from ajax.googleapis.com, just use django's version:
+    DEBUG_TOOLBAR_CONFIG['JQUERY_URL'] = STATIC_URL + 'admin/js/vendor/jquery/jquery.min.js'
+
+    DEBUG_TOOLBAR_CONFIG['SHOW_TEMPLATE_CONTEXT'] = True
+    DEBUG_TOOLBAR_CONFIG['SHOW_COLLAPSED'] = True  # Show toolbar collapsed by default.
+    DEBUG_TOOLBAR_CONFIG['SHOW_TOOLBAR_CALLBACK'] = 'inventory_project.middlewares.djdt_show'
 
 # _____________________________________________________________________________
 # django-ckeditor

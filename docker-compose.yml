@@ -1,0 +1,38 @@
+version: "3.7"
+
+services:
+    inventory:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        restart: "no"
+        hostname: inventory
+        ports:
+            - "8000:8000"
+        env_file: ./docker/common.env
+        environment:
+            - ENABLE_DJDT=$ENABLE_DJDT
+        links:
+            - postgres:postgres
+        depends_on:
+            - postgres
+        volumes:
+            - .:/PyInventory
+            - ./volumes/static/:/PyInventory/static/:rw
+            # e.g.: pip cache must be the same value as $XDG_CACHE_HOME !
+            - ./volumes/cache/:/var/cache/:rw
+        entrypoint: /PyInventory/docker/entrypoint.sh
+
+    postgres:
+        # https://hub.docker.com/_/postgres
+        image: postgres:13-alpine
+        restart: "no"
+        hostname: postgres
+        ports:
+            - "5432:5432"
+        env_file: ./docker/common.env
+        environment:
+            - POSTGRES_HOST_AUTH_METHOD=trust
+        volumes:
+            - ./docker/init-postgres-user-db.sh:/docker-entrypoint-initdb.d/init-user-db.sh:ro
+            - ./volumes/postgresql/data/:/var/lib/postgresql/data/:rw

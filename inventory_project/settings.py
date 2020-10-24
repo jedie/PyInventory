@@ -39,6 +39,7 @@ INSTALLED_APPS = [
 
     'bx_py_utils',  # https://github.com/boxine/bx_py_utils
     'import_export',  # https://github.com/django-import-export/django-import-export
+    'dbbackup',  # https://github.com/django-dbbackup/django-dbbackup
     'ckeditor',  # https://github.com/django-ckeditor/django-ckeditor
     'reversion',  # https://github.com/etianen/django-reversion
     'reversion_compare',  # https://github.com/jedie/django-reversion-compare
@@ -141,6 +142,12 @@ STATIC_ROOT = str(__Path(BASE_PATH, 'static'))
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = str(__Path(BASE_PATH, 'media'))
+
+# _____________________________________________________________________________
+# Django-dbbackup
+
+DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
+DBBACKUP_STORAGE_OPTIONS = {'location': str(__Path(BASE_PATH, 'backups'))}
 
 # _____________________________________________________________________________
 # Django-Debug-Toolbar

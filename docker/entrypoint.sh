@@ -21,6 +21,8 @@ echo "$(date +%c) - ${0}"
 (
     set -x
 
+    poetry install --extras "postgres"
+
     ./manage.sh collectstatic --noinput --link
 	./manage.sh makemigrations
 	./manage.sh migrate

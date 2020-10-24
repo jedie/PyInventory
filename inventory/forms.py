@@ -5,8 +5,8 @@ from inventory.request_dict import get_request_dict
 
 
 class BaseUserOnlyModelForm(forms.ModelForm):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
         # Filter all related fields that has a "user" attribute for the current user
         # e.g.:

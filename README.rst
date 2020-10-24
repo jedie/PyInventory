@@ -79,6 +79,8 @@ There exists two kind of installation/usage:
 
 * docker-compose
 
+see below
+
 prepare
 =======
 
@@ -191,6 +193,34 @@ Screenshots
 
 ----
 
+----------------
+Multi user usage
+----------------
+
+PyInventory supports multiple users. The idea:
+
+* Every normal user sees only his own created database entries
+
+* All users used the Django admin
+
+Note: All created Tags are shared for all existing users!
+
+So setup a normal user:
+
+* Set "Staff status"
+
+* Unset "Superuser status"
+
+* Add user to "normal_user" group
+
+* Don't add any additional permissions
+
+e.g.:
+
+|normal user example|
+
+.. |normal user example| image:: https://raw.githubusercontent.com/jedie/jedie.github.io/master/screenshots/PyInventory/PyInventory normal user example.png
+
 ------------------------------
 Backwards-incompatible changes
 ------------------------------
@@ -246,4 +276,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2020-10-24 16:39:24 with "python-creole"``
+``Note: this file is generated from README.creole 2020-10-24 17:15:43 with "python-creole"``

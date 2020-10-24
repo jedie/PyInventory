@@ -1,17 +1,29 @@
 import tagulous
 from adminsortable2.admin import SortableInlineAdminMixin
 from django.contrib import admin
+from django.contrib.admin.views.main import ChangeList
+from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
 from import_export.admin import ImportExportMixin
 from import_export.resources import ModelResource
 
 from inventory.admin.base import BaseUserAdmin
+from inventory.forms import ItemModelModelForm
 from inventory.models import ItemLinkModel, ItemModel
 
 
 class ItemLinkModelInline(SortableInlineAdminMixin, admin.TabularInline):
     model = ItemLinkModel
     extra = 1
+
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+
+        if not request.user.is_superuser:
+            # Display only own created entries
+            qs = qs.filter(user=request.user)
+
+        return qs
 
 
 class ItemModelResource(ModelResource):
@@ -20,8 +32,19 @@ class ItemModelResource(ModelResource):
         model = ItemModel
 
 
+class ItemModelChangeList(ChangeList):
+    def get_queryset(self, request):
+        """
+        List always the base instances
+        """
+        qs = super().get_queryset(request)
+        qs = qs.filter(parent__isnull=True)
+        return qs
+
+
 @admin.register(ItemModel)
 class ItemModelAdmin(ImportExportMixin, BaseUserAdmin):
+    form = ItemModelModelForm
     date_hierarchy = 'create_dt'
     list_display = (
         'kind', 'producer',
@@ -75,6 +98,19 @@ class ItemModelAdmin(ImportExportMixin, BaseUserAdmin):
     )
     readonly_fields = ('id', 'create_dt', 'update_dt', 'user')
     inlines = (ItemLinkModelInline,)
+
+    def get_changelist(self, request, **kwargs):
+        self.user = request.user
+        return ItemModelChangeList
+
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+
+        if not request.user.is_superuser:
+            # Display only own created entries
+            qs = qs.filter(user=request.user)
+
+        return qs
 
 
 tagulous.admin.enhance(ItemModel, ItemModelAdmin)

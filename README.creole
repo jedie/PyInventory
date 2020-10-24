@@ -136,7 +136,7 @@ Notes:
 
 == Screenshots
 
-{{https://raw.githubusercontent.com/jedie/jedie.github.io/master/screenshots/PyInventory/PyInventory v0.1.0 screenshot 1.png|PyInventory v0.1.0 screenshot 1.png}}
+{{https://raw.githubusercontent.com/jedie/jedie.github.io/master/screenshots/PyInventory/PyInventory v0.2.0 screenshot 1.png|PyInventory v0.2.0 screenshot 1.png}}
 
 ----
 
@@ -178,8 +178,14 @@ Nothing, yet ;)
 
 == history
 
-* [[https://github.com/jedie/PyInventory/compare/v0.1.0...master|compare v0.1.0...master]] **dev**
+* [[https://github.com/jedie/PyInventory/compare/v0.2.0...master|compare v0.2.0...master]] **dev**
 ** tbc
+* [[https://github.com/jedie/PyInventory/compare/v0.1.0...v0.2.0|v0.2.0 - 24.10.2020]]
+** Simplify item change list by nested item
+** Activate Django-Import/Export
+** Implement multi user usage
+** Add Django-dbbackup
+** Add docker-compose usage
 * [[https://github.com/jedie/PyInventory/compare/v0.0.1...v0.1.0|v0.1.0 - 17.10.2020]]
 ** Enhance models, admin and finish project setup
 * v0.0.1 - 14.10.2020

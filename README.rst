@@ -175,9 +175,9 @@ Notes:
 Screenshots
 -----------
 
-|PyInventory v0.1.0 screenshot 1.png|
+|PyInventory v0.2.0 screenshot 1.png|
 
-.. |PyInventory v0.1.0 screenshot 1.png| image:: https://raw.githubusercontent.com/jedie/jedie.github.io/master/screenshots/PyInventory/PyInventory v0.1.0 screenshot 1.png
+.. |PyInventory v0.2.0 screenshot 1.png| image:: https://raw.githubusercontent.com/jedie/jedie.github.io/master/screenshots/PyInventory/PyInventory v0.2.0 screenshot 1.png
 
 ----
 
@@ -231,9 +231,21 @@ Nothing, yet ;)
 history
 -------
 
-* `compare v0.1.0...master <https://github.com/jedie/PyInventory/compare/v0.1.0...master>`_ **dev** 
+* `compare v0.2.0...master <https://github.com/jedie/PyInventory/compare/v0.2.0...master>`_ **dev** 
 
     * tbc
+
+* `v0.2.0 - 24.10.2020 <https://github.com/jedie/PyInventory/compare/v0.1.0...v0.2.0>`_ 
+
+    * Simplify item change list by nested item
+
+    * Activate Django-Import/Export
+
+    * Implement multi user usage
+
+    * Add Django-dbbackup
+
+    * Add docker-compose usage
 
 * `v0.1.0 - 17.10.2020 <https://github.com/jedie/PyInventory/compare/v0.0.1...v0.1.0>`_ 
 
@@ -276,4 +288,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2020-10-24 17:15:43 with "python-creole"``
+``Note: this file is generated from README.creole 2020-10-24 19:34:25 with "python-creole"``

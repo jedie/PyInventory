@@ -7,6 +7,7 @@ class RequestDictMiddleware:
     Access e.g.:
         user = get_request_dict()['user']
     """
+
     def __init__(self, get_response):
         self.get_response = get_response
 

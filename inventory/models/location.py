@@ -10,6 +10,7 @@ class LocationModel(BaseModel):
     A Storage for items.
     """
     description = RichTextUploadingField(
+        blank=True, null=True,
         config_name='LocationModel.description',
         verbose_name=_('LocationModel.description.verbose_name'),
         help_text=_('LocationModel.description.help_text')

@@ -1,16 +1,24 @@
 import tagulous.models
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from inventory.models.base import BaseModel
 from inventory.models.links import BaseLink
 
 
+class ItemQuerySet(models.QuerySet):
+    def sort(self):
+        return self.order_by('kind', 'producer', 'name')
+
+
 class ItemModel(BaseModel):
     """
     A Item that can be described and store somewhere ;)
     """
+    objects = ItemQuerySet.as_manager()
+
     kind = tagulous.models.TagField(
         case_sensitive=False,
         force_lowercase=False,
@@ -116,6 +124,14 @@ class ItemModel(BaseModel):
         verbose_name=_('ItemModel.handed_over_price.verbose_name'),
         help_text=_('ItemModel.handed_over_price.help_text')
     )
+
+    def local_admin_link(self):
+        url = reverse('admin:inventory_itemmodel_change', args=[self.id])
+        return url
+
+    def verbose_name(self):
+        parts = [str(part) for part in (self.kind, self.producer, self.name)]
+        return ' - '.join(part for part in parts if part)
 
     def __str__(self):
         if self.parent_id is None:

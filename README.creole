@@ -76,6 +76,8 @@ down                 Stop all containers
 prune                Cleanup docker
 build                Update docker container build
 logs                 Display docker logs from all containers
+dbbackup             Backup database
+dbrestore            Restore a database backup
 restart              Restart all containers
 }}}
 

@@ -146,6 +146,20 @@ logs_inventory:  ## Display docker logs from postgres container
 
 ##############################################################################
 
+dbbackup:  ## Backup database
+	./manage.sh dbbackup
+
+docker_dbbackup:  ## Backup database (Docker usage)
+	./compose.sh exec inventory ./manage.sh dbbackup
+
+dbrestore:  ## Restore a database backup
+	./manage.sh dbrestore
+
+docker_dbrestore:  ## Restore a database backup (Docker usage)
+	./compose.sh exec inventory ./manage.sh dbrestore
+
+##############################################################################
+
 restart: down up  ## Restart all containers
 
 upgrade_inventory: ## Upgrade "inventory" container and restart it

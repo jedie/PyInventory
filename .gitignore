@@ -8,6 +8,10 @@
 !/.style.yapf
 !.coveralls.yml
 
+# for django-dbbackup
+/backups/
+!/backups/.gitkeep
+
 # from test projects:
 /static/
 /media/

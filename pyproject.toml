@@ -45,6 +45,7 @@ gunicorn = "*"  # https://gunicorn.org/
 django = "2.2.*"
 django-debug-toolbar = "*"  # http://django-debug-toolbar.readthedocs.io/en/stable/changes.html
 django-import-export = "*"  # https://github.com/django-import-export/django-import-export
+django-dbbackup = "*"  # https://github.com/django-dbbackup/django-dbbackup
 django-tools = "*"  # https://github.com/jedie/django-tools/
 django-reversion-compare = "*"  # https://github.com/jedie/django-reversion-compare/
 django-ckeditor = "*"  # https://github.com/django-ckeditor/django-ckeditor

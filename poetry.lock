@@ -259,6 +259,19 @@ python-versions = "*"
 django-js-asset = ">=1.2.2"
 
 [[package]]
+name = "django-dbbackup"
+version = "3.3.0"
+description = "Management commands to help backup and restore a project database and media"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+Django = ">=1.5"
+pytz = "*"
+six = "*"
+
+[[package]]
 name = "django-debug-toolbar"
 version = "3.1.1"
 description = "A configurable set of panels that display various debug information about the current request/response."
@@ -1178,7 +1191,7 @@ postgres = ["psycopg2-binary"]
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7,<4.0.0"
-content-hash = "4ad32caba18b4f973eee3d59a129b1ccd5750289a60c07939e1ab2f973fb4940"
+content-hash = "d07f05b3cb200bb30974923869838af5e96a1935fdcbaa2e536f03f046583d90"
 
 [metadata.files]
 appdirs = [
@@ -1364,6 +1377,9 @@ django-admin-sortable2 = [
 django-ckeditor = [
     {file = "django-ckeditor-6.0.0.tar.gz", hash = "sha256:29fd1a333cb9741ac2c3fd4e427a5c00115ed33a2389716a09af7656022dcdde"},
     {file = "django_ckeditor-6.0.0-py2.py3-none-any.whl", hash = "sha256:cc2d377f1bdcd4ca1540caeebe85f7e2cd006198d57328ef6c718d3eaa5a0846"},
+]
+django-dbbackup = [
+    {file = "django-dbbackup-3.3.0.tar.gz", hash = "sha256:bb109735cae98b64ad084e5b461b7aca2d7b39992f10c9ed9435e3ebb6fb76c8"},
 ]
 django-debug-toolbar = [
     {file = "django-debug-toolbar-3.1.1.tar.gz", hash = "sha256:c97921a9cd421d392e7860dc4b464db8e06c8628df4dc58fedab012888c293c6"},

@@ -113,6 +113,8 @@ prepare
     prune                Cleanup docker
     build                Update docker container build
     logs                 Display docker logs from all containers
+    dbbackup             Backup database
+    dbrestore            Restore a database backup
     restart              Restart all containers
 
 .env
@@ -244,4 +246,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2020-10-24 14:31:12 with "python-creole"``
+``Note: this file is generated from README.creole 2020-10-24 16:39:24 with "python-creole"``

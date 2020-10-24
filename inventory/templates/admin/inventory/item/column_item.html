@@ -1,0 +1,8 @@
+<strong><a href="{{ base_item.local_admin_link }}">{{ base_item.name }}</a></strong>
+{% if sub_items %}
+<ul>
+    {% for item in sub_items %}
+        <li><a href="{{ item.local_admin_link }}">{{ item.verbose_name }}</a></li>
+    {% endfor %}
+</ul>
+{% endif %}

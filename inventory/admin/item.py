@@ -45,15 +45,30 @@ class ItemModelChangeList(ChangeList):
 @admin.register(ItemModel)
 class ItemModelAdmin(ImportExportMixin, BaseUserAdmin):
     form = ItemModelModelForm
+
+    def column_item(self, obj):
+        qs = ItemModel.objects.filter(user=self.user)
+        qs = qs.filter(parent=obj)
+        context = {
+            'base_item': obj,
+            'sub_items': qs
+        }
+        return render_to_string(
+            template_name='admin/inventory/item/column_item.html',
+            context=context,
+        )
+
+    column_item.short_description = _('ItemModel.verbose_name_plural')
+
     date_hierarchy = 'create_dt'
     list_display = (
         'kind', 'producer',
-        'name',
-        'parent', 'location',
+        'column_item',
+        'location',
         'received_date', 'update_dt'
     )
     ordering = ('kind', 'producer', 'name')
-    list_display_links = ('name',)
+    list_display_links = None
     list_filter = ('kind', 'location', 'producer', 'tags')
     search_fields = ('name', 'description')
     fieldsets = (

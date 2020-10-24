@@ -221,6 +221,14 @@ links
 .. _http://github.com/jedie/PyInventory: http://github.com/jedie/PyInventory
 .. _https://pypi.org/project/PyInventory/: https://pypi.org/project/PyInventory/
 
+Discuss here:
+
+* `vogons.org Forum Thread (en) <https://www.vogons.org/viewtopic.php?f=5&t=77285>`_
+
+* `VzEkC e. V. Forum Thread (de) <https://forum.classic-computing.de/forum/index.php?thread/21738-opensource-projekt-pyinventory-web-basierte-verwaltung-um-seine-dinge-zu-katalog/>`_
+
+* `dosreloaded.de Forum Thread (de) <https://dosreloaded.de/forum/index.php?thread/3702-pyinventory-retro-sammlung-katalogisieren/>`_
+
 --------
 donation
 --------
@@ -233,4 +241,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2020-10-24 13:38:24 with "python-creole"``
+``Note: this file is generated from README.creole 2020-10-24 14:14:38 with "python-creole"``

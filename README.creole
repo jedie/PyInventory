@@ -162,6 +162,11 @@ Nothing, yet ;)
 | Homepage   | http://github.com/jedie/PyInventory
 | PyPi       | https://pypi.org/project/PyInventory/
 
+Discuss here:
+
+* [[https://www.vogons.org/viewtopic.php?f=5&t=77285|vogons.org Forum Thread (en)]]
+* [[https://forum.classic-computing.de/forum/index.php?thread/21738-opensource-projekt-pyinventory-web-basierte-verwaltung-um-seine-dinge-zu-katalog/|VzEkC e. V. Forum Thread (de)]]
+* [[https://dosreloaded.de/forum/index.php?thread/3702-pyinventory-retro-sammlung-katalogisieren/|dosreloaded.de Forum Thread (de)]]
 
 == donation ==
 

@@ -40,7 +40,7 @@ update: check-poetry ## update the sources and installation
 	poetry update
 
 lint: ## Run code formatters and linter
-	poetry run flynt --fail-on-change --line_length=${MAX_LINE_LENGTH} .
+	poetry run flynt -e "volumes" --fail-on-change --line_length=${MAX_LINE_LENGTH} .
 	poetry run isort --check-only .
 	poetry run flake8 .
 

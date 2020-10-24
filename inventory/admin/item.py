@@ -2,6 +2,8 @@ import tagulous
 from adminsortable2.admin import SortableInlineAdminMixin
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
+from import_export.admin import ImportExportMixin
+from import_export.resources import ModelResource
 
 from inventory.admin.base import BaseUserAdmin
 from inventory.models import ItemLinkModel, ItemModel
@@ -12,8 +14,14 @@ class ItemLinkModelInline(SortableInlineAdminMixin, admin.TabularInline):
     extra = 1
 
 
+class ItemModelResource(ModelResource):
+
+    class Meta:
+        model = ItemModel
+
+
 @admin.register(ItemModel)
-class ItemModelAdmin(BaseUserAdmin):
+class ItemModelAdmin(ImportExportMixin, BaseUserAdmin):
     date_hierarchy = 'create_dt'
     list_display = (
         'kind', 'producer',

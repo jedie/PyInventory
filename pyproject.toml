@@ -52,6 +52,12 @@ bx_py_utils = "*"  # https://github.com/boxine/bx_py_utils
 django-tagulous = "*"  # https://github.com/radiac/django-tagulous
 django-admin-sortable2 = "*"  # https://github.com/jrief/django-admin-sortable2
 requests = "*"  # https://github.com/psf/requests
+docker-compose = { version = "*", optional = true }  # install via: poetry install --extras "docker"
+psycopg2-binary = { version = "*", optional = true }  # install via: poetry install --extras "postgres"
+
+[tool.poetry.extras]
+docker = ["docker-compose"]
+postgres = ["psycopg2-binary"]
 
 [tool.poetry.dev-dependencies]
 poetry-publish = "*"  # https://github.com/jedie/poetry-publish

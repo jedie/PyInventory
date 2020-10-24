@@ -73,7 +73,14 @@ any many more... ;)
 install
 -------
 
-tbd
+There exists two kind of installation/usage:
+
+* local virtualenv (without docker)
+
+* docker-compose
+
+prepare
+=======
 
 ::
 
@@ -83,6 +90,7 @@ tbd
     help                 List all commands
     install-poetry       install or update poetry
     install              install PyInventory via poetry
+    manage-update        Collectstatic + makemigration + migrate
     update               update the sources and installation
     lint                 Run code formatters and linter
     fix-code-style       Fix code formatting
@@ -95,11 +103,66 @@ tbd
     update-rst-readme    update README.rst from README.creole
     publish              Release new version to PyPi
     run-dev-server       Run the django dev server in endless loop.
+    messages             Make and compile locales message files
     run-server           Run the gunicorn server in endless loop.
     backup               Backup everything
     create-starter       Create starter file.
+    install-compose      Install "docker-compose", too
+    up                   Start containers via docker-compose
+    down                 Stop all containers
+    prune                Cleanup docker
+    build                Update docker container build
+    restart              Restart all containers
+
+.env
+====
+
+Create a ``.env`` file, for some settings, e.g.:
+
+::
+
+    # enable Django-Debug-Toolbar:
+    ENABLE_DJDT=1
+
+local install without docker
+============================
+
+::
+
+    # install or update poetry:
+    ~/PyInventory$ make install-poetry
+    
+    # install PyInventory via poetry:
     ~/PyInventory$ make install
     ...
+    
+    # Collectstatic + makemigration + migrate:
+    ~/PyInventory$ make manage-update
+    
+    # Create a django super user:
+    ~/PyInventory$ ./manage.sh createsuperuser
+    
+    # start local dev. web server:
+    ~/PyInventory$ make run-dev-server
+
+docker-compose usage
+====================
+
+Install docker, e.g.: `https://docs.docker.com/engine/install/ubuntu/ <https://docs.docker.com/engine/install/ubuntu/>`_
+
+::
+
+    # Install "docker-compose" via poetry extras:
+    ~/PyInventory$ make install-compose
+    
+    # Start containers via docker-compose:
+    ~/PyInventory$ make up
+
+Notes:
+
+* at the first start it takes a little while until the database is created
+
+* The web page is available via: ``http://localhost:8000/``
 
 -----------
 Screenshots
@@ -170,4 +233,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2020-10-17 22:30:59 with "python-creole"``
+``Note: this file is generated from README.creole 2020-10-24 13:38:24 with "python-creole"``

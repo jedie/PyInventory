@@ -13,6 +13,9 @@
 /media/
 *.sqlite3
 
+# docker-compose usage:
+volumes
+
 # Coverage HTML Report files:
 htmlcov
 

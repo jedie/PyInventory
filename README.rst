@@ -112,6 +112,7 @@ prepare
     down                 Stop all containers
     prune                Cleanup docker
     build                Update docker container build
+    logs                 Display docker logs from all containers
     restart              Restart all containers
 
 .env
@@ -144,6 +145,8 @@ local install without docker
     
     # start local dev. web server:
     ~/PyInventory$ make run-dev-server
+
+The web page is available via: ``http://127.0.0.1:8000/``
 
 docker-compose usage
 ====================
@@ -241,4 +244,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2020-10-24 14:14:38 with "python-creole"``
+``Note: this file is generated from README.creole 2020-10-24 14:31:12 with "python-creole"``

@@ -75,6 +75,7 @@ up                   Start containers via docker-compose
 down                 Stop all containers
 prune                Cleanup docker
 build                Update docker container build
+logs                 Display docker logs from all containers
 restart              Restart all containers
 }}}
 
@@ -107,6 +108,8 @@ ENABLE_DJDT=1
 # start local dev. web server:
 ~/PyInventory$ make run-dev-server
 }}}
+
+The web page is available via: {{{http://127.0.0.1:8000/}}}
 
 
 === docker-compose usage

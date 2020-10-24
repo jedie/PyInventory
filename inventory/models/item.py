@@ -8,10 +8,17 @@ from inventory.models.base import BaseModel
 from inventory.models.links import BaseLink
 
 
+class ItemQuerySet(models.QuerySet):
+    def sort(self):
+        return self.order_by('kind', 'producer', 'name')
+
+
 class ItemModel(BaseModel):
     """
     A Item that can be described and store somewhere ;)
     """
+    objects = ItemQuerySet.as_manager()
+
     kind = tagulous.models.TagField(
         case_sensitive=False,
         force_lowercase=False,

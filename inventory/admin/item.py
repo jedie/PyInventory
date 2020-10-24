@@ -48,7 +48,7 @@ class ItemModelAdmin(ImportExportMixin, BaseUserAdmin):
 
     def column_item(self, obj):
         qs = ItemModel.objects.filter(user=self.user)
-        qs = qs.filter(parent=obj)
+        qs = qs.filter(parent=obj).sort()
         context = {
             'base_item': obj,
             'sub_items': qs

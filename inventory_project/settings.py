@@ -6,7 +6,6 @@ import logging
 import os as __os
 from pathlib import Path as __Path
 
-
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -153,7 +152,7 @@ if ENABLE_DJDT:
     MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
 
     DEBUG_TOOLBAR_PATCH_SETTINGS = True
-    from debug_toolbar.settings import CONFIG_DEFAULTS as DEBUG_TOOLBAR_CONFIG
+    from debug_toolbar.settings import CONFIG_DEFAULTS as DEBUG_TOOLBAR_CONFIG  # noqa
 
     # Disable some more panels that will slow down the page:
     DEBUG_TOOLBAR_CONFIG['DISABLE_PANELS'].add('debug_toolbar.panels.sql.SQLPanel')

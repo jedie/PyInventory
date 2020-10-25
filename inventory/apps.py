@@ -16,3 +16,4 @@ class InventoryConfig(AppConfig):
 
     def ready(self):
         import inventory.checks  # noqa
+        import inventory.signals  # noqa

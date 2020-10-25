@@ -4,12 +4,13 @@
 
 import logging
 import os as __os
+import sys as __sys
 from pathlib import Path as __Path
 
 from django.utils.translation import ugettext_lazy as _
 
 
-print('Use settings:', __file__)
+print(f'Use settings: {__file__!r}', file=__sys.stderr)
 
 
 # Build paths inside the project:
@@ -117,7 +118,7 @@ else:
             'timeout': 30,
         }
     }
-print(f'Use Database: {DATABASES["default"]["NAME"]!r}')
+print(f'Use Database: {DATABASES["default"]["NAME"]!r}', file=__sys.stderr)
 
 # _____________________________________________________________________________
 # Internationalization

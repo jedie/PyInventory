@@ -29,7 +29,7 @@ install: check-poetry ## install PyInventory via poetry
 	poetry install
 
 manage-update: ## Collectstatic + makemigration + migrate
-	./manage.sh collectstatic --noinput --link
+	./manage.sh collectstatic --noinput
 	./manage.sh makemigrations
 	./manage.sh migrate
 

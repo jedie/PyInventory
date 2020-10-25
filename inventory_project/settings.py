@@ -217,6 +217,13 @@ TAGULOUS_LABEL_MAX_LENGTH = TAGULOUS_NAME_MAX_LENGTH
 TAGULOUS_SLUG_TRUNCATE_UNIQUE = 5
 TAGULOUS_SLUG_ALLOW_UNICODE = False
 
+SERIALIZATION_MODULES = {
+    'xml':    'tagulous.serializers.xml_serializer',
+    'json':   'tagulous.serializers.json',
+    'python': 'tagulous.serializers.python',
+    'yaml':   'tagulous.serializers.pyyaml',
+}
+
 # _____________________________________________________________________________
 # cut 'pathname' in log output
 

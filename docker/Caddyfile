@@ -1,0 +1,9 @@
+# https://caddyserver.com/docs/caddyfile
+{
+  admin off
+}
+
+{$HOSTNAME} {
+    tls {$LETSENCRYPT_EMAIL}
+    reverse_proxy inventory:8000
+}

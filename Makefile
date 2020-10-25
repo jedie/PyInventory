@@ -1,5 +1,6 @@
 SHELL := /bin/bash
 MAX_LINE_LENGTH := 119
+export DJANGO_SETTINGS_MODULE ?= inventory_project.settings.local
 
 help: ## List all commands
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z0-9 -]+:.*?## / {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
@@ -75,6 +76,8 @@ publish: ## Release new version to PyPi
 
 
 run-dev-server:  ## Run the django dev server in endless loop.
+	./manage.sh collectstatic --noinput --link
+	./manage.sh migrate
 	./manage.sh runserver
 
 messages: ## Make and compile locales message files
@@ -92,7 +95,6 @@ create-starter:  ## Create starter file.
 
 ##############################################################################
 # docker-compose usage
-
 
 check-compose:
 	@if [[ "$(shell poetry run docker-compose --version 2>/dev/null)" = *"docker-compose version"* ]] ; \
@@ -134,6 +136,14 @@ shell_inventory:  ## Go into bash shell in inventory container
 shell_postgres:  ## Go into bash shell in postgres container
 	./compose.sh exec postgres /bin/bash
 
+shell_caddy:  ## Go into bash shell in caddy container
+	./compose.sh exec caddy /bin/ash
+
+##############################################################################
+
+caddy_environ:  ## Prints the caddy environment
+	./compose.sh exec caddy /usr/bin/caddy environ
+
 ##############################################################################
 
 logs:  ## Display docker logs from all containers
@@ -142,8 +152,11 @@ logs:  ## Display docker logs from all containers
 logs_postgres:  ## Display docker logs from postgres container
 	./compose.sh logs --tail=500 --follow postgres
 
-logs_inventory:  ## Display docker logs from postgres container
+logs_inventory:  ## Display docker logs from inventory container
 	./compose.sh logs --tail=500 --follow inventory
+
+logs_caddy:  ## Display docker logs from caddy container
+	./compose.sh logs --tail=500 --follow caddy
 
 ##############################################################################
 
@@ -171,5 +184,9 @@ upgrade_inventory: ## Upgrade "inventory" container and restart it
 reload_inventory: ## Reload server in "inventory" container
 	./compose.sh exec inventory ./docker/kill_python.sh
 	./compose.sh logs --tail=500 --follow inventory
+
+restart_caddy: ## Restart caddy container
+	./compose.sh stop caddy
+	$(MAKE) up
 
 .PHONY: help install lint fix test publish

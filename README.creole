@@ -42,7 +42,7 @@ any many more... ;)
 There exists two kind of installation/usage:
 
 * local virtualenv (without docker)
-* docker-compose
+* production use with docker-compose
 
 see below
 
@@ -84,15 +84,6 @@ restart              Restart all containers
 }}}
 
 
-=== .env
-
-Create a {{{.env}}} file, for some settings, e.g.:
-{{{
-# enable Django-Debug-Toolbar:
-ENABLE_DJDT=1
-}}}
-
-
 === local install without docker
 
 {{{
@@ -123,15 +114,33 @@ Install docker, e.g.: https://docs.docker.com/engine/install/ubuntu/
 {{{
 # Install "docker-compose" via poetry extras:
 ~/PyInventory$ make install-compose
+}}}
 
-# Start containers via docker-compose:
+Create a {{{.env}}} file with these content, e.g.:
+{{{
+# Public domain or "localhost" for local testing:
+HOSTNAME=localhost
+
+# eMail address for Let's encrypt (Use "internal" for self signed https certificates):
+LETSENCRYPT_EMAIL=internal
+}}}
+e.g. in production:
+{{{
+HOSTNAME=domain.tld
+LETSENCRYPT_EMAIL=webmaster@domain.tld
+}}}
+
+Start containers via docker-compose:
+{{{
 ~/PyInventory$ make up
 }}}
 
-Notes:
+Notes: At the first start it takes a little while until the database is created
 
-* at the first start it takes a little while until the database is created
-* The web page is available via: {{{http://localhost:8000/}}}
+Create first super user:
+{{{
+~/PyInventory$ make docker_createsuperuser
+}}}
 
 
 == Screenshots
@@ -179,6 +188,8 @@ Nothing, yet ;)
 == history
 
 * [[https://github.com/jedie/PyInventory/compare/v0.2.0...master|compare v0.2.0...master]] **dev**
+** Remove usage of {{{.env}}} file
+** split settings for local development and production use
 ** tbc
 * [[https://github.com/jedie/PyInventory/compare/v0.1.0...v0.2.0|v0.2.0 - 24.10.2020]]
 ** Simplify item change list by nested item

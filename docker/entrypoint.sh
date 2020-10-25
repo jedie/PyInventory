@@ -27,8 +27,20 @@ echo "$(date +%c) - ${0}"
 	./manage.sh makemigrations
 	./manage.sh migrate
 
-    ./manage.sh runserver 0.0.0.0:8000
-    echo "runserver terminated with exit code: $?"
+    exec poetry run uwsgi \
+        --http inventory:8000 \
+        --chdir /PyInventory \
+        --wsgi-file /PyInventory/inventory_project/wsgi.py \
+        --static-map /static=/PyInventory/static \
+        --master \
+        --processes 2 \
+        --threads 2 \
+        --ignore-sigpipe \
+        --ignore-write-errors \
+        --disable-write-exception \
+        --http-auto-chunked \
+        --http-keepalive
+    echo "uwsgi terminated with exit code: $?"
     sleep 3
     exit 1
 )

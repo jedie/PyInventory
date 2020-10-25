@@ -1,9 +1,8 @@
+from django.conf import settings
 from django.conf.urls import include, static, url
 from django.contrib import admin
 from django.urls import path
 from django.views.generic import RedirectView
-
-from inventory_project import settings
 
 
 admin.autodiscover()

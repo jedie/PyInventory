@@ -1,21 +1,36 @@
 version: "3.7"
 
 services:
+    caddy: # https://hub.docker.com/_/caddy
+        image: caddy:2-alpine
+        restart: unless-stopped
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - ./docker/Caddyfile:/etc/caddy/Caddyfile
+            - ./volumes/static/:/srv/:ro
+        environment:
+            - HOSTNAME=${HOSTNAME:-localhost}
+            - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL:-internal}
+
     inventory:
         build:
             context: .
             dockerfile: Dockerfile
-        restart: "no"
+        restart: unless-stopped
         hostname: inventory
         ports:
-            - "8000:8000"
+            - "8000"
         env_file: ./docker/common.env
         environment:
-            - ENABLE_DJDT=$ENABLE_DJDT
+            - DJANGO_SETTINGS_MODULE=inventory_project.settings.docker
+            - HOSTNAME=${HOSTNAME:-localhost}
         links:
             - postgres:postgres
         depends_on:
             - postgres
+            - caddy
         volumes:
             - .:/PyInventory
             - ./volumes/static/:/PyInventory/static/:rw
@@ -26,10 +41,10 @@ services:
     postgres:
         # https://hub.docker.com/_/postgres
         image: postgres:11-alpine
-        restart: "no"
+        restart: unless-stopped
         hostname: postgres
         ports:
-            - "5432:5432"
+            - "5432"
         env_file: ./docker/common.env
         environment:
             - POSTGRES_HOST_AUTH_METHOD=trust

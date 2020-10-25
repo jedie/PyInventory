@@ -38,7 +38,7 @@ readme='README.rst'
 python = ">=3.7,<4.0.0"
 colorama = "*"  # Console colors under windows: https://pypi.org/project/colorama/
 colorlog = "*"  # https://github.com/borntyping/python-colorlog
-gunicorn = "*"  # https://gunicorn.org/
+uWSGI = "*"
 #
 # https://www.djangoproject.com/download/#supported-versions
 # v2.2 LTS - extended support until April 2022

@@ -1,21 +1,25 @@
 """
-    Django settings for production usage
+    Django settings for docker usage (local and production)
 """
 import os as __os
-from pathlib import Path as __Path
 
 from inventory_project.settings.base import *  # noqa
 
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+HOSTNAME = __os.environ['HOSTNAME']
 
-INTERNAL_IPS = ()
+if HOSTNAME != 'localhost':
+    print(f'Production mode on domain: {HOSTNAME!r}')
+    DEBUG = False
+    INTERNAL_IPS = ()
+else:
+    print('Local development mode')
+    DEBUG = True
+    INTERNAL_IPS = ('127.0.0.1', '0.0.0.0', 'localhost')
 
-ALLOWED_HOSTS = ('domain.tld',)  # TODO
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = __Path('secret.txt').resolve().open('r').read().strip()
+ALLOWED_HOSTS = (HOSTNAME,)
+
 
 DATABASES = {
     'default': {

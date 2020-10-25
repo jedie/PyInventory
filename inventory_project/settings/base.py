@@ -12,6 +12,16 @@ from django.utils.translation import ugettext_lazy as _
 BASE_PATH = __Path(__file__).resolve().parent.parent.parent
 
 
+# SECURITY WARNING: keep the secret key used in production secret!
+__SECRET_FILE = __Path(BASE_PATH, 'secret.txt').resolve()
+if not __SECRET_FILE.is_file():
+    print(f'Generate {__SECRET_FILE}')
+    from secrets import token_urlsafe as __token_urlsafe
+    __SECRET_FILE.open('w').write(__token_urlsafe(128))
+
+SECRET_KEY = __SECRET_FILE.open('r').read().strip()
+
+
 # Application definition
 
 INSTALLED_APPS = [

@@ -18,8 +18,6 @@ INTERNAL_IPS = ('127.0.0.1', '0.0.0.0', 'localhost')
 
 ALLOWED_HOSTS = INTERNAL_IPS
 
-SECRET_KEY = 'no secret for local development'
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

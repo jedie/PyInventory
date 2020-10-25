@@ -20,6 +20,9 @@
 # docker-compose usage:
 volumes
 
+# Django
+secret.txt
+
 # Coverage HTML Report files:
 htmlcov
 

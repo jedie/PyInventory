@@ -77,7 +77,7 @@ There exists two kind of installation/usage:
 
 * local virtualenv (without docker)
 
-* docker-compose
+* production use with docker-compose
 
 see below
 
@@ -119,16 +119,6 @@ prepare
     dbrestore            Restore a database backup
     restart              Restart all containers
 
-.env
-====
-
-Create a ``.env`` file, for some settings, e.g.:
-
-::
-
-    # enable Django-Debug-Toolbar:
-    ENABLE_DJDT=1
-
 local install without docker
 ============================
 
@@ -161,15 +151,37 @@ Install docker, e.g.: `https://docs.docker.com/engine/install/ubuntu/ <https://d
 
     # Install "docker-compose" via poetry extras:
     ~/PyInventory$ make install-compose
+
+Create a ``.env`` file with these content, e.g.:
+
+::
+
+    # Public domain or "localhost" for local testing:
+    HOSTNAME=localhost
     
-    # Start containers via docker-compose:
+    # eMail address for Let's encrypt (Use "internal" for self signed https certificates):
+    LETSENCRYPT_EMAIL=internal
+
+e.g. in production:
+
+::
+
+    HOSTNAME=domain.tld
+    LETSENCRYPT_EMAIL=webmaster@domain.tld
+
+Start containers via docker-compose:
+
+::
+
     ~/PyInventory$ make up
 
-Notes:
+Notes: At the first start it takes a little while until the database is created
 
-* at the first start it takes a little while until the database is created
+Create first super user:
 
-* The web page is available via: ``http://localhost:8000/``
+::
+
+    ~/PyInventory$ make docker_createsuperuser
 
 -----------
 Screenshots
@@ -233,6 +245,10 @@ history
 
 * `compare v0.2.0...master <https://github.com/jedie/PyInventory/compare/v0.2.0...master>`_ **dev** 
 
+    * Remove usage of ``.env`` file
+
+    * split settings for local development and production use
+
     * tbc
 
 * `v0.2.0 - 24.10.2020 <https://github.com/jedie/PyInventory/compare/v0.1.0...v0.2.0>`_ 
@@ -288,4 +304,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2020-10-24 19:34:25 with "python-creole"``
+``Note: this file is generated from README.creole 2020-10-25 19:34:37 with "python-creole"``

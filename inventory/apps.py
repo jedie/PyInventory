@@ -15,5 +15,4 @@ class InventoryConfig(AppConfig):
     verbose_name = "Inventory"
 
     def ready(self):
-        import inventory.checks  # noqa
         import inventory.signals  # noqa

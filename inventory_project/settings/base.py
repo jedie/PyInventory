@@ -1,31 +1,15 @@
 """
-    Django settings
+    Base Django settings
 """
 
 import logging
-import os as __os
-import sys as __sys
 from pathlib import Path as __Path
 
 from django.utils.translation import ugettext_lazy as _
 
 
-print(f'Use settings: {__file__!r}', file=__sys.stderr)
-
-
 # Build paths inside the project:
-BASE_PATH = __Path(__file__).resolve().parent.parent
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'TODO: Read secret.txt ;)'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-# Required for the debug toolbar to be displayed:
-INTERNAL_IPS = ('127.0.0.1', '0.0.0.0', 'localhost')
-
-ALLOWED_HOSTS = INTERNAL_IPS
+BASE_PATH = __Path(__file__).resolve().parent.parent.parent
 
 
 # Application definition
@@ -84,42 +68,6 @@ TEMPLATES = [
     },
 ]
 
-if DEBUG:
-    # Disable caches:
-    CACHES = {'default': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'}}
-
-
-# Database
-# https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-
-
-if 'DB_HOST' in __os.environ:
-    # docker-compose usage with postgres database
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': __os.environ['DB_NAME'],
-            'USER': __os.environ['DB_USER'],
-            'PASSWORD': __os.environ['DB_PASS'],
-            'HOST': __os.environ['DB_HOST'],
-            'PORT': __os.environ['DB_PORT'],
-            'DEBUG_NAME': 'default',
-            'CONN_MAX_AGE': 600,
-        },
-    }
-else:
-    # local run with SQLite
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': str(__Path(BASE_PATH.parent, 'PyInventory-database.sqlite3')),
-            # 'NAME': ':memory:'
-            # https://docs.djangoproject.com/en/dev/ref/databases/#database-is-locked-errors
-            'timeout': 30,
-        }
-    }
-print(f'Use Database: {DATABASES["default"]["NAME"]!r}', file=__sys.stderr)
-
 # _____________________________________________________________________________
 # Internationalization
 
@@ -151,29 +99,6 @@ MEDIA_ROOT = str(__Path(BASE_PATH, 'media'))
 
 DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
 DBBACKUP_STORAGE_OPTIONS = {'location': str(__Path(BASE_PATH, 'backups'))}
-
-# _____________________________________________________________________________
-# Django-Debug-Toolbar
-
-ENABLE_DJDT = __os.environ.get('ENABLE_DJDT') in ('true', '1')
-if ENABLE_DJDT:
-    print('Enable Django-Debug-Toolbar')
-    INSTALLED_APPS += ['debug_toolbar']
-    MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
-
-    DEBUG_TOOLBAR_PATCH_SETTINGS = True
-    from debug_toolbar.settings import CONFIG_DEFAULTS as DEBUG_TOOLBAR_CONFIG  # noqa
-
-    # Disable some more panels that will slow down the page:
-    DEBUG_TOOLBAR_CONFIG['DISABLE_PANELS'].add('debug_toolbar.panels.sql.SQLPanel')
-    DEBUG_TOOLBAR_CONFIG['DISABLE_PANELS'].add('debug_toolbar.panels.cache.CachePanel')
-
-    # don't load jquery from ajax.googleapis.com, just use django's version:
-    DEBUG_TOOLBAR_CONFIG['JQUERY_URL'] = STATIC_URL + 'admin/js/vendor/jquery/jquery.min.js'
-
-    DEBUG_TOOLBAR_CONFIG['SHOW_TEMPLATE_CONTEXT'] = True
-    DEBUG_TOOLBAR_CONFIG['SHOW_COLLAPSED'] = True  # Show toolbar collapsed by default.
-    DEBUG_TOOLBAR_CONFIG['SHOW_TOOLBAR_CALLBACK'] = 'inventory_project.middlewares.djdt_show'
 
 # _____________________________________________________________________________
 # django-ckeditor
@@ -218,10 +143,10 @@ TAGULOUS_SLUG_TRUNCATE_UNIQUE = 5
 TAGULOUS_SLUG_ALLOW_UNICODE = False
 
 SERIALIZATION_MODULES = {
-    'xml':    'tagulous.serializers.xml_serializer',
-    'json':   'tagulous.serializers.json',
+    'xml': 'tagulous.serializers.xml_serializer',
+    'json': 'tagulous.serializers.json',
     'python': 'tagulous.serializers.python',
-    'yaml':   'tagulous.serializers.pyyaml',
+    'yaml': 'tagulous.serializers.pyyaml',
 }
 
 # _____________________________________________________________________________

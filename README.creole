@@ -84,14 +84,6 @@ restart              Restart all containers
 }}}
 
 
-=== .env
-
-Create a {{{.env}}} file, for some settings, e.g.:
-{{{
-# enable Django-Debug-Toolbar:
-ENABLE_DJDT=1
-}}}
-
 
 === local install without docker
 
@@ -179,6 +171,8 @@ Nothing, yet ;)
 == history
 
 * [[https://github.com/jedie/PyInventory/compare/v0.2.0...master|compare v0.2.0...master]] **dev**
+** Remove usage of {{{.env}}} file
+** split settings for local development and production use
 ** tbc
 * [[https://github.com/jedie/PyInventory/compare/v0.1.0...v0.2.0|v0.2.0 - 24.10.2020]]
 ** Simplify item change list by nested item

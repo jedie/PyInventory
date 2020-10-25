@@ -5,7 +5,7 @@ import sys
 
 
 def main():
-    os.environ['DJANGO_SETTINGS_MODULE'] = 'inventory_project.settings'
+    assert 'DJANGO_SETTINGS_MODULE' in os.environ, 'No "DJANGO_SETTINGS_MODULE" in environment!'
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

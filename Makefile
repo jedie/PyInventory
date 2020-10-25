@@ -1,5 +1,6 @@
 SHELL := /bin/bash
 MAX_LINE_LENGTH := 119
+export DJANGO_SETTINGS_MODULE ?= inventory_project.settings.local
 
 help: ## List all commands
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z0-9 -]+:.*?## / {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
@@ -75,6 +76,8 @@ publish: ## Release new version to PyPi
 
 
 run-dev-server:  ## Run the django dev server in endless loop.
+	./manage.sh collectstatic --noinput --link
+	./manage.sh migrate
 	./manage.sh runserver
 
 messages: ## Make and compile locales message files

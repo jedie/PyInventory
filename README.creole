@@ -1,0 +1,176 @@
+= PyInventory - deployment branch
+
+Web based management to catalog things including state and location etc. using Python/Django.
+
+*Note:*
+
+* This is the **deployment** branch that doesn't contain the project sourcecode!
+* This branch is only for production use to setup a root server for PyInventory
+
+Pull requests welcome!
+
+== install
+
+=== prepare
+
+{{{
+~$ git clone https://github.com/jedie/PyInventory.git
+~$ cd PyInventory
+~/PyInventory$ git checkout deployment
+~/PyInventory$ make
+help                 List all commands
+install-poetry       install or update poetry
+install              install requirements to setup project
+update               update the sources and installation
+up                   Start containers via docker-compose
+down                 Stop all containers
+prune                Cleanup docker
+build                Update docker container build
+createsuperuser      Create super user
+logs                 Display docker logs from all containers
+dbbackup             Backup database
+dbrestore            Restore a database backup
+restart              Restart all containers
+}}}
+
+
+{{{
+# install or update poetry:
+~/PyInventory$ make install-poetry
+
+# install requirements via poetry:
+~/PyInventory$ make install
+...
+
+# Collectstatic + makemigration + migrate:
+~/PyInventory$ make manage-update
+
+# Create a django super user:
+~/PyInventory$ ./manage.sh createsuperuser
+
+# start local dev. web server:
+~/PyInventory$ make run-dev-server
+}}}
+
+The web page is available via: {{{http://127.0.0.1:8000/}}}
+
+
+=== docker-compose usage
+
+Install docker, e.g.: https://docs.docker.com/engine/install/ubuntu/
+
+{{{
+# Install "docker-compose" via poetry extras:
+~/PyInventory$ make install-compose
+}}}
+
+Create a {{{.env}}} file with these content, e.g.:
+{{{
+# Public domain or "localhost" for local testing:
+HOSTNAME=localhost
+
+# eMail address for Let's encrypt (Use "internal" for self signed https certificates):
+LETSENCRYPT_EMAIL=internal
+}}}
+e.g. in production:
+{{{
+HOSTNAME=domain.tld
+LETSENCRYPT_EMAIL=webmaster@domain.tld
+}}}
+
+Start containers via docker-compose:
+{{{
+~/PyInventory$ make up
+}}}
+
+Notes: At the first start it takes a little while until the database is created
+
+Create first super user:
+{{{
+~/PyInventory$ make docker_createsuperuser
+}}}
+
+
+== Screenshots
+
+{{https://raw.githubusercontent.com/jedie/jedie.github.io/master/screenshots/PyInventory/PyInventory v0.2.0 screenshot 1.png|PyInventory v0.2.0 screenshot 1.png}}
+
+----
+
+{{https://raw.githubusercontent.com/jedie/jedie.github.io/master/screenshots/PyInventory/PyInventory v0.1.0 screenshot 2.png|PyInventory v0.1.0 screenshot 2.png}}
+
+----
+
+{{https://raw.githubusercontent.com/jedie/jedie.github.io/master/screenshots/PyInventory/PyInventory v0.1.0 screenshot 3.png|PyInventory v0.1.0 screenshot 3.png}}
+
+----
+
+
+== Multi user usage
+
+PyInventory supports multiple users. The idea:
+
+* Every normal user sees only his own created database entries
+* All users used the Django admin
+
+Note: All created Tags are shared for all existing users!
+
+
+So setup a normal user:
+
+* Set "Staff status"
+* Unset "Superuser status"
+* Add user to "normal_user" group
+* Don't add any additional permissions
+
+e.g.:
+
+{{https://raw.githubusercontent.com/jedie/jedie.github.io/master/screenshots/PyInventory/PyInventory normal user example.png|normal user example}}
+
+
+== Backwards-incompatible changes
+
+Nothing, yet ;)
+
+
+== history
+
+* [[https://github.com/jedie/PyInventory/compare/v0.2.0...master|compare v0.2.0...master]] **dev**
+** tbc
+* [[https://github.com/jedie/PyInventory/compare/v0.2.0...v0.3.0|v0.3.0 - 26.10.2020]]
+** setup production usage:
+*** Use [[https://caddyserver.com/|caddy server]] as reverse proxy
+*** Use uWSGI as application server
+*** autogenerate {{{secret.txt}}} file for {{{settings.SECRET_KEY}}}
+*** Fix settings
+** split settings for local development and production use
+** Bugfix init: move "setup user group" from checks into "post migrate" signal handler
+** Bugfix for using manage commands {{{dumpdata}}} and {{{loaddata}}}
+* [[https://github.com/jedie/PyInventory/compare/v0.1.0...v0.2.0|v0.2.0 - 24.10.2020]]
+** Simplify item change list by nested item
+** Activate Django-Import/Export
+** Implement multi user usage
+** Add Django-dbbackup
+** Add docker-compose usage
+* [[https://github.com/jedie/PyInventory/compare/v0.0.1...v0.1.0|v0.1.0 - 17.10.2020]]
+** Enhance models, admin and finish project setup
+* v0.0.1 - 14.10.2020
+** Just create a pre-alpha release to save the PyPi package name ;)
+
+
+== links ==
+
+| Homepage   | http://github.com/jedie/PyInventory
+| PyPi       | https://pypi.org/project/PyInventory/
+
+Discuss here:
+
+* [[https://www.vogons.org/viewtopic.php?f=5&t=77285|vogons.org Forum Thread (en)]]
+* [[https://forum.classic-computing.de/forum/index.php?thread/21738-opensource-projekt-pyinventory-web-basierte-verwaltung-um-seine-dinge-zu-katalog/|VzEkC e. V. Forum Thread (de)]]
+* [[https://dosreloaded.de/forum/index.php?thread/3702-pyinventory-retro-sammlung-katalogisieren/|dosreloaded.de Forum Thread (de)]]
+
+== donation ==
+
+* [[https://www.paypal.me/JensDiemer|paypal.me/JensDiemer]]
+* [[https://flattr.com/submit/auto?uid=jedie&url=https%3A%2F%2Fgithub.com%2Fjedie%2FPyInventory%2F|Flattr This!]]
+* Send [[http://www.bitcoin.org/|Bitcoins]] to [[https://blockexplorer.com/address/1823RZ5Md1Q2X5aSXRC5LRPcYdveCiVX6F|1823RZ5Md1Q2X5aSXRC5LRPcYdveCiVX6F]]

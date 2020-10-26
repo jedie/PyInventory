@@ -1,0 +1,20 @@
+# https://caddyserver.com/docs/caddyfile
+{
+    admin off
+}
+
+{$HOSTNAME} {
+    tls {$LETSENCRYPT_EMAIL}
+
+    header {
+        X-Robots-Tag "none"
+    }
+
+    respond /robots.txt 200 {
+        body "User-agent: *
+Disallow: /"
+        close
+    }
+
+    reverse_proxy inventory:8000
+}

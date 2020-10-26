@@ -1,0 +1,78 @@
+.*
+!.github
+!.editorconfig
+!.flake8
+!.gitignore
+!.isort.cfg
+!/.travis.yml
+!/.style.yapf
+!.coveralls.yml
+
+poetry.lock
+
+# for django-dbbackup
+/backups/
+!/backups/.gitkeep
+
+# from test projects:
+/static/
+/media/
+*.sqlite3
+
+# docker-compose usage:
+volumes
+
+# Django
+secret.txt
+
+# Coverage HTML Report files:
+htmlcov
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.tox
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+db.sqlite3
+coverage_html/
+coverage.xml
+*,cover
+
+# Translations
+*.pot
+
+# Django stuff:
+*.log
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+

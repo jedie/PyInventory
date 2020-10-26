@@ -87,9 +87,6 @@ LANGUAGES = [
     ('de', _('German')),
     ('en', _('English')),
 ]
-LOCALE_PATHS = [
-    __Path(BASE_PATH, 'inventory_locales')
-]
 USE_I18N = True
 USE_L10N = True
 TIME_ZONE = 'Europe/Paris'

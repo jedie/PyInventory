@@ -189,7 +189,7 @@ Nothing, yet ;)
 
 * [[https://github.com/jedie/PyInventory/compare/v0.2.0...master|compare v0.2.0...master]] **dev**
 ** tbc
-* [[https://github.com/jedie/PyInventory/compare/v0.3.0...v0.3.1|v0.3.1 - 26.10.2020]]
+* [[https://github.com/jedie/PyInventory/compare/v0.3.0...v0.3.2|v0.3.2 - 26.10.2020]]
 ** Bugfix missing translations
 * [[https://github.com/jedie/PyInventory/compare/v0.2.0...v0.3.0|v0.3.0 - 26.10.2020]]
 ** setup production usage:

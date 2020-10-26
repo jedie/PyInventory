@@ -1,0 +1,32 @@
+{% extends "admin/login.html" %}
+{% load i18n static %}
+
+{% block branding %}{# remove branding #}{% endblock %}
+
+{% block extrastyle %}{{ block.super }}
+<style>.form-row {display: none;}</style>
+{% endblock %}
+
+{% block content %}
+    <script>document.write('<fo'+'rm act'+'ion="{{ app_path }}" met'+'hod="po'+'st" id="lo'+'gin-fo'+'rm">');</script>
+    {% csrf_token %}
+        <div class="form-row">
+            {{ form.as_p }}
+        </div>
+        <div class="submit-row">
+            <noscript>Please enable JavaScript ;)</noscript>
+            <label>&nbsp;</label>
+            <script>document.write('<in'+'put type="sub'+'mit" val'+'ue="{% trans 'Log in' %}">');</script>
+        </div>
+    <script>
+        'use strict';
+        document.write('</fo'+'rm>');
+        document.addEventListener('DOMContentLoaded', () => {
+            for (const object of document.querySelectorAll('.form-row')) {
+                object.style.display = "block";
+            }
+        });
+    </script>
+{% endblock %}
+
+{% block footer %}{# remove footer #}{% endblock %}

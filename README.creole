@@ -188,9 +188,16 @@ Nothing, yet ;)
 == history
 
 * [[https://github.com/jedie/PyInventory/compare/v0.2.0...master|compare v0.2.0...master]] **dev**
-** Remove usage of {{{.env}}} file
-** split settings for local development and production use
 ** tbc
+* [[https://github.com/jedie/PyInventory/compare/v0.2.0...v0.3.0|v0.3.0 - 26.10.2020]]
+** setup production usage:
+*** Use [[https://caddyserver.com/|caddy server]] as reverse proxy
+*** Use uWSGI as application server
+*** autogenerate {{{secret.txt}}} file for {{{settings.SECRET_KEY}}}
+*** Fix settings
+** split settings for local development and production use
+** Bugfix init: move "setup user group" from checks into "post migrate" signal handler
+** Bugfix for using manage commands {{{dumpdata}}} and {{{loaddata}}}
 * [[https://github.com/jedie/PyInventory/compare/v0.1.0...v0.2.0|v0.2.0 - 24.10.2020]]
 ** Simplify item change list by nested item
 ** Activate Django-Import/Export

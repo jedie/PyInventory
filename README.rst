@@ -245,11 +245,25 @@ history
 
 * `compare v0.2.0...master <https://github.com/jedie/PyInventory/compare/v0.2.0...master>`_ **dev** 
 
-    * Remove usage of ``.env`` file
+    * tbc
+
+* `v0.3.0 - 26.10.2020 <https://github.com/jedie/PyInventory/compare/v0.2.0...v0.3.0>`_ 
+
+    * setup production usage:
+
+        * Use `caddy server <https://caddyserver.com/>`_ as reverse proxy
+
+        * Use uWSGI as application server
+
+        * autogenerate ``secret.txt`` file for ``settings.SECRET_KEY``
+
+        * Fix settings
 
     * split settings for local development and production use
 
-    * tbc
+    * Bugfix init: move "setup user group" from checks into "post migrate" signal handler
+
+    * Bugfix for using manage commands ``dumpdata`` and ``loaddata``
 
 * `v0.2.0 - 24.10.2020 <https://github.com/jedie/PyInventory/compare/v0.1.0...v0.2.0>`_ 
 
@@ -304,4 +318,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2020-10-25 19:34:37 with "python-creole"``
+``Note: this file is generated from README.creole 2020-10-26 17:56:17 with "python-creole"``

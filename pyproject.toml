@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "PyInventory"
-version = "0.3.0"
+version = "0.3.1"
 description = "Web based management to catalog things including state and location etc. using Python/Django."
 authors = ["JensDiemer <git@jensdiemer.de>"]
 packages = [
@@ -11,8 +11,7 @@ packages = [
 keywords=['inventory','django']
 classifiers = [
     # http://pypi.python.org/pypi?%3Aaction=list_classifiers
-    "Development Status :: 2 - Pre-Alpha",
-#    "Development Status :: 3 - Alpha",
+    "Development Status :: 3 - Alpha",
 #    "Development Status :: 4 - Beta",
     #"Development Status :: 5 - Production/Stable",
     "Environment :: Web Environment",
@@ -29,7 +28,10 @@ classifiers = [
     "Topic :: Internet :: WWW/HTTP :: WSGI :: Application",
     "Operating System :: OS Independent",
 ]
-include = ["AUTHORS"]
+include = [
+    'AUTHORS', 'LICENSE', 'README.creole',
+    'inventory_locales/*'
+]
 
 # Will be generated from README.creole with: 'poetry run update_rst_readme'
 readme='README.rst'

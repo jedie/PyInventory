@@ -7,19 +7,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-17 19:12+0200\n"
-"PO-Revision-Date: 2020-10-17 18:05+0200\n"
+"POT-Creation-Date: 2020-10-26 19:24+0100\n"
+"PO-Revision-Date: 2020-10-17 19:12+0200\n"
 "Last-Translator: Jens Diemer\n"
 "Language-Team: \n"
-"Language: de\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.3\n"
 
+msgid "ItemModel.verbose_name_plural"
+msgstr "Items"
+
 msgid "Internals"
-msgstr "Intern"
+msgstr ""
 
 msgid "Meta"
 msgstr ""
@@ -28,33 +31,33 @@ msgid "Basic"
 msgstr ""
 
 msgid "Lent"
-msgstr "Verleih"
+msgstr ""
 
 msgid "Received"
-msgstr "Erhalt"
+msgstr ""
 
 msgid "Handed over"
-msgstr "Abgabe"
+msgstr ""
 
 msgid "BaseModel.id.verbose_name"
 msgstr "ID"
 
 msgid "BaseModel.id.help_text"
-msgstr " "
+msgstr "ID"
 
 msgid "BaseModel.user.verbose_name"
-msgstr "Benutzer"
+msgstr "User"
 
 msgid "BaseModel.user.help_text"
 msgstr ""
-"  Der Benutzer dem dieser Eintrag gehört und verwalten kann (Wird "
-"automatisch gesetzt)"
+"  The user who is the owner of this entry and can manage it (will be set "
+"automatically)"
 
 msgid "BaseModel.name.verbose_name"
 msgstr "Name"
 
 msgid "BaseModel.name.help_text"
-msgstr " "
+msgstr "Name"
 
 msgid "BaseModel.tags.verbose_name"
 msgstr "Tags"
@@ -63,19 +66,19 @@ msgid "BaseModel.tags.help_text"
 msgstr " "
 
 msgid "ItemModel.kind.verbose_name"
-msgstr "Art"
+msgstr "Kind"
 
 msgid "ItemModel.kind.help_text"
-msgstr "Type / Sorte / Gattung"
+msgstr ""
 
 msgid "ItemModel.producer.verbose_name"
-msgstr "Hersteller"
+msgstr "Producer"
 
 msgid "ItemModel.producer.help_text"
 msgstr " "
 
 msgid "ItemModel.description.verbose_name"
-msgstr "Beschreibung"
+msgstr "Description"
 
 msgid "ItemModel.description.help_text"
 msgstr " "
@@ -84,81 +87,76 @@ msgid "ItemModel.fcc_id.verbose_name"
 msgstr "FCC ID"
 
 msgid "ItemModel.fcc_id.help_text"
-msgstr "Eindeutige Nummer der FCC"
+msgstr "Unique number from the FCC"
 
 msgid "ItemModel.location.verbose_name"
-msgstr "Standort"
+msgstr "Location"
 
 msgid "ItemModel.location.help_text"
-msgstr "Wo ist dieser Gegenstand eingelagert?"
+msgstr " "
 
 msgid "ItemModel.parent.verbose_name"
-msgstr "Übergeordnet"
+msgstr "parent"
 
 msgid "ItemModel.parent.help_text"
-msgstr ""
-" Eingebaut in einem anderen Gegenstand? (e.g.: Grafikkarte eingebaut in "
-"Rechner)"
+msgstr " "
 
 msgid "ItemModel.lent_to.verbose_name"
-msgstr "Verliehen an"
+msgstr "Lent to"
 
 msgid "ItemModel.lent_to.help_text"
 msgstr " "
 
 msgid "ItemModel.lent_from_date.verbose_name"
-msgstr "Verleih Abgabe Datum"
+msgstr "Lent from date"
 
 msgid "ItemModel.lent_from_date.help_text"
-msgstr "Zeitpunkt ab dem dieser Gegenstand verliehen wurde"
+msgstr " "
 
 msgid "ItemModel.lent_until_date.verbose_name"
-msgstr "Verliehen bis"
+msgstr "Lent until date"
 
 msgid "ItemModel.lent_until_date.help_text"
-msgstr "Bis wann sollte der Gegenstand wieder zurück sein?"
+msgstr " "
 
 msgid "ItemModel.received_from.verbose_name"
-msgstr "Erhalten von"
+msgstr "Received from"
 
 msgid "ItemModel.received_from.help_text"
-msgstr "Von wem wurde dieser Gegenstand erhalten?"
+msgstr " "
 
 msgid "ItemModel.received_date.verbose_name"
-msgstr "Erhalten am"
+msgstr "Received date"
 
 msgid "ItemModel.received_date.help_text"
-msgstr "Wann wurde dieser Gegenstand erhalten?"
+msgstr " "
 
 msgid "ItemModel.received_price.verbose_name"
-msgstr "Preis"
+msgstr "Received price"
 
 msgid "ItemModel.received_price.help_text"
-msgstr "Welcher Preis wurde für diesen Gegenstand gezahlt?"
+msgstr " "
 
 msgid "ItemModel.handed_over_to.verbose_name"
-msgstr "Abgabe an"
+msgstr "Handed over to"
 
 msgid "ItemModel.handed_over_to.help_text"
-msgstr "An wem wurde dieser Gegenstand abgegeben?"
+msgstr " "
 
 msgid "ItemModel.handed_over_date.verbose_name"
-msgstr "Abgabedatum"
+msgstr "Handed over date"
 
 msgid "ItemModel.handed_over_date.help_text"
-msgstr "Zeitpunkt der Abgabe"
+msgstr " "
 
 msgid "ItemModel.handed_over_price.verbose_name"
-msgstr "Abgabepreis"
+msgstr "Handed over price"
 
 msgid "ItemModel.handed_over_price.help_text"
-msgstr "Wurde bei der Abgabe Geld eingenommen?"
+msgstr " "
 
 msgid "ItemModel.verbose_name"
-msgstr "Gegenstand"
-
-msgid "ItemModel.verbose_name_plural"
-msgstr "Gegenstände"
+msgstr "Item"
 
 msgid "ItemLinkModel.verbose_name"
 msgstr "Link"
@@ -179,37 +177,40 @@ msgid "Link.url.help_text"
 msgstr " "
 
 msgid "Link.status_code.verbose_name"
-msgstr "Status-Code"
+msgstr "Status code"
 
 msgid "Link.status_code.help_text"
-msgstr "Der Server meldete diesen Status-Code beim letzten abruf zurück."
+msgstr " "
 
 msgid "Link.page_title.verbose_name"
-msgstr "Seitentitel"
+msgstr "Page title"
 
 msgid "Link.page_title.help_text"
-msgstr "Der Seiten-Titel wird automatisch ermittelt."
+msgstr ""
 
 msgid "LocationModel.description.verbose_name"
-msgstr "Beschreibung"
+msgstr "Description"
 
 msgid "LocationModel.description.help_text"
 msgstr " "
 
 msgid "LocationModel.parent.verbose_name"
-msgstr "Übergeordneter Standort"
+msgstr "Parent"
 
 msgid "LocationModel.parent.help_text"
-msgstr "Standorte können verschachtelt werden. Bsp: Der Karton 12 in Schrank 3"
+msgstr "Locations can be nested. Example: The box 12 in cupboard 3"
 
 msgid "LocationModel.verbose_name"
-msgstr "Standort"
+msgstr "Location"
 
 msgid "LocationModel.verbose_name_plural"
-msgstr "Standorte"
+msgstr "Locations"
 
 msgid "German"
 msgstr ""
 
 msgid "English"
+msgstr ""
+
+msgid "Log in"
 msgstr ""

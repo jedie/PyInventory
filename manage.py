@@ -14,7 +14,12 @@ def main():
             'available on your PYTHONPATH environment variable? Did you '
             'forget to activate a virtual environment?'
         ) from exc
-    execute_from_command_line(sys.argv)
+    try:
+        execute_from_command_line(sys.argv)
+    except Exception as err:
+        from bx_py_utils.error_handling import print_exc_plus
+        print_exc_plus(err)
+        raise
 
 
 if __name__ == '__main__':

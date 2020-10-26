@@ -247,6 +247,10 @@ history
 
     * tbc
 
+* `v0.3.1 - 26.10.2020 <https://github.com/jedie/PyInventory/compare/v0.3.0...v0.3.1>`_ 
+
+    * Bugfix missing translations
+
 * `v0.3.0 - 26.10.2020 <https://github.com/jedie/PyInventory/compare/v0.2.0...v0.3.0>`_ 
 
     * setup production usage:
@@ -318,4 +322,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2020-10-26 17:56:17 with "python-creole"``
+``Note: this file is generated from README.creole 2020-10-26 19:26:06 with "python-creole"``

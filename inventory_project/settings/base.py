@@ -88,7 +88,7 @@ LANGUAGES = [
     ('en', _('English')),
 ]
 LOCALE_PATHS = [
-    __Path(BASE_PATH, 'locale')
+    __Path(BASE_PATH, 'inventory_locales')
 ]
 USE_I18N = True
 USE_L10N = True

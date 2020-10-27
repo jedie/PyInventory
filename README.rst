@@ -4,7 +4,7 @@ PyInventory
 
 Web based management to catalog things including state and location etc. using Python/Django.
 
-Current status: Just start the project. Nothing is done, nothing is useable, yet ;)
+The project is in an early stage of development. Some things are already implemented and usable. But there is still a lot to do.
 
 Pull requests welcome!
 
@@ -69,17 +69,36 @@ Plan:
 
 any many more... ;)
 
+------------
+git branches
+------------
+
+Currently we have two main branches:
+
++-------------------+----------------------------------------------------------------+
+| git branch        | description                                                    |
++===================+================================================================+
+| **`master`_**     | The main PyInventory source code                               |
++-------------------+----------------------------------------------------------------+
+| **`deployment`_** | separate project to deploy PyInventory for production use case |
++-------------------+----------------------------------------------------------------+
+
+.. _master: https://github.com/jedie/PyInventory/tree/master
+.. _deployment: https://github.com/jedie/PyInventory/tree/deployment
+
 -------
 install
 -------
 
 There exists two kind of installation/usage:
 
-* local virtualenv (without docker)
+* local development installation using poetry
 
 * production use with docker-compose
 
-see below
+This README (in git **master** branch) contains only the information about local develompment installation.
+
+Read `deployment README <https://github.com/jedie/PyInventory/tree/deployment#readme>`_ for instruction to install PyInventory on a root server.
 
 prepare
 =======
@@ -109,22 +128,15 @@ prepare
     run-server           Run the gunicorn server in endless loop.
     backup               Backup everything
     create-starter       Create starter file.
-    install-compose      Install "docker-compose", too
-    up                   Start containers via docker-compose
-    down                 Stop all containers
-    prune                Cleanup docker
-    build                Update docker container build
-    logs                 Display docker logs from all containers
     dbbackup             Backup database
     dbrestore            Restore a database backup
-    restart              Restart all containers
 
-local install without docker
-============================
+local development installation
+==============================
 
 ::
 
-    # install or update poetry:
+    # install or update Poetry:
     ~/PyInventory$ make install-poetry
     
     # install PyInventory via poetry:
@@ -141,47 +153,6 @@ local install without docker
     ~/PyInventory$ make run-dev-server
 
 The web page is available via: ``http://127.0.0.1:8000/``
-
-docker-compose usage
-====================
-
-Install docker, e.g.: `https://docs.docker.com/engine/install/ubuntu/ <https://docs.docker.com/engine/install/ubuntu/>`_
-
-::
-
-    # Install "docker-compose" via poetry extras:
-    ~/PyInventory$ make install-compose
-
-Create a ``.env`` file with these content, e.g.:
-
-::
-
-    # Public domain or "localhost" for local testing:
-    HOSTNAME=localhost
-    
-    # eMail address for Let's encrypt (Use "internal" for self signed https certificates):
-    LETSENCRYPT_EMAIL=internal
-
-e.g. in production:
-
-::
-
-    HOSTNAME=domain.tld
-    LETSENCRYPT_EMAIL=webmaster@domain.tld
-
-Start containers via docker-compose:
-
-::
-
-    ~/PyInventory$ make up
-
-Notes: At the first start it takes a little while until the database is created
-
-Create first super user:
-
-::
-
-    ~/PyInventory$ make docker_createsuperuser
 
 -----------
 Screenshots
@@ -205,9 +176,9 @@ Screenshots
 
 ----
 
-----------------
-Multi user usage
-----------------
+------------------
+Multi user support
+------------------
 
 PyInventory supports multiple users. The idea:
 
@@ -324,4 +295,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2020-10-27 08:17:14 with "python-creole"``
+``Note: this file is generated from README.creole 2020-10-27 08:30:00 with "python-creole"``

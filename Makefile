@@ -26,10 +26,12 @@ install-poetry: ## install or update poetry
 install: check-poetry ## install requirements to setup project
 	poetry install
 
-update: check-poetry ## update the sources and installation
+update: check-poetry ## update the sources and docker containers
 	git fetch --all
 	git pull origin deployment
 	poetry update
+	./compose.sh build --pull
+	$(MAKE) restart
 
 check-compose:
 	@if [[ "$(shell poetry run docker-compose --version 2>/dev/null)" = *"docker-compose version"* ]] ; \

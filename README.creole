@@ -23,8 +23,15 @@ Currently we have two main branches:
 
 Install PyInventory on a root server:
 
+**Note:**
 
-=== prepate root server
+* Running a public web server is a lot of work and brings some risks.
+* This instructions are only the basics to get PyInventory working.
+* To run the server safely, more work should be done, which is not explained here.
+* Run at your own risk! No warranty is given.
+
+
+=== prepare root server
 
 Here some steps for a fresh created root server:
 

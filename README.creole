@@ -2,12 +2,13 @@
 
 Web based management to catalog things including state and location etc. using Python/Django.
 
-*Note:*
+**Note:**
 
-* This is the **deployment** branch that doesn't contain the project sourcecode!
-* This branch is only for production use to setup a root server for PyInventory
+* This README (in git **deployment** branch) contains only the instruction to install PyInventory on a root server.
+* Read [[https://github.com/jedie/PyInventory/tree/master#readme|master README]] for local develompment installation.
 
 Pull requests welcome!
+
 
 == git branches
 
@@ -17,19 +18,10 @@ Currently we have two main branches:
 | **[[https://github.com/jedie/PyInventory/tree/master|master]]**         | The main PyInventory source code
 | **[[https://github.com/jedie/PyInventory/tree/deployment|deployment]]** | separate project to deploy PyInventory for production use case
 
-== install
 
-There exists two kind of installation/usage:
+== deploy
 
-* local development installation using poetry
-* production use with docker-compose
-
-This README (in git **deployment** branch) contains only the instruction to install PyInventory on a root server.
-
-Read [[https://github.com/jedie/PyInventory/tree/master#readme|master README]] for local develompment installation.
-
-
-=== deploy
+Install PyInventory on a root server:
 
 {{{
 # Checkout the deployment branch:

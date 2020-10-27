@@ -45,6 +45,7 @@ check-compose:
 
 up: check-compose  ## Start containers via docker-compose
 	./compose.sh up -d
+	$(MAKE) prune
 	./compose.sh logs --tail=500 --follow
 
 down:  ## Stop all containers

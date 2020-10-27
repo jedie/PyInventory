@@ -74,9 +74,15 @@ Only after a working new connection: Terminate the first root SSH session ;)
 }}}
 
 
-=== install docker
+=== install requirements
 
-see: https://docs.docker.com/engine/install/ubuntu/
+Install docker, see: https://docs.docker.com/engine/install/ubuntu/
+
+install some base packages, e.g.:
+{{{
+~$ sudo apt install git make
+}}}
+
 
 
 === install PyInventory
@@ -108,7 +114,11 @@ Install, e.g.:
 {{{
 # install or update poetry:
 ~/PyInventory-Deployment$ make install-poetry
+}}}
 
+To keep poetry running (PATH must be expand) just logout and login ;)
+
+{{{
 # install requirements (e.g.: docker-compose) via poetry:
 ~/PyInventory-Deployment$ make install
 }}}

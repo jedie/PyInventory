@@ -29,7 +29,7 @@ clear
 
 # These packages should be installed:
 PACKAGES=(
-    linux-image-virtual ubuntu-minimal
+    linux-image-virtual ubuntu-minimal acpid
     qemu-guest-agent
     command-not-found
     update-manager-core

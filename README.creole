@@ -188,6 +188,7 @@ This will do:
 * Pull and rebuild all docker containers
 * restart all docker containers
 
+Take a look at [[https://github.com/jedie/PyInventory/blob/deployment/scripts/apt-cleanup.sh|scripts/apt-cleanup.sh]] to keep your system clean.
 
 
 == links ==

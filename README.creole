@@ -9,15 +9,35 @@ Web based management to catalog things including state and location etc. using P
 
 Pull requests welcome!
 
+== git branches
+
+Currently we have two main branches:
+
+|= git branch |= description
+| **[[https://github.com/jedie/PyInventory/tree/master|master]]**         | The main PyInventory source code
+| **[[https://github.com/jedie/PyInventory/tree/deployment|deployment]]** | separate project to deploy PyInventory for production use case
+
 == install
 
-=== prepare
+There exists two kind of installation/usage:
+
+* local development installation using poetry
+* production use with docker-compose
+
+This README (in git **deployment** branch) contains only the instruction to install PyInventory on a root server.
+
+Read [[https://github.com/jedie/PyInventory/tree/master#readme|master README]] for local develompment installation.
+
+
+=== deploy
 
 {{{
-~$ git clone https://github.com/jedie/PyInventory.git
-~$ cd PyInventory
-~/PyInventory$ git checkout deployment
-~/PyInventory$ make
+# Checkout the deployment branch:
+~$ git clone -b deployment https://github.com/jedie/PyInventory.git PyInventory-Deployment
+~$ cd PyInventory-Deployment
+
+# Theses Makefile targets exists:
+~/PyInventory-Deployment$ make
 help                 List all commands
 install-poetry       install or update poetry
 install              install requirements to setup project
@@ -34,140 +54,52 @@ restart              Restart all containers
 }}}
 
 
-{{{
-# install or update poetry:
-~/PyInventory$ make install-poetry
-
-# install requirements via poetry:
-~/PyInventory$ make install
-...
-
-# Collectstatic + makemigration + migrate:
-~/PyInventory$ make manage-update
-
-# Create a django super user:
-~/PyInventory$ ./manage.sh createsuperuser
-
-# start local dev. web server:
-~/PyInventory$ make run-dev-server
-}}}
-
-The web page is available via: {{{http://127.0.0.1:8000/}}}
-
-
-=== docker-compose usage
-
 Install docker, e.g.: https://docs.docker.com/engine/install/ubuntu/
 
 {{{
-# Install "docker-compose" via poetry extras:
-~/PyInventory$ make install-compose
+# install or update poetry:
+~/PyInventory-Deployment$ make install-poetry
+
+# install requirements (e.g.: docker-compose) via poetry:
+~/PyInventory-Deployment$ make install
 }}}
 
-Create a {{{.env}}} file with these content, e.g.:
+Create a {{{.env}}} file in project root directory with these content, e.g.:
 {{{
-# Public domain or "localhost" for local testing:
-HOSTNAME=localhost
-
-# eMail address for Let's encrypt (Use "internal" for self signed https certificates):
-LETSENCRYPT_EMAIL=internal
-}}}
-e.g. in production:
-{{{
+~/PyInventory-Deployment$ touch .env
+~/PyInventory-Deployment$ mcedit .env
+~/PyInventory-Deployment$ cat .env
+# Your Public domain:
 HOSTNAME=domain.tld
+
+# eMail address for Let's encrypt:
 LETSENCRYPT_EMAIL=webmaster@domain.tld
 }}}
 
+For local testing of the docker-compose setup, used this values:
+{{{
+HOSTNAME=localhost
+LETSENCRYPT_EMAIL=internal
+}}}
+(Caddy will create a self signed https certificate)
+
 Start containers via docker-compose:
 {{{
-~/PyInventory$ make up
+~/PyInventory-Deployment$ make up
 }}}
 
 Notes: At the first start it takes a little while until the database is created
 
 Create first super user:
 {{{
-~/PyInventory$ make docker_createsuperuser
+~/PyInventory-Deployment$ make docker_createsuperuser
 }}}
-
-
-== Screenshots
-
-{{https://raw.githubusercontent.com/jedie/jedie.github.io/master/screenshots/PyInventory/PyInventory v0.2.0 screenshot 1.png|PyInventory v0.2.0 screenshot 1.png}}
-
-----
-
-{{https://raw.githubusercontent.com/jedie/jedie.github.io/master/screenshots/PyInventory/PyInventory v0.1.0 screenshot 2.png|PyInventory v0.1.0 screenshot 2.png}}
-
-----
-
-{{https://raw.githubusercontent.com/jedie/jedie.github.io/master/screenshots/PyInventory/PyInventory v0.1.0 screenshot 3.png|PyInventory v0.1.0 screenshot 3.png}}
-
-----
-
-
-== Multi user usage
-
-PyInventory supports multiple users. The idea:
-
-* Every normal user sees only his own created database entries
-* All users used the Django admin
-
-Note: All created Tags are shared for all existing users!
-
-
-So setup a normal user:
-
-* Set "Staff status"
-* Unset "Superuser status"
-* Add user to "normal_user" group
-* Don't add any additional permissions
-
-e.g.:
-
-{{https://raw.githubusercontent.com/jedie/jedie.github.io/master/screenshots/PyInventory/PyInventory normal user example.png|normal user example}}
-
-
-== Backwards-incompatible changes
-
-Nothing, yet ;)
-
-
-== history
-
-* [[https://github.com/jedie/PyInventory/compare/v0.2.0...master|compare v0.2.0...master]] **dev**
-** tbc
-* [[https://github.com/jedie/PyInventory/compare/v0.2.0...v0.3.0|v0.3.0 - 26.10.2020]]
-** setup production usage:
-*** Use [[https://caddyserver.com/|caddy server]] as reverse proxy
-*** Use uWSGI as application server
-*** autogenerate {{{secret.txt}}} file for {{{settings.SECRET_KEY}}}
-*** Fix settings
-** split settings for local development and production use
-** Bugfix init: move "setup user group" from checks into "post migrate" signal handler
-** Bugfix for using manage commands {{{dumpdata}}} and {{{loaddata}}}
-* [[https://github.com/jedie/PyInventory/compare/v0.1.0...v0.2.0|v0.2.0 - 24.10.2020]]
-** Simplify item change list by nested item
-** Activate Django-Import/Export
-** Implement multi user usage
-** Add Django-dbbackup
-** Add docker-compose usage
-* [[https://github.com/jedie/PyInventory/compare/v0.0.1...v0.1.0|v0.1.0 - 17.10.2020]]
-** Enhance models, admin and finish project setup
-* v0.0.1 - 14.10.2020
-** Just create a pre-alpha release to save the PyPi package name ;)
 
 
 == links ==
 
 | Homepage   | http://github.com/jedie/PyInventory
-| PyPi       | https://pypi.org/project/PyInventory/
 
-Discuss here:
-
-* [[https://www.vogons.org/viewtopic.php?f=5&t=77285|vogons.org Forum Thread (en)]]
-* [[https://forum.classic-computing.de/forum/index.php?thread/21738-opensource-projekt-pyinventory-web-basierte-verwaltung-um-seine-dinge-zu-katalog/|VzEkC e. V. Forum Thread (de)]]
-* [[https://dosreloaded.de/forum/index.php?thread/3702-pyinventory-retro-sammlung-katalogisieren/|dosreloaded.de Forum Thread (de)]]
 
 == donation ==
 

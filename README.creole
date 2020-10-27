@@ -23,6 +23,64 @@ Currently we have two main branches:
 
 Install PyInventory on a root server:
 
+
+=== prepate root server
+
+Here some steps for a fresh created root server:
+
+Update all packages, e.g.:
+{{{
+apt update && apt -y full-upgrade
+}}}
+
+Setup a normal user. You may use [[https://github.com/jedie/PyInventory/blob/deployment/scripts/setup_user.sh|scripts/setup_user.sh]]
+
+
+===  Setup SSH services
+
+{{{
+~# nano /etc/ssh/sshd_config
+}}}
+
+Change e.g.:
+{{{
+Port xxxx
+PermitRootLogin no
+PasswordAuthentication no
+}}}
+(Changing the Port may need to change a firewall/network settings)
+
+{{{
+# restart SSH deamon:
+~# service ssh restart
+
+# Display and follow the ssh log output to see connection errors:
+~# journalctl -f -u ssh
+}}}
+
+* Keep the current SSH session (with the log output) open!
+* Update your {{{~/.ssh/config}}}
+* Try to connect as the new, normal user in a **separate** terminal
+
+Only after a working new connection: Terminate the first root SSH session ;)
+
+
+=== setup unattended-upgrades
+
+{{{
+~$ sudo apt install unattended-upgrades
+~$ sudo dpkg-reconfigure unattended-upgrades
+~$ sudo nano /etc/apt/apt.conf.d/50unattended-upgrades
+}}}
+
+
+=== install docker
+
+see: https://docs.docker.com/engine/install/ubuntu/
+
+
+=== install PyInventory
+
 {{{
 # Checkout the deployment branch:
 ~$ git clone -b deployment https://github.com/jedie/PyInventory.git PyInventory-Deployment
@@ -45,8 +103,7 @@ dbrestore            Restore a database backup
 restart              Restart all containers
 }}}
 
-
-Install docker, e.g.: https://docs.docker.com/engine/install/ubuntu/
+Install, e.g.:
 
 {{{
 # install or update poetry:
@@ -59,7 +116,7 @@ Install docker, e.g.: https://docs.docker.com/engine/install/ubuntu/
 Create a {{{.env}}} file in project root directory with these content, e.g.:
 {{{
 ~/PyInventory-Deployment$ touch .env
-~/PyInventory-Deployment$ mcedit .env
+~/PyInventory-Deployment$ nano .env
 ~/PyInventory-Deployment$ cat .env
 # Your Public domain:
 HOSTNAME=domain.tld
@@ -80,17 +137,51 @@ Start containers via docker-compose:
 ~/PyInventory-Deployment$ make up
 }}}
 
-Notes: At the first start it takes a little while until the database is created
+Notes: At the first start it takes a little while until the database is created ;)
 
 Create first super user:
 {{{
 ~/PyInventory-Deployment$ make docker_createsuperuser
 }}}
 
+* Now you should be able to connect to your PyInventory installation and login with created super user.
+* Redirect from **http** to **https** should work.
+* Let's Encrypt certificate should be installed and valid.
+* Containers should be restarted after a server reboot
+
+
+=== Maintenance
+
+TO keep everything up-to-date do the following steps:
+
+Update the OS call:
+{{{
+~/PyInventory-Deployment$ sudo ./scripts/apt-distupgrade.sh
+}}}
+
+Update PyInventory installation and docker containers:
+{{{
+~/PyInventory-Deployment$ make update
+}}}
+
+This will do:
+
+* update the source code
+* update docker-compose and all requirements
+* Pull and rebuild all docker containers
+* restart all docker containers
+
+
 
 == links ==
 
 | Homepage   | http://github.com/jedie/PyInventory
+
+Web server stuff:
+
+* https://help.ubuntu.com/community/Security
+* https://help.ubuntu.com/lts/serverguide/automatic-updates.html
+* https://help.ubuntu.com/community/AutomaticSecurityUpdate
 
 
 == donation ==

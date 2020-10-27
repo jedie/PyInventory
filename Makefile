@@ -49,7 +49,6 @@ fix-code-style: ## Fix code formatting
 	poetry run isort .
 	poetry run autopep8 --exclude="volumes,migrations" --aggressive --aggressive --in-place --recursive .
 
-
 tox-listenvs: check-poetry ## List all tox test environments
 	poetry run tox --listenvs
 
@@ -74,7 +73,6 @@ update-rst-readme: ## update README.rst from README.creole
 publish: ## Release new version to PyPi
 	poetry run publish
 
-
 run-dev-server:  ## Run the django dev server in endless loop.
 	./manage.sh collectstatic --noinput --link
 	./manage.sh migrate
@@ -94,99 +92,13 @@ create-starter:  ## Create starter file.
 	poetry run inventory create-starter
 
 ##############################################################################
-# docker-compose usage
-
-check-compose:
-	@if [[ "$(shell poetry run docker-compose --version 2>/dev/null)" = *"docker-compose version"* ]] ; \
-	then \
-		echo "docker-compose found, ok." ; \
-	else \
-		echo 'Please install extras first, with e.g.:' ; \
-		echo 'make install-compose' ; \
-		exit 1 ; \
-	fi
-
-install-compose: check-poetry  ## Install "docker-compose", too
-	poetry install --extras "docker"
-
-up: check-compose  ## Start containers via docker-compose
-	./compose.sh up -d
-	./compose.sh logs --tail=500 --follow
-
-down:  ## Stop all containers
-	./compose.sh down
-
-prune:  ## Cleanup docker
-	docker system prune --force --all --filter until=4464h
-
-build: check-compose  ## Update docker container build
-	./compose.sh build --pull
-
-init_postgres:  ## Create postgres database
-	./compose.sh exec postgres ./docker/postgres_init.sh
-
-##############################################################################
-
-docker_createsuperuser:  ## Create super user
-	./compose.sh exec inventory ./manage.sh createsuperuser
-
-shell_inventory:  ## Go into bash shell in inventory container
-	./compose.sh exec inventory /bin/bash
-
-shell_postgres:  ## Go into bash shell in postgres container
-	./compose.sh exec postgres /bin/bash
-
-shell_caddy:  ## Go into bash shell in caddy container
-	./compose.sh exec caddy /bin/ash
-
-##############################################################################
-
-caddy_environ:  ## Prints the caddy environment
-	./compose.sh exec caddy /usr/bin/caddy environ
-
-##############################################################################
-
-logs:  ## Display docker logs from all containers
-	./compose.sh logs --tail=500 --follow
-
-logs_postgres:  ## Display docker logs from postgres container
-	./compose.sh logs --tail=500 --follow postgres
-
-logs_inventory:  ## Display docker logs from inventory container
-	./compose.sh logs --tail=500 --follow inventory
-
-logs_caddy:  ## Display docker logs from caddy container
-	./compose.sh logs --tail=500 --follow caddy
-
-##############################################################################
 
 dbbackup:  ## Backup database
 	./manage.sh dbbackup
 
-docker_dbbackup:  ## Backup database (Docker usage)
-	./compose.sh exec inventory ./manage.sh dbbackup
-
 dbrestore:  ## Restore a database backup
 	./manage.sh dbrestore
 
-docker_dbrestore:  ## Restore a database backup (Docker usage)
-	./compose.sh exec inventory ./manage.sh dbrestore
-
 ##############################################################################
-
-restart: down up  ## Restart all containers
-
-upgrade_inventory: ## Upgrade "inventory" container and restart it
-	$(MAKE) build
-	./compose.sh stop inventory
-	$(MAKE) up
-
-reload_inventory: ## Reload server in "inventory" container
-	./compose.sh exec inventory ./docker/kill_python.sh
-	./compose.sh logs --tail=500 --follow inventory
-
-restart_caddy: ## Restart caddy container
-	./compose.sh stop caddy
-	$(MAKE) up
 
 .PHONY: help install lint fix test publish

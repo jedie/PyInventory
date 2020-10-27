@@ -17,8 +17,6 @@
 /media/
 *.sqlite3
 
-# docker-compose usage:
-volumes
 
 # Django
 secret.txt

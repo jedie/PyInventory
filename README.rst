@@ -306,6 +306,8 @@ Discuss here:
 
 * `vogons.org Forum Thread (en) <https://www.vogons.org/viewtopic.php?f=5&t=77285>`_
 
+* `Python-Forum (de) <https://www.python-forum.de/viewtopic.php?f=9&t=50024>`_
+
 * `VzEkC e. V. Forum Thread (de) <https://forum.classic-computing.de/forum/index.php?thread/21738-opensource-projekt-pyinventory-web-basierte-verwaltung-um-seine-dinge-zu-katalog/>`_
 
 * `dosreloaded.de Forum Thread (de) <https://dosreloaded.de/forum/index.php?thread/3702-pyinventory-retro-sammlung-katalogisieren/>`_
@@ -322,4 +324,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2020-10-26 19:32:52 with "python-creole"``
+``Note: this file is generated from README.creole 2020-10-27 08:17:14 with "python-creole"``

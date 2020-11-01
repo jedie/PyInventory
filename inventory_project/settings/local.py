@@ -1,6 +1,11 @@
+# flake8: noqa: E405
+
 """
     Django settings for local development
+
+
 """
+
 import sys as __sys
 from pathlib import Path as __Path
 

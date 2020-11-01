@@ -40,12 +40,18 @@ INSTALLED_APPS = [
     'reversion_compare',  # https://github.com/jedie/django-reversion-compare
     'tagulous',  # https://github.com/radiac/django-tagulous
     'adminsortable2',  # https://github.com/jrief/django-admin-sortable2
+    'axes',  # https://github.com/jazzband/django-axes
 
     'inventory.apps.InventoryConfig',
 ]
 
 ROOT_URLCONF = 'inventory_project.urls'
 WSGI_APPLICATION = 'inventory_project.wsgi.application'
+
+AUTHENTICATION_BACKENDS = [
+    'axes.backends.AxesBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -59,6 +65,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+
+    'axes.middleware.AxesMiddleware',  # AxesMiddleware should be the last middleware
 ]
 
 TEMPLATES = [
@@ -191,6 +199,7 @@ LOGGING = {
     'loggers': {
         '': {'handlers': ['console'], 'level': 'DEBUG', 'propagate': False},
         'django': {'handlers': ['console'], 'level': 'INFO', 'propagate': False},
+        'axes': {'handlers': ['console'], 'level': 'WARNING', 'propagate': False},
         'inventory': {'handlers': ['console'], 'level': 'DEBUG', 'propagate': False},
     },
 }

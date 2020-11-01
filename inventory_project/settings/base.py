@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     'bx_py_utils',  # https://github.com/boxine/bx_py_utils
     'import_export',  # https://github.com/django-import-export/django-import-export
@@ -41,12 +42,14 @@ INSTALLED_APPS = [
     'tagulous',  # https://github.com/radiac/django-tagulous
     'adminsortable2',  # https://github.com/jrief/django-admin-sortable2
     'axes',  # https://github.com/jazzband/django-axes
+    'django_processinfo',  # https://github.com/jedie/django-processinfo/
 
     'inventory.apps.InventoryConfig',
 ]
 
 ROOT_URLCONF = 'inventory_project.urls'
 WSGI_APPLICATION = 'inventory_project.wsgi.application'
+SITE_ID = 1
 
 AUTHENTICATION_BACKENDS = [
     'axes.backends.AxesBackend',
@@ -54,6 +57,8 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 MIDDLEWARE = [
+    'django_processinfo.middlewares.ProcessInfoMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -108,6 +113,14 @@ STATIC_ROOT = str(__Path(BASE_PATH, 'static'))
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = str(__Path(BASE_PATH, 'media'))
+
+# _____________________________________________________________________________
+# django-processinfo
+
+from django_processinfo import app_settings as PROCESSINFO  # noqa
+
+
+PROCESSINFO.ADD_INFO = False  # Don't add info in HTML page
 
 # _____________________________________________________________________________
 # Django-dbbackup

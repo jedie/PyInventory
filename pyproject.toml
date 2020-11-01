@@ -40,6 +40,7 @@ uWSGI = "*"
 # https://www.djangoproject.com/download/#supported-versions
 # v2.2 LTS - extended support until April 2022
 django = "2.2.*"
+django-processinfo = "*"  # https://github.com/jedie/django-processinfo/
 django-debug-toolbar = "*"  # http://django-debug-toolbar.readthedocs.io/en/stable/changes.html
 django-import-export = "*"  # https://github.com/django-import-export/django-import-export
 django-dbbackup = "*"  # https://github.com/django-dbbackup/django-dbbackup
@@ -72,6 +73,7 @@ flake8 = "*"
 flynt = "*"
 autopep8 = "*"
 pyupgrade = "*"
+model_bakery = "*"  # https://github.com/model-bakers/model_bakery
 
 [tool.poetry.scripts]
 manage = "inventory_project.manage:main"

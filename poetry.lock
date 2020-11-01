@@ -325,6 +325,17 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "django-processinfo"
+version = "1.0.0"
+description = "Django application to collect information about the running server processes."
+category = "main"
+optional = false
+python-versions = ">=3.7,<4.0.0"
+
+[package.dependencies]
+Django = "*"
+
+[[package]]
 name = "django-reversion"
 version = "3.0.8"
 description = "An extension to the Django web framework that provides version control for model instances."
@@ -613,6 +624,17 @@ description = "McCabe checker, plugin for flake8"
 category = "dev"
 optional = false
 python-versions = "*"
+
+[[package]]
+name = "model-bakery"
+version = "1.2.0"
+description = "Smart object creation facility for Django."
+category = "dev"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+django = ">=1.11.0"
 
 [[package]]
 name = "odfpy"
@@ -1205,7 +1227,7 @@ postgres = ["psycopg2-binary"]
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7,<4.0.0"
-content-hash = "c9de646c31e5e1f0b0ff9b003d6290da61eca039c78aef8e6786894584fa37cf"
+content-hash = "745c33aa94cad303222f51896f0a9a11abdb4896cb00f87f522fe7eaa8c2325a"
 
 [metadata.files]
 appdirs = [
@@ -1414,6 +1436,10 @@ django-js-asset = [
     {file = "django-js-asset-1.2.2.tar.gz", hash = "sha256:c163ae80d2e0b22d8fb598047cd0dcef31f81830e127cfecae278ad574167260"},
     {file = "django_js_asset-1.2.2-py2.py3-none-any.whl", hash = "sha256:8ec12017f26eec524cab436c64ae73033368a372970af4cf42d9354fcb166bdd"},
 ]
+django-processinfo = [
+    {file = "django-processinfo-1.0.0.tar.gz", hash = "sha256:0df4b3a011a7adb1f6b722964aca4693e79fa003b7f780025cc0d04073f00c49"},
+    {file = "django_processinfo-1.0.0-py3-none-any.whl", hash = "sha256:829e2937a9fae54ef8c0a3cb5e99a09490cf66252cee498de833377839d7e497"},
+]
 django-reversion = [
     {file = "django-reversion-3.0.8.tar.gz", hash = "sha256:49e9930f90322dc6a2754dd26144285cfcc1c5bd0c1c39ca95d5602c5054ae32"},
     {file = "django_reversion-3.0.8-py3-none-any.whl", hash = "sha256:9cfadeec2df37cb53d795ab79f6792f9eed8e70363dcf3a275dc19a58b971a8f"},
@@ -1502,6 +1528,10 @@ markuppy = [
 mccabe = [
     {file = "mccabe-0.6.1-py2.py3-none-any.whl", hash = "sha256:ab8a6258860da4b6677da4bd2fe5dc2c659cff31b3ee4f7f5d64e79735b80d42"},
     {file = "mccabe-0.6.1.tar.gz", hash = "sha256:dd8d182285a0fe56bace7f45b5e7d1a6ebcbf524e8f3bd87eb0f125271b8831f"},
+]
+model-bakery = [
+    {file = "model_bakery-1.2.0-py2.py3-none-any.whl", hash = "sha256:b25f400b392067f02d841a0ef33e861543c04b1702dc004020bdd50e1dbce05f"},
+    {file = "model_bakery-1.2.0.tar.gz", hash = "sha256:088698cdf62e5ccedeb97e55ceb966c974cc79e2514928aec9beab27a8c1faf4"},
 ]
 odfpy = [
     {file = "odfpy-1.4.1-py2.7.egg", hash = "sha256:fc3b8d1bc098eba4a0fda865a76d9d1e577c4ceec771426bcb169a82c5e9dfe0"},

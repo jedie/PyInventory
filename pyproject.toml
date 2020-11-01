@@ -6,13 +6,11 @@ authors = ["JensDiemer <git@jensdiemer.de>"]
 packages = [
     { include = "inventory" },
     { include = "inventory_project" },
-    { include = "inventory_tests" },
 ]
 keywords=['inventory','django']
 classifiers = [
     # http://pypi.python.org/pypi?%3Aaction=list_classifiers
-    "Development Status :: 3 - Alpha",
-#    "Development Status :: 4 - Beta",
+    "Development Status :: 4 - Beta",
     #"Development Status :: 5 - Production/Stable",
     "Environment :: Web Environment",
     "Intended Audience :: End Users/Desktop",

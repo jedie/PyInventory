@@ -214,9 +214,17 @@ Nothing, yet ;)
 history
 -------
 
-* `compare v0.2.0...master <https://github.com/jedie/PyInventory/compare/v0.2.0...master>`_ **dev** 
+* `compare v0.4.0...master <https://github.com/jedie/PyInventory/compare/v0.4.0...master>`_ **dev** 
 
     * tbc
+
+* `v0.4.0 - 1.11.2020 <https://github.com/jedie/PyInventory/compare/v0.3.2...v0.4.0>`_ 
+
+    * Move docker stuff and production use information into separate git branch
+
+    * Add django-axes: keeping track of suspicious logins and brute-force attack blocking
+
+    * Add django-processinfo: collect information about the running server processes
 
 * `v0.3.2 - 26.10.2020 <https://github.com/jedie/PyInventory/compare/v0.3.0...v0.3.2>`_ 
 
@@ -295,4 +303,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2020-10-27 08:30:00 with "python-creole"``
+``Note: this file is generated from README.creole 2020-11-01 20:29:20 with "python-creole"``

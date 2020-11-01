@@ -155,8 +155,12 @@ Nothing, yet ;)
 
 == history
 
-* [[https://github.com/jedie/PyInventory/compare/v0.2.0...master|compare v0.2.0...master]] **dev**
+* [[https://github.com/jedie/PyInventory/compare/v0.4.0...master|compare v0.4.0...master]] **dev**
 ** tbc
+* [[https://github.com/jedie/PyInventory/compare/v0.3.2...v0.4.0|v0.4.0 - 1.11.2020]]
+** Move docker stuff and production use information into separate git branch
+** Add django-axes: keeping track of suspicious logins and brute-force attack blocking
+** Add django-processinfo: collect information about the running server processes
 * [[https://github.com/jedie/PyInventory/compare/v0.3.0...v0.3.2|v0.3.2 - 26.10.2020]]
 ** Bugfix missing translations
 * [[https://github.com/jedie/PyInventory/compare/v0.2.0...v0.3.0|v0.3.0 - 26.10.2020]]

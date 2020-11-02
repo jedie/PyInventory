@@ -7,11 +7,11 @@
     <link rel="stylesheet" type="text/css" href="{% static 'inventory.css' %}">
 {% endblock %}
 
-{% block title %}{{ title }} | PyInventory {{ version_string }}{% endblock %}
+{% block title %}{{ title }} | PyInventory {{ inventory_version_string }}{% endblock %}
 
 {% block branding %}
 <h1 id="site-name">
-    <a href="{% url 'admin:index' %}">PyInventory {{ version_string }}</a>
+    <a href="{% url 'admin:index' %}">PyInventory {{ inventory_version_string }}</a>
 </h1>
 {% endblock %}
 

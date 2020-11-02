@@ -214,9 +214,13 @@ Nothing, yet ;)
 history
 -------
 
-* `compare v0.4.0...master <https://github.com/jedie/PyInventory/compare/v0.4.0...master>`_ **dev** 
+* `compare v0.4.1...master <https://github.com/jedie/PyInventory/compare/v0.4.1...master>`_ **dev** 
 
     * tbc
+
+* `v0.4.1 - 2.11.2020 <https://github.com/jedie/PyInventory/compare/v0.4.0...v0.4.1>`_ 
+
+    * Small bugfixes
 
 * `v0.4.0 - 1.11.2020 <https://github.com/jedie/PyInventory/compare/v0.3.2...v0.4.0>`_ 
 
@@ -303,4 +307,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2020-11-01 20:29:20 with "python-creole"``
+``Note: this file is generated from README.creole 2020-11-02 09:12:38 with "python-creole"``

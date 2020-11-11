@@ -7,9 +7,16 @@ from pathlib import Path as __Path
 
 from django.utils.translation import ugettext_lazy as _
 
-
 # Build paths inside the project:
 BASE_PATH = __Path(__file__).resolve().parent.parent.parent
+
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
+
+# Serve static/media files by Django?
+# In production Caddy should serve this!
+SERVE_FILES = False
 
 
 # SECURITY WARNING: keep the secret key used in production secret!

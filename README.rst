@@ -216,6 +216,12 @@ history
 
 * `compare v0.4.1...master <https://github.com/jedie/PyInventory/compare/v0.4.1...master>`_ **dev** 
 
+    * Serve static files by Caddy
+
+    * Setup CKEditor file uploads: Store files into random sub directory
+
+    * reduce CKEditor plugins
+
     * tbc
 
 * `v0.4.1 - 2.11.2020 <https://github.com/jedie/PyInventory/compare/v0.4.0...v0.4.1>`_ 
@@ -307,4 +313,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2020-11-02 09:12:38 with "python-creole"``
+``Note: this file is generated from README.creole 2020-11-11 19:47:03 with "python-creole"``

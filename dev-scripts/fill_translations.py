@@ -5,6 +5,8 @@
 from pathlib import Path
 
 
+BASE_PATH = Path(__file__).parent.parent
+
 MESSAGE_MAP = {
     'id': 'ID',
 }
@@ -54,4 +56,4 @@ if __name__ == '__main__':
     for dir in ('de', 'en'):
         print('_' * 100)
         print(dir)
-        fill(Path(f'locale/{dir}/LC_MESSAGES/django.po'))
+        fill(Path(BASE_PATH, f'inventory/locale/{dir}/LC_MESSAGES/django.po'))

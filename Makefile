@@ -112,12 +112,20 @@ upgrade_inventory:  ## Upgrade "inventory" container and restart it
 	./compose.sh stop inventory
 	$(MAKE) up
 
+restart_caddy:  ## Restart caddy container
+	./compose.sh stop caddy
+	$(MAKE) up
+
+##############################################################################
+
+reload_caddy:  ## Reload Caddy server
+	./compose.sh exec caddy caddy reload --config /etc/caddy/Caddyfile --adapter caddyfile
+	$(MAKE) logs_caddy
+
 reload_inventory:  ## Reload server in "inventory" container
 	./compose.sh exec inventory ./docker/kill_python.sh
 	./compose.sh logs --tail=500 --follow inventory
 
-restart_caddy:  ## Restart caddy container
-	./compose.sh stop caddy
-	$(MAKE) up
+##############################################################################
 
 .PHONY: help

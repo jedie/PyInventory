@@ -1,7 +1,4 @@
 # https://caddyserver.com/docs/caddyfile
-{
-    admin off
-}
 
 {$HOSTNAME} {
     tls {$LETSENCRYPT_EMAIL}

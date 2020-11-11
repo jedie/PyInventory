@@ -123,8 +123,9 @@ dbbackup             Backup database
 dbrestore            Restore a database backup
 restart              Restart all containers
 upgrade_inventory    Upgrade "inventory" container and restart it
-reload_inventory     Reload server in "inventory" container
 restart_caddy        Restart caddy container
+reload_caddy         Reload Caddy server
+reload_inventory     Reload server in "inventory" container
 }}}
 
 Install, e.g.:

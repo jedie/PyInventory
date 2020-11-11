@@ -31,7 +31,6 @@ echo "$(date +%c) - ${0}"
         --http inventory:8000 \
         --chdir /inventory/ \
         --wsgi-file /inventory/wsgi.py \
-        --static-map /static/=/static/ \
         --master \
         --processes 2 \
         --threads 2 \

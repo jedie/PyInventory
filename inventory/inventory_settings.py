@@ -5,8 +5,8 @@ import os as __os
 
 from inventory_project.settings.base import *  # noqa
 
-
 HOSTNAME = __os.environ['HOSTNAME']
+
 
 if HOSTNAME != 'localhost':
     print(f'Production mode on domain: {HOSTNAME!r}')
@@ -16,6 +16,9 @@ else:
     print('Local development mode')
     DEBUG = True
     INTERNAL_IPS = ('127.0.0.1', '0.0.0.0', 'localhost')
+
+
+SERVE_FILES = False  # Caddy serve static/media files
 
 
 ALLOWED_HOSTS = (HOSTNAME,)

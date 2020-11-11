@@ -9,7 +9,8 @@ services:
             - "443:443"
         volumes:
             - ./caddy/Caddyfile:/etc/caddy/Caddyfile
-            - ./volumes/static/:/static/:ro
+            - ./volumes/static/:/srv/static/:ro
+            - ./volumes/media/:/srv/media/:ro
         environment:
             - HOSTNAME=${HOSTNAME:-localhost}
             - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL:-internal}

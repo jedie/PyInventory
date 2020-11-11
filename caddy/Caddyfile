@@ -3,6 +3,12 @@
 {$HOSTNAME} {
     tls {$LETSENCRYPT_EMAIL}
 
+    log {
+        output stdout
+        format console
+        level WARN
+    }
+
     header {
         X-Robots-Tag "none"
     }
@@ -13,5 +19,13 @@ Disallow: /"
         close
     }
 
-    reverse_proxy inventory:8000
+    route {
+        file_server /static {
+            root /srv/static
+        }
+        file_server /media {
+            root /srv/media
+        }
+        reverse_proxy inventory:8000
+    }
 }

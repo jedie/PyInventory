@@ -24,7 +24,6 @@ echo "$(date +%c) - ${0}"
     pip3 install -U pyinventory
 
     ./manage.py collectstatic --noinput
-	./manage.py makemigrations
 	./manage.py migrate
 
     uwsgi \

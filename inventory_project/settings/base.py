@@ -7,6 +7,7 @@ from pathlib import Path as __Path
 
 from django.utils.translation import ugettext_lazy as _
 
+
 # Build paths inside the project:
 BASE_PATH = __Path(__file__).resolve().parent.parent.parent
 
@@ -44,6 +45,7 @@ INSTALLED_APPS = [
     'import_export',  # https://github.com/django-import-export/django-import-export
     'dbbackup',  # https://github.com/django-dbbackup/django-dbbackup
     'ckeditor',  # https://github.com/django-ckeditor/django-ckeditor
+    'ckeditor_uploader',  # https://github.com/django-ckeditor/django-ckeditor
     'reversion',  # https://github.com/etianen/django-reversion
     'reversion_compare',  # https://github.com/jedie/django-reversion-compare
     'tagulous',  # https://github.com/radiac/django-tagulous
@@ -139,8 +141,7 @@ DBBACKUP_STORAGE_OPTIONS = {'location': str(__Path(BASE_PATH, 'backups'))}
 # django-ckeditor
 
 CKEDITOR_BASEPATH = STATIC_URL + 'ckeditor/ckeditor/'
-CKEDITOR_UPLOAD_PATH = 'uploads/'
-CKEDITOR_FILENAME_GENERATOR = 'utils.get_filename'
+CKEDITOR_FILENAME_GENERATOR = 'inventory.ckeditor_upload.get_filename'
 CKEDITOR_CONFIGS = {
     'ItemModel.description': {
         'skin': 'moono-lisa',
@@ -167,6 +168,14 @@ CKEDITOR_CONFIGS = {
         'filebrowserWindowHeight': 725,
     }
 }
+CKEDITOR_RESTRICT_BY_USER = True
+CKEDITOR_RESTRICT_BY_DATE = True
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_IMAGE_BACKEND = 'pillow'
+CKEDITOR_THUMBNAIL_SIZE = (300, 300)
+CKEDITOR_IMAGE_QUALITY = 40
+CKEDITOR_BROWSE_SHOW_DIRS = True
+CKEDITOR_ALLOW_NONIMAGE_FILES = True
 
 # _____________________________________________________________________________
 # http://radiac.net/projects/django-tagulous/documentation/installation/#settings

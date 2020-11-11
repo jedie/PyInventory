@@ -15,10 +15,12 @@ urlpatterns = [  # Don't use i18n_patterns() here
     path('ckeditor/', include('ckeditor_uploader.urls')),  # TODO: check permissions?
 ]
 
-if settings.DEBUG:
+
+if settings.SERVE_FILES:
     urlpatterns += static.static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static.static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-    import debug_toolbar
 
+if settings.DEBUG:
+    import debug_toolbar
     urlpatterns = [url(r'^__debug__/', include(debug_toolbar.urls))] + urlpatterns

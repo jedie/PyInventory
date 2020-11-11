@@ -104,16 +104,27 @@ install some base packages, e.g.:
 help                 List all commands
 install-poetry       install or update poetry
 install              install requirements to setup project
-update               update the sources and installation
+update               update the sources and docker containers
 up                   Start containers via docker-compose
 down                 Stop all containers
 prune                Cleanup docker
 build                Update docker container build
+init_postgres        Create postgres database
 createsuperuser      Create super user
+shell_inventory      Go into bash shell in inventory container
+shell_postgres       Go into bash shell in postgres container
+shell_caddy          Go into bash shell in caddy container
+caddy_environ        Prints the caddy environment
 logs                 Display docker logs from all containers
+logs_postgres        Display docker logs from postgres container
+logs_inventory       Display docker logs from inventory container
+logs_caddy           Display docker logs from caddy container
 dbbackup             Backup database
 dbrestore            Restore a database backup
 restart              Restart all containers
+upgrade_inventory    Upgrade "inventory" container and restart it
+reload_inventory     Reload server in "inventory" container
+restart_caddy        Restart caddy container
 }}}
 
 Install, e.g.:

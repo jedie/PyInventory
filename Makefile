@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 
 help: ## List all commands
-	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z0-9 -]+:.*?## / {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
+	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z0-9 -_]+:.*?## / {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
 check-poetry:
 	@if [[ "$(shell poetry --version 2>/dev/null)" == *"Poetry"* ]] ; \
@@ -107,16 +107,16 @@ dbrestore:  ## Restore a database backup
 
 restart: down up  ## Restart all containers
 
-upgrade_inventory: ## Upgrade "inventory" container and restart it
+upgrade_inventory:  ## Upgrade "inventory" container and restart it
 	$(MAKE) build
 	./compose.sh stop inventory
 	$(MAKE) up
 
-reload_inventory: ## Reload server in "inventory" container
+reload_inventory:  ## Reload server in "inventory" container
 	./compose.sh exec inventory ./docker/kill_python.sh
 	./compose.sh logs --tail=500 --follow inventory
 
-restart_caddy: ## Restart caddy container
+restart_caddy:  ## Restart caddy container
 	./compose.sh stop caddy
 	$(MAKE) up
 

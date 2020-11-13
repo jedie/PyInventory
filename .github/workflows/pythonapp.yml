@@ -21,6 +21,7 @@ jobs:
 
     - name: 'Install package'
       run: |
+        cd src
         make install-poetry
         source $HOME/.poetry/env
         poetry lock

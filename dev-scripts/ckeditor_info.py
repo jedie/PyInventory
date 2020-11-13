@@ -18,7 +18,7 @@ print('Plugin path:', plugins_path)
 
 assert plugins_path.is_dir()
 
-plugins = set(item.name for item in plugins_path.iterdir() if item.is_dir())
+plugins = {item.name for item in plugins_path.iterdir() if item.is_dir()}
 
 in_plugins = False
 with build_config_path.open('r') as f:
@@ -33,7 +33,7 @@ with build_config_path.open('r') as f:
         if in_plugins:
             if line == '},':
                 break
-            plugin_name = line.split(':',1)[0].strip(" '")
+            plugin_name = line.split(':', 1)[0].strip(" '")
             plugins.add(plugin_name)
 
 print("'removePlugins': (")

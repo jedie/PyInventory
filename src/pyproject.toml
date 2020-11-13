@@ -26,10 +26,10 @@ classifiers = [
     "Topic :: Internet :: WWW/HTTP :: WSGI :: Application",
     "Operating System :: OS Independent",
 ]
-include = ['AUTHORS', 'LICENSE', 'README.creole']
+include = ['../AUTHORS', '../LICENSE', '../README.creole']
 
 # Will be generated from README.creole with: 'poetry run update_rst_readme'
-readme='README.rst'
+readme='../README.rst'
 
 [tool.poetry.dependencies]
 python = ">=3.7,<4.0.0"

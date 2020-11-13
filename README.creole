@@ -61,8 +61,8 @@ Read [[https://github.com/jedie/PyInventory/tree/master/deployment#readme|/deplo
 
 {{{
 ~$ git clone https://github.com/jedie/PyInventory.git
-~$ cd PyInventory/src/
-~/PyInventory/src$ make
+~$ cd PyInventory/
+~/PyInventory$ make
 help                 List all commands
 install-poetry       install or update poetry
 install              install PyInventory via poetry
@@ -92,20 +92,20 @@ dbrestore            Restore a database backup
 
 {{{
 # install or update Poetry:
-~/PyInventory/src$ make install-poetry
+~/PyInventory$ make install-poetry
 
 # install PyInventory via poetry:
-~/PyInventory/src$ make install
+~/PyInventory$ make install
 ...
 
 # Collectstatic + makemigration + migrate:
-~/PyInventory/src$ make manage-update
+~/PyInventory$ make manage-update
 
 # Create a django super user:
-~/PyInventory/src$ ./manage.sh createsuperuser
+~/PyInventory$ ./manage.sh createsuperuser
 
 # start local dev. web server:
-~/PyInventory/src$ make run-dev-server
+~/PyInventory$ make run-dev-server
 }}}
 
 The web page is available via: {{{http://127.0.0.1:8000/}}}

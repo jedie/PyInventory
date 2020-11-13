@@ -4,8 +4,8 @@ version = "0.4.2"
 description = "Web based management to catalog things including state and location etc. using Python/Django."
 authors = ["JensDiemer <git@jensdiemer.de>"]
 packages = [
-    { include = "inventory" },
-    { include = "inventory_project" },
+    { include = "inventory", from = "src" },
+    { include = "inventory_project", from = "src" },
 ]
 keywords=['inventory','django']
 classifiers = [
@@ -26,10 +26,10 @@ classifiers = [
     "Topic :: Internet :: WWW/HTTP :: WSGI :: Application",
     "Operating System :: OS Independent",
 ]
-include = ['../AUTHORS', '../LICENSE', '../README.creole']
+include = ['AUTHORS', 'LICENSE', 'README.creole']
 
 # Will be generated from README.creole with: 'poetry run update_rst_readme'
-readme='../README.rst'
+readme='README.rst'
 
 [tool.poetry.dependencies]
 python = ">=3.7,<4.0.0"

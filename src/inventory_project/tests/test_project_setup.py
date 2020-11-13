@@ -8,7 +8,7 @@ from creole.setup_utils import update_rst_readme
 import inventory
 
 
-PACKAGE_ROOT = Path(inventory.__file__).parent.parent
+PACKAGE_ROOT = Path(inventory.__file__).parent.parent.parent
 
 
 def assert_file_contains_string(file_path, string):

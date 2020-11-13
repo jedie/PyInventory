@@ -69,22 +69,22 @@ Plan:
 
 any many more... ;)
 
-------------
-git branches
-------------
+-----------------
+Project structure
+-----------------
 
-Currently we have two main branches:
+There are two main directories:
 
-+-------------------+----------------------------------------------------------------+
-| git branch        | description                                                    |
-+===================+================================================================+
-| **`master`_**     | The main PyInventory source code                               |
-+-------------------+----------------------------------------------------------------+
-| **`deployment`_** | separate project to deploy PyInventory for production use case |
-+-------------------+----------------------------------------------------------------+
++---------------------+--------------------------------------------+
+| directory           | description                                |
++=====================+============================================+
+| **`/src/`_**        | The main PyInventory source code           |
++---------------------+--------------------------------------------+
+| **`/deployment/`_** | deploy PyInventory for production use case |
++---------------------+--------------------------------------------+
 
-.. _master: https://github.com/jedie/PyInventory/tree/master
-.. _deployment: https://github.com/jedie/PyInventory/tree/deployment
+.. _/src/: https://github.com/jedie/PyInventory/tree/master/src
+.. _/deployment/: https://github.com/jedie/PyInventory/tree/master/deployment
 
 -------
 install
@@ -96,9 +96,9 @@ There exists two kind of installation/usage:
 
 * production use with docker-compose
 
-This README (in git **master** branch) contains only the information about local develompment installation.
+This README contains only the information about local development installation.
 
-Read `deployment README <https://github.com/jedie/PyInventory/tree/deployment#readme>`_ for instruction to install PyInventory on a root server.
+Read `/deployment/README <https://github.com/jedie/PyInventory/tree/master/deployment#readme>`_ for instruction to install PyInventory on a root server.
 
 prepare
 =======
@@ -106,7 +106,7 @@ prepare
 ::
 
     ~$ git clone https://github.com/jedie/PyInventory.git
-    ~$ cd PyInventory
+    ~$ cd PyInventory/
     ~/PyInventory$ make
     help                 List all commands
     install-poetry       install or update poetry
@@ -214,7 +214,9 @@ Nothing, yet ;)
 history
 -------
 
-* `compare v0.4.2...master <https://github.com/jedie/PyInventory/compare/v0.4.2...master>`_ **dev** 
+* `compare v0.4.2...master <https://github.com/jedie/PyInventory/compare/v0.4.2...master>`_ **dev**
+
+* Merge seperate git branches into one: "/src/" and "/development/" `#19 <https://github.com/jedie/PyInventory/issues/19>`_ 
 
     * tbc
 
@@ -315,4 +317,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2020-11-13 09:09:36 with "python-creole"``
+``Note: this file is generated from README.creole 2020-11-13 21:51:42 with "python-creole"``

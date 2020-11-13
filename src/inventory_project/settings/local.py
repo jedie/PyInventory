@@ -7,7 +7,6 @@
 """
 
 import sys as __sys
-from pathlib import Path as __Path
 
 from inventory_project.settings.base import *  # noqa
 
@@ -31,8 +30,7 @@ ALLOWED_HOSTS = INTERNAL_IPS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': str(__Path(BASE_PATH.parent, 'PyInventory-database.sqlite3')),
-        # 'NAME': ':memory:'
+        'NAME': str(BASE_PATH / 'PyInventory-database.sqlite3'),
         # https://docs.djangoproject.com/en/dev/ref/databases/#database-is-locked-errors
         'timeout': 30,
     }

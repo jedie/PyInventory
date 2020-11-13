@@ -5,6 +5,7 @@ import os as __os
 
 from inventory_project.settings.base import *  # noqa
 
+
 HOSTNAME = __os.environ['HOSTNAME']
 
 

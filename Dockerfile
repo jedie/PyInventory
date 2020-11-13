@@ -12,6 +12,6 @@ RUN apt-get update \
 
 WORKDIR /inventory
 
-RUN pip install psycopg2-binary pyinventory
+RUN pip install psycopg2-binary "pyinventory>=0.4.2"
 
 

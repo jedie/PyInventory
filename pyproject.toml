@@ -84,11 +84,25 @@ manage = "inventory_project.manage:main"
 update_rst_readme = "inventory_project.publish:update_readme"
 publish = "inventory_project.publish:publish"
 
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
 [tool.autopep8]
 # https://github.com/hhatto/autopep8#pyprojecttoml
 max_line_length = 120
 exclude = "*/migrations/*"
 
-[build-system]
-requires = ["poetry>=0.12"]
-build-backend = "poetry.masonry.api"
+[tool.tox]
+# https://tox.readthedocs.io/en/latest/example/basic.html#pyproject-toml-tox-legacy-ini
+legacy_tox_ini = """
+[tox]
+isolated_build = True
+envlist = py39,py38,py37
+skip_missing_interpreters = True
+
+[testenv]
+whitelist_externals = pytest
+commands =
+    pytest --pyargs inventory inventory_project
+"""

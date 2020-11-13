@@ -37,13 +37,13 @@ Plan:
 any many more... ;)
 
 
-== git branches
+== Project structure
 
-Currently we have two main branches:
+There are two main directories:
 
-|= git branch |= description
-| **[[https://github.com/jedie/PyInventory/tree/master|master]]**         | The main PyInventory source code
-| **[[https://github.com/jedie/PyInventory/tree/deployment|deployment]]** | separate project to deploy PyInventory for production use case
+|= directory |= description
+| **[[https://github.com/jedie/PyInventory/tree/master/src|/src/]]**               | The main PyInventory source code
+| **[[https://github.com/jedie/PyInventory/tree/master/deployment|/deployment/]]** | deploy PyInventory for production use case
 
 == install
 
@@ -52,17 +52,17 @@ There exists two kind of installation/usage:
 * local development installation using poetry
 * production use with docker-compose
 
-This README (in git **master** branch) contains only the information about local develompment installation.
+This README contains only the information about local development installation.
 
-Read [[https://github.com/jedie/PyInventory/tree/deployment#readme|deployment README]] for instruction to install PyInventory on a root server.
+Read [[https://github.com/jedie/PyInventory/tree/master/deployment#readme|/deployment/README]] for instruction to install PyInventory on a root server.
 
 
 === prepare
 
 {{{
 ~$ git clone https://github.com/jedie/PyInventory.git
-~$ cd PyInventory
-~/PyInventory$ make
+~$ cd PyInventory/src/
+~/PyInventory/src$ make
 help                 List all commands
 install-poetry       install or update poetry
 install              install PyInventory via poetry
@@ -92,20 +92,20 @@ dbrestore            Restore a database backup
 
 {{{
 # install or update Poetry:
-~/PyInventory$ make install-poetry
+~/PyInventory/src$ make install-poetry
 
 # install PyInventory via poetry:
-~/PyInventory$ make install
+~/PyInventory/src$ make install
 ...
 
 # Collectstatic + makemigration + migrate:
-~/PyInventory$ make manage-update
+~/PyInventory/src$ make manage-update
 
 # Create a django super user:
-~/PyInventory$ ./manage.sh createsuperuser
+~/PyInventory/src$ ./manage.sh createsuperuser
 
 # start local dev. web server:
-~/PyInventory$ make run-dev-server
+~/PyInventory/src$ make run-dev-server
 }}}
 
 The web page is available via: {{{http://127.0.0.1:8000/}}}
@@ -156,6 +156,7 @@ Nothing, yet ;)
 == history
 
 * [[https://github.com/jedie/PyInventory/compare/v0.4.2...master|compare v0.4.2...master]] **dev**
+* Merge seperate git branches into one: "/src/" and "/development/" [[https://github.com/jedie/PyInventory/issues/19|#19]]
 ** tbc
 * [[https://github.com/jedie/PyInventory/compare/v0.4.1...v0.4.2|v0.4.2 - 13.11.2020]]
 ** Serve static files by Caddy

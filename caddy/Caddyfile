@@ -20,11 +20,11 @@ Disallow: /"
     }
 
     route {
-        file_server /static {
-            root /srv/static
+        file_server /static/* {
+            root /srv/
         }
-        file_server /media {
-            root /srv/media
+        file_server /media/* {
+            root /srv/
         }
         reverse_proxy inventory:8000
     }

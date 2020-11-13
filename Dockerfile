@@ -8,10 +8,11 @@ RUN apt-get update \
     && apt autoremove \
     && apt -y full-upgrade \
     && rm -rf /var/lib/apt \
-    && python3 -m pip install -U pip
+    && python3 -m pip install -U pip \
+    && pip install -U psycopg2-binary
 
 WORKDIR /inventory
 
-RUN pip install psycopg2-binary "pyinventory>=0.4.2"
+RUN pip install "pyinventory>=0.4.2"
 
 

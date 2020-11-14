@@ -8,8 +8,9 @@ from pathlib import Path as __Path
 from django.utils.translation import ugettext_lazy as _
 
 
-# Build paths inside the project:
-BASE_PATH = __Path(__file__).resolve().parent.parent.parent
+# Build paths relative to the current working directory:
+BASE_PATH = __Path().cwd().resolve()
+print(f'BASE_PATH:{BASE_PATH}')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!

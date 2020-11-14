@@ -5,7 +5,7 @@ from pathlib import Path
 import inventory
 
 
-BASE_PATH = Path(inventory.__file__).parent.parent
+BASE_PATH = Path(inventory.__file__).parent.parent.parent
 
 
 def test_lint():

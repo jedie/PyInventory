@@ -1,10 +1,15 @@
 .*
+!.github
+!.dockerignore
+!.editorconfig
 !.flake8
 !.gitignore
 !.isort.cfg
 !/.travis.yml
 !/.style.yapf
 !.coveralls.yml
+
+poetry.lock
 
 # for django-dbbackup
 /backups/
@@ -15,6 +20,8 @@
 /media/
 *.sqlite3
 
+# docker-compose usage:
+volumes
 
 # Django
 secret.txt

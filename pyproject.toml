@@ -4,8 +4,8 @@ version = "0.4.2"
 description = "Web based management to catalog things including state and location etc. using Python/Django."
 authors = ["JensDiemer <git@jensdiemer.de>"]
 packages = [
-    { include = "inventory" },
-    { include = "inventory_project" },
+    { include = "inventory", from = "src" },
+    { include = "inventory_project", from = "src" },
 ]
 keywords=['inventory','django']
 classifiers = [
@@ -84,11 +84,73 @@ manage = "inventory_project.manage:main"
 update_rst_readme = "inventory_project.publish:update_readme"
 publish = "inventory_project.publish:publish"
 
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
+
 [tool.autopep8]
 # https://github.com/hhatto/autopep8#pyprojecttoml
 max_line_length = 120
 exclude = "*/migrations/*"
 
-[build-system]
-requires = ["poetry>=0.12"]
-build-backend = "poetry.masonry.api"
+
+[tool.isort]
+# https://pycqa.github.io/isort/docs/configuration/config_files/#pyprojecttoml-preferred-format
+atomic=true
+line_length=120
+case_sensitive=false
+skip_glob=["*/migrations/*","*/volumes/*"]
+multi_line_output=3
+include_trailing_comma=true
+known_first_party=["inventory","inventory_project","inventory_tests"]
+no_lines_before="LOCALFOLDER"
+default_section="THIRDPARTY"
+sections=["FUTURE","STDLIB","THIRDPARTY","FIRSTPARTY","LOCALFOLDER"]
+lines_after_imports=2
+
+
+[tool.pytest.ini_options]
+# https://docs.pytest.org/en/latest/customize.html#pyproject-toml
+minversion = "6.0"
+DJANGO_SETTINGS_MODULE="inventory_project.settings.tests"
+norecursedirs = ".* .git __pycache__ coverage* dist"
+# sometimes helpfull "addopts" arguments:
+#    -vv
+#    --verbose
+#    --capture=no
+#    --trace-config
+#    --full-trace
+#    -p no:warnings
+addopts = """
+    --import-mode=importlib
+    --ignore-glob=deployment/inventory/*
+    --reuse-db
+    --nomigrations
+    --cov=.
+    --cov-report term-missing
+    --cov-report html
+    --cov-report xml
+    --no-cov-on-fail
+    --showlocals
+    --doctest-modules
+    --failed-first
+    --last-failed-no-failures all
+    --new-first
+    -p no:randomly
+"""
+
+
+[tool.tox]
+# https://tox.readthedocs.io/en/latest/example/basic.html#pyproject-toml-tox-legacy-ini
+legacy_tox_ini = """
+[tox]
+isolated_build = True
+envlist = py39,py38,py37
+skip_missing_interpreters = True
+
+[testenv]
+whitelist_externals = pytest
+commands =
+    pytest --pyargs inventory inventory_project
+"""

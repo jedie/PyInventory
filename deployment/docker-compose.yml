@@ -11,8 +11,7 @@ services:
             - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
             - ./volumes/caddy/data/:/data/:rw
             - ./volumes/caddy/config/:/config/:rw
-            - ./volumes/static/:/srv/static/:ro
-            - ./volumes/media/:/srv/media/:ro
+            - ./volumes/django/static/:/srv/static/:ro
         environment:
             - HOSTNAME=${HOSTNAME:-localhost}
             - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL:-internal}
@@ -27,7 +26,7 @@ services:
             - "8000"
         env_file: ./common.env
         environment:
-            - DJANGO_SETTINGS_MODULE=inventory_settings
+            - DJANGO_SETTINGS_MODULE=docker_settings
             - HOSTNAME=${HOSTNAME:-localhost}
         links:
             - postgres:postgres
@@ -35,12 +34,12 @@ services:
             - postgres
             - caddy
         volumes:
-            - ./inventory/:/inventory/
-            - ./volumes/static/:/static/:rw
-            - ./volumes/media/:/media/:rw
+            - ./django/:/django/:ro
+            - ./volumes/django/:/django_volumes/:rw
+            - ./volumes/django/static/:/static/:rw
             # e.g.: pip cache must be the same value as $XDG_CACHE_HOME !
             - ./volumes/cache/:/var/cache/:rw
-        entrypoint: /inventory/entrypoint.sh
+        entrypoint: /django/entrypoint.sh
 
     postgres:
         # https://hub.docker.com/_/postgres

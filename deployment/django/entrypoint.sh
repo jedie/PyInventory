@@ -36,9 +36,8 @@ fi
 	./manage.py migrate
 
     uwsgi \
-        --http inventory:8000 \
-        --chdir /inventory/ \
-        --wsgi-file /inventory/wsgi.py \
+        --http "$(hostname):8000" \
+        --wsgi-file /django/wsgi.py \
         --master \
         --processes 2 \
         --threads 2 \

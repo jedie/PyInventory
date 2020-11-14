@@ -63,7 +63,9 @@ Read [[https://github.com/jedie/PyInventory/tree/master/deployment#readme|/deplo
 ~$ git clone https://github.com/jedie/PyInventory.git
 ~$ cd PyInventory/
 ~/PyInventory$ make
-help                 List all commands
+_________________________________________________________________
+PyInventory - *dev* Makefile
+
 install-poetry       install or update poetry
 install              install PyInventory via poetry
 manage-update        Collectstatic + makemigration + migrate

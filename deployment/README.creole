@@ -101,7 +101,9 @@ install some base packages, e.g.:
 
 # Theses Makefile targets exists:
 ~/PyInventory/deployment$ make
-help                 List all commands
+_________________________________________________________________
+PyInventory - *deployment* Makefile
+
 install-poetry       install or update poetry
 install              install requirements to setup project
 update               update the sources and docker containers

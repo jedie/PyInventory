@@ -2,7 +2,11 @@ SHELL := /bin/bash
 MAX_LINE_LENGTH := 119
 export DJANGO_SETTINGS_MODULE ?= inventory_project.settings.local
 
-help: ## List all commands
+all: help
+
+help:
+	@echo -e '_________________________________________________________________'
+	@echo -e 'PyInventory - *dev* Makefile\n'
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z0-9 -]+:.*?## / {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
 check-poetry:

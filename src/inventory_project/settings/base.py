@@ -13,6 +13,10 @@ BASE_PATH = __Path().cwd().resolve()
 print(f'BASE_PATH:{BASE_PATH}')
 
 
+# Build paths relative to the project root:
+PROJECT_PATH = __Path(__file__).parent.parent.parent
+
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
@@ -87,7 +91,7 @@ MIDDLEWARE = [
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        "DIRS": [str(__Path(BASE_PATH, 'inventory_project', 'templates'))],
+        "DIRS": [str(__Path(PROJECT_PATH, 'inventory_project', 'templates'))],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

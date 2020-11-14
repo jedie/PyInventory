@@ -4,6 +4,8 @@ import subprocess
 from pathlib import Path
 
 from creole.setup_utils import update_rst_readme
+from django.conf import settings
+from django.test import TestCase
 
 import inventory
 
@@ -71,3 +73,18 @@ def test_update_rst_readme(capsys):
     assert captured.err == ''
     assert isinstance(rest_readme_path, Path)
     assert str(rest_readme_path).endswith('/README.rst')
+
+
+class ProjectSettingsTestCase(TestCase):
+    def test_project_path(self):
+        project_path = settings.PROJECT_PATH
+        assert project_path.is_dir()
+        assert Path(project_path, 'inventory').is_dir()
+        assert Path(project_path, 'inventory_project').is_dir()
+
+    def test_template_dirs(self):
+        assert len(settings.TEMPLATES) == 1
+        dirs = settings.TEMPLATES[0].get('DIRS')
+        assert len(dirs) == 1
+        template_path = Path(dirs[0]).resolve()
+        assert template_path.is_dir()

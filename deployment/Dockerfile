@@ -13,6 +13,6 @@ RUN apt-get update \
 
 WORKDIR /inventory
 
-RUN pip install "pyinventory>=0.4.2"
+RUN pip install "pyinventory>=0.5.0"
 
 

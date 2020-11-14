@@ -100,7 +100,9 @@ dbrestore:  ## Restore a database backup
 ##############################################################################
 
 run-docker-dev-server:  ## Start docker containers with current dev source code
+	rm -Rf dist/
 	poetry build
+	rm -Rf deployment/dist/
 	cp -ruv dist deployment/
 	cd deployment && make down
 	cd deployment && ./compose.dev.sh up

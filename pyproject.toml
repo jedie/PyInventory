@@ -126,7 +126,7 @@ norecursedirs = ".* .git __pycache__ coverage* dist volumes"
 #    -p no:warnings
 addopts = """
     --import-mode=importlib
-    --ignore-glob=deployment/inventory/*
+    --ignore-glob=deployment/django/*
     --reuse-db
     --nomigrations
     --cov=.

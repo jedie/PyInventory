@@ -86,15 +86,6 @@ messages: ## Make and compile locales message files
 	./manage.sh makemessages --all --no-location --no-obsolete
 	./manage.sh compilemessages
 
-run-server:  ## Run the gunicorn server in endless loop.
-	poetry run inventory run-server
-
-backup:  ## Backup everything
-	poetry run inventory backup
-
-create-starter:  ## Create starter file.
-	poetry run inventory create-starter
-
 ##############################################################################
 
 dbbackup:  ## Backup database

@@ -26,7 +26,7 @@ if [ -d "/dist/" ] ; then
 else
     (
         set -x
-        pip3 install -U pyinventory
+        pip3 install -U "pyinventory>=0.5.0rc1"
     )
 fi
 (

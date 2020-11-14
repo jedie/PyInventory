@@ -220,17 +220,23 @@ e.g.:
 Backwards-incompatible changes
 ------------------------------
 
-Nothing, yet ;)
+v0.5.0rc1
+=========
+
+Git branches "master" and "deployment" was merged into one.
+Files are separated into: "/src/" and "/development/"
 
 -------
 history
 -------
 
-* `compare v0.4.2...master <https://github.com/jedie/PyInventory/compare/v0.4.2...master>`_ **dev**
-
-* Merge seperate git branches into one: "/src/" and "/development/" `#19 <https://github.com/jedie/PyInventory/issues/19>`_ 
+* `compare v0.5.0rc1...master <https://github.com/jedie/PyInventory/compare/v0.5.0rc1...master>`_ **dev** 
 
     * tbc
+
+* `v0.5.0rc1 - 14.11.2020 <https://github.com/jedie/PyInventory/compare/v0.4.2...v0.5.0rc1>`_
+
+* Merge separate git branches into one: "/src/" and "/development/" `#19 <https://github.com/jedie/PyInventory/issues/19>`_
 
 * `v0.4.2 - 13.11.2020 <https://github.com/jedie/PyInventory/compare/v0.4.1...v0.4.2>`_ 
 
@@ -329,4 +335,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2020-11-14 11:51:11 with "python-creole"``
+``Note: this file is generated from README.creole 2020-11-14 11:53:29 with "python-creole"``

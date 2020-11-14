@@ -1,22 +1,22 @@
-= PyInventory - deployment branch
+= PyInventory - deployment instruction
 
 Web based management to catalog things including state and location etc. using Python/Django.
 
 **Note:**
 
-* This README (in git **deployment** branch) contains only the instruction to install PyInventory on a root server.
-* Read [[https://github.com/jedie/PyInventory/tree/master#readme|master README]] for local develompment installation.
+* This README contains only the instruction to install PyInventory on a root server.
+* Read [[https://github.com/jedie/PyInventory/tree/master#readme|the main README]] for local development installation.
 
 Pull requests welcome!
 
 
-== git branches
+== Project structure
 
-Currently we have two main branches:
+There are two main directories:
 
-|= git branch |= description
-| **[[https://github.com/jedie/PyInventory/tree/master|master]]**         | The main PyInventory source code
-| **[[https://github.com/jedie/PyInventory/tree/deployment|deployment]]** | separate project to deploy PyInventory for production use case
+|= directory |= description
+| **[[https://github.com/jedie/PyInventory/tree/master/src|/src/]]**               | The main PyInventory source code
+| **[[https://github.com/jedie/PyInventory/tree/master/deployment|/deployment/]]** | deploy PyInventory for production use case
 
 
 == deploy
@@ -96,11 +96,11 @@ install some base packages, e.g.:
 
 {{{
 # Checkout the deployment branch:
-~$ git clone -b deployment https://github.com/jedie/PyInventory.git PyInventory-Deployment
-~$ cd PyInventory-Deployment
+~$ git clone https://github.com/jedie/PyInventory.git
+~$ cd PyInventory/deployment/
 
 # Theses Makefile targets exists:
-~/PyInventory-Deployment$ make
+~/PyInventory/deployment$ make
 help                 List all commands
 install-poetry       install or update poetry
 install              install requirements to setup project
@@ -132,21 +132,21 @@ Install, e.g.:
 
 {{{
 # install or update poetry:
-~/PyInventory-Deployment$ make install-poetry
+~/PyInventory/deployment$ make install-poetry
 }}}
 
 To keep poetry running (PATH must be expand) just logout and login ;)
 
 {{{
 # install requirements (e.g.: docker-compose) via poetry:
-~/PyInventory-Deployment$ make install
+~/PyInventory/deployment$ make install
 }}}
 
 Create a {{{.env}}} file in project root directory with these content, e.g.:
 {{{
-~/PyInventory-Deployment$ touch .env
-~/PyInventory-Deployment$ nano .env
-~/PyInventory-Deployment$ cat .env
+~/PyInventory/deployment$ touch .env
+~/PyInventory/deployment$ nano .env
+~/PyInventory/deployment$ cat .env
 # Your Public domain:
 HOSTNAME=domain.tld
 
@@ -163,14 +163,14 @@ LETSENCRYPT_EMAIL=internal
 
 Start containers via docker-compose:
 {{{
-~/PyInventory-Deployment$ make up
+~/PyInventory/deployment$ make up
 }}}
 
 Notes: At the first start it takes a little while until the database is created ;)
 
 Create first super user:
 {{{
-~/PyInventory-Deployment$ make docker_createsuperuser
+~/PyInventory/deployment$ make docker_createsuperuser
 }}}
 
 * Now you should be able to connect to your PyInventory installation and login with created super user.
@@ -185,12 +185,12 @@ TO keep everything up-to-date do the following steps:
 
 Update the OS call:
 {{{
-~/PyInventory-Deployment$ sudo ./scripts/apt-distupgrade.sh
+~/PyInventory/deployment$ sudo ./scripts/apt-distupgrade.sh
 }}}
 
 Update PyInventory installation and docker containers:
 {{{
-~/PyInventory-Deployment$ make update
+~/PyInventory/deployment$ make update
 }}}
 
 This will do:

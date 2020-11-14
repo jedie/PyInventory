@@ -71,6 +71,7 @@ pytest = "*"
 pytest-randomly = "*"
 pytest-cov = "*"
 pytest-django = "*"
+pytest-parallel = "*"
 coveralls = "*"
 isort = "*"
 flake8 = "*"
@@ -150,7 +151,8 @@ envlist = py39,py38,py37
 skip_missing_interpreters = True
 
 [testenv]
+passenv = *
 whitelist_externals = pytest
 commands =
-    pytest --pyargs inventory inventory_project
+    pytest --workers auto --tests-per-worker 1 --pyargs inventory inventory_project
 """

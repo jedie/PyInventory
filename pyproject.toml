@@ -114,7 +114,7 @@ lines_after_imports=2
 # https://docs.pytest.org/en/latest/customize.html#pyproject-toml
 minversion = "6.0"
 DJANGO_SETTINGS_MODULE="inventory_project.settings.tests"
-norecursedirs = ".* .git __pycache__ coverage* dist"
+norecursedirs = ".* .git __pycache__ coverage* dist volumes"
 # sometimes helpfull "addopts" arguments:
 #    -vv
 #    --verbose

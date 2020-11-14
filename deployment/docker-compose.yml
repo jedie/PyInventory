@@ -8,7 +8,9 @@ services:
             - "80:80"
             - "443:443"
         volumes:
-            - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+            - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+            - ./volumes/caddy/data/:/data/:rw
+            - ./volumes/caddy/config/:/config/:rw
             - ./volumes/static/:/srv/static/:ro
             - ./volumes/media/:/srv/media/:ro
         environment:

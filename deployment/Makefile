@@ -32,7 +32,7 @@ install: check-poetry ## install requirements to setup project
 
 update: check-poetry ## update the sources and docker containers
 	git fetch --all
-	git pull origin deployment
+	git pull origin master
 	poetry update
 	./compose.sh build --pull
 	$(MAKE) restart

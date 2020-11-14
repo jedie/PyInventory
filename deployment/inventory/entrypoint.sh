@@ -18,10 +18,19 @@ trap restart_error_handler 0
 echo "_______________________________________________________________________"
 echo "$(date +%c) - ${0}"
 
+if [ -d "/dist/" ] ; then
+    (
+        set -x
+        pip3 install -U /dist/*.whl
+    )
+else
+    (
+        set -x
+        pip3 install -U pyinventory
+    )
+fi
 (
     set -x
-
-    pip3 install -U pyinventory
 
     ./manage.py collectstatic --noinput
 	./manage.py migrate

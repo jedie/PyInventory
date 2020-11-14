@@ -7,7 +7,7 @@ all: help
 help:
 	@echo -e '_________________________________________________________________'
 	@echo -e 'PyInventory - *dev* Makefile\n'
-	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z0-9 -]+:.*?## / {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
+	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z0-9 -]+:.*?## / {printf "\033[36m%-22s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
 check-poetry:
 	@if [[ "$(shell poetry --version 2>/dev/null)" == *"Poetry"* ]] ; \
@@ -96,6 +96,14 @@ dbbackup:  ## Backup database
 
 dbrestore:  ## Restore a database backup
 	./manage.sh dbrestore
+
+##############################################################################
+
+run-docker-dev-server:  ## Start docker containers with current dev source code
+	poetry build
+	cp -ruv dist deployment/
+	cd deployment && make down
+	cd deployment && ./compose.dev.sh up
 
 ##############################################################################
 

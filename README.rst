@@ -108,28 +108,29 @@ prepare
     ~$ git clone https://github.com/jedie/PyInventory.git
     ~$ cd PyInventory/
     ~/PyInventory$ make
-    help                 List all commands
-    install-poetry       install or update poetry
-    install              install PyInventory via poetry
-    manage-update        Collectstatic + makemigration + migrate
-    update               update the sources and installation
-    lint                 Run code formatters and linter
-    fix-code-style       Fix code formatting
-    tox-listenvs         List all tox test environments
-    tox                  Run pytest via tox with all environments
-    tox-py36             Run pytest via tox with *python v3.6*
-    tox-py37             Run pytest via tox with *python v3.7*
-    tox-py38             Run pytest via tox with *python v3.8*
-    pytest               Run pytest
-    update-rst-readme    update README.rst from README.creole
-    publish              Release new version to PyPi
-    run-dev-server       Run the django dev server in endless loop.
-    messages             Make and compile locales message files
-    run-server           Run the gunicorn server in endless loop.
-    backup               Backup everything
-    create-starter       Create starter file.
-    dbbackup             Backup database
-    dbrestore            Restore a database backup
+    _________________________________________________________________
+    PyInventory - *dev* Makefile
+    
+    install-poetry         install or update poetry
+    install                install PyInventory via poetry
+    manage-update          Collectstatic + makemigration + migrate
+    update                 update the sources and installation
+    lint                   Run code formatters and linter
+    fix-code-style         Fix code formatting
+    tox-listenvs           List all tox test environments
+    tox                    Run pytest via tox with all environments
+    tox-py36               Run pytest via tox with *python v3.6*
+    tox-py37               Run pytest via tox with *python v3.7*
+    tox-py38               Run pytest via tox with *python v3.8*
+    pytest                 Run pytest
+    update-rst-readme      update README.rst from README.creole
+    publish                Release new version to PyPi
+    run-dev-server         Run the django dev server in endless loop.
+    createsuperuser        Create super user
+    messages               Make and compile locales message files
+    dbbackup               Backup database
+    dbrestore              Restore a database backup
+    run-docker-dev-server  Start docker containers with current dev source code
 
 local development installation
 ==============================
@@ -153,6 +154,17 @@ local development installation
     ~/PyInventory$ make run-dev-server
 
 The web page is available via: ``http://127.0.0.1:8000/``
+
+local docker dev run
+====================
+
+You can run the deployment docker containers with current source code with:
+
+::
+
+    ~/PyInventory$ make run-docker-dev-server
+
+Just hit Cntl-C to stop the containers
 
 -----------
 Screenshots
@@ -317,4 +329,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2020-11-13 21:51:42 with "python-creole"``
+``Note: this file is generated from README.creole 2020-11-14 11:51:11 with "python-creole"``

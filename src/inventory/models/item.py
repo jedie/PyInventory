@@ -212,6 +212,9 @@ class ItemImageModel(BaseModel):
         default=0, blank=False, null=False
     )
 
+    def __str__(self):
+        return self.name or self.image.name
+
     def full_clean(self, **kwargs):
         if not self.name:
             filename = Path(self.image.name).name

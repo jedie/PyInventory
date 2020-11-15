@@ -15,7 +15,7 @@ urlpatterns = [  # Don't use i18n_patterns() here
     url(r'^$', RedirectView.as_view(url='/admin/')),
 
     path('ckeditor/', include('ckeditor_uploader.urls')),  # TODO: check permissions?
-    path('media/user_<int:user_id>/<path:path>/', UserMediaView.as_view())
+    path('media/user_<int:user_id>/<path:path>', UserMediaView.as_view())
 ]
 
 

@@ -230,13 +230,17 @@ Files are separated into: "/src/" and "/development/"
 history
 -------
 
-* `compare v0.5.0...master <https://github.com/jedie/PyInventory/compare/v0.5.0...master>`_ **dev** 
+* `compare v0.6.0...master <https://github.com/jedie/PyInventory/compare/v0.6.0...master>`_ **dev** 
 
     * tbc
 
-* `v0.5.0 - 14.11.2020 <https://github.com/jedie/PyInventory/compare/v0.4.2...v0.5.0>`_
+* `v0.6.0 - 15.11.2020 <https://github.com/jedie/PyInventory/compare/v0.5.0...v0.6.0>`_ 
 
-* Merge separate git branches into one: "/src/" and "/development/" `#19 <https://github.com/jedie/PyInventory/issues/19>`_
+    * User can store images to every item: The image can only be accessed by the same user.
+
+* `v0.5.0 - 14.11.2020 <https://github.com/jedie/PyInventory/compare/v0.4.2...v0.5.0>`_ 
+
+    * Merge separate git branches into one: "/src/" and "/development/" `#19 <https://github.com/jedie/PyInventory/issues/19>`_
 
 * `v0.4.2 - 13.11.2020 <https://github.com/jedie/PyInventory/compare/v0.4.1...v0.4.2>`_ 
 
@@ -335,4 +339,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2020-11-14 12:15:59 with "python-creole"``
+``Note: this file is generated from README.creole 2020-11-15 14:43:10 with "python-creole"``

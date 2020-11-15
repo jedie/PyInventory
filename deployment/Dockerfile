@@ -16,6 +16,6 @@ RUN apt-get update \
 
 WORKDIR /django
 
-RUN pip install "pyinventory>=0.5.0"
+RUN pip install "pyinventory>=0.6.0"
 
 

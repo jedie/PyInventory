@@ -1,11 +1,19 @@
+import logging
+from pathlib import Path
+
 import tagulous.models
+from bx_py_utils.filename import clean_filename
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 from django.urls import reverse
+from django.utils.crypto import get_random_string
 from django.utils.translation import ugettext_lazy as _
 
 from inventory.models.base import BaseModel
 from inventory.models.links import BaseLink
+
+
+logger = logging.getLogger(__name__)
 
 
 class ItemQuerySet(models.QuerySet):
@@ -166,4 +174,59 @@ class ItemLinkModel(BaseLink):
     class Meta:
         verbose_name = _('ItemLinkModel.verbose_name')
         verbose_name_plural = _('ItemLinkModel.verbose_name_plural')
+        ordering = ('position',)
+
+
+def user_directory_path(instance, filename):
+    """
+    Upload to /MEDIA_ROOT/...
+    """
+    random_string = get_random_string()
+    filename = clean_filename(filename)
+    filename = f'user_{instance.user.id}/{random_string}/{filename}'
+    logger.info(f'Upload filename: {filename!r}')
+    return filename
+
+
+class ItemImageModel(BaseModel):
+    """
+    Store Images to Items
+    """
+    image = models.ImageField(
+        upload_to=user_directory_path,
+        verbose_name=_('ItemImageModel.image.verbose_name'),
+        help_text=_('ItemImageModel.image.help_text')
+    )
+    name = models.CharField(
+        null=True, blank=True,
+        max_length=255,
+        verbose_name=_('ItemImageModel.name.verbose_name'),
+        help_text=_('ItemImageModel.name.help_text')
+    )
+    item = models.ForeignKey(
+        ItemModel, on_delete=models.CASCADE
+    )
+    position = models.PositiveSmallIntegerField(
+        # Note: Will be set in admin via adminsortable2
+        # The JavaScript which performs the sorting is 1-indexed !
+        default=0, blank=False, null=False
+    )
+
+    def __str__(self):
+        return self.name or self.image.name
+
+    def full_clean(self, **kwargs):
+        if not self.name:
+            filename = Path(self.image.name).name
+            self.name = clean_filename(filename)
+
+        if self.user_id is None:
+            # inherit owner of this link from item instance
+            self.user_id = self.item.user_id
+
+        return super().full_clean(**kwargs)
+
+    class Meta:
+        verbose_name = _('ItemImageModel.verbose_name')
+        verbose_name_plural = _('ItemImageModel.verbose_name_plural')
         ordering = ('position',)

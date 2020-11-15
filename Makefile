@@ -43,15 +43,15 @@ update: check-poetry ## update the sources and installation
 	poetry update
 
 lint: ## Run code formatters and linter
-	poetry run flynt -e "volumes" --fail-on-change --line_length=${MAX_LINE_LENGTH} .
+	poetry run flynt -e "volumes" -e "htmlcov" --fail-on-change --line_length=${MAX_LINE_LENGTH} .
 	poetry run isort --check-only .
 	poetry run flake8 .
 
 fix-code-style: ## Fix code formatting
-	poetry run flynt -e "volumes" --line_length=${MAX_LINE_LENGTH} .
-	poetry run pyupgrade --exit-zero-even-if-changed --py3-plus --py36-plus --py37-plus `find . -name "*.py" -type f ! -path "./.tox/*" ! -path "./volumes/*" 2>/dev/null`
+	poetry run flynt -e "volumes" -e "htmlcov" --line_length=${MAX_LINE_LENGTH} .
+	poetry run pyupgrade --exit-zero-even-if-changed --py3-plus --py36-plus --py37-plus `find . -name "*.py" -type f ! -path "./.tox/*" ! -path "./htmlcov/*" ! -path "*/volumes/*" 2>/dev/null`
 	poetry run isort .
-	poetry run autopep8 --exclude="volumes,migrations" --aggressive --aggressive --in-place --recursive .
+	poetry run autopep8 --aggressive --aggressive --in-place --recursive .
 
 tox-listenvs: check-poetry ## List all tox test environments
 	poetry run tox --listenvs
@@ -86,8 +86,8 @@ createsuperuser:  ## Create super user
 	./manage.sh createsuperuser
 
 messages: ## Make and compile locales message files
-	./manage.sh makemessages --all --no-location --no-obsolete
-	./manage.sh compilemessages
+	./manage.sh makemessages --all --no-location --no-obsolete --ignore=htmlcov --ignore=.tox --ignore=volumes
+	./manage.sh compilemessages -v 0
 
 ##############################################################################
 

@@ -3,6 +3,7 @@ from adminsortable2.admin import SortableInlineAdminMixin
 from django.contrib import admin
 from django.contrib.admin.views.main import ChangeList
 from django.template.loader import render_to_string
+from django.utils.html import format_html
 from django.utils.translation import ugettext_lazy as _
 from import_export.admin import ImportExportMixin
 from import_export.resources import ModelResource
@@ -10,12 +11,10 @@ from import_export.resources import ModelResource
 from inventory.admin.base import BaseUserAdmin
 from inventory.forms import ItemModelModelForm
 from inventory.models import ItemLinkModel, ItemModel
+from inventory.models.item import ItemImageModel
 
 
-class ItemLinkModelInline(SortableInlineAdminMixin, admin.TabularInline):
-    model = ItemLinkModel
-    extra = 1
-
+class UserInlineMixin:
     def get_queryset(self, request):
         qs = super().get_queryset(request)
 
@@ -26,8 +25,31 @@ class ItemLinkModelInline(SortableInlineAdminMixin, admin.TabularInline):
         return qs
 
 
-class ItemModelResource(ModelResource):
+class ItemLinkModelInline(UserInlineMixin, SortableInlineAdminMixin, admin.TabularInline):
+    model = ItemLinkModel
+    extra = 0
 
+
+class ItemImageModelInline(UserInlineMixin, SortableInlineAdminMixin, admin.TabularInline):
+    def preview(self, instance):
+        return format_html(
+            (
+                '<a href="{url}" title="{name}"'
+                ' target="_blank" class="image_file_input_preview">'
+                '<img style="width:9em;" src="{url}"></a>'
+            ),
+            url=instance.image.url,
+            name=instance.name,
+        )
+    model = ItemImageModel
+    extra = 0
+    fields = (
+        'position', 'preview', 'image', 'name', 'tags'
+    )
+    readonly_fields = ('preview',)
+
+
+class ItemModelResource(ModelResource):
     class Meta:
         model = ItemModel
 
@@ -112,7 +134,7 @@ class ItemModelAdmin(ImportExportMixin, BaseUserAdmin):
             )}),
     )
     readonly_fields = ('id', 'create_dt', 'update_dt', 'user')
-    inlines = (ItemLinkModelInline,)
+    inlines = (ItemImageModelInline, ItemLinkModelInline)
 
     def get_changelist(self, request, **kwargs):
         self.user = request.user

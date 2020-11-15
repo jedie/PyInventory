@@ -94,7 +94,7 @@ build-backend = "poetry.masonry.api"
 [tool.autopep8]
 # https://github.com/hhatto/autopep8#pyprojecttoml
 max_line_length = 120
-exclude = "*/migrations/*"
+exclude="*/htmlcov/*,*/migrations/*,*/volumes/*"
 
 
 [tool.isort]
@@ -102,7 +102,7 @@ exclude = "*/migrations/*"
 atomic=true
 line_length=120
 case_sensitive=false
-skip_glob=["*/migrations/*","*/volumes/*"]
+skip_glob=["*/htmlcov/*","*/migrations/*","*/volumes/*"]
 multi_line_output=3
 include_trailing_comma=true
 known_first_party=["inventory","inventory_project","inventory_tests"]
@@ -116,7 +116,7 @@ lines_after_imports=2
 # https://docs.pytest.org/en/latest/customize.html#pyproject-toml
 minversion = "6.0"
 DJANGO_SETTINGS_MODULE="inventory_project.settings.tests"
-norecursedirs = ".* .git __pycache__ coverage* dist volumes"
+norecursedirs = ".* .git __pycache__ coverage* dist htmlcov volumes"
 # sometimes helpfull "addopts" arguments:
 #    -vv
 #    --verbose

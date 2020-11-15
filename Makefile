@@ -86,8 +86,8 @@ createsuperuser:  ## Create super user
 	./manage.sh createsuperuser
 
 messages: ## Make and compile locales message files
-	./manage.sh makemessages --all --no-location --no-obsolete
-	./manage.sh compilemessages
+	./manage.sh makemessages --all --no-location --no-obsolete --ignore=htmlcov --ignore=.tox --ignore=volumes
+	./manage.sh compilemessages -v 0
 
 ##############################################################################
 

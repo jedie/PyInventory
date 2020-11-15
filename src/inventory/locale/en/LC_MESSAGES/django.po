@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 19:24+0100\n"
-"PO-Revision-Date: 2020-10-17 19:12+0200\n"
+"POT-Creation-Date: 2020-11-15 13:09+0100\n"
+"PO-Revision-Date: 2020-11-15 13:15+0100\n"
 "Last-Translator: Jens Diemer\n"
 "Language-Team: \n"
 "Language: en\n"
@@ -164,6 +164,24 @@ msgstr "Link"
 msgid "ItemLinkModel.verbose_name_plural"
 msgstr "Links"
 
+msgid "ItemImageModel.image.verbose_name"
+msgstr "Image"
+
+msgid "ItemImageModel.image.help_text"
+msgstr " "
+
+msgid "ItemImageModel.name.verbose_name"
+msgstr "Name"
+
+msgid "ItemImageModel.name.help_text"
+msgstr ""
+
+msgid "ItemImageModel.verbose_name"
+msgstr "Image"
+
+msgid "ItemImageModel.verbose_name_plural"
+msgstr "Images"
+
 msgid "BaseLink.name.verbose_name"
 msgstr "Name"
 
@@ -205,6 +223,10 @@ msgstr "Location"
 
 msgid "LocationModel.verbose_name_plural"
 msgstr "Locations"
+
+#, python-format
+msgid "Image \"%(path)s\" does not exist"
+msgstr ""
 
 msgid "German"
 msgstr ""

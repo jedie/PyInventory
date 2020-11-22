@@ -11,6 +11,7 @@ services:
             - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
             - ./volumes/caddy/data/:/data/:rw
             - ./volumes/caddy/config/:/config/:rw
+            # Servce django static files with caddy:
             - ./volumes/django/static/:/srv/static/:ro
         environment:
             - HOSTNAME=${HOSTNAME:-localhost}
@@ -37,7 +38,10 @@ services:
         volumes:
             - ./django/:/django/:ro
             - ./volumes/django/:/django_volumes/:rw
+            # static files, served by caddy:
             - ./volumes/django/static/:/static/:rw
+            # Use files, served by django:
+            - ./volumes/django/media/:/media/:rw
             # e.g.: pip cache must be the same value as $XDG_CACHE_HOME !
             - ./volumes/cache/:/var/cache/:rw
         entrypoint: /django/entrypoint.sh

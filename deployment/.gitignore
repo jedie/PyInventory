@@ -1,5 +1,6 @@
 .*
 !.dockerignore
+!.env
 !.gitignore
 
 poetry.lock

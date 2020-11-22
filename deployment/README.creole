@@ -102,7 +102,7 @@ install some base packages, e.g.:
 # Theses Makefile targets exists:
 ~/PyInventory/deployment$ make
 _________________________________________________________________
-PyInventory - *deployment* Makefile
+*Deployment* Makefile
 
 install-poetry       install or update poetry
 install              install requirements to setup project
@@ -113,21 +113,21 @@ prune                Cleanup docker
 build                Update docker container build
 init_postgres        Create postgres database
 createsuperuser      Create super user
-shell_inventory      Go into bash shell in inventory container
+shell_django         Go into bash shell in django container
 shell_postgres       Go into bash shell in postgres container
 shell_caddy          Go into bash shell in caddy container
 caddy_environ        Prints the caddy environment
 logs                 Display docker logs from all containers
 logs_postgres        Display docker logs from postgres container
-logs_inventory       Display docker logs from inventory container
+logs_django          Display docker logs from django container
 logs_caddy           Display docker logs from caddy container
 dbbackup             Backup database
 dbrestore            Restore a database backup
 restart              Restart all containers
-upgrade_inventory    Upgrade "inventory" container and restart it
+upgrade_django       Upgrade "django" container and restart it
 restart_caddy        Restart caddy container
 reload_caddy         Reload Caddy server
-reload_inventory     Reload server in "inventory" container
+reload_django        Reload server in "django" container
 }}}
 
 Install, e.g.:

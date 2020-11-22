@@ -6,7 +6,7 @@ services:
             - HOSTNAME=localhost
             - LETSENCRYPT_EMAIL=internal
 
-    inventory:
+    django:
         environment:
             - DJANGO_SETTINGS_MODULE=docker_settings
             - HOSTNAME=localhost

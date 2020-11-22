@@ -39,6 +39,9 @@ fi
         --config /django/gunicorn.conf.py \
         --bind "$(hostname):8000" \
         --pid="/tmp/gunicorn.pid" \
+        --access-logfile="-" \
+        --error-logfile="-" \
+        --log-level=info \
         wsgi
 
     echo "gunicorn terminated with exit code: $?"

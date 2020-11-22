@@ -128,7 +128,7 @@ reload_caddy:  ## Reload Caddy server
 	$(MAKE) logs_caddy
 
 reload_django:  ## Reload server in "django" container
-	./compose.sh exec django ./docker/kill_python.sh
+	./compose.sh exec django /django/reload_gunicorn.sh
 	./compose.sh logs --tail=500 --follow django
 
 ##############################################################################

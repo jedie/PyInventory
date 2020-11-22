@@ -14,6 +14,9 @@ RUN apt-get update \
     && python3 -m pip install -U pip \
     && pip install -U psycopg2-binary
 
+RUN addgroup --system django \
+    && adduser --system --no-create-home --disabled-password --ingroup django --shell /bin/bash django
+
 WORKDIR /django
 
 RUN pip install "pyinventory>=0.6.0"

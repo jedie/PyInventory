@@ -109,8 +109,8 @@ run-docker-dev-server:  ## Start docker containers with current dev source code
 	cd deployment && ./compose.dev.sh build --pull
 	cd deployment && ./compose.dev.sh up
 
-shell_docker-dev-server:  ## Go into bash shell in PyInventory dev container
-	cd deployment && ./compose.dev.sh exec inventory /bin/bash
+shell_docker-dev-server:  ## Go into bash shell in Django dev container
+	cd deployment && ./compose.dev.sh exec django /bin/bash
 
 ##############################################################################
 

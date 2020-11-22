@@ -4,7 +4,7 @@ all: help
 
 help:
 	@echo -e '_________________________________________________________________'
-	@echo -e 'PyInventory - *deployment* Makefile\n'
+	@echo -e '*Deployment* Makefile\n'
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z0-9 -_]+:.*?## / {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
 check-poetry:
@@ -68,12 +68,12 @@ init_postgres:  ## Create postgres database
 ##############################################################################
 
 createsuperuser:  ## Create super user
-	./compose.sh exec inventory ./manage.sh createsuperuser
+	./compose.sh exec django ./manage.sh createsuperuser
 
 ##############################################################################
 
-shell_inventory:  ## Go into bash shell in inventory container
-	./compose.sh exec inventory /bin/bash
+shell_django:  ## Go into bash shell in django container
+	./compose.sh exec django /bin/bash
 
 shell_postgres:  ## Go into bash shell in postgres container
 	./compose.sh exec postgres /bin/bash
@@ -94,8 +94,8 @@ logs:  ## Display docker logs from all containers
 logs_postgres:  ## Display docker logs from postgres container
 	./compose.sh logs --tail=500 --follow postgres
 
-logs_inventory:  ## Display docker logs from inventory container
-	./compose.sh logs --tail=500 --follow inventory
+logs_django:  ## Display docker logs from django container
+	./compose.sh logs --tail=500 --follow django
 
 logs_caddy:  ## Display docker logs from caddy container
 	./compose.sh logs --tail=500 --follow caddy
@@ -103,18 +103,18 @@ logs_caddy:  ## Display docker logs from caddy container
 ##############################################################################
 
 dbbackup:  ## Backup database
-	./compose.sh exec inventory ./manage.sh dbbackup
+	./compose.sh exec django ./manage.sh dbbackup
 
 dbrestore:  ## Restore a database backup
-	./compose.sh exec inventory ./manage.sh dbrestore
+	./compose.sh exec django ./manage.sh dbrestore
 
 ##############################################################################
 
 restart: down up  ## Restart all containers
 
-upgrade_inventory:  ## Upgrade "inventory" container and restart it
+upgrade_django:  ## Upgrade "django" container and restart it
 	$(MAKE) build
-	./compose.sh stop inventory
+	./compose.sh stop django
 	$(MAKE) up
 
 restart_caddy:  ## Restart caddy container
@@ -127,9 +127,9 @@ reload_caddy:  ## Reload Caddy server
 	./compose.sh exec caddy caddy reload --config /etc/caddy/Caddyfile --adapter caddyfile
 	$(MAKE) logs_caddy
 
-reload_inventory:  ## Reload server in "inventory" container
-	./compose.sh exec inventory ./docker/kill_python.sh
-	./compose.sh logs --tail=500 --follow inventory
+reload_django:  ## Reload server in "django" container
+	./compose.sh exec django ./docker/kill_python.sh
+	./compose.sh logs --tail=500 --follow django
 
 ##############################################################################
 

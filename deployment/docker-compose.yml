@@ -16,18 +16,19 @@ services:
             - HOSTNAME=${HOSTNAME:-localhost}
             - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL:-internal}
 
-    inventory:
+    django:
         build:
             context: .
             dockerfile: Dockerfile
         restart: unless-stopped
-        hostname: inventory
+        hostname: django
         ports:
             - "8000"
         env_file: ./common.env
         environment:
             - DJANGO_SETTINGS_MODULE=docker_settings
             - HOSTNAME=${HOSTNAME:-localhost}
+            - DB_NAME=${PROJECT_NAME}
         links:
             - postgres:postgres
         depends_on:
@@ -50,6 +51,7 @@ services:
             - "5432"
         env_file: ./common.env
         environment:
+            - DB_NAME=${PROJECT_NAME}
             - POSTGRES_HOST_AUTH_METHOD=trust
         volumes:
             - ./postgres/init-user-db.sh:/docker-entrypoint-initdb.d/init-user-db.sh:ro

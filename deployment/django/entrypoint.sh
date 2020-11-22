@@ -35,7 +35,12 @@ fi
     ./manage.py collectstatic --noinput
 	./manage.py migrate
 
-    gunicorn wsgi --bind "$(hostname):8000"
+    /usr/local/bin/gunicorn \
+        --config /django/gunicorn.conf.py \
+        --bind "$(hostname):8000" \
+        --pid="/tmp/gunicorn.pid" \
+        wsgi
+
     echo "gunicorn terminated with exit code: $?"
     sleep 3
     exit 1

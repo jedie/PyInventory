@@ -33,10 +33,6 @@ fi
 GUNICORN_CMD_ARGS=<<'EOF'
     --config /django/gunicorn.conf.py
     --bind "$(hostname):8000"
-    --pid="/tmp/gunicorn.pid"
-    --access-logfile="-"
-    --error-logfile="-"
-    --log-level=info
 EOF
 
 (

@@ -105,6 +105,7 @@ run-docker-dev-server:  ## Start docker containers with current dev source code
 	rm -Rf deployment/dist/
 	cp -ruv dist deployment/
 	cd deployment && make down
+	cd deployment && ./compose.dev.sh pull
 	cd deployment && ./compose.dev.sh build --pull
 	cd deployment && ./compose.dev.sh up
 

@@ -59,6 +59,7 @@ prune:  ## Cleanup docker
 	docker system prune --force --all --filter until=4464h
 
 build: check-compose  ## Update docker container build
+	./compose.sh pull
 	./compose.sh build --pull
 
 init_postgres:  ## Create postgres database

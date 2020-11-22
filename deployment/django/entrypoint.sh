@@ -35,18 +35,8 @@ fi
     ./manage.py collectstatic --noinput
 	./manage.py migrate
 
-    uwsgi \
-        --http "$(hostname):8000" \
-        --wsgi-file /django/wsgi.py \
-        --master \
-        --processes 2 \
-        --threads 2 \
-        --ignore-sigpipe \
-        --ignore-write-errors \
-        --disable-write-exception \
-        --http-auto-chunked \
-        --http-keepalive
-    echo "uwsgi terminated with exit code: $?"
+    gunicorn wsgi --bind "$(hostname):8000"
+    echo "gunicorn terminated with exit code: $?"
     sleep 3
     exit 1
 )

@@ -35,7 +35,7 @@ readme='README.rst'
 python = ">=3.7,<4.0.0"
 colorama = "*"  # Console colors under windows: https://pypi.org/project/colorama/
 colorlog = "*"  # https://github.com/borntyping/python-colorlog
-uWSGI = "*"
+gunicorn = "*"  # https://github.com/benoimyproject.wsgitc/gunicorn
 #
 # https://www.djangoproject.com/download/#supported-versions
 # v2.2 LTS - extended support until April 2022
@@ -49,7 +49,7 @@ django-reversion-compare = "*"  # https://github.com/jedie/django-reversion-comp
 django-ckeditor = "*"  # https://github.com/django-ckeditor/django-ckeditor
 
 # We can't install v5 until https://github.com/python-poetry/poetry/issues/3320 is fixed!
-bx_py_utils = "!=5"  # https://github.com/boxine/bx_py_utils
+bx_py_utils = "0.0.4"  # https://github.com/boxine/bx_py_utils
 
 django-tagulous = "*"  # https://github.com/radiac/django-tagulous
 django-admin-sortable2 = "*"  # https://github.com/jrief/django-admin-sortable2

@@ -29,20 +29,23 @@ else
         pip3 install -U "${PYTHON_PACKAGE_NAME}"
     )
 fi
+
+GUNICORN_CMD_ARGS=<<'EOF'
+    --config /django/gunicorn.conf.py
+    --bind "$(hostname):8000"
+    --pid="/tmp/gunicorn.pid"
+    --access-logfile="-"
+    --error-logfile="-"
+    --log-level=info
+EOF
+
 (
     set -x
 
     ./manage.py collectstatic --noinput
 	./manage.py migrate
 
-    /usr/local/bin/gunicorn \
-        --config /django/gunicorn.conf.py \
-        --bind "$(hostname):8000" \
-        --pid="/tmp/gunicorn.pid" \
-        --access-logfile="-" \
-        --error-logfile="-" \
-        --log-level=info \
-        wsgi
+    su django -c "/usr/local/bin/gunicorn wsgi"
 
     echo "gunicorn terminated with exit code: $?"
     sleep 3

@@ -1,8 +1,10 @@
 FROM python:3.9-slim-buster
 # https://hub.docker.com/_/python
 
-ARG XDG_CACHE_HOME
-ENV XDG_CACHE_HOME=${XDG_CACHE_HOME}
+# for pip cache:
+ENV XDG_CACHE_HOME=/var/cache
+
+ENV PYTHONUNBUFFERED=1
 
 # Install deps
 RUN apt-get update \

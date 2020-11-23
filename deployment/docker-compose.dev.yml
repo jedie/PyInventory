@@ -10,10 +10,5 @@ services:
         environment:
             - DJANGO_SETTINGS_MODULE=docker_settings
             - HOSTNAME=localhost
-        links:
-            - postgres:postgres
-        depends_on:
-            - postgres
-            - caddy
         volumes:
             - ./dist/:/dist/

@@ -30,18 +30,13 @@ else
     )
 fi
 
-GUNICORN_CMD_ARGS=<<'EOF'
-    --config /django/gunicorn.conf.py
-    --bind "$(hostname):8000"
-EOF
-
 (
     set -x
 
     ./manage.py collectstatic --noinput
 	./manage.py migrate
 
-    su django -c "/usr/local/bin/gunicorn wsgi"
+    su django -c "/usr/local/bin/gunicorn --config /django/gunicorn.conf.py wsgi"
 
     echo "gunicorn terminated with exit code: $?"
     sleep 3

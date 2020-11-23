@@ -220,6 +220,28 @@ e.g.:
 Backwards-incompatible changes
 ------------------------------
 
+v0.7.0
+======
+
+Docker-Compose usage: The MEDIA files was not stored on a docker volumes.
+
+You should backup rhe media files **before** update the containers!
+
+e.g.:
+
+::
+
+    ~/PyInventory/deployment$ make shell_inventory
+    root@inventory:/django# cp -Rfv /media/ /django_volumes/media/
+
+The files are stored locally here:
+
+::
+
+    ~/PyInventory/deployment$ ls -la volumes/django/media/
+
+Now, update the containers and copy the files back.
+
 v0.5.0
 ======
 
@@ -230,9 +252,23 @@ Files are separated into: "/src/" and "/development/"
 history
 -------
 
-* `compare v0.6.0...master <https://github.com/jedie/PyInventory/compare/v0.6.0...master>`_ **dev** 
+* `compare v0.7.0...master <https://github.com/jedie/PyInventory/compare/v0.7.0...master>`_ **dev** 
 
     * tbc
+
+* `v0.7.0 - 23.11.2020 <https://github.com/jedie/PyInventory/compare/v0.6.0...v0.7.0>`_ 
+
+    * Change deployment setup:
+
+        * Replace uwsgi with gunicorn
+
+        * make deploy setup more generic by renaming "inventory" to "django"
+
+        * Bugfix MEDIA path: store the files on a docker volumes
+
+        * run app server as normal user and not root
+
+        * pull all docker images before build
 
 * `v0.6.0 - 15.11.2020 <https://github.com/jedie/PyInventory/compare/v0.5.0...v0.6.0>`_ 
 
@@ -339,4 +375,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2020-11-15 14:43:10 with "python-creole"``
+``Note: this file is generated from README.creole 2020-11-23 17:53:10 with "python-creole"``

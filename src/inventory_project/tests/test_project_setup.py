@@ -47,7 +47,7 @@ def test_version(package_root=None, version=None):
     )
 
     assert_file_contains_string(
-        file_path=Path(package_root, 'deployment', '.env'),
+        file_path=Path(package_root, 'deployment', 'project.env'),
         string=f'PROJECT_VERSION={version}'
     )
 

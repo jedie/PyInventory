@@ -46,6 +46,11 @@ def test_version(package_root=None, version=None):
         string=f'version = "{version}"'
     )
 
+    assert_file_contains_string(
+        file_path=Path(package_root, 'deployment', '.env'),
+        string=f'PROJECT_VERSION={version}'
+    )
+
 
 def test_poetry_check(package_root=None):
     if package_root is None:

@@ -4,7 +4,7 @@
     :license: GNU GPL v3 or above, see LICENSE for more details.
 """
 
-__version__ = "0.7.0"
+__version__ = "0.7.0rc1"
 
 # https://docs.djangoproject.com/en/2.0/ref/applications/#configuring-applications-ref
 default_app_config = "inventory.apps.InventoryConfig"

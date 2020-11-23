@@ -26,7 +26,7 @@ if [ -d "/dist/" ] ; then
 else
     (
         set -x
-        pip3 install -U "${PYTHON_PACKAGE_NAME}"
+        pip3 install -U "${PROJECT_PACKAGE_NAME}>=${PROJECT_VERSION}"
     )
 fi
 

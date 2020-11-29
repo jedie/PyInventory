@@ -33,13 +33,7 @@ readme='README.rst'
 
 [tool.poetry.dependencies]
 python = ">=3.7,<4.0.0"
-colorama = "*"  # Console colors under windows: https://pypi.org/project/colorama/
-colorlog = "*"  # https://github.com/borntyping/python-colorlog
-gunicorn = "*"  # https://github.com/benoimyproject.wsgitc/gunicorn
-#
-# https://www.djangoproject.com/download/#supported-versions
-# v2.2 LTS - extended support until April 2022
-django = "2.2.*"
+django = "*"
 django-processinfo = "*"  # https://github.com/jedie/django-processinfo/
 django-debug-toolbar = "*"  # http://django-debug-toolbar.readthedocs.io/en/stable/changes.html
 django-import-export = "*"  # https://github.com/django-import-export/django-import-export
@@ -54,6 +48,9 @@ bx_py_utils = "0.0.4"  # https://github.com/boxine/bx_py_utils
 django-tagulous = "*"  # https://github.com/radiac/django-tagulous
 django-admin-sortable2 = "*"  # https://github.com/jrief/django-admin-sortable2
 django-axes = "*"  # https://github.com/jazzband/django-axes
+colorama = "*"  # Console colors under windows: https://pypi.org/project/colorama/
+colorlog = "*"  # https://github.com/borntyping/python-colorlog
+gunicorn = "*"  # https://github.com/benoimyproject.wsgitc/gunicorn
 requests = "*"  # https://github.com/psf/requests
 docker-compose = { version = "*", optional = true }  # install via: poetry install --extras "docker"
 psycopg2-binary = { version = "*", optional = true }  # install via: poetry install --extras "postgres"

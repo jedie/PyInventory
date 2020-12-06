@@ -1,6 +1,6 @@
-"""
+'''
     Base Django settings
-"""
+'''
 
 import logging
 from pathlib import Path as __Path
@@ -76,6 +76,9 @@ INSTALLED_APPS = [
     'axes',  # https://github.com/jazzband/django-axes
     'django_processinfo',  # https://github.com/jedie/django-processinfo/
 
+    # https://github.com/jedie/django-tools/tree/master/django_tools/serve_media_app
+    'django_tools.serve_media_app.apps.UserMediaFilesConfig',
+
     'inventory.apps.InventoryConfig',
 ]
 
@@ -109,7 +112,7 @@ MIDDLEWARE = [
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        "DIRS": [str(__Path(PROJECT_PATH, 'inventory_project', 'templates'))],
+        'DIRS': [str(__Path(PROJECT_PATH, 'inventory_project', 'templates'))],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -342,6 +345,7 @@ LOGGING = {
         '': {'handlers': ['console'], 'level': 'DEBUG', 'propagate': False},
         'django': {'handlers': ['console'], 'level': 'INFO', 'propagate': False},
         'axes': {'handlers': ['console'], 'level': 'WARNING', 'propagate': False},
+        'django_tools': {'handlers': ['console'], 'level': 'INFO', 'propagate': False},
         'inventory': {'handlers': ['console'], 'level': 'DEBUG', 'propagate': False},
     },
 }

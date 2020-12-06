@@ -6,8 +6,8 @@ from bx_py_utils.filename import clean_filename
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 from django.urls import reverse
-from django.utils.crypto import get_random_string
 from django.utils.translation import ugettext_lazy as _
+from django_tools.serve_media_app.models import user_directory_path
 
 from inventory.models.base import BaseModel
 from inventory.models.links import BaseLink
@@ -175,17 +175,6 @@ class ItemLinkModel(BaseLink):
         verbose_name = _('ItemLinkModel.verbose_name')
         verbose_name_plural = _('ItemLinkModel.verbose_name_plural')
         ordering = ('position',)
-
-
-def user_directory_path(instance, filename):
-    """
-    Upload to /MEDIA_ROOT/...
-    """
-    random_string = get_random_string()
-    filename = clean_filename(filename)
-    filename = f'user_{instance.user.id}/{random_string}/{filename}'
-    logger.info(f'Upload filename: {filename!r}')
-    return filename
 
 
 class ItemImageModel(BaseModel):

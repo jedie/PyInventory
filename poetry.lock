@@ -361,14 +361,14 @@ django-reversion = "*"
 
 [[package]]
 name = "django-tagulous"
-version = "1.0.0"
+version = "1.1.0"
 description = "Fabulous Tagging for Django"
 category = "main"
 optional = false
 python-versions = "*"
 
 [package.dependencies]
-Django = ">=1.11"
+Django = ">=2.2"
 
 [package.extras]
 dev = ["tox", "jasmine"]
@@ -377,7 +377,7 @@ i18n = ["unidecode"]
 
 [[package]]
 name = "django-tools"
-version = "0.48.0"
+version = "0.48.2"
 description = "miscellaneous tools for django"
 category = "main"
 optional = false
@@ -1271,7 +1271,7 @@ postgres = ["psycopg2-binary"]
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7,<4.0.0"
-content-hash = "bb178e486925b95face37987e21f66c19a2e82194a0bc508d1c69eda4f105ce3"
+content-hash = "53350bdeb15638ddf111098e991f6ef65c9426369c0c29385fa6bbd303b6d1ec"
 
 [metadata.files]
 appdirs = [
@@ -1494,11 +1494,12 @@ django-reversion-compare = [
     {file = "django_reversion_compare-0.12.2-py3-none-any.whl", hash = "sha256:5ce8d402add477a3c38aae8335af22b3abdfffa83ef5333c06c865abb89e9cbd"},
 ]
 django-tagulous = [
-    {file = "django-tagulous-1.0.0.tar.gz", hash = "sha256:9b4fa1773845a1cf33d21b27f9cdafc6f3fe29a480428bdd8f8717e7d4742396"},
+    {file = "django-tagulous-1.1.0.tar.gz", hash = "sha256:9bc9d1d066c486fac1a3ec351531e440bc239c459b043e9180d99d7846e45fd6"},
+    {file = "django_tagulous-1.1.0-py3-none-any.whl", hash = "sha256:de2a56ed92374b79358275ac0b7910af2c3d2823f44a847bef91ca9e456353ba"},
 ]
 django-tools = [
-    {file = "django-tools-0.48.0.tar.gz", hash = "sha256:637e0137d232abaca9f5e1af44e63b299d1e561bd7881d791ce854cfc0e74031"},
-    {file = "django_tools-0.48.0-py3-none-any.whl", hash = "sha256:26556cb0f03ea34d7c3a48a0ff69858f4e6600ea0c886652893d1d102cb8c5e2"},
+    {file = "django-tools-0.48.2.tar.gz", hash = "sha256:76965bb71f70965fb7b56152836e76116c02e74b81635cf0eda2819d4ad594e9"},
+    {file = "django_tools-0.48.2-py3-none-any.whl", hash = "sha256:0d4d141a5f20df79139c17279a95a022aad4f2fa4eb8236d8ab61c358c7206ef"},
 ]
 docker = [
     {file = "docker-4.4.0-py2.py3-none-any.whl", hash = "sha256:317e95a48c32de8c1aac92a48066a5b73e218ed096e03758bcdd799a7130a1a1"},

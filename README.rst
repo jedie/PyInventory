@@ -252,11 +252,11 @@ Files are separated into: "/src/" and "/development/"
 history
 -------
 
-* `compare v0.7.0...master <https://github.com/jedie/PyInventory/compare/v0.7.0...master>`_ **dev** 
+* `compare v0.8.0...master <https://github.com/jedie/PyInventory/compare/v0.8.0...master>`_ **dev** 
 
     * tbc
 
-* `v0.8.0rc1 - 06.12.2020 <https://github.com/jedie/PyInventory/compare/v0.7.0...v0.8.0rc1>`_ 
+* `v0.8.0 - 06.12.2020 <https://github.com/jedie/PyInventory/compare/v0.7.0...v0.8.0>`_ 
 
     * Outsource the "MEDIA file serve" part into `django.tools.serve_media_app <https://github.com/jedie/django-tools/tree/master/django_tools/serve_media_app#readme>`_
 
@@ -379,4 +379,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2020-12-06 19:20:04 with "python-creole"``
+``Note: this file is generated from README.creole 2020-12-06 19:33:09 with "python-creole"``

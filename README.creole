@@ -187,8 +187,9 @@ Files are separated into: "/src/" and "/development/"
 == history
 
 * [[https://github.com/jedie/PyInventory/compare/v0.7.0...master|compare v0.7.0...master]] **dev**
-** Outsource the "MEDIA file serve" part into [[https://github.com/jedie/django-tools/tree/master/django_tools/serve_media_app#readme|django.tools.serve_media_app]]
 ** tbc
+* [[https://github.com/jedie/PyInventory/compare/v0.7.0...v0.8.0rc1|v0.8.0rc1 - 06.12.2020]]
+** Outsource the "MEDIA file serve" part into [[https://github.com/jedie/django-tools/tree/master/django_tools/serve_media_app#readme|django.tools.serve_media_app]]
 * [[https://github.com/jedie/PyInventory/compare/v0.6.0...v0.7.0|v0.7.0 - 23.11.2020]]
 ** Change deployment setup:
 *** Replace uwsgi with gunicorn

@@ -254,6 +254,8 @@ history
 
 * `compare v0.7.0...master <https://github.com/jedie/PyInventory/compare/v0.7.0...master>`_ **dev** 
 
+    * Outsource the "MEDIA file serve" part into `django.tools.serve_media_app <https://github.com/jedie/django-tools/tree/master/django_tools/serve_media_app#readme>`_
+
     * tbc
 
 * `v0.7.0 - 23.11.2020 <https://github.com/jedie/PyInventory/compare/v0.6.0...v0.7.0>`_ 
@@ -375,4 +377,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2020-11-23 17:53:10 with "python-creole"``
+``Note: this file is generated from README.creole 2020-12-06 19:12:25 with "python-creole"``

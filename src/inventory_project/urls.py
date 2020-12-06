@@ -4,8 +4,6 @@ from django.contrib import admin
 from django.urls import path
 from django.views.generic import RedirectView
 
-from inventory.views.media_files import UserMediaView
-
 
 admin.autodiscover()
 
@@ -15,7 +13,7 @@ urlpatterns = [  # Don't use i18n_patterns() here
     url(r'^$', RedirectView.as_view(url='/admin/')),
 
     path('ckeditor/', include('ckeditor_uploader.urls')),  # TODO: check permissions?
-    path('media/user_<int:user_id>/<path:path>', UserMediaView.as_view())
+    path(settings.MEDIA_URL.lstrip('/'), include('django_tools.serve_media_app.urls')),
 ]
 
 

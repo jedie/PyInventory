@@ -26,6 +26,11 @@ class Tee:
 
 
 def forward_code(apps, schema_editor):
+    ItemImageModel = apps.get_model('inventory', 'ItemImageModel')
+    if ItemImageModel.objects.count() == 0:
+        # No image uploaded, yet -> nothing to do
+        return
+
     print()
     log_file_path = Path(settings.MEDIA_ROOT, 'migrate.log')
     print('Generate log file here:', log_file_path)
@@ -34,7 +39,6 @@ def forward_code(apps, schema_editor):
         log(timezone.now())
 
         from django_tools.serve_media_app.models import generate_media_path
-        ItemImageModel = apps.get_model('inventory', 'ItemImageModel')
 
         qs = ItemImageModel.objects.all()
 

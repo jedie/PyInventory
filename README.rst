@@ -90,11 +90,13 @@ There are two main directories:
 install
 -------
 
-There exists two kind of installation/usage:
+There exists these kind of installation/usage:
 
 * local development installation using poetry
 
-* production use with docker-compose
+* production use with docker-compose on a root server
+
+* Install as `YunoHost <https://yunohost.org>`_ App via `yinventory_ynh <https://github.com/jedie/pyinventory_ynh>`_
 
 This README contains only the information about local development installation.
 
@@ -254,6 +256,10 @@ history
 
 * `compare v0.8.0...master <https://github.com/jedie/PyInventory/compare/v0.8.0...master>`_ **dev** 
 
+    * Fix migration: Don't create "/media/migrate.log" if there is nothing to migrate
+
+    * Fix admin redirect by using the url pattern name
+
     * tbc
 
 * `v0.8.0 - 06.12.2020 <https://github.com/jedie/PyInventory/compare/v0.7.0...v0.8.0>`_ 
@@ -379,4 +385,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2020-12-06 19:33:09 with "python-creole"``
+``Note: this file is generated from README.creole 2020-12-09 11:11:42 with "python-creole"``

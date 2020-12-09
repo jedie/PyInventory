@@ -51,7 +51,7 @@ There exists these kind of installation/usage:
 
 * local development installation using poetry
 * production use with docker-compose on a root server
-* Install as [[https://yunohost.org|YunoHost]] App via [[https://github.com/jedie/pyinventory_ynh|yinventory_ynh]]
+* Install as [[https://yunohost.org|YunoHost]] App via [[https://github.com/YunoHost-Apps/pyinventory_ynh|pyinventory_ynh]]
 
 This README contains only the information about local development installation.
 
@@ -187,10 +187,13 @@ Files are separated into: "/src/" and "/development/"
 
 == history
 
-* [[https://github.com/jedie/PyInventory/compare/v0.8.0...master|compare v0.8.0...master]] **dev**
+* [[https://github.com/jedie/PyInventory/compare/v0.8.1...master|compare v0.8.1...master]] **dev**
+** tbc
+* [[https://github.com/jedie/PyInventory/compare/v0.8.0...v0.8.1|v0.8.1 - 09.12.2020]]
 ** Fix migration: Don't create "/media/migrate.log" if there is nothing to migrate
 ** Fix admin redirect by using the url pattern name
-** tbc
+** YunoHost app package created
+** update requirements
 * [[https://github.com/jedie/PyInventory/compare/v0.7.0...v0.8.0|v0.8.0 - 06.12.2020]]
 ** Outsource the "MEDIA file serve" part into [[https://github.com/jedie/django-tools/tree/master/django_tools/serve_media_app#readme|django.tools.serve_media_app]]
 * [[https://github.com/jedie/PyInventory/compare/v0.6.0...v0.7.0|v0.7.0 - 23.11.2020]]

@@ -96,7 +96,7 @@ There exists these kind of installation/usage:
 
 * production use with docker-compose on a root server
 
-* Install as `YunoHost <https://yunohost.org>`_ App via `yinventory_ynh <https://github.com/jedie/pyinventory_ynh>`_
+* Install as `YunoHost <https://yunohost.org>`_ App via `pyinventory_ynh <https://github.com/YunoHost-Apps/pyinventory_ynh>`_
 
 This README contains only the information about local development installation.
 
@@ -254,13 +254,19 @@ Files are separated into: "/src/" and "/development/"
 history
 -------
 
-* `compare v0.8.0...master <https://github.com/jedie/PyInventory/compare/v0.8.0...master>`_ **dev** 
+* `compare v0.8.1...master <https://github.com/jedie/PyInventory/compare/v0.8.1...master>`_ **dev** 
+
+    * tbc
+
+* `v0.8.1 - 09.12.2020 <https://github.com/jedie/PyInventory/compare/v0.8.0...v0.8.1>`_ 
 
     * Fix migration: Don't create "/media/migrate.log" if there is nothing to migrate
 
     * Fix admin redirect by using the url pattern name
 
-    * tbc
+    * YunoHost app package created
+
+    * update requirements
 
 * `v0.8.0 - 06.12.2020 <https://github.com/jedie/PyInventory/compare/v0.7.0...v0.8.0>`_ 
 
@@ -385,4 +391,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2020-12-09 11:11:42 with "python-creole"``
+``Note: this file is generated from README.creole 2020-12-09 20:14:54 with "python-creole"``

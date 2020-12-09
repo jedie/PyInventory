@@ -1,11 +1,14 @@
 = PyInventory - deployment instruction
 
-Web based management to catalog things including state and location etc. using Python/Django.
+Install PyInventory on a rood server via docker-compose.
+
 
 **Note:**
 
+* PyInventory is also available as [[https://yunohost.org|YunoHost]] App via [[https://github.com/YunoHost-Apps/pyinventory_ynh|pyinventory_ynh]]
 * This README contains only the instruction to install PyInventory on a root server.
 * Read [[https://github.com/jedie/PyInventory/tree/master#readme|the main README]] for local development installation.
+
 
 Pull requests welcome!
 

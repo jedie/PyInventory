@@ -47,10 +47,7 @@ django-dbbackup = "*"  # https://github.com/django-dbbackup/django-dbbackup
 django-tools = ">=0.48.2"  # https://github.com/jedie/django-tools/
 django-reversion-compare = "*"  # https://github.com/jedie/django-reversion-compare/
 django-ckeditor = "*"  # https://github.com/django-ckeditor/django-ckeditor
-
-# We can't install v5 until https://github.com/python-poetry/poetry/issues/3320 is fixed!
-bx_py_utils = "0.0.4"  # https://github.com/boxine/bx_py_utils
-
+bx_py_utils = "*"  # https://github.com/boxine/bx_py_utils
 django-tagulous = "*"  # https://github.com/radiac/django-tagulous
 django-admin-sortable2 = "*"  # https://github.com/jrief/django-admin-sortable2
 django-axes = "*"  # https://github.com/jazzband/django-axes

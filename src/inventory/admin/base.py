@@ -11,3 +11,12 @@ class BaseUserAdmin(CompareVersionAdmin):
             obj.user = request.user
 
         super().save_model(request, obj, form, change)
+
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+
+        if not request.user.is_superuser:
+            # Display only own created entries
+            qs = qs.filter(user=request.user)
+
+        return qs

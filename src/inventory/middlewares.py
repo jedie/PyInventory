@@ -3,7 +3,7 @@ from inventory.request_dict import clear_request_dict, get_request_dict
 
 class RequestDictMiddleware:
     """
-    Make the "current user" information avaiable everywhere via threading.local()
+    Make the "current user" information available everywhere via threading.local()
     Access e.g.:
         user = get_request_dict()['user']
     """

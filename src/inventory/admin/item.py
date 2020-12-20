@@ -140,14 +140,5 @@ class ItemModelAdmin(ImportExportMixin, BaseUserAdmin):
         self.user = request.user
         return ItemModelChangeList
 
-    def get_queryset(self, request):
-        qs = super().get_queryset(request)
-
-        if not request.user.is_superuser:
-            # Display only own created entries
-            qs = qs.filter(user=request.user)
-
-        return qs
-
 
 tagulous.admin.enhance(ItemModel, ItemModelAdmin)

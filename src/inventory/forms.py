@@ -26,6 +26,15 @@ class BaseUserOnlyModelForm(forms.ModelForm):
 
             formfield.queryset = queryset.filter(user=user)
 
+    def save(self, commit=True):
+        instance = super().save(commit=False)
+        if instance.user_id is None:
+            user = get_request_dict()['user']  # get current user via threading.local()
+            instance.user_id = user.pk
+
+        instance.save()
+        return instance
+
 
 class ItemModelModelForm(BaseUserOnlyModelForm):
     pass

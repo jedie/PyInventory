@@ -187,8 +187,10 @@ Files are separated into: "/src/" and "/development/"
 
 == history
 
-* [[https://github.com/jedie/PyInventory/compare/v0.8.1...master|compare v0.8.1...master]] **dev**
+* [[https://github.com/jedie/PyInventory/compare/v0.8.2...master|compare v0.8.2...master]] **dev**
 ** tbc
+* [[https://github.com/jedie/PyInventory/compare/v0.8.1...v0.8.2|v0.8.2 - 20.12.2020]]
+** Bugfix [[https://github.com/jedie/PyInventory/issues/33|#33]]: Upload images to new created Items
 * [[https://github.com/jedie/PyInventory/compare/v0.8.0...v0.8.1|v0.8.1 - 09.12.2020]]
 ** Fix migration: Don't create "/media/migrate.log" if there is nothing to migrate
 ** Fix admin redirect by using the url pattern name

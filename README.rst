@@ -254,9 +254,13 @@ Files are separated into: "/src/" and "/development/"
 history
 -------
 
-* `compare v0.8.1...master <https://github.com/jedie/PyInventory/compare/v0.8.1...master>`_ **dev** 
+* `compare v0.8.2...master <https://github.com/jedie/PyInventory/compare/v0.8.2...master>`_ **dev** 
 
     * tbc
+
+* `v0.8.2 - 20.12.2020 <https://github.com/jedie/PyInventory/compare/v0.8.1...v0.8.2>`_ 
+
+    * Bugfix `#33 <https://github.com/jedie/PyInventory/issues/33>`_: Upload images to new created Items
 
 * `v0.8.1 - 09.12.2020 <https://github.com/jedie/PyInventory/compare/v0.8.0...v0.8.1>`_ 
 
@@ -391,4 +395,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2020-12-09 20:14:54 with "python-creole"``
+``Note: this file is generated from README.creole 2020-12-20 18:52:10 with "python-creole"``

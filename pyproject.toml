@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "PyInventory"
-version = "0.8.2"
+version = "0.8.3"
 description = "Web based management to catalog things including state and location etc. using Python/Django."
 authors = ["JensDiemer <git@jensdiemer.de>"]
 packages = [

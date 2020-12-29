@@ -168,6 +168,8 @@ You can run the deployment docker containers with current source code with:
 
 Just hit Cntl-C to stop the containers
 
+The web page is available via: ``https://localhost/``
+
 -----------
 Screenshots
 -----------
@@ -254,9 +256,17 @@ Files are separated into: "/src/" and "/development/"
 history
 -------
 
-* `compare v0.8.2...master <https://github.com/jedie/PyInventory/compare/v0.8.2...master>`_ **dev** 
+* `compare v0.8.3...master <https://github.com/jedie/PyInventory/compare/v0.8.3...master>`_ **dev** 
 
     * tbc
+
+* `v0.8.3 - 29.12.2020 <https://github.com/jedie/PyInventory/compare/v0.8.2...v0.8.3>`_ 
+
+    * update requirements
+
+    * remove colorama from direct dependencies
+
+    * Small project setup changes
 
 * `v0.8.2 - 20.12.2020 <https://github.com/jedie/PyInventory/compare/v0.8.1...v0.8.2>`_ 
 
@@ -395,4 +405,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2020-12-20 18:52:10 with "python-creole"``
+``Note: this file is generated from README.creole 2020-12-29 14:20:27 with "python-creole"``

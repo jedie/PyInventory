@@ -121,6 +121,8 @@ You can run the deployment docker containers with current source code with:
 }}}
 Just hit Cntl-C to stop the containers
 
+The web page is available via: {{{https://localhost/}}}
+
 
 == Screenshots
 

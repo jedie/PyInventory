@@ -33,7 +33,6 @@ readme='README.rst'
 
 [tool.poetry.dependencies]
 python = ">=3.7,<4.0.0"
-colorama = "*"  # Console colors under windows: https://pypi.org/project/colorama/
 colorlog = "*"  # https://github.com/borntyping/python-colorlog
 gunicorn = "*"  # https://github.com/benoimyproject.wsgitc/gunicorn
 #

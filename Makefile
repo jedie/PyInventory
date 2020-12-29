@@ -34,6 +34,7 @@ manage-update: ## Collectstatic + makemigration + migrate
 update: check-poetry ## update the sources and installation
 	git fetch --all
 	git pull origin master
+	poetry run pip install -U pip
 	poetry update
 
 lint: ## Run code formatters and linter

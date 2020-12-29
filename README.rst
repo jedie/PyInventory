@@ -8,28 +8,16 @@ The project is in an early stage of development. Some things are already impleme
 
 Pull requests welcome!
 
-+-----------------------------------+-------------------------------------------------+
-| |Build Status on github|          | `github.com/jedie/PyInventory/actions`_         |
-+-----------------------------------+-------------------------------------------------+
-| |Build Status on travis-ci.org|   | `travis-ci.org/jedie/PyInventory`_              |
-+-----------------------------------+-------------------------------------------------+
-| |Coverage Status on codecov.io|   | `codecov.io/gh/jedie/PyInventory`_              |
-+-----------------------------------+-------------------------------------------------+
-| |Coverage Status on coveralls.io| | `coveralls.io/r/jedie/PyInventory`_             |
-+-----------------------------------+-------------------------------------------------+
-| |Status on landscape.io|          | `landscape.io/github/jedie/PyInventory/master`_ |
-+-----------------------------------+-------------------------------------------------+
++---------------------------------+-----------------------------------------+
+| |Build Status on github|        | `github.com/jedie/PyInventory/actions`_ |
++---------------------------------+-----------------------------------------+
+| |Coverage Status on codecov.io| | `codecov.io/gh/jedie/PyInventory`_      |
++---------------------------------+-----------------------------------------+
 
 .. |Build Status on github| image:: https://github.com/jedie/PyInventory/workflows/test/badge.svg?branch=master
 .. _github.com/jedie/PyInventory/actions: https://github.com/jedie/PyInventory/actions
-.. |Build Status on travis-ci.org| image:: https://travis-ci.org/jedie/PyInventory.svg
-.. _travis-ci.org/jedie/PyInventory: https://travis-ci.org/jedie/PyInventory/
 .. |Coverage Status on codecov.io| image:: https://codecov.io/gh/jedie/PyInventory/branch/master/graph/badge.svg
 .. _codecov.io/gh/jedie/PyInventory: https://codecov.io/gh/jedie/PyInventory
-.. |Coverage Status on coveralls.io| image:: https://coveralls.io/repos/jedie/PyInventory/badge.svg
-.. _coveralls.io/r/jedie/PyInventory: https://coveralls.io/r/jedie/PyInventory
-.. |Status on landscape.io| image:: https://landscape.io/github/jedie/PyInventory/master/landscape.svg
-.. _landscape.io/github/jedie/PyInventory/master: https://landscape.io/github/jedie/PyInventory/master
 
 -----
 about
@@ -405,4 +393,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2020-12-29 14:20:27 with "python-creole"``
+``Note: this file is generated from README.creole 2020-12-29 14:29:22 with "python-creole"``

@@ -7,11 +7,7 @@ The project is in an early stage of development. Some things are already impleme
 Pull requests welcome!
 
 | {{https://github.com/jedie/PyInventory/workflows/test/badge.svg?branch=master|Build Status on github}} | [[https://github.com/jedie/PyInventory/actions|github.com/jedie/PyInventory/actions]] |
-| {{https://travis-ci.org/jedie/PyInventory.svg|Build Status on travis-ci.org}} | [[https://travis-ci.org/jedie/PyInventory/|travis-ci.org/jedie/PyInventory]] |
 | {{https://codecov.io/gh/jedie/PyInventory/branch/master/graph/badge.svg|Coverage Status on codecov.io}} | [[https://codecov.io/gh/jedie/PyInventory|codecov.io/gh/jedie/PyInventory]] |
-| {{https://coveralls.io/repos/jedie/PyInventory/badge.svg|Coverage Status on coveralls.io}} | [[https://coveralls.io/r/jedie/PyInventory|coveralls.io/r/jedie/PyInventory]] |
-| {{https://landscape.io/github/jedie/PyInventory/master/landscape.svg|Status on landscape.io}} | [[https://landscape.io/github/jedie/PyInventory/master|landscape.io/github/jedie/PyInventory/master]] |
-
 
 == about
 

@@ -19,15 +19,9 @@ check-poetry:
 		exit 1 ; \
 	fi
 
-install-poetry: ## install or update poetry
-	@if [[ "$(shell poetry --version 2>/dev/null)" == *"Poetry"* ]] ; \
-	then \
-		echo 'Update poetry' ; \
-		poetry self update ; \
-	else \
-		echo 'Install poetry' ; \
-		curl -sSL "https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py" | python3 ; \
-	fi
+install-poetry:  ## install or update poetry
+	pip3 install -U pip
+	pip3 install -U poetry
 
 install: check-poetry ## install PyInventory via poetry
 	poetry install

@@ -246,6 +246,8 @@ history
 
 * `compare v0.8.3...master <https://github.com/jedie/PyInventory/compare/v0.8.3...master>`_ **dev** 
 
+    * Search items in change list by "kind" and "tags", too
+
     * tbc
 
 * `v0.8.3 - 29.12.2020 <https://github.com/jedie/PyInventory/compare/v0.8.2...v0.8.3>`_ 
@@ -393,4 +395,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2020-12-29 14:29:22 with "python-creole"``
+``Note: this file is generated from README.creole 2021-01-19 19:03:51 with "python-creole"``

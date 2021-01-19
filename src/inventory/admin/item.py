@@ -92,7 +92,7 @@ class ItemModelAdmin(ImportExportMixin, BaseUserAdmin):
     ordering = ('kind', 'producer', 'name')
     list_display_links = None
     list_filter = ('kind', 'location', 'producer', 'tags')
-    search_fields = ('name', 'description')
+    search_fields = ('name', 'description', 'kind__name', 'tags__name')
     fieldsets = (
         (_('Internals'), {
             'classes': ('collapse',),

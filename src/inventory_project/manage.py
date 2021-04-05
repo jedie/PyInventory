@@ -3,17 +3,21 @@ import os
 import sys
 from pathlib import Path
 
+from django import __version__ as django_version
 
-BASE_PATH = Path(__file__).parent
+import inventory
+from inventory import __version__
+
+
+BASE_PATH = Path(inventory.__file__).parent
 
 
 def main():
-    assert 'DJANGO_SETTINGS_MODULE' in os.environ, 'No "DJANGO_SETTINGS_MODULE" in environment!'
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'inventory_project.settings.local')
 
-    # Change to /src/ and add it to sys.path
-    src_path = Path(BASE_PATH, 'src').resolve()
-    assert src_path.is_dir(), f'Path not exists: {src_path}'
-    sys.path.insert(0, str(src_path))
+    if '--version' not in sys.argv:
+        print(f'PyInventory v{__version__} (Django v{django_version})', file=sys.stderr)
+        print(f'DJANGO_SETTINGS_MODULE={os.environ["DJANGO_SETTINGS_MODULE"]!r}', file=sys.stderr)
 
     try:
         from django.core.management import execute_from_command_line
@@ -29,6 +33,14 @@ def main():
         from bx_py_utils.error_handling import print_exc_plus
         print_exc_plus(err)
         raise
+
+
+def start_test_server():
+    """
+    Entrypoint for "[tool.poetry.scripts]" script started by devshell command.
+    """
+    sys.argv = [__file__, "run_testserver"]
+    main()
 
 
 if __name__ == '__main__':

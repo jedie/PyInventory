@@ -1,41 +1,47 @@
-name: test
+# https://github.com/actions/setup-python
+
+name: Test
 
 on:
+  push:
   schedule:
     - cron: '0 8 * * *'
-  push:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    name: 'Python ${{ matrix.python-version }} on ${{ matrix.os }}'
+    runs-on: ${{ matrix.os }}
+    env:
+      PYTHONUNBUFFERED: 1
     strategy:
-      max-parallel: 2
+      fail-fast: false
       matrix:
         python-version: [3.9, 3.8, 3.7]
+        os: [ubuntu-latest] # TODO: macOS-latest, windows-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: 'Set up Python ${{ matrix.python-version }}'
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v2
       with:
         python-version: '${{ matrix.python-version }}'
 
-    - name: 'Install package'
+    - name: 'Bootstrap'
       run: |
-        pip3 install poetry
-        make install
+        python3 devshell.py quit
 
     - name: 'List installed packages'
       run: |
-        poetry run pip freeze
+        python3 devshell.py list_venv_packages
 
     - name: 'Run tests with Python v${{ matrix.python-version }}'
       run: |
-        poetry run pytest
+        python3 devshell.py pytest -vv
 
     - name: 'Upload coverage report'
+      if: matrix.os == 'ubuntu-latest'
       run: bash <(curl -s https://codecov.io/bash)
 
     - name: 'Run linters'
       if: matrix.python-version == '3.8'
       run: |
-        make lint
+        python3 devshell.py linting

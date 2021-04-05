@@ -1,6 +1,8 @@
-import shutil
 import subprocess
+import sys
 from pathlib import Path
+
+from dev_shell.utils.assertion import assert_is_file
 
 import inventory
 
@@ -9,7 +11,6 @@ BASE_PATH = Path(inventory.__file__).parent.parent.parent
 
 
 def test_lint():
-    assert Path(BASE_PATH, 'Makefile').is_file()
-    make_bin = shutil.which('make')
-    assert make_bin is not None
-    subprocess.check_call([make_bin, 'lint'], cwd=BASE_PATH)
+    dev_shell_py = BASE_PATH / 'devshell.py'
+    assert_is_file(dev_shell_py)
+    subprocess.check_call([sys.executable, str(dev_shell_py), 'linting'])

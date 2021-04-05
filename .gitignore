@@ -1,4 +1,5 @@
 .*
+!.github
 !.flake8
 !.gitignore
 !.isort.cfg

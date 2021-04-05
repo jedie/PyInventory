@@ -3,6 +3,7 @@ name = "PyInventory"
 version = "0.8.4"
 description = "Web based management to catalog things including state and location etc. using Python/Django."
 authors = ["JensDiemer <git@jensdiemer.de>"]
+homepage = "https://github.com/jedie/PyInventory"
 packages = [
     { include = "inventory", from = "src" },
     { include = "inventory_project", from = "src" },
@@ -60,11 +61,12 @@ docker = ["docker-compose"]
 postgres = ["psycopg2-binary"]
 
 [tool.poetry.dev-dependencies]
+dev_shell = "*"  # https://github.com/jedie/dev-shell
 poetry-publish = "*"  # https://github.com/jedie/poetry-publish
 python-creole = "*"  # https://github.com/jedie/python-creole
 tox = "*"
 pytest = "*"
-pytest-randomly = "*"
+pytest-randomly = "!=3.6.0"  # https://github.com/python-poetry/poetry/issues/2372#issuecomment-812558146
 pytest-cov = "*"
 pytest-django = "*"
 pytest-parallel = "*"
@@ -78,9 +80,9 @@ pyupgrade = "*"
 model_bakery = "*"  # https://github.com/model-bakers/model_bakery
 
 [tool.poetry.scripts]
-manage = "inventory_project.manage:main"
-update_rst_readme = "inventory_project.publish:update_readme"
-publish = "inventory_project.publish:publish"
+devshell = 'inventory_project.dev_shell:devshell_cmdloop'
+run_testserver = 'inventory_project.manage:start_test_server'
+
 
 [build-system]
 requires = ["poetry>=0.12"]
@@ -98,7 +100,7 @@ exclude="*/htmlcov/*,*/migrations/*,*/volumes/*"
 atomic=true
 line_length=120
 case_sensitive=false
-skip_glob=["*/htmlcov/*","*/migrations/*","*/volumes/*"]
+skip_glob=[".*", "*/htmlcov/*","*/migrations/*","*/volumes/*"]
 multi_line_output=3
 include_trailing_comma=true
 known_first_party=["inventory","inventory_project","inventory_tests"]
@@ -106,6 +108,10 @@ no_lines_before="LOCALFOLDER"
 default_section="THIRDPARTY"
 sections=["FUTURE","STDLIB","THIRDPARTY","FIRSTPARTY","LOCALFOLDER"]
 lines_after_imports=2
+
+
+[tool.coverage.run]
+omit = [".*"]
 
 
 [tool.pytest.ini_options]

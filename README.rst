@@ -216,17 +216,21 @@ Files are separated into: "/src/" and "/development/"
 history
 -------
 
-* `compare v0.8.4...master <https://github.com/jedie/PyInventory/compare/v0.8.4...master>`_ **dev**
+* `compare v0.9.0...master <https://github.com/jedie/PyInventory/compare/v0.9.0...master>`_ **dev** 
 
     * tbc
 
-* `v0.8.4 - 19.01.2021 <https://github.com/jedie/PyInventory/compare/v0.8.3...v0.8.4>`_
+* `v0.9.0 - 11.04.2021 <https://github.com/jedie/PyInventory/compare/v0.8.4...v0.9.0>`_ 
+
+    * Use `https://github.com/jedie/dev-shell <https://github.com/jedie/dev-shell>`_ for development
+
+* `v0.8.4 - 19.01.2021 <https://github.com/jedie/PyInventory/compare/v0.8.3...v0.8.4>`_ 
 
     * Search items in change list by "kind" and "tags", too
 
     * update requirements
 
-* `v0.8.3 - 29.12.2020 <https://github.com/jedie/PyInventory/compare/v0.8.2...v0.8.3>`_
+* `v0.8.3 - 29.12.2020 <https://github.com/jedie/PyInventory/compare/v0.8.2...v0.8.3>`_ 
 
     * update requirements
 
@@ -234,11 +238,11 @@ history
 
     * Small project setup changes
 
-* `v0.8.2 - 20.12.2020 <https://github.com/jedie/PyInventory/compare/v0.8.1...v0.8.2>`_
+* `v0.8.2 - 20.12.2020 <https://github.com/jedie/PyInventory/compare/v0.8.1...v0.8.2>`_ 
 
     * Bugfix `#33 <https://github.com/jedie/PyInventory/issues/33>`_: Upload images to new created Items
 
-* `v0.8.1 - 09.12.2020 <https://github.com/jedie/PyInventory/compare/v0.8.0...v0.8.1>`_
+* `v0.8.1 - 09.12.2020 <https://github.com/jedie/PyInventory/compare/v0.8.0...v0.8.1>`_ 
 
     * Fix migration: Don't create "/media/migrate.log" if there is nothing to migrate
 
@@ -248,11 +252,11 @@ history
 
     * update requirements
 
-* `v0.8.0 - 06.12.2020 <https://github.com/jedie/PyInventory/compare/v0.7.0...v0.8.0>`_
+* `v0.8.0 - 06.12.2020 <https://github.com/jedie/PyInventory/compare/v0.7.0...v0.8.0>`_ 
 
     * Outsource the "MEDIA file serve" part into `django.tools.serve_media_app <https://github.com/jedie/django-tools/tree/master/django_tools/serve_media_app#readme>`_
 
-* `v0.7.0 - 23.11.2020 <https://github.com/jedie/PyInventory/compare/v0.6.0...v0.7.0>`_
+* `v0.7.0 - 23.11.2020 <https://github.com/jedie/PyInventory/compare/v0.6.0...v0.7.0>`_ 
 
     * Change deployment setup:
 
@@ -266,15 +270,15 @@ history
 
         * pull all docker images before build
 
-* `v0.6.0 - 15.11.2020 <https://github.com/jedie/PyInventory/compare/v0.5.0...v0.6.0>`_
+* `v0.6.0 - 15.11.2020 <https://github.com/jedie/PyInventory/compare/v0.5.0...v0.6.0>`_ 
 
     * User can store images to every item: The image can only be accessed by the same user.
 
-* `v0.5.0 - 14.11.2020 <https://github.com/jedie/PyInventory/compare/v0.4.2...v0.5.0>`_
+* `v0.5.0 - 14.11.2020 <https://github.com/jedie/PyInventory/compare/v0.4.2...v0.5.0>`_ 
 
     * Merge separate git branches into one: "/src/" and "/development/" `#19 <https://github.com/jedie/PyInventory/issues/19>`_
 
-* `v0.4.2 - 13.11.2020 <https://github.com/jedie/PyInventory/compare/v0.4.1...v0.4.2>`_
+* `v0.4.2 - 13.11.2020 <https://github.com/jedie/PyInventory/compare/v0.4.1...v0.4.2>`_ 
 
     * Serve static files by Caddy
 
@@ -282,11 +286,11 @@ history
 
     * reduce CKEditor plugins
 
-* `v0.4.1 - 2.11.2020 <https://github.com/jedie/PyInventory/compare/v0.4.0...v0.4.1>`_
+* `v0.4.1 - 2.11.2020 <https://github.com/jedie/PyInventory/compare/v0.4.0...v0.4.1>`_ 
 
     * Small bugfixes
 
-* `v0.4.0 - 1.11.2020 <https://github.com/jedie/PyInventory/compare/v0.3.2...v0.4.0>`_
+* `v0.4.0 - 1.11.2020 <https://github.com/jedie/PyInventory/compare/v0.3.2...v0.4.0>`_ 
 
     * Move docker stuff and production use information into separate git branch
 
@@ -294,11 +298,11 @@ history
 
     * Add django-processinfo: collect information about the running server processes
 
-* `v0.3.2 - 26.10.2020 <https://github.com/jedie/PyInventory/compare/v0.3.0...v0.3.2>`_
+* `v0.3.2 - 26.10.2020 <https://github.com/jedie/PyInventory/compare/v0.3.0...v0.3.2>`_ 
 
     * Bugfix missing translations
 
-* `v0.3.0 - 26.10.2020 <https://github.com/jedie/PyInventory/compare/v0.2.0...v0.3.0>`_
+* `v0.3.0 - 26.10.2020 <https://github.com/jedie/PyInventory/compare/v0.2.0...v0.3.0>`_ 
 
     * setup production usage:
 
@@ -316,7 +320,7 @@ history
 
     * Bugfix for using manage commands ``dumpdata`` and ``loaddata``
 
-* `v0.2.0 - 24.10.2020 <https://github.com/jedie/PyInventory/compare/v0.1.0...v0.2.0>`_
+* `v0.2.0 - 24.10.2020 <https://github.com/jedie/PyInventory/compare/v0.1.0...v0.2.0>`_ 
 
     * Simplify item change list by nested item
 
@@ -328,7 +332,7 @@ history
 
     * Add docker-compose usage
 
-* `v0.1.0 - 17.10.2020 <https://github.com/jedie/PyInventory/compare/v0.0.1...v0.1.0>`_
+* `v0.1.0 - 17.10.2020 <https://github.com/jedie/PyInventory/compare/v0.0.1...v0.1.0>`_ 
 
     * Enhance models, admin and finish project setup
 
@@ -371,4 +375,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2021-04-05 20:00:43 with "python-creole"``
+``Note: this file is generated from README.creole 2021-04-11 15:57:00 with "python-creole"``

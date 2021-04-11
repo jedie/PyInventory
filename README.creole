@@ -154,8 +154,10 @@ Files are separated into: "/src/" and "/development/"
 
 == history
 
-* [[https://github.com/jedie/PyInventory/compare/v0.8.4...master|compare v0.8.4...master]] **dev**
+* [[https://github.com/jedie/PyInventory/compare/v0.9.0...master|compare v0.9.0...master]] **dev**
 ** tbc
+* [[https://github.com/jedie/PyInventory/compare/v0.8.4...v0.9.0|v0.9.0 - 11.04.2021]]
+** Use https://github.com/jedie/dev-shell for development
 * [[https://github.com/jedie/PyInventory/compare/v0.8.3...v0.8.4|v0.8.4 - 19.01.2021]]
 ** Search items in change list by "kind" and "tags", too
 ** update requirements

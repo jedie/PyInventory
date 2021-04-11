@@ -178,20 +178,6 @@ class DevShellCommandSet(OriginDevShellCommandSet):
             creole_readme=True  # don't publish if README.rst is not up-to-date
         )
 
-    def do_linting(self, statement: cmd2.Statement):
-        """
-        Linting: Check code style with flake8, isort and flynt
-        """
-        verbose_check_call('flake8', exit_on_error=True)
-        verbose_check_call(
-            'isort', '--check-only', '.',
-            exit_on_error=True
-        )
-        verbose_check_call(
-            'flynt', '--fail-on-change', '--line_length=119', 'src',
-            exit_on_error=True
-        )
-
 
 class DevShellApp(DevShellBaseApp):
     pass

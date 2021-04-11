@@ -38,13 +38,14 @@ else:
     BIN_NAME = 'bin'
     FILE_EXT = ''
 
-VENV_PATH = Path('.venv')
+BASE_PATH = Path(__file__).parent
+VENV_PATH = BASE_PATH / '.venv'
 BIN_PATH = VENV_PATH / BIN_NAME
-PYTHON_PATH = BIN_PATH / f'python3{FILE_EXT}'
+PYTHON_PATH = BIN_PATH / f'python{FILE_EXT}'
 PIP_PATH = BIN_PATH / f'pip{FILE_EXT}'
 POETRY_PATH = BIN_PATH / f'poetry{FILE_EXT}'
 
-DEP_LOCK_PATH = Path('poetry.lock')
+DEP_LOCK_PATH = BASE_PATH / 'poetry.lock'
 DEP_HASH_PATH = VENV_PATH / '.dep_hash'
 
 # script file defined in pyproject.toml as [tool.poetry.scripts]
@@ -114,7 +115,7 @@ def main(argv):
     # install/update "pip" and "poetry":
     if not POETRY_PATH.is_file() or force_update:
         # Note: Under Windows pip.exe can't replace this own .exe file, so use the module way:
-        verbose_check_call(PYTHON_PATH, '-m', 'pip', 'install', '-U', 'pip')
+        verbose_check_call(PYTHON_PATH, '-m', 'pip', 'install', '-U', 'pip', 'setuptools')
         verbose_check_call(PIP_PATH, 'install', 'poetry')
 
     # install via poetry, if:

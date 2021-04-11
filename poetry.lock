@@ -220,7 +220,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
 name = "dev-shell"
-version = "0.1.0"
+version = "0.2.0"
 description = "Devloper shell for easy startup..."
 category = "dev"
 optional = false
@@ -256,7 +256,7 @@ python-versions = "*"
 
 [[package]]
 name = "django"
-version = "2.2.19"
+version = "2.2.20"
 description = "A high-level Python Web framework that encourages rapid development and clean, pragmatic design."
 category = "main"
 optional = false
@@ -283,7 +283,7 @@ Django = ">=1.8,<3.2"
 
 [[package]]
 name = "django-axes"
-version = "5.13.1"
+version = "5.14.0"
 description = "Keep track of failed login attempts in Django-powered sites."
 category = "main"
 optional = false
@@ -424,26 +424,25 @@ pprintpp = "*"
 
 [[package]]
 name = "docker"
-version = "4.4.4"
+version = "5.0.0"
 description = "A Python library for the Docker Engine API."
 category = "main"
 optional = true
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+python-versions = ">=3.6"
 
 [package.dependencies]
 paramiko = {version = ">=2.4.2", optional = true, markers = "extra == \"ssh\""}
 pywin32 = {version = "227", markers = "sys_platform == \"win32\""}
 requests = ">=2.14.2,<2.18.0 || >2.18.0"
-six = ">=1.4.0"
 websocket-client = ">=0.32.0"
 
 [package.extras]
 ssh = ["paramiko (>=2.4.2)"]
-tls = ["pyOpenSSL (>=17.5.0)", "cryptography (>=1.3.4)", "idna (>=2.0.0)"]
+tls = ["pyOpenSSL (>=17.5.0)", "cryptography (>=3.4.7)", "idna (>=2.0.0)"]
 
 [[package]]
 name = "docker-compose"
-version = "1.28.6"
+version = "1.29.0"
 description = "Multi-container orchestration for Docker"
 category = "main"
 optional = true
@@ -453,7 +452,7 @@ python-versions = ">=3.4"
 cached-property = {version = ">=1.2.0,<2", markers = "python_version < \"3.8\""}
 colorama = {version = ">=0.4,<1", markers = "sys_platform == \"win32\""}
 distro = ">=1.5.0,<2"
-docker = {version = ">=4.4.4,<5", extras = ["ssh"]}
+docker = {version = ">=5", extras = ["ssh"]}
 dockerpty = ">=0.4.1,<1"
 docopt = ">=0.6.1,<1"
 jsonschema = ">=2.5.1,<4"
@@ -932,7 +931,7 @@ testing = ["fields", "hunter", "process-tests (==2.0.2)", "six", "pytest-xdist",
 
 [[package]]
 name = "pytest-django"
-version = "4.1.0"
+version = "4.2.0"
 description = "A Django plugin for pytest."
 category = "dev"
 optional = false
@@ -959,14 +958,14 @@ tblib = "*"
 
 [[package]]
 name = "pytest-randomly"
-version = "3.5.0"
+version = "3.7.0"
 description = "Pytest plugin to randomly order tests and control random.seed."
 category = "dev"
 optional = false
-python-versions = ">=3.5"
+python-versions = ">=3.6"
 
 [package.dependencies]
-importlib-metadata = {version = "*", markers = "python_version < \"3.8\""}
+importlib-metadata = {version = ">=3.6.0", markers = "python_version < \"3.10\""}
 pytest = "*"
 
 [[package]]
@@ -1014,7 +1013,7 @@ python-versions = "*"
 
 [[package]]
 name = "pyupgrade"
-version = "2.11.0"
+version = "2.12.0"
 description = "A tool to automatically upgrade syntax for newer versions."
 category = "dev"
 optional = false
@@ -1226,7 +1225,7 @@ testing = ["flaky (>=3.4.0)", "freezegun (>=0.3.11)", "psutil (>=5.6.1)", "pytes
 
 [[package]]
 name = "tqdm"
-version = "4.59.0"
+version = "4.60.0"
 description = "Fast, Extensible Progress Meter"
 category = "dev"
 optional = false
@@ -1543,8 +1542,8 @@ defusedxml = [
     {file = "defusedxml-0.7.1.tar.gz", hash = "sha256:1bb3032db185915b62d7c6209c5a8792be6a32ab2fedacc84e01b52c51aa3e69"},
 ]
 dev-shell = [
-    {file = "dev-shell-0.1.0.tar.gz", hash = "sha256:fa39867f90e0372990f8b25197f36d234e76bd008c3a9bc8988151009c35ba7b"},
-    {file = "dev_shell-0.1.0-py3-none-any.whl", hash = "sha256:240fec62f93116178a9dbf2b68eb2bd5040eea16d341cc7490bfc21da67f5a8c"},
+    {file = "dev-shell-0.2.0.tar.gz", hash = "sha256:a200fc8a7ea65feb111126afb73a3d7a279aa782d41a21997694c9a3b3d784be"},
+    {file = "dev_shell-0.2.0-py3-none-any.whl", hash = "sha256:7628b0d60d803a9be49be8e1bfbcdb50832a95d74b606dc418d7c3e4277f445b"},
 ]
 diff-match-patch = [
     {file = "diff-match-patch-20200713.tar.gz", hash = "sha256:da6f5a01aa586df23dfc89f3827e1cafbb5420be9d87769eeb079ddfd9477a18"},
@@ -1559,16 +1558,16 @@ distro = [
     {file = "distro-1.5.0.tar.gz", hash = "sha256:0e58756ae38fbd8fc3020d54badb8eae17c5b9dcbed388b17bb55b8a5928df92"},
 ]
 django = [
-    {file = "Django-2.2.19-py3-none-any.whl", hash = "sha256:e319a7164d6d30cb177b3fd74d02c52f1185c37304057bb76d74047889c605d9"},
-    {file = "Django-2.2.19.tar.gz", hash = "sha256:30c235dec87e05667597e339f194c9fed6c855bda637266ceee891bf9093da43"},
+    {file = "Django-2.2.20-py3-none-any.whl", hash = "sha256:2484f115891ab1a0e9ae153602a641fbc15d7894c036d79fb78662c0965d7954"},
+    {file = "Django-2.2.20.tar.gz", hash = "sha256:2569f9dc5f8e458a5e988b03d6b7a02bda59b006d6782f4ea0fd590ed7336a64"},
 ]
 django-admin-sortable2 = [
     {file = "django-admin-sortable2-0.7.8.tar.gz", hash = "sha256:d523388976c9254f130375cb16c636369e89a5fd1db7a025253aeb497ce6018e"},
     {file = "django_admin_sortable2-0.7.8-py3-none-any.whl", hash = "sha256:b51a161b6dc69aedcba3c216df4aef58d54f389d0c4d2c720f59cf2d3f594c00"},
 ]
 django-axes = [
-    {file = "django-axes-5.13.1.tar.gz", hash = "sha256:8f7870dc18ace6155127073bffe7276719c71c5ad4e67b45abedc0207f64a2f6"},
-    {file = "django_axes-5.13.1-py3-none-any.whl", hash = "sha256:aef814f738742b01cc7730cd2bebe3e5b462b807fd6c2ed609b62437ccc71f80"},
+    {file = "django-axes-5.14.0.tar.gz", hash = "sha256:30e60f980c9168eff3e4ae4b33d2a05d7f36868aa0a82a3d5ac74577be57fa56"},
+    {file = "django_axes-5.14.0-py3-none-any.whl", hash = "sha256:70711f31e1d9eb319950063b25f80417f9d7ce1bd6e25438da885c5b1a48a365"},
 ]
 django-ckeditor = [
     {file = "django-ckeditor-6.0.0.tar.gz", hash = "sha256:29fd1a333cb9741ac2c3fd4e427a5c00115ed33a2389716a09af7656022dcdde"},
@@ -1613,12 +1612,12 @@ django-tools = [
     {file = "django_tools-0.48.3-py3-none-any.whl", hash = "sha256:40444fa16b703b7c6960a800ba76aad42472c9aa70040d549a4d91dbb47a5ddb"},
 ]
 docker = [
-    {file = "docker-4.4.4-py2.py3-none-any.whl", hash = "sha256:f3607d5695be025fa405a12aca2e5df702a57db63790c73b927eb6a94aac60af"},
-    {file = "docker-4.4.4.tar.gz", hash = "sha256:d3393c878f575d3a9ca3b94471a3c89a6d960b35feb92f033c0de36cc9d934db"},
+    {file = "docker-5.0.0-py2.py3-none-any.whl", hash = "sha256:fc961d622160e8021c10d1bcabc388c57d55fb1f917175afbe24af442e6879bd"},
+    {file = "docker-5.0.0.tar.gz", hash = "sha256:3e8bc47534e0ca9331d72c32f2881bb13b93ded0bcdeab3c833fb7cf61c0a9a5"},
 ]
 docker-compose = [
-    {file = "docker-compose-1.28.6.tar.gz", hash = "sha256:1d44906f7ab738ba2d1785130ed31b16111eee6dc5a1dbd7252091dae48c5281"},
-    {file = "docker_compose-1.28.6-py2.py3-none-any.whl", hash = "sha256:f757ac7bbff985dd9f957a9b935dc8e5960456d6291a6e5fc1ec4cf1747a1d01"},
+    {file = "docker-compose-1.29.0.tar.gz", hash = "sha256:7f3ac832111b55bf1385ccae8b136dc4cbec04a00cf3191b3d0517003324bfc1"},
+    {file = "docker_compose-1.29.0-py2.py3-none-any.whl", hash = "sha256:4c62f5a381c11a4db1eeb1424039e49c785ed943bf4219f2de00a0b477e13069"},
 ]
 dockerpty = [
     {file = "dockerpty-0.4.1.tar.gz", hash = "sha256:69a9d69d573a0daa31bcd1c0774eeed5c15c295fe719c61aca550ed1393156ce"},
@@ -1876,16 +1875,16 @@ pytest-cov = [
     {file = "pytest_cov-2.11.1-py2.py3-none-any.whl", hash = "sha256:bdb9fdb0b85a7cc825269a4c56b48ccaa5c7e365054b6038772c32ddcdc969da"},
 ]
 pytest-django = [
-    {file = "pytest-django-4.1.0.tar.gz", hash = "sha256:26f02c16d36fd4c8672390deebe3413678d89f30720c16efb8b2a6bf63b9041f"},
-    {file = "pytest_django-4.1.0-py3-none-any.whl", hash = "sha256:10e384e6b8912ded92db64c58be8139d9ae23fb8361e5fc139d8e4f8fc601bc2"},
+    {file = "pytest-django-4.2.0.tar.gz", hash = "sha256:80f8875226ec4dc0b205f0578072034563879d98d9b1bec143a80b9045716cb0"},
+    {file = "pytest_django-4.2.0-py3-none-any.whl", hash = "sha256:a51150d8962200250e850c6adcab670779b9c2aa07271471059d1fb92a843fa9"},
 ]
 pytest-parallel = [
     {file = "pytest-parallel-0.1.0.tar.gz", hash = "sha256:4663a8fb805ac98b51e51de84d35ffd9717017fb71ed270440dc94b862466c20"},
     {file = "pytest_parallel-0.1.0-py3-none-any.whl", hash = "sha256:10693161e350b59466ca331bad964073555cda114cc0499bd826deeceee512ed"},
 ]
 pytest-randomly = [
-    {file = "pytest-randomly-3.5.0.tar.gz", hash = "sha256:440cec143fd9b0adeb072006c71e0294402a2bc2ccd08079c2341087ba4cf2d1"},
-    {file = "pytest_randomly-3.5.0-py3-none-any.whl", hash = "sha256:9db10d160237f3f8ee60cef72e4cb9ea88d2893c9dd5c8aa334b060cdeb67c3a"},
+    {file = "pytest-randomly-3.7.0.tar.gz", hash = "sha256:89a4f98aed1753c447a3927b66571a796e53cdecbf671e7318f6c57d79c7f6a3"},
+    {file = "pytest_randomly-3.7.0-py3-none-any.whl", hash = "sha256:cd68c1da7d152509f59fec725f5314437727937fad31a50028693269c9261d90"},
 ]
 python-creole = [
     {file = "python-creole-1.4.9.tar.gz", hash = "sha256:2d0e01229c12a6ba769d6d12f200af81127c2696cfb2f9627cd001755e77ab85"},
@@ -1904,8 +1903,8 @@ pytz = [
     {file = "pytz-2021.1.tar.gz", hash = "sha256:83a4a90894bf38e243cf052c8b58f381bfe9a7a483f6a9cab140bc7f702ac4da"},
 ]
 pyupgrade = [
-    {file = "pyupgrade-2.11.0-py2.py3-none-any.whl", hash = "sha256:47cd92db1675a9043bebbe0b67a103b66527883b35e22634060a6bcb99138baa"},
-    {file = "pyupgrade-2.11.0.tar.gz", hash = "sha256:5dcae14b1c9b7ecce5ec42210528eb30a1a2408613da744f2ba4a9b54b344cf6"},
+    {file = "pyupgrade-2.12.0-py2.py3-none-any.whl", hash = "sha256:024fc6be99c2ccdbc1c9354ac0ab8d5b9e5bf69a5477384677b6c9d8f2ce63bf"},
+    {file = "pyupgrade-2.12.0.tar.gz", hash = "sha256:eef4d77e44e57dfbae897a9a61543be1f34701dbbe51cc18462210021bd28dcf"},
 ]
 pywin32 = [
     {file = "pywin32-227-cp27-cp27m-win32.whl", hash = "sha256:371fcc39416d736401f0274dd64c2302728c9e034808e37381b5e1b22be4a6b0"},
@@ -2005,8 +2004,8 @@ tox = [
     {file = "tox-3.23.0.tar.gz", hash = "sha256:05a4dbd5e4d3d8269b72b55600f0b0303e2eb47ad5c6fe76d3576f4c58d93661"},
 ]
 tqdm = [
-    {file = "tqdm-4.59.0-py2.py3-none-any.whl", hash = "sha256:9fdf349068d047d4cfbe24862c425883af1db29bcddf4b0eeb2524f6fbdb23c7"},
-    {file = "tqdm-4.59.0.tar.gz", hash = "sha256:d666ae29164da3e517fcf125e41d4fe96e5bb375cd87ff9763f6b38b5592fe33"},
+    {file = "tqdm-4.60.0-py2.py3-none-any.whl", hash = "sha256:daec693491c52e9498632dfbe9ccfc4882a557f5fa08982db1b4d3adbe0887c3"},
+    {file = "tqdm-4.60.0.tar.gz", hash = "sha256:ebdebdb95e3477ceea267decfc0784859aa3df3e27e22d23b83e9b272bf157ae"},
 ]
 twine = [
     {file = "twine-3.4.1-py3-none-any.whl", hash = "sha256:16f706f2f1687d7ce30e7effceee40ed0a09b7c33b9abb5ef6434e5551565d83"},

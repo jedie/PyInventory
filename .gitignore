@@ -12,8 +12,8 @@
 !/backups/.gitkeep
 
 # from test projects:
-/static/
-/media/
+**/static/*
+**/media/*
 *.sqlite3
 
 

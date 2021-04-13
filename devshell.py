@@ -5,6 +5,12 @@
     ~~~~~~~~~~~~~~~
 
     Just call this file, and the magic happens ;)
+
+    This file is from: https://pypi.org/project/dev-shell/
+    Source: https://github.com/jedie/dev-shell/blob/main/devshell.py
+
+    :copyleft: 2021 by Jens Diemer
+    :license: GNU GPL v3 or above
 """
 
 import argparse
@@ -30,11 +36,11 @@ assert sys.version_info >= (3, 7), 'Python version is too old!'
 
 
 if sys.platform == 'win32':  # wtf
-    # Files under Windows, e.g.: .../.venv/Scripts/python3.exe
+    # Files under Windows, e.g.: .../.venv/Scripts/python.exe
     BIN_NAME = 'Scripts'
     FILE_EXT = '.exe'
 else:
-    # Files under Linux/Mac and all other than Windows, e.g.: .../.venv/bin/python3
+    # Files under Linux/Mac and all other than Windows, e.g.: .../.venv/bin/python
     BIN_NAME = 'bin'
     FILE_EXT = ''
 
@@ -84,6 +90,8 @@ def noop_signal_handler(signal_num, frame):
 
 
 def main(argv):
+    assert DEP_LOCK_PATH.is_file(), f'File not found: "{DEP_LOCK_PATH}" !'
+
     if len(argv) == 2 and argv[1] in ('--update', '--help'):
         parser = argparse.ArgumentParser(
             prog=Path(__file__).name,

@@ -61,12 +61,12 @@ docker = ["docker-compose"]
 postgres = ["psycopg2-binary"]
 
 [tool.poetry.dev-dependencies]
-dev_shell = "*"  # https://github.com/jedie/dev-shell
+dev_shell = ">=0.2.2"  # https://github.com/jedie/dev-shell
 poetry-publish = "*"  # https://github.com/jedie/poetry-publish
 python-creole = "*"  # https://github.com/jedie/python-creole
 tox = "*"
 pytest = "*"
-pytest-randomly = "!=3.6.0"  # https://github.com/python-poetry/poetry/issues/2372#issuecomment-812558146
+pytest-randomly = "*"
 pytest-cov = "*"
 pytest-django = "*"
 pytest-parallel = "*"

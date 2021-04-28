@@ -64,6 +64,7 @@ postgres = ["psycopg2-binary"]
 dev_shell = ">=0.2.2"  # https://github.com/jedie/dev-shell
 poetry-publish = "*"  # https://github.com/jedie/poetry-publish
 python-creole = "*"  # https://github.com/jedie/python-creole
+cmd2_ext_test = "*"
 tox = "*"
 pytest = "*"
 pytest-randomly = "*"

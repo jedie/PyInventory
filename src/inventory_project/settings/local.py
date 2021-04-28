@@ -2,8 +2,6 @@
 
 """
     Django settings for local development
-
-
 """
 
 import sys as __sys
@@ -38,10 +36,20 @@ DATABASES = {
 print(f'Use Database: {DATABASES["default"]["NAME"]!r}', file=__sys.stderr)
 
 # _____________________________________________________________________________
+# AlwaysLoggedInAsSuperUser
+
+DEFAULT_USERNAME = 'local-test-superuser'
+DEFAULT_USERPASS = 'test'
+DEFAULT_USEREMAIL = 'nobody@local.intranet'
+
+MIDDLEWARE = MIDDLEWARE.copy()
+MIDDLEWARE.append('inventory_project.tests.middleware.AlwaysLoggedInAsSuperUser')
+
+# _____________________________________________________________________________
 # Django-Debug-Toolbar
 
 INSTALLED_APPS += ['debug_toolbar']
-MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
+MIDDLEWARE.append('debug_toolbar.middleware.DebugToolbarMiddleware')
 
 DEBUG_TOOLBAR_PATCH_SETTINGS = True
 from debug_toolbar.settings import CONFIG_DEFAULTS as DEBUG_TOOLBAR_CONFIG  # noqa

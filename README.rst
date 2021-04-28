@@ -216,7 +216,9 @@ Files are separated into: "/src/" and "/development/"
 history
 -------
 
-* `compare v0.9.0...master <https://github.com/jedie/PyInventory/compare/v0.9.0...master>`_ **dev** 
+* `compare v0.9.0...master <https://github.com/jedie/PyInventory/compare/v0.9.0...master>`_ **dev**
+
+* Add a auto login if Django dev. server is used.
 
     * tbc
 
@@ -375,4 +377,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2021-04-11 15:57:00 with "python-creole"``
+``Note: this file is generated from README.creole 2021-04-28 16:53:58 with "python-creole"``

@@ -23,7 +23,7 @@ Plan:
 * You should be able to add the following to the items:
 ** Storage location
 ** State
-** Pictures
+** Pictures and Files
 ** URLs
 ** receiving and delivering (when, from whom, at what price, etc.)
 ** Information: Publicly visible yes/no
@@ -154,10 +154,11 @@ Files are separated into: "/src/" and "/development/"
 
 == history
 
-* [[https://github.com/jedie/PyInventory/compare/v0.9.0...master|compare v0.9.0...master]] **dev**
-* NEW: It's not possible to upload file(s) to item.
-* Add a auto login if Django dev. server is used.
+* [[https://github.com/jedie/PyInventory/compare/v0.9.1...master|compare v0.9.1...master]] **dev**
 ** tbc
+* [[https://github.com/jedie/PyInventory/compare/v0.9.0...v0.9.1|v0.9.1 - 28.04.2021]]
+* NEW: Besides images, it's now possible to add file(s) to items, too.
+* Add a auto login if Django dev. server is used.
 * [[https://github.com/jedie/PyInventory/compare/v0.8.4...v0.9.0|v0.9.0 - 11.04.2021]]
 ** Use https://github.com/jedie/dev-shell for development
 * [[https://github.com/jedie/PyInventory/compare/v0.8.3...v0.8.4|v0.8.4 - 19.01.2021]]

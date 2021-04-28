@@ -43,7 +43,7 @@ Plan:
 
     * State
 
-    * Pictures
+    * Pictures and Files
 
     * URLs
 
@@ -216,13 +216,15 @@ Files are separated into: "/src/" and "/development/"
 history
 -------
 
-* `compare v0.9.0...master <https://github.com/jedie/PyInventory/compare/v0.9.0...master>`_ **dev**
-
-* NEW: It's not possible to upload file(s) to item.
-
-* Add a auto login if Django dev. server is used.
+* `compare v0.9.1...master <https://github.com/jedie/PyInventory/compare/v0.9.1...master>`_ **dev** 
 
     * tbc
+
+* `v0.9.1 - 28.04.2021 <https://github.com/jedie/PyInventory/compare/v0.9.0...v0.9.1>`_
+
+* NEW: Besides images, it's now possible to add file(s) to items, too.
+
+* Add a auto login if Django dev. server is used.
 
 * `v0.9.0 - 11.04.2021 <https://github.com/jedie/PyInventory/compare/v0.8.4...v0.9.0>`_ 
 
@@ -379,4 +381,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2021-04-28 19:03:46 with "python-creole"``
+``Note: this file is generated from README.creole 2021-04-28 19:37:29 with "python-creole"``

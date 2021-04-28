@@ -9,7 +9,7 @@ from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 from django_tools.serve_media_app.models import user_directory_path
 
-from inventory.models.base import BaseModel
+from inventory.models.base import BaseItemAttachmentModel, BaseModel
 from inventory.models.links import BaseLink
 
 
@@ -177,45 +177,55 @@ class ItemLinkModel(BaseLink):
         ordering = ('position',)
 
 
-class ItemImageModel(BaseModel):
+class ItemImageModel(BaseItemAttachmentModel):
     """
-    Store Images to Items
+    Store images to Items
     """
     image = models.ImageField(
         upload_to=user_directory_path,
         verbose_name=_('ItemImageModel.image.verbose_name'),
         help_text=_('ItemImageModel.image.help_text')
     )
-    name = models.CharField(
-        null=True, blank=True,
-        max_length=255,
-        verbose_name=_('ItemImageModel.name.verbose_name'),
-        help_text=_('ItemImageModel.name.help_text')
-    )
-    item = models.ForeignKey(
-        ItemModel, on_delete=models.CASCADE
-    )
-    position = models.PositiveSmallIntegerField(
-        # Note: Will be set in admin via adminsortable2
-        # The JavaScript which performs the sorting is 1-indexed !
-        default=0, blank=False, null=False
-    )
 
     def __str__(self):
         return self.name or self.image.name
 
     def full_clean(self, **kwargs):
+        # Set name by image filename:
         if not self.name:
             filename = Path(self.image.name).name
             self.name = clean_filename(filename)
-
-        if self.user_id is None:
-            # inherit owner of this link from item instance
-            self.user_id = self.item.user_id
 
         return super().full_clean(**kwargs)
 
     class Meta:
         verbose_name = _('ItemImageModel.verbose_name')
         verbose_name_plural = _('ItemImageModel.verbose_name_plural')
+        ordering = ('position',)
+
+
+class ItemFileModel(BaseItemAttachmentModel):
+    """
+    Store files to Items
+    """
+    file = models.FileField(
+        upload_to=user_directory_path,
+        verbose_name=_('ItemFileModel.file.verbose_name'),
+        help_text=_('ItemFileModel.file.help_text')
+    )
+
+    def __str__(self):
+        return self.name or self.file.name
+
+    def full_clean(self, **kwargs):
+        # Set name by filename:
+        if not self.name:
+            filename = Path(self.file.name).name
+            self.name = clean_filename(filename)
+
+        return super().full_clean(**kwargs)
+
+    class Meta:
+        verbose_name = _('ItemFileModel.verbose_name')
+        verbose_name_plural = _('ItemFileModel.verbose_name_plural')
         ordering = ('position',)

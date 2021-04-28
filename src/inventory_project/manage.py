@@ -12,10 +12,10 @@ from inventory import __version__
 BASE_PATH = Path(inventory.__file__).parent
 
 
-def main():
+def main(argv):
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'inventory_project.settings.local')
 
-    if '--version' not in sys.argv:
+    if '--version' not in argv:
         print(f'PyInventory v{__version__} (Django v{django_version})', file=sys.stderr)
         print(f'DJANGO_SETTINGS_MODULE={os.environ["DJANGO_SETTINGS_MODULE"]!r}', file=sys.stderr)
 
@@ -28,7 +28,7 @@ def main():
             'forget to activate a virtual environment?'
         ) from exc
     try:
-        execute_from_command_line(sys.argv)
+        execute_from_command_line(argv)
     except Exception as err:
         from bx_py_utils.error_handling import print_exc_plus
         print_exc_plus(err)
@@ -39,9 +39,8 @@ def start_test_server():
     """
     Entrypoint for "[tool.poetry.scripts]" script started by devshell command.
     """
-    sys.argv = [__file__, "run_testserver"]
-    main()
+    main(argv=[__file__, "run_testserver"])
 
 
 if __name__ == '__main__':
-    main()
+    main(argv=sys.argv)

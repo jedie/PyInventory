@@ -146,6 +146,21 @@ dev = ["pytest (>=4.6)", "codecov", "pytest-cov", "pytest-mock", "flake8", "sphi
 test = ["codecov", "coverage", "pytest (>=4.6)", "pytest-cov", "pytest-mock", "mock", "gnureadline"]
 
 [[package]]
+name = "cmd2-ext-test"
+version = "0.2.0"
+description = "External test plugin for cmd2. Allows for external invocation of commands as if from a cmd2 pyscript"
+category = "dev"
+optional = false
+python-versions = ">=3.5"
+
+[package.dependencies]
+cmd2 = ">=0.9.4,<=2"
+
+[package.extras]
+dev = ["codecov", "invoke", "pylint", "pytest", "pytest-cov", "setuptools-scm", "twine", "wheel"]
+test = ["codecov", "coverage", "pytest", "pytest-cov"]
+
+[[package]]
 name = "colorama"
 version = "0.4.4"
 description = "Cross-platform colored terminal text."
@@ -1362,7 +1377,7 @@ postgres = ["psycopg2-binary"]
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7,<4.0.0"
-content-hash = "8d8786dc29411ab6dabaeeb1105cd3a1c96c5549dedb9e7c00acd840c26095d4"
+content-hash = "3e215321bf862597e821a9949122dc5c5e2b1f88a0fc2ffcc7eb2f833c37f39e"
 
 [metadata.files]
 appdirs = [
@@ -1456,6 +1471,10 @@ chardet = [
 cmd2 = [
     {file = "cmd2-1.5.0-py3-none-any.whl", hash = "sha256:31aaeb590ec7bd2cc2cee0172099cc6f0a1396f82ab7bc389dbff23d9b90f6ec"},
     {file = "cmd2-1.5.0.tar.gz", hash = "sha256:701a8c9975c4abc45e5d13906ab149f959f812869106347323a3f89ac0e82a62"},
+]
+cmd2-ext-test = [
+    {file = "cmd2-ext-test-0.2.0.tar.gz", hash = "sha256:76c66fa914b9fdf9f5e9b4adb81783ffca925dc223dd40e8cb7bc01d13c49c47"},
+    {file = "cmd2_ext_test-0.2.0-py3-none-any.whl", hash = "sha256:20593396e6b67f1342e8498f61548712bcf6d5d4b03fb3acc2f00b2c15b001b0"},
 ]
 colorama = [
     {file = "colorama-0.4.4-py2.py3-none-any.whl", hash = "sha256:9f47eda37229f68eee03b24b9748937c7dc3868f906e8ba69fbcbdd3bc5dc3e2"},

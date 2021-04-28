@@ -1,3 +1,4 @@
+import os
 import sys
 from pathlib import Path
 
@@ -9,18 +10,44 @@ from dev_shell.command_sets.dev_shell_commands import DevShellCommandSet as Orig
 from dev_shell.command_sets.dev_shell_commands import run_linters
 from dev_shell.config import DevShellConfig
 from dev_shell.utils.assertion import assert_is_dir
-from dev_shell.utils.subprocess_utils import verbose_check_call
+from dev_shell.utils.colorful import blue, bright_yellow, print_error
+from dev_shell.utils.subprocess_utils import argv2str, verbose_check_call
 from poetry_publish.publish import poetry_publish
 
 import inventory
+from inventory_project.manage import main
 
 
 PACKAGE_ROOT = Path(inventory.__file__).parent.parent.parent
 assert_is_dir(PACKAGE_ROOT / 'src' / 'inventory')
 
 
+class TempCwd:
+    def __init__(self, cwd: Path):
+        assert_is_dir(cwd)
+        self.cwd = cwd
+
+    def __enter__(self):
+        self.old_cwd = Path().cwd()
+        os.chdir(self.cwd)
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        os.chdir(self.old_cwd)
+
+
 def call_manage_py(*args):
-    verbose_check_call('python3', '-m', 'inventory_project.manage.main', *args)
+    print()
+    print('_' * 100)
+    print(f'+ src$ {bright_yellow("manage")} {blue(argv2str(args))}')
+    args = list(args)
+    args.insert(0, 'manage.py')  # Needed for argparse!
+    with TempCwd(PACKAGE_ROOT / 'src'):
+        try:
+            main(argv=args)
+        except SystemExit as err:
+            print_error(f'finished with exit code {err}')
+        except BaseException as err:
+            print_error(err)
 
 
 @cmd2.with_default_category('PyInventory commands')
@@ -46,12 +73,14 @@ class PyInventoryCommandSet(DevShellBaseCommandSet):
         call_manage_py(
             'makemessages',
             '--all',
-            '--no-location', '--no-obsolete',
-            '--ignore=htmlcov', '--ignore=.*'
+            '--no-location',
+            '--no-obsolete',
+            '--ignore=.*',
+            '--ignore=htmlcov',
+            '--ignore=volumes',
         )
         call_manage_py(
             'compilemessages',
-            '--ignore=htmlcov', '--ignore=.*'
         )
 
     def do_update_rst_readme(self, statement: cmd2.Statement):

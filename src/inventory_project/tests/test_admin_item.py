@@ -44,16 +44,25 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
             data={
                 'kind': 'kind',
                 'name': 'name',
+
                 'itemimagemodel_set-TOTAL_FORMS': '0',
                 'itemimagemodel_set-INITIAL_FORMS': '0',
                 'itemimagemodel_set-MIN_NUM_FORMS': '0',
                 'itemimagemodel_set-MAX_NUM_FORMS': '1000',
                 'itemimagemodel_set-__prefix__-position': '0',
+
+                'itemfilemodel_set-TOTAL_FORMS': '0',
+                'itemfilemodel_set-INITIAL_FORMS': '0',
+                'itemfilemodel_set-MIN_NUM_FORMS': '0',
+                'itemfilemodel_set-MAX_NUM_FORMS': '1000',
+                'itemfilemodel_set-__prefix__-position': '0',
+
                 'itemlinkmodel_set-TOTAL_FORMS': '0',
                 'itemlinkmodel_set-INITIAL_FORMS': '0',
                 'itemlinkmodel_set-MIN_NUM_FORMS': '0',
                 'itemlinkmodel_set-MAX_NUM_FORMS': '1000',
                 'itemlinkmodel_set-__prefix__-position': '0',
+
                 '_save': 'Save',
             },
         )
@@ -84,6 +93,7 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
             data={
                 'kind': 'kind',
                 'name': 'name',
+
                 'itemimagemodel_set-TOTAL_FORMS': '1',
                 'itemimagemodel_set-INITIAL_FORMS': '0',
                 'itemimagemodel_set-MIN_NUM_FORMS': '0',
@@ -91,11 +101,19 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
                 'itemimagemodel_set-0-position': '0',
                 'itemimagemodel_set-__prefix__-position': '0',
                 'itemimagemodel_set-0-image': img,
+
+                'itemfilemodel_set-TOTAL_FORMS': '0',
+                'itemfilemodel_set-INITIAL_FORMS': '0',
+                'itemfilemodel_set-MIN_NUM_FORMS': '0',
+                'itemfilemodel_set-MAX_NUM_FORMS': '1000',
+                'itemfilemodel_set-__prefix__-position': '0',
+
                 'itemlinkmodel_set-TOTAL_FORMS': '0',
                 'itemlinkmodel_set-INITIAL_FORMS': '0',
                 'itemlinkmodel_set-MIN_NUM_FORMS': '0',
                 'itemlinkmodel_set-MAX_NUM_FORMS': '1000',
                 'itemlinkmodel_set-__prefix__-position': '0',
+
                 '_save': 'Save',
             },
         )

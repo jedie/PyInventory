@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-15 13:09+0100\n"
-"PO-Revision-Date: 2020-11-15 13:14+0100\n"
+"POT-Creation-Date: 2021-04-28 18:31+0200\n"
+"PO-Revision-Date: 2021-04-28 18:29+0200\n"
 "Last-Translator: Jens Diemer\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -50,8 +50,8 @@ msgstr "Benutzer"
 
 msgid "BaseModel.user.help_text"
 msgstr ""
-"  Der Benutzer dem dieser Eintrag gehört und verwalten kann (Wird "
-"automatisch gesetzt)"
+"Der Benutzer dem dieser Eintrag gehört und verwalten kann (Wird automatisch "
+"gesetzt)"
 
 msgid "BaseModel.name.verbose_name"
 msgstr "Name"
@@ -64,6 +64,12 @@ msgstr "Tags"
 
 msgid "BaseModel.tags.help_text"
 msgstr " "
+
+msgid "BaseItemAttachmentModel.name.verbose_name"
+msgstr "Name"
+
+msgid "BaseItemAttachmentModel.name.help_text"
+msgstr "Optionalen Namen (Wird automatisch aus dem Dateinamen gesetzt)"
 
 msgid "ItemModel.kind.verbose_name"
 msgstr "Art"
@@ -100,7 +106,7 @@ msgstr "Übergeordnet"
 
 msgid "ItemModel.parent.help_text"
 msgstr ""
-" Eingebaut in einem anderen Gegenstand? (e.g.: Grafikkarte eingebaut in "
+"Eingebaut in einem anderen Gegenstand? (e.g.: Grafikkarte eingebaut in "
 "Rechner)"
 
 msgid "ItemModel.lent_to.verbose_name"
@@ -170,21 +176,25 @@ msgid "ItemImageModel.image.verbose_name"
 msgstr "Bild"
 
 msgid "ItemImageModel.image.help_text"
-msgstr ""
-
-msgid "ItemImageModel.name.verbose_name"
-msgstr "Name"
-
-msgid "ItemImageModel.name.help_text"
-msgstr ""
-"Optionalen Namen passend zum Bild (Wird automatisch aus dem Dateinamen "
-"gesetzt)"
+msgstr " "
 
 msgid "ItemImageModel.verbose_name"
 msgstr "Bild"
 
 msgid "ItemImageModel.verbose_name_plural"
 msgstr "Bilder"
+
+msgid "ItemFileModel.file.verbose_name"
+msgstr "Datei"
+
+msgid "ItemFileModel.file.help_text"
+msgstr ""
+
+msgid "ItemFileModel.verbose_name"
+msgstr "Datei"
+
+msgid "ItemFileModel.verbose_name_plural"
+msgstr "Dateien"
 
 msgid "BaseLink.name.verbose_name"
 msgstr "Name"
@@ -227,16 +237,3 @@ msgstr "Standort"
 
 msgid "LocationModel.verbose_name_plural"
 msgstr "Standorte"
-
-#, python-format
-msgid "Image \"%(path)s\" does not exist"
-msgstr ""
-
-msgid "German"
-msgstr ""
-
-msgid "English"
-msgstr ""
-
-msgid "Log in"
-msgstr ""

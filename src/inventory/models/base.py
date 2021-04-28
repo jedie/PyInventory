@@ -43,3 +43,34 @@ class BaseModel(TimetrackingBaseModel):
 
     class Meta:
         abstract = True
+
+
+class BaseItemAttachmentModel(BaseModel):
+    """
+    Base model to store files or images to Items
+    """
+    name = models.CharField(
+        null=True, blank=True,
+        max_length=255,
+        verbose_name=_('BaseItemAttachmentModel.name.verbose_name'),
+        help_text=_('BaseItemAttachmentModel.name.help_text')
+    )
+    item = models.ForeignKey('ItemModel', on_delete=models.CASCADE)
+    position = models.PositiveSmallIntegerField(
+        # Note: Will be set in admin via adminsortable2
+        # The JavaScript which performs the sorting is 1-indexed !
+        default=0, blank=False, null=False
+    )
+
+    def __str__(self):
+        return self.name
+
+    def full_clean(self, **kwargs):
+        if self.user_id is None:
+            # inherit owner of this link from item instance
+            self.user_id = self.item.user_id
+
+        return super().full_clean(**kwargs)
+
+    class Meta:
+        abstract = True

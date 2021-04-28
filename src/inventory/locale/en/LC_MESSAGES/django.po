@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-15 13:09+0100\n"
-"PO-Revision-Date: 2020-11-15 13:15+0100\n"
+"POT-Creation-Date: 2021-04-28 18:31+0200\n"
+"PO-Revision-Date: 2021-04-28 18:30+0200\n"
 "Last-Translator: Jens Diemer\n"
 "Language-Team: \n"
 "Language: en\n"
@@ -50,7 +50,7 @@ msgstr "User"
 
 msgid "BaseModel.user.help_text"
 msgstr ""
-"  The user who is the owner of this entry and can manage it (will be set "
+"The user who is the owner of this entry and can manage it (will be set "
 "automatically)"
 
 msgid "BaseModel.name.verbose_name"
@@ -65,11 +65,17 @@ msgstr "Tags"
 msgid "BaseModel.tags.help_text"
 msgstr " "
 
+msgid "BaseItemAttachmentModel.name.verbose_name"
+msgstr "Name"
+
+msgid "BaseItemAttachmentModel.name.help_text"
+msgstr ""
+
 msgid "ItemModel.kind.verbose_name"
 msgstr "Kind"
 
 msgid "ItemModel.kind.help_text"
-msgstr ""
+msgstr " "
 
 msgid "ItemModel.producer.verbose_name"
 msgstr "Producer"
@@ -170,17 +176,23 @@ msgstr "Image"
 msgid "ItemImageModel.image.help_text"
 msgstr " "
 
-msgid "ItemImageModel.name.verbose_name"
-msgstr "Name"
-
-msgid "ItemImageModel.name.help_text"
-msgstr ""
-
 msgid "ItemImageModel.verbose_name"
 msgstr "Image"
 
 msgid "ItemImageModel.verbose_name_plural"
 msgstr "Images"
+
+msgid "ItemFileModel.file.verbose_name"
+msgstr "File"
+
+msgid "ItemFileModel.file.help_text"
+msgstr " "
+
+msgid "ItemFileModel.verbose_name"
+msgstr "File"
+
+msgid "ItemFileModel.verbose_name_plural"
+msgstr "Files"
 
 msgid "BaseLink.name.verbose_name"
 msgstr "Name"
@@ -204,7 +216,7 @@ msgid "Link.page_title.verbose_name"
 msgstr "Page title"
 
 msgid "Link.page_title.help_text"
-msgstr ""
+msgstr " "
 
 msgid "LocationModel.description.verbose_name"
 msgstr "Description"
@@ -223,16 +235,3 @@ msgstr "Location"
 
 msgid "LocationModel.verbose_name_plural"
 msgstr "Locations"
-
-#, python-format
-msgid "Image \"%(path)s\" does not exist"
-msgstr ""
-
-msgid "German"
-msgstr ""
-
-msgid "English"
-msgstr ""
-
-msgid "Log in"
-msgstr ""

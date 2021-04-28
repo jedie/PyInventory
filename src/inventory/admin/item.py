@@ -11,7 +11,7 @@ from import_export.resources import ModelResource
 from inventory.admin.base import BaseUserAdmin
 from inventory.forms import ItemModelModelForm
 from inventory.models import ItemLinkModel, ItemModel
-from inventory.models.item import ItemImageModel
+from inventory.models.item import ItemFileModel, ItemImageModel
 
 
 class UserInlineMixin:
@@ -47,6 +47,14 @@ class ItemImageModelInline(UserInlineMixin, SortableInlineAdminMixin, admin.Tabu
         'position', 'preview', 'image', 'name', 'tags'
     )
     readonly_fields = ('preview',)
+
+
+class ItemFileModelInline(UserInlineMixin, SortableInlineAdminMixin, admin.TabularInline):
+    model = ItemFileModel
+    extra = 0
+    fields = (
+        'position', 'file', 'name', 'tags'
+    )
 
 
 class ItemModelResource(ModelResource):
@@ -134,7 +142,7 @@ class ItemModelAdmin(ImportExportMixin, BaseUserAdmin):
             )}),
     )
     readonly_fields = ('id', 'create_dt', 'update_dt', 'user')
-    inlines = (ItemImageModelInline, ItemLinkModelInline)
+    inlines = (ItemImageModelInline, ItemFileModelInline, ItemLinkModelInline)
 
     def get_changelist(self, request, **kwargs):
         self.user = request.user

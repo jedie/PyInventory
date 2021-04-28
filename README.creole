@@ -155,6 +155,7 @@ Files are separated into: "/src/" and "/development/"
 == history
 
 * [[https://github.com/jedie/PyInventory/compare/v0.9.0...master|compare v0.9.0...master]] **dev**
+* NEW: It's not possible to upload file(s) to item.
 * Add a auto login if Django dev. server is used.
 ** tbc
 * [[https://github.com/jedie/PyInventory/compare/v0.8.4...v0.9.0|v0.9.0 - 11.04.2021]]

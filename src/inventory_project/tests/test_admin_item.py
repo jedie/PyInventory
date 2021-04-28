@@ -1,3 +1,5 @@
+import io
+
 from bx_py_utils.test_utils.html_assertion import HtmlAssertionMixin
 from django.contrib.auth.models import User
 from django.test import TestCase
@@ -6,6 +8,7 @@ from model_bakery import baker
 
 from inventory import __version__
 from inventory.models import ItemImageModel, ItemModel
+from inventory.models.item import ItemFileModel
 from inventory.permissions import get_or_create_normal_user_group
 
 
@@ -136,3 +139,59 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
         assert image.name == 'test.png'
         assert image.item == item
         assert image.user_id == self.normaluser.pk
+
+    def test_new_item_with_file(self):
+        self.client.force_login(self.normaluser)
+
+        in_memory_file = io.BytesIO(b'FooBar')
+        in_memory_file.seek(0)
+        in_memory_file.name = 'a-file-upload.dat'
+
+        response = self.client.post(
+            path='/admin/inventory/itemmodel/add/',
+            data={
+                'kind': 'with-file',
+                'name': 'With File!',
+
+                'itemimagemodel_set-TOTAL_FORMS': '0',
+                'itemimagemodel_set-INITIAL_FORMS': '0',
+                'itemimagemodel_set-MIN_NUM_FORMS': '0',
+                'itemimagemodel_set-MAX_NUM_FORMS': '1000',
+                'itemimagemodel_set-__prefix__-position': '0',
+
+                'itemfilemodel_set-TOTAL_FORMS': '1',
+                'itemfilemodel_set-INITIAL_FORMS': '0',
+                'itemfilemodel_set-MIN_NUM_FORMS': '0',
+                'itemfilemodel_set-MAX_NUM_FORMS': '1000',
+                'itemfilemodel_set-0-position': '0',
+                'itemfilemodel_set-0-file': in_memory_file,
+                'itemfilemodel_set-__prefix__-position': '0',
+
+                'itemlinkmodel_set-TOTAL_FORMS': '0',
+                'itemlinkmodel_set-INITIAL_FORMS': '0',
+                'itemlinkmodel_set-MIN_NUM_FORMS': '0',
+                'itemlinkmodel_set-MAX_NUM_FORMS': '1000',
+                'itemlinkmodel_set-__prefix__-position': '0',
+
+                '_save': 'Save',
+            },
+        )
+        self.assertRedirects(response, expected_url='/admin/inventory/itemmodel/')
+
+        data = list(ItemModel.objects.values_list('kind__name', 'name'))
+        assert data == [('with-file', 'With File!')]
+
+        item = ItemModel.objects.first()
+
+        self.assert_messages(response, expected_messages=[
+            f'The Item "<a href="/admin/inventory/itemmodel/{item.pk}/change/"> - With File!</a>"'
+            f' was added successfully.'
+        ])
+
+        assert item.user_id == self.normaluser.pk
+
+        assert ItemFileModel.objects.count() == 1
+        instance = ItemFileModel.objects.first()
+        assert instance.name == 'test.png'
+        assert instance.item == item
+        assert instance.user_id == self.normaluser.pk

@@ -39,5 +39,5 @@ class PyInventoryDevShellTestCase(DevShellAppBaseTestCase):
     def test_manage(self):
         stdout, stderr = self.execute('manage --version')
         assert stderr == ''
-        assert 'manage --version' in stdout
+        assert 'manage.py --version' in stdout
         assert __version__ in stdout

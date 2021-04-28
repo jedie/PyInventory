@@ -11,7 +11,7 @@ from dev_shell.command_sets.dev_shell_commands import run_linters
 from dev_shell.config import DevShellConfig
 from dev_shell.utils.assertion import assert_is_dir
 from dev_shell.utils.colorful import blue, bright_yellow, print_error
-from dev_shell.utils.subprocess_utils import argv2str, verbose_check_call
+from dev_shell.utils.subprocess_utils import argv2str, make_relative_path, verbose_check_call
 from poetry_publish.publish import poetry_publish
 
 import inventory
@@ -35,13 +35,14 @@ class TempCwd:
         os.chdir(self.old_cwd)
 
 
-def call_manage_py(*args):
+def call_manage_py(*args, cwd):
     print()
     print('_' * 100)
-    print(f'+ src$ {bright_yellow("manage")} {blue(argv2str(args))}')
+    cwd_rel = make_relative_path(cwd, relative_to=Path.cwd())
+    print(f'+ {cwd_rel}$ {bright_yellow("manage.py")} {blue(argv2str(args))}\n')
     args = list(args)
     args.insert(0, 'manage.py')  # Needed for argparse!
-    with TempCwd(PACKAGE_ROOT / 'src'):
+    with TempCwd(cwd):
         try:
             main(argv=args)
         except SystemExit as err:
@@ -56,7 +57,7 @@ class PyInventoryCommandSet(DevShellBaseCommandSet):
         """
         Call PyInventory test "manage.py"
         """
-        call_manage_py(*statement.arg_list)
+        call_manage_py(*statement.arg_list, cwd=PACKAGE_ROOT / 'src' / 'inventory')
 
     def do_run_testserver(self, statement: cmd2.Statement):
         """
@@ -64,7 +65,7 @@ class PyInventoryCommandSet(DevShellBaseCommandSet):
         """
         # Start the "[tool.poetry.scripts]" script via subprocess
         # This works good with django dev server reloads
-        verbose_check_call('run_testserver', *statement.arg_list)
+        verbose_check_call('run_testserver', *statement.arg_list, cwd=PACKAGE_ROOT)
 
     def do_makemessages(self, statement: cmd2.Statement):
         """
@@ -78,9 +79,11 @@ class PyInventoryCommandSet(DevShellBaseCommandSet):
             '--ignore=.*',
             '--ignore=htmlcov',
             '--ignore=volumes',
+            cwd=PACKAGE_ROOT / 'src' / 'inventory'
         )
         call_manage_py(
             'compilemessages',
+            cwd=PACKAGE_ROOT / 'src' / 'inventory'
         )
 
     def do_update_rst_readme(self, statement: cmd2.Statement):

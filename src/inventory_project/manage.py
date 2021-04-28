@@ -1,15 +1,9 @@
-#!/usr/bin/env python3
 import os
 import sys
-from pathlib import Path
 
 from django import __version__ as django_version
 
-import inventory
 from inventory import __version__
-
-
-BASE_PATH = Path(inventory.__file__).parent
 
 
 def main(argv):

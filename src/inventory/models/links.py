@@ -6,7 +6,6 @@ from django.db import models
 from django.template.defaultfilters import striptags
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
-from urllib3.exceptions import HTTPError
 
 from inventory.models.base import BaseModel
 
@@ -49,8 +48,8 @@ class BaseLink(BaseModel):
     def update_response_info(self):
         try:
             r = requests.get(url=self.url, allow_redirects=True, timeout=10)
-        except HTTPError as err:
-            logger.exception(f'Error get {self.url!r}', err)
+        except Exception as err:
+            logger.exception('Error get %s: %s', self.url, err)
             self.status_code = None
             self.page_title = None
             return

@@ -218,6 +218,10 @@ history
 
 * `compare v0.9.1...master <https://github.com/jedie/PyInventory/compare/v0.9.1...master>`_ **dev** 
 
+    * Update requirements
+
+    * `Fix error handling if item link is broken <https://github.com/jedie/PyInventory/issues/50>`_
+
     * tbc
 
 * `v0.9.1 - 28.04.2021 <https://github.com/jedie/PyInventory/compare/v0.9.0...v0.9.1>`_
@@ -381,4 +385,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2021-04-28 19:37:29 with "python-creole"``
+``Note: this file is generated from README.creole 2021-05-11 16:26:20 with "python-creole"``

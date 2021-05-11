@@ -155,6 +155,8 @@ Files are separated into: "/src/" and "/development/"
 == history
 
 * [[https://github.com/jedie/PyInventory/compare/v0.9.1...master|compare v0.9.1...master]] **dev**
+** Update requirements
+** [[https://github.com/jedie/PyInventory/issues/50|Fix error handling if item link is broken]]
 ** tbc
 * [[https://github.com/jedie/PyInventory/compare/v0.9.0...v0.9.1|v0.9.1 - 28.04.2021]]
 * NEW: Besides images, it's now possible to add file(s) to items, too.

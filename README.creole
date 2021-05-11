@@ -154,10 +154,11 @@ Files are separated into: "/src/" and "/development/"
 
 == history
 
-* [[https://github.com/jedie/PyInventory/compare/v0.9.1...master|compare v0.9.1...master]] **dev**
+* [[https://github.com/jedie/PyInventory/compare/v0.9.2...master|compare v0.9.2...master]] **dev**
+** tbc
+* [[https://github.com/jedie/PyInventory/compare/v0.9.1...v0.9.2|v0.9.2 - 11.05.2021]]
 ** Update requirements
 ** [[https://github.com/jedie/PyInventory/issues/50|Fix error handling if item link is broken]]
-** tbc
 * [[https://github.com/jedie/PyInventory/compare/v0.9.0...v0.9.1|v0.9.1 - 28.04.2021]]
 * NEW: Besides images, it's now possible to add file(s) to items, too.
 * Add a auto login if Django dev. server is used.

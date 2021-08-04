@@ -1,15 +1,16 @@
 import os
 
-from django.core.management import BaseCommand, call_command
+from django.core.management import call_command
+from django.core.management.commands.runserver import Command as RunServerCommand
 
 
-class Command(BaseCommand):
+class Command(RunServerCommand):
     help = "Run Django dev. Server"
 
     def verbose_call(self, command, **kwargs):
         self.stdout.write("\n")
         self.stdout.write("_" * 79)
-        self.stdout.write(self.style.NOTICE(f" *** call '{command}' command:"))
+        self.stdout.write(self.style.NOTICE(f" *** call '{command}' command with {kwargs}:"))
         self.stdout.write("\n")
         call_command(command, **kwargs)
 
@@ -23,4 +24,4 @@ class Command(BaseCommand):
             self.verbose_call("migrate", run_syncdb=True, interactive=False, verbosity=1)
             self.verbose_call("showmigrations", verbosity=1)
 
-        self.verbose_call("runserver", use_threading=True, use_reloader=True, verbosity=2)
+        self.verbose_call("runserver", **options)

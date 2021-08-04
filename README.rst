@@ -111,6 +111,8 @@ e.g.:
 
 The web page is available via: ``http://127.0.0.1:8000/``
 
+You can also pass a other port number or ``ipaddr:port`` combination. See: ``./devshell.py run_testserver --help``
+
 Call manage commands from test project, e.g.:
 
 ::
@@ -387,4 +389,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2021-05-11 17:00:54 with "python-creole"``
+``Note: this file is generated from README.creole 2021-08-04 09:01:51 with "python-creole"``

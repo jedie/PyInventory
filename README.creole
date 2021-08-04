@@ -72,6 +72,8 @@ e.g.:
 }}}
 The web page is available via: {{{http://127.0.0.1:8000/}}}
 
+You can also pass a other port number or {{{ipaddr:port}}} combination. See: {{{./devshell.py run_testserver --help}}}
+
 Call manage commands from test project, e.g.:
 {{{
 ~/PyInventory$ ./devshell.py manage --help

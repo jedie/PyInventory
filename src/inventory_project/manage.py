@@ -33,7 +33,7 @@ def start_test_server():
     """
     Entrypoint for "[tool.poetry.scripts]" script started by devshell command.
     """
-    main(argv=[__file__, "run_testserver"])
+    main(argv=[__file__, "run_testserver"] + sys.argv[1:])
 
 
 if __name__ == '__main__':

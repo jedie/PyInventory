@@ -85,6 +85,19 @@ six = ">=1.9.0"
 webencodings = "*"
 
 [[package]]
+name = "bx-django-utils"
+version = "4"
+description = "Various Django utility functions"
+category = "main"
+optional = false
+python-versions = ">=3.6,<4.0.0"
+
+[package.dependencies]
+bx_py_utils = ">=41"
+django = "*"
+python-stdnum = "*"
+
+[[package]]
 name = "bx-py-utils"
 version = "42"
 description = "Various Python utility functions"
@@ -1030,6 +1043,19 @@ python-versions = ">=3.5"
 cli = ["click (>=5.0)"]
 
 [[package]]
+name = "python-stdnum"
+version = "1.16"
+description = "Python module to handle standardized numbers and codes"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.extras]
+soap = ["zeep"]
+soap-alt = ["suds"]
+soap-fallback = ["pysimplesoap"]
+
+[[package]]
 name = "pytz"
 version = "2021.1"
 description = "World timezone definitions, modern and historical"
@@ -1387,12 +1413,13 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 
 [extras]
 docker = ["docker-compose"]
-postgres = []
+postgres = ["psycopg2-binary"]
+psycopg2-source = []
 
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7,<4.0.0"
-content-hash = "69ef670977dc87920c3adc8a6cadd3e617c6f92b126f05b8b7bc0631863eea4b"
+content-hash = "9311a657718791ab0dd8857c303fbb6c6f9b3a8ab3a49cfbab6024a339529a05"
 
 [metadata.files]
 astor = [
@@ -1427,6 +1454,10 @@ bcrypt = [
 bleach = [
     {file = "bleach-4.0.0-py2.py3-none-any.whl", hash = "sha256:c1685a132e6a9a38bf93752e5faab33a9517a6c0bb2f37b785e47bf253bdb51d"},
     {file = "bleach-4.0.0.tar.gz", hash = "sha256:ffa9221c6ac29399cc50fcc33473366edd0cf8d5e2cbbbb63296dc327fb67cc8"},
+]
+bx-django-utils = [
+    {file = "bx_django_utils-4-py3-none-any.whl", hash = "sha256:65303a820172448daa05d3d652014de7c0be1ae283045b90f7e6bcd4967a0559"},
+    {file = "bx_django_utils-4.tar.gz", hash = "sha256:95c914627b62a901482829d547c65d59f43b7edf7add2fb099bcef0eff3a94d9"},
 ]
 bx-py-utils = [
     {file = "bx_py_utils-42-py3-none-any.whl", hash = "sha256:e4889839915c8fe467089bdf28de074674906b466c708a520c73d4f9c16208af"},
@@ -1961,6 +1992,10 @@ python-creole = [
 python-dotenv = [
     {file = "python-dotenv-0.19.0.tar.gz", hash = "sha256:f521bc2ac9a8e03c736f62911605c5d83970021e3fa95b37d769e2bbbe9b6172"},
     {file = "python_dotenv-0.19.0-py2.py3-none-any.whl", hash = "sha256:aae25dc1ebe97c420f50b81fb0e5c949659af713f31fdb63c749ca68748f34b1"},
+]
+python-stdnum = [
+    {file = "python-stdnum-1.16.tar.gz", hash = "sha256:4248d898042a801fc4eff96fbfe4bf63a43324854efe3b5534718c1c195c6f43"},
+    {file = "python_stdnum-1.16-py2.py3-none-any.whl", hash = "sha256:2e2c56c548ca166b95547a8d748f4d71320a5b4896960717c8e6380e08d993a5"},
 ]
 pytz = [
     {file = "pytz-2021.1-py2.py3-none-any.whl", hash = "sha256:eb10ce3e7736052ed3623d49975ce333bcd712c7bb19a58b9e2089d4057d0798"},

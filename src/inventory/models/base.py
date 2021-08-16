@@ -1,7 +1,7 @@
 import uuid
 
 import tagulous.models
-from bx_py_utils.models.timetracking import TimetrackingBaseModel
+from bx_django_utils.models.timetracking import TimetrackingBaseModel
 from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _

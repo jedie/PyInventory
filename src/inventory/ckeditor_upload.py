@@ -1,6 +1,6 @@
 import logging
 
-from bx_py_utils.filename import clean_filename
+from bx_django_utils.filename import clean_filename
 from django.utils.crypto import get_random_string
 
 

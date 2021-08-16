@@ -2,7 +2,7 @@ import logging
 from pathlib import Path
 
 import tagulous.models
-from bx_py_utils.filename import clean_filename
+from bx_django_utils.filename import clean_filename
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 from django.urls import reverse

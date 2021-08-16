@@ -48,6 +48,7 @@ django-tools = ">=0.48.2"  # https://github.com/jedie/django-tools/
 django-reversion-compare = "*"  # https://github.com/jedie/django-reversion-compare/
 django-ckeditor = "*"  # https://github.com/django-ckeditor/django-ckeditor
 bx_py_utils = "*"  # https://github.com/boxine/bx_py_utils
+bx_django_utils = "*"  # https://github.com/boxine/bx_django_utils
 django-tagulous = "*"  # https://github.com/radiac/django-tagulous
 django-admin-sortable2 = "*"  # https://github.com/jrief/django-admin-sortable2
 django-axes = "*"  # https://github.com/jazzband/django-axes

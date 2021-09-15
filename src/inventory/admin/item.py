@@ -76,7 +76,19 @@ class ItemModelChangeList(ChangeList):
 class ItemModelAdmin(ImportExportMixin, BaseUserAdmin):
     form = ItemModelModelForm
 
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        qs = qs.select_related(
+            'user',
+        )
+        qs = qs.prefetch_related(
+            'kind',
+            'producer',
+        )
+        return qs
+
     def column_item(self, obj):
+        # TODO: annotate "sub_items" !
         qs = ItemModel.objects.filter(user=self.user)
         qs = qs.filter(parent=obj).sort()
         context = {

@@ -218,9 +218,13 @@ Files are separated into: "/src/" and "/development/"
 history
 -------
 
-* `compare v0.9.3...master <https://github.com/jedie/PyInventory/compare/v0.9.3...master>`_ **dev** 
+* `compare v0.9.4...master <https://github.com/jedie/PyInventory/compare/v0.9.4...master>`_ **dev** 
 
     * tbc
+
+* `v0.9.4 - 15.09.2021 <https://github.com/jedie/PyInventory/compare/v0.9.3...v0.9.4>`_ 
+
+    * Pin ``psycopg < 2.9`` because of `https://github.com/psycopg/psycopg2/issues/1293 <https://github.com/psycopg/psycopg2/issues/1293>`_
 
 * `v0.9.3 - 15.09.2021 <https://github.com/jedie/PyInventory/compare/v0.9.2...v0.9.3>`_ 
 
@@ -397,4 +401,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2021-09-15 21:11:45 with "python-creole"``
+``Note: this file is generated from README.creole 2021-09-15 21:28:39 with "python-creole"``

@@ -218,9 +218,17 @@ Files are separated into: "/src/" and "/development/"
 history
 -------
 
-* `compare v0.9.2...master <https://github.com/jedie/PyInventory/compare/v0.9.2...master>`_ **dev** 
+* `compare v0.9.3...master <https://github.com/jedie/PyInventory/compare/v0.9.3...master>`_ **dev** 
 
     * tbc
+
+* `v0.9.3 - 15.09.2021 <https://github.com/jedie/PyInventory/compare/v0.9.2...v0.9.3>`_ 
+
+    * Optimize "items" changelist queries
+
+    * Update requirements
+
+    * Expand ``run_testserver`` command and recognize address and port argument
 
 * `v0.9.2 - 11.05.2021 <https://github.com/jedie/PyInventory/compare/v0.9.1...v0.9.2>`_ 
 
@@ -389,4 +397,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2021-08-04 09:01:51 with "python-creole"``
+``Note: this file is generated from README.creole 2021-09-15 21:11:45 with "python-creole"``

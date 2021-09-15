@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "PyInventory"
-version = "0.9.2"
+version = "0.9.3.rc4"
 description = "Web based management to catalog things including state and location etc. using Python/Django."
 authors = ["JensDiemer <git@jensdiemer.de>"]
 homepage = "https://github.com/jedie/PyInventory"
@@ -49,17 +49,22 @@ django-reversion-compare = "*"  # https://github.com/jedie/django-reversion-comp
 django-ckeditor = "*"  # https://github.com/django-ckeditor/django-ckeditor
 bx_py_utils = "*"  # https://github.com/boxine/bx_py_utils
 bx_django_utils = "*"  # https://github.com/boxine/bx_django_utils
-django-tagulous = "*"  # https://github.com/radiac/django-tagulous
+
+# TODO: Update:
+django-tagulous = "<=1.2.0"  # https://github.com/radiac/django-tagulous
+
 django-admin-sortable2 = "*"  # https://github.com/jrief/django-admin-sortable2
 django-axes = "*"  # https://github.com/jazzband/django-axes
 requests = "*"  # https://github.com/psf/requests
 docker-compose = { version = "*", optional = true }  # install via: poetry install --extras "docker"
-psycopg2-binary = { version = "*", optional = true }  # install via: poetry install --extras "postgres"
+psycopg2-binary = { version = "*", optional = true }  # install via: poetry install --extras "postgres-binary"
+psycopg2 = { version = "*", optional = true }  # install via: poetry install --extras "psycopg2-source"
 pillow = "*"
 
 [tool.poetry.extras]
 docker = ["docker-compose"]
-postgres = ["psycopg2-binary"]
+postgres-binary = ["psycopg2-binary"]
+psycopg2-source = ["psycopg2"]
 
 [tool.poetry.dev-dependencies]
 dev_shell = ">=0.2.2"  # https://github.com/jedie/dev-shell
@@ -94,7 +99,7 @@ build-backend = "poetry.masonry.api"
 [tool.autopep8]
 # https://github.com/hhatto/autopep8#pyprojecttoml
 max_line_length = 120
-exclude="*/htmlcov/*,*/migrations/*,*/volumes/*"
+exclude=".*,*/htmlcov/*,*/migrations/*,*/volumes/*"
 
 
 [tool.isort]

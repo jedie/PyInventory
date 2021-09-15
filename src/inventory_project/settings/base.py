@@ -64,7 +64,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
-    'bx_py_utils',  # https://github.com/boxine/bx_py_utils
+    'bx_django_utils',  # https://github.com/boxine/bx_django_utils
     'import_export',  # https://github.com/django-import-export/django-import-export
     'dbbackup',  # https://github.com/django-dbbackup/django-dbbackup
     'ckeditor',  # https://github.com/django-ckeditor/django-ckeditor

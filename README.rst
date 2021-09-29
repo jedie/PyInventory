@@ -220,6 +220,8 @@ history
 
 * `compare v0.9.4...master <https://github.com/jedie/PyInventory/compare/v0.9.4...master>`_ **dev** 
 
+    * Group item: default "automatic" mode and can be disabled by filter action
+
     * tbc
 
 * `v0.9.4 - 15.09.2021 <https://github.com/jedie/PyInventory/compare/v0.9.3...v0.9.4>`_ 
@@ -401,4 +403,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2021-09-15 21:28:39 with "python-creole"``
+``Note: this file is generated from README.creole 2021-09-29 19:16:20 with "python-creole"``

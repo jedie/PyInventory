@@ -3,6 +3,7 @@ from reversion_compare.admin import CompareVersionAdmin
 
 class BaseUserAdmin(CompareVersionAdmin):
     def get_changelist(self, request, **kwargs):
+        self.request = request
         self.user = request.user
         return super().get_changelist(request, **kwargs)
 

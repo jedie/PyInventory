@@ -157,6 +157,7 @@ Files are separated into: "/src/" and "/development/"
 == history
 
 * [[https://github.com/jedie/PyInventory/compare/v0.9.4...master|compare v0.9.4...master]] **dev**
+** Group item: default "automatic" mode and can be disabled by filter action
 ** tbc
 * [[https://github.com/jedie/PyInventory/compare/v0.9.3...v0.9.4|v0.9.4 - 15.09.2021]]
 ** Pin {{{psycopg < 2.9}}} because of https://github.com/psycopg/psycopg2/issues/1293

@@ -5,6 +5,7 @@
 import logging
 from pathlib import Path as __Path
 
+from ckeditor.configs import DEFAULT_CONFIG
 from django.utils.translation import gettext_lazy as _
 
 
@@ -168,17 +169,18 @@ DBBACKUP_STORAGE_OPTIONS = {'location': str(__Path(BASE_PATH, 'backups'))}
 
 CKEDITOR_BASEPATH = STATIC_URL + 'ckeditor/ckeditor/'
 CKEDITOR_FILENAME_GENERATOR = 'inventory.ckeditor_upload.get_filename'
-CKEDITOR_DEFAULT_CONFIG = {
-    'skin': 'moono-lisa',
+CKEDITOR_DEFAULT_CONFIG = DEFAULT_CONFIG
+CKEDITOR_DEFAULT_CONFIG.update({
     'removeButtons': 'Language,Cut,Copy,Paste,Undo,Redo,Anchor',
 
     # plugins are here: .../site-packages/ckeditor/static/ckeditor/ckeditor/plugins
     # and here: https://github.com/ckeditor/ckeditor4/tree/major/plugins
     # See also: .../site-packages/ckeditor/static/ckeditor/ckeditor/build-config.js
     'removePlugins': (
-        # Generated with .../dev-scripts/ckeditor_info.py
+        # Generated with devshell command:
+        # (inventory) ckeditor_info
         'a11yhelp',
-        'about',
+        # 'about',
         'adobeair',
         'ajax',
         'autoembed',
@@ -207,6 +209,7 @@ CKEDITOR_DEFAULT_CONFIG = {
         'embedsemantic',
         'enterkey',
         # 'entities',
+        'exportpdf',
         # 'filebrowser',
         # 'filetools',
         'find',
@@ -253,7 +256,7 @@ CKEDITOR_DEFAULT_CONFIG = {
         # 'showblocks',
         # 'showborders',
         'smiley',
-        'sourcearea',
+        # 'sourcearea',
         'sourcedialog',
         'specialchar',
         'stylescombo',
@@ -274,12 +277,33 @@ CKEDITOR_DEFAULT_CONFIG = {
         # 'wysiwygarea',
         'xml',
     ),
-    'toolbar': 'full',
+    'toolbar_PyInventoryToolbarConfig': [
+        {'name': 'basicstyles', 'items': [
+            'Bold', 'Italic', 'Underline', 'Strike',
+            '-',
+            'RemoveFormat'
+        ]},
+        {'name': 'paragraph', 'items': [
+            'NumberedList', 'BulletedList',
+            '-',
+            'Outdent', 'Indent',
+            '-',
+            'Blockquote',
+            '-',
+            'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock',
+        ]},
+        {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor']},
+        {'name': 'insert', 'items': ['Image', 'Table', 'HorizontalRule']},
+        '/',
+        {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
+        {'name': 'colors', 'items': ['TextColor', 'BGColor']},
+        {'name': 'tools', 'items': ['Maximize', 'ShowBlocks', 'Source']},
+        {'name': 'about', 'items': ['About']},
+    ],
+    'toolbar': 'PyInventoryToolbarConfig',
     'height': '25em',
     'width': '100%',
-    'filebrowserWindowWidth': 940,
-    'filebrowserWindowHeight': 725,
-}
+})
 CKEDITOR_CONFIGS = {
     'ItemModel.description': CKEDITOR_DEFAULT_CONFIG,
     'LocationModel.description': CKEDITOR_DEFAULT_CONFIG

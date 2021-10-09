@@ -1,3 +1,4 @@
+import datetime
 import logging
 import re
 
@@ -23,7 +24,7 @@ class BaseLink(BaseModel):
         verbose_name=_('Link.url.verbose_name'),
         help_text=_('Link.url.help_text')
     )
-    last_check = models.DateField(
+    last_check = models.DateTimeField(
         blank=True, null=True, editable=False,
         verbose_name=_('Link.url.verbose_name'),
         help_text=_('Link.url.help_text')
@@ -46,6 +47,17 @@ class BaseLink(BaseModel):
     )
 
     def update_response_info(self):
+        if self.name:
+            logger.debug('Skip link request: because we have a name: %r', self.name)
+            return
+
+        if self.last_check:
+            delta = timezone.now() - self.last_check
+            logger.debug('Last check is %s ago.', delta)
+            if delta < datetime.timedelta(minutes=1):
+                logger.info('Skip request for: %r', self.url)
+                return
+
         try:
             r = requests.get(url=self.url, allow_redirects=True, timeout=10)
         except Exception as err:
@@ -62,7 +74,7 @@ class BaseLink(BaseModel):
         if r.status_code == 200:
             titles = re.findall(r'<title>(.+?)</title>', r.text)
             if not titles:
-                logger.warning(f'No title found in {self.url!r}')
+                logger.warning('No title found in %r', self.url)
             else:
                 title = titles[0]
                 logger.info('Found title: %r', title)

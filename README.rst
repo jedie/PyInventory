@@ -222,6 +222,8 @@ history
 
     * Update to Django 3.1.x
 
+    * Don't make requests to the a name for a Link, if we already have one or if last request was not long ago.
+
     * tbc
 
 * `v0.10.0 - 29.09.2021 <https://github.com/jedie/PyInventory/compare/v0.9.4...v0.10.0>`_ 
@@ -407,4 +409,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2021-10-09 16:15:45 with "python-creole"``
+``Note: this file is generated from README.creole 2021-10-09 16:58:57 with "python-creole"``

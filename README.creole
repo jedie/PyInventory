@@ -171,10 +171,11 @@ Files are separated into: "/src/" and "/development/"
 
 == history
 
-* [[https://github.com/jedie/PyInventory/compare/v0.10.1...master|compare v0.10.1...master]] **dev**
+* [[https://github.com/jedie/PyInventory/compare/v0.11.0...master|compare v0.11.0...master]] **dev**
+** tbc
+* [[https://github.com/jedie/PyInventory/compare/v0.10.1...v0.11.0|v0.11.0 - 09.10.2021]]
 ** NEW: Memo model/admin: Store Information (incl. images/files/links) independent of items/locations
 ** Bugfix CKEditor sizes and fix toolbar (e.g.: remove useless pdf generator button and add sourcecode function)
-** tbc
 * [[https://github.com/jedie/PyInventory/compare/v0.10.0...v0.10.1|v0.10.1 - 09.10.2021]]
 ** Update to Django 3.1.x
 ** Don't make requests to the a name for a Link, if we already have one or if last request was not long ago.

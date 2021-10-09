@@ -88,6 +88,7 @@ pyupgrade = "*"
 model_bakery = "*"  # https://github.com/model-bakers/model_bakery
 beautifulsoup4 = "*"
 lxml = "*"
+requests-mock = "*"
 
 [tool.poetry.scripts]
 devshell = 'inventory_project.dev_shell:devshell_cmdloop'

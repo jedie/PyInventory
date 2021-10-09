@@ -128,7 +128,7 @@ python-stdnum = "*"
 
 [[package]]
 name = "bx-py-utils"
-version = "45"
+version = "46"
 description = "Various Python utility functions"
 category = "main"
 optional = false
@@ -1552,8 +1552,8 @@ bx-django-utils = [
     {file = "bx_django_utils-6.tar.gz", hash = "sha256:d92fde43fba1a0403613958be5fc530b55a0ce8f36f744d3060601d38b6d0641"},
 ]
 bx-py-utils = [
-    {file = "bx_py_utils-45-py3-none-any.whl", hash = "sha256:276e7f5d06b85de21628eb5cbbdac7e23226a9c760ece2fb93a14116008c0d85"},
-    {file = "bx_py_utils-45.tar.gz", hash = "sha256:ac403213b0f411edc5678ba8a9749f141b9e25fbe5509c3ca817c9b977e15e4f"},
+    {file = "bx_py_utils-46-py3-none-any.whl", hash = "sha256:ea7137ec2fa51e1e982d2e55b9cdf1d5ce487e01cba1d8c76be392947011cc3d"},
+    {file = "bx_py_utils-46.tar.gz", hash = "sha256:846a0c2b95f96c361d9f9d6cf87f2893bd5d81a61bade446a8010f0e5d95c0f3"},
 ]
 cached-property = [
     {file = "cached-property-1.5.2.tar.gz", hash = "sha256:9fa5755838eecbb2d234c3aa390bd80fbd3ac6b6869109bfc1b499f7bd89a130"},

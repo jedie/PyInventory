@@ -183,11 +183,13 @@ def test_pretty_format_html():
 def assert_html_response_snapshot(
     response: HttpResponse,
     status_code: int = 200,
+    validate: bool = True,
     **kwargs
 ):
     data = response.content.decode('utf-8')
 
-    validate_html(data)
+    if validate:
+        validate_html(data)
     data = pretty_format_html(data)
 
     assert_text_snapshot(

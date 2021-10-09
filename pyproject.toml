@@ -37,9 +37,8 @@ python = ">=3.7,<4.0.0"
 colorlog = "*"  # https://github.com/borntyping/python-colorlog
 gunicorn = "*"  # https://github.com/benoimyproject.wsgitc/gunicorn
 #
-# https://www.djangoproject.com/download/#supported-versions
-# v2.2 LTS - extended support until April 2022
-django = "2.2.*"
+# Stay with Django 3.1.x because of: https://github.com/radiac/django-tagulous/issues/144
+django = "<3.2"
 django-processinfo = "*"  # https://github.com/jedie/django-processinfo/
 django-debug-toolbar = "*"  # http://django-debug-toolbar.readthedocs.io/en/stable/changes.html
 django-import-export = "*"  # https://github.com/django-import-export/django-import-export

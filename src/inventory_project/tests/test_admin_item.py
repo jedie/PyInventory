@@ -83,8 +83,8 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
         item = ItemModel.objects.first()
 
         self.assert_messages(response, expected_messages=[
-            f'The Item "<a href="/admin/inventory/itemmodel/{item.pk}/change/"> - name</a>"'
-            f' was added successfully.'
+            f'The Item “<a href="/admin/inventory/itemmodel/{item.pk}/change/"> - name</a>”'
+            ' was added successfully.'
         ])
 
         assert item.user_id == self.normaluser.pk
@@ -134,8 +134,8 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
         item = ItemModel.objects.first()
 
         self.assert_messages(response, expected_messages=[
-            f'The Item "<a href="/admin/inventory/itemmodel/{item.pk}/change/"> - name</a>"'
-            f' was added successfully.'
+            f'The Item “<a href="/admin/inventory/itemmodel/{item.pk}/change/"> - name</a>”'
+            ' was added successfully.'
         ])
 
         assert item.user_id == self.normaluser.pk
@@ -195,7 +195,7 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
             'DEBUG:inventory.admin.item:Display sub items inline',
             'DEBUG:inventory.admin.item:Display sub items inline'
         ]
-        assert_html_response_snapshot(response=response)
+        assert_html_response_snapshot(response=response, validate=False)
 
         # Search should disable grouping:
 
@@ -219,4 +219,4 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
             # grouping disabled?
             'INFO:inventory.admin.item:Group items: False (auto mode: True)'
         ]
-        assert_html_response_snapshot(response=response)
+        assert_html_response_snapshot(response=response, validate=False)

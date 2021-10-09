@@ -99,7 +99,14 @@ The web page is available via: {{{https://localhost/}}}
 
 == Screenshots
 
+More screenshots are here: [[https://github.com/jedie/jedie.github.io/blob/master/screenshots/PyInventory/README.creole|jedie.github.io/tree/master/screenshots/PyInventory]]
+
+
 {{https://raw.githubusercontent.com/jedie/jedie.github.io/master/screenshots/PyInventory/PyInventory v0.2.0 screenshot 1.png|PyInventory v0.2.0 screenshot 1.png}}
+
+----
+
+{{https://raw.githubusercontent.com/jedie/jedie.github.io/master/screenshots/PyInventory/PyInventory v0.11.0 screenshot memo 1.png|PyInventory v0.11.0 screenshot memo 1.png}}
 
 ----
 
@@ -132,6 +139,8 @@ So setup a normal user:
 e.g.:
 
 {{https://raw.githubusercontent.com/jedie/jedie.github.io/master/screenshots/PyInventory/PyInventory normal user example.png|normal user example}}
+
+More screenshots are here: [[https://github.com/jedie/jedie.github.io/blob/master/screenshots/PyInventory/README.creole|jedie.github.io/tree/master/screenshots/PyInventory]]
 
 
 == Backwards-incompatible changes

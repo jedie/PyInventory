@@ -145,9 +145,17 @@ The web page is available via: ``https://localhost/``
 Screenshots
 -----------
 
+More screenshots are here: `jedie.github.io/tree/master/screenshots/PyInventory <https://github.com/jedie/jedie.github.io/blob/master/screenshots/PyInventory/README.creole>`_
+
 |PyInventory v0.2.0 screenshot 1.png|
 
 .. |PyInventory v0.2.0 screenshot 1.png| image:: https://raw.githubusercontent.com/jedie/jedie.github.io/master/screenshots/PyInventory/PyInventory v0.2.0 screenshot 1.png
+
+----
+
+|PyInventory v0.11.0 screenshot memo 1.png|
+
+.. |PyInventory v0.11.0 screenshot memo 1.png| image:: https://raw.githubusercontent.com/jedie/jedie.github.io/master/screenshots/PyInventory/PyInventory v0.11.0 screenshot memo 1.png
 
 ----
 
@@ -191,6 +199,8 @@ e.g.:
 
 .. |normal user example| image:: https://raw.githubusercontent.com/jedie/jedie.github.io/master/screenshots/PyInventory/PyInventory normal user example.png
 
+More screenshots are here: `jedie.github.io/tree/master/screenshots/PyInventory`_
+
 ------------------------------
 Backwards-incompatible changes
 ------------------------------
@@ -227,13 +237,15 @@ Files are separated into: "/src/" and "/development/"
 history
 -------
 
-* `compare v0.10.1...master <https://github.com/jedie/PyInventory/compare/v0.10.1...master>`_ **dev** 
+* `compare v0.11.0...master <https://github.com/jedie/PyInventory/compare/v0.11.0...master>`_ **dev** 
+
+    * tbc
+
+* `v0.11.0 - 09.10.2021 <https://github.com/jedie/PyInventory/compare/v0.10.1...v0.11.0>`_ 
 
     * NEW: Memo model/admin: Store Information (incl. images/files/links) independent of items/locations
 
     * Bugfix CKEditor sizes and fix toolbar (e.g.: remove useless pdf generator button and add sourcecode function)
-
-    * tbc
 
 * `v0.10.1 - 09.10.2021 <https://github.com/jedie/PyInventory/compare/v0.10.0...v0.10.1>`_ 
 
@@ -424,4 +436,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2021-10-09 20:06:41 with "python-creole"``
+``Note: this file is generated from README.creole 2021-10-09 20:31:12 with "python-creole"``

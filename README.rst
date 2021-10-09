@@ -220,6 +220,8 @@ history
 
 * `compare v0.10.0...master <https://github.com/jedie/PyInventory/compare/v0.10.0...master>`_ **dev** 
 
+    * Update to Django 3.1.x
+
     * tbc
 
 * `v0.10.0 - 29.09.2021 <https://github.com/jedie/PyInventory/compare/v0.9.4...v0.10.0>`_ 
@@ -405,4 +407,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2021-09-29 19:44:56 with "python-creole"``
+``Note: this file is generated from README.creole 2021-10-09 16:15:45 with "python-creole"``

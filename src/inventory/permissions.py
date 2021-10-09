@@ -1,7 +1,17 @@
 from django.contrib.auth.models import Group, Permission
 from django.contrib.contenttypes.models import ContentType
 
-from inventory.models import ItemImageModel, ItemLinkModel, ItemModel, LocationModel
+from inventory.models import (
+    ItemFileModel,
+    ItemImageModel,
+    ItemLinkModel,
+    ItemModel,
+    LocationModel,
+    MemoFileModel,
+    MemoImageModel,
+    MemoLinkModel,
+    MemoModel,
+)
 
 
 NORMAL_USER_GROUP_NAME = 'normal user'
@@ -30,7 +40,19 @@ def setup_normal_user_permissions(normal_user_group):
         inventory.signals.post_migrate_callback()
     """
     assert normal_user_group.name == NORMAL_USER_GROUP_NAME
-    permissions = get_permissions(ItemImageModel, ItemLinkModel, ItemModel, LocationModel)
+    permissions = get_permissions(
+        ItemFileModel,
+        ItemImageModel,
+        ItemLinkModel,
+        ItemModel,
+
+        LocationModel,
+
+        MemoFileModel,
+        MemoImageModel,
+        MemoLinkModel,
+        MemoModel,
+    )
     existing_permissions = normal_user_group.permissions.all()
 
     if set(permissions) != set(existing_permissions):

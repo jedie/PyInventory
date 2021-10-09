@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 19:19+0200\n"
-"PO-Revision-Date: 2021-04-28 18:30+0200\n"
+"POT-Creation-Date: 2021-10-09 19:36+0200\n"
+"PO-Revision-Date: 2021-10-09 19:36+0200\n"
 "Last-Translator: Jens Diemer\n"
 "Language-Team: \n"
 "Language: en\n"
@@ -244,3 +244,45 @@ msgstr "Location"
 
 msgid "LocationModel.verbose_name_plural"
 msgstr "Locations"
+
+msgid "MemoModel.description.verbose_name"
+msgstr "Description"
+
+msgid "MemoModel.description.help_text"
+msgstr " "
+
+msgid "MemoModel.verbose_name"
+msgstr "Memo"
+
+msgid "MemoModel.verbose_name_plural"
+msgstr "Memos"
+
+msgid "MemoLinkModel.verbose_name"
+msgstr "Link"
+
+msgid "MemoLinkModel.verbose_name_plural"
+msgstr "Links"
+
+msgid "MemoImageModel.image.verbose_name"
+msgstr "Image"
+
+msgid "MemoImageModel.image.help_text"
+msgstr " "
+
+msgid "MemoImageModel.verbose_name"
+msgstr "Image"
+
+msgid "MemoImageModel.verbose_name_plural"
+msgstr "Images"
+
+msgid "MemoFileModel.file.verbose_name"
+msgstr "File"
+
+msgid "MemoFileModel.file.help_text"
+msgstr " "
+
+msgid "MemoFileModel.verbose_name"
+msgstr "File"
+
+msgid "MemoFileModel.verbose_name_plural"
+msgstr "Files"

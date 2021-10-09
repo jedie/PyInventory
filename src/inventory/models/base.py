@@ -45,7 +45,7 @@ class BaseModel(TimetrackingBaseModel):
         abstract = True
 
 
-class BaseItemAttachmentModel(BaseModel):
+class BaseAttachmentModel(BaseModel):
     """
     Base model to store files or images to Items
     """
@@ -55,7 +55,6 @@ class BaseItemAttachmentModel(BaseModel):
         verbose_name=_('BaseItemAttachmentModel.name.verbose_name'),
         help_text=_('BaseItemAttachmentModel.name.help_text')
     )
-    item = models.ForeignKey('ItemModel', on_delete=models.CASCADE)
     position = models.PositiveSmallIntegerField(
         # Note: Will be set in admin via adminsortable2
         # The JavaScript which performs the sorting is 1-indexed !
@@ -65,12 +64,38 @@ class BaseItemAttachmentModel(BaseModel):
     def __str__(self):
         return self.name
 
-    def full_clean(self, **kwargs):
+    def full_clean(self, *, parent_instance, **kwargs):
         if self.user_id is None:
-            # inherit owner of this link from item instance
-            self.user_id = self.item.user_id
+            # inherit owner of this link from parent model instance
+            self.user_id = parent_instance.user_id
 
         return super().full_clean(**kwargs)
+
+    class Meta:
+        abstract = True
+
+
+class BaseItemAttachmentModel(BaseAttachmentModel):
+    """
+    Base model to store files or images to Items
+    """
+    item = models.ForeignKey('ItemModel', on_delete=models.CASCADE)
+
+    def full_clean(self, **kwargs):
+        return super().full_clean(parent_instance=self.item, **kwargs)
+
+    class Meta:
+        abstract = True
+
+
+class BaseMemoAttachmentModel(BaseAttachmentModel):
+    """
+    Base model to store files or images to Memos
+    """
+    memo = models.ForeignKey('MemoModel', on_delete=models.CASCADE)
+
+    def full_clean(self, **kwargs):
+        return super().full_clean(parent_instance=self.memo, **kwargs)
 
     class Meta:
         abstract = True

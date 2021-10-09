@@ -4,13 +4,11 @@ import tagulous
 from adminsortable2.admin import SortableInlineAdminMixin
 from django.contrib import admin
 from django.template.loader import render_to_string
-from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 from import_export.admin import ImportExportMixin
 from import_export.resources import ModelResource
 
-from inventory.admin.base import BaseUserAdmin
-from inventory.forms import ItemModelModelForm
+from inventory.admin.base import BaseFileModelInline, BaseImageModelInline, BaseUserAdmin, UserInlineMixin
 from inventory.models import ItemLinkModel, ItemModel
 from inventory.models.item import ItemFileModel, ItemImageModel
 
@@ -18,47 +16,17 @@ from inventory.models.item import ItemFileModel, ItemImageModel
 logger = logging.getLogger(__name__)
 
 
-class UserInlineMixin:
-    def get_queryset(self, request):
-        qs = super().get_queryset(request)
-
-        if not request.user.is_superuser:
-            # Display only own created entries
-            qs = qs.filter(user=request.user)
-
-        return qs
-
-
 class ItemLinkModelInline(UserInlineMixin, SortableInlineAdminMixin, admin.TabularInline):
     model = ItemLinkModel
     extra = 0
 
 
-class ItemImageModelInline(UserInlineMixin, SortableInlineAdminMixin, admin.TabularInline):
-    def preview(self, instance):
-        return format_html(
-            (
-                '<a href="{url}" title="{name}"'
-                ' target="_blank" class="image_file_input_preview">'
-                '<img style="width:9em;" src="{url}"></a>'
-            ),
-            url=instance.image.url,
-            name=instance.name,
-        )
+class ItemImageModelInline(BaseImageModelInline):
     model = ItemImageModel
-    extra = 0
-    fields = (
-        'position', 'preview', 'image', 'name', 'tags'
-    )
-    readonly_fields = ('preview',)
 
 
-class ItemFileModelInline(UserInlineMixin, SortableInlineAdminMixin, admin.TabularInline):
+class ItemFileModelInline(BaseFileModelInline):
     model = ItemFileModel
-    extra = 0
-    fields = (
-        'position', 'file', 'name', 'tags'
-    )
 
 
 class ItemModelResource(ModelResource):
@@ -112,13 +80,8 @@ class GroupItemsListFilter(admin.SimpleListFilter):
 
 @admin.register(ItemModel)
 class ItemModelAdmin(ImportExportMixin, BaseUserAdmin):
-    form = ItemModelModelForm
-
     def get_queryset(self, request):
         qs = super().get_queryset(request)
-        qs = qs.select_related(
-            'user',
-        )
         qs = qs.prefetch_related(
             'kind',
             'producer',

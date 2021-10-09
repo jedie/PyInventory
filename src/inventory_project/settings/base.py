@@ -5,7 +5,7 @@
 import logging
 from pathlib import Path as __Path
 
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 
 ###############################################################################

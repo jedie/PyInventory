@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.conf.urls import include, static, url
+from django.conf.urls import include, re_path, static
 from django.contrib import admin
 from django.urls import path
 from django.views.generic import RedirectView
@@ -10,7 +10,7 @@ admin.autodiscover()
 urlpatterns = [  # Don't use i18n_patterns() here
     path('admin/', admin.site.urls),
 
-    url(r'^$', RedirectView.as_view(pattern_name='admin:index')),
+    re_path(r'^$', RedirectView.as_view(pattern_name='admin:index')),
 
     path('ckeditor/', include('ckeditor_uploader.urls')),  # TODO: check permissions?
     path(settings.MEDIA_URL.lstrip('/'), include('django_tools.serve_media_app.urls')),
@@ -23,4 +23,4 @@ if settings.SERVE_FILES:
 
 if settings.DEBUG:
     import debug_toolbar
-    urlpatterns = [url(r'^__debug__/', include(debug_toolbar.urls))] + urlpatterns
+    urlpatterns = [re_path(r'^__debug__/', include(debug_toolbar.urls))] + urlpatterns

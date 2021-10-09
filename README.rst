@@ -218,13 +218,15 @@ Files are separated into: "/src/" and "/development/"
 history
 -------
 
-* `compare v0.10.0...master <https://github.com/jedie/PyInventory/compare/v0.10.0...master>`_ **dev** 
+* `compare v0.10.1...master <https://github.com/jedie/PyInventory/compare/v0.10.1...master>`_ **dev** 
+
+    * tbc
+
+* `v0.10.1 - 09.10.2021 <https://github.com/jedie/PyInventory/compare/v0.10.0...v0.10.1>`_ 
 
     * Update to Django 3.1.x
 
     * Don't make requests to the a name for a Link, if we already have one or if last request was not long ago.
-
-    * tbc
 
 * `v0.10.0 - 29.09.2021 <https://github.com/jedie/PyInventory/compare/v0.9.4...v0.10.0>`_ 
 
@@ -409,4 +411,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2021-10-09 16:58:57 with "python-creole"``
+``Note: this file is generated from README.creole 2021-10-09 17:18:26 with "python-creole"``

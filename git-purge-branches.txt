@@ -1,0 +1,11 @@
+Branch add-notes entfernt (war 72a320a).
+Branch better-error-messages entfernt (war d122220).
+Branch compare-pretty-html entfernt (war 584d229).
+Branch django3.1 entfernt (war c7bd15e).
+Branch enhance-html-snapshot entfernt (war 5c1fbe6).
+Branch issues56 entfernt (war a2c0d6c).
+Branch less-requests entfernt (war 5556158).
+Branch optimize entfernt (war fba1425).
+Branch optional-grouping entfernt (war 10d3149).
+Branch update-req entfernt (war 651d4be).
+Branch updates entfernt (war f6f1181).

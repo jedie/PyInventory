@@ -306,7 +306,8 @@ CKEDITOR_DEFAULT_CONFIG.update({
 })
 CKEDITOR_CONFIGS = {
     'ItemModel.description': CKEDITOR_DEFAULT_CONFIG,
-    'LocationModel.description': CKEDITOR_DEFAULT_CONFIG
+    'LocationModel.description': CKEDITOR_DEFAULT_CONFIG,
+    'MemoModel.description': CKEDITOR_DEFAULT_CONFIG,
 }
 CKEDITOR_RESTRICT_BY_USER = True
 CKEDITOR_RESTRICT_BY_DATE = True

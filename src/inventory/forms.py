@@ -4,7 +4,7 @@ from django.core.exceptions import FieldDoesNotExist
 from inventory.request_dict import get_request_dict
 
 
-class BaseUserOnlyModelForm(forms.ModelForm):
+class OnlyUserRelationsModelForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -34,11 +34,3 @@ class BaseUserOnlyModelForm(forms.ModelForm):
 
         instance.save()
         return instance
-
-
-class ItemModelModelForm(BaseUserOnlyModelForm):
-    pass
-
-
-class LocationModelModelForm(BaseUserOnlyModelForm):
-    pass

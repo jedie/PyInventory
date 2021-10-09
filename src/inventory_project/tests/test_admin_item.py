@@ -40,11 +40,13 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
     def test_normal_user_create_minimal_item(self):
         self.client.force_login(self.normaluser)
 
-        response = self.client.get('/admin/inventory/itemmodel/add/')
+        with mock.patch.object(CsrfTokenNode, 'render', return_value='MockedCsrfTokenNode'):
+            response = self.client.get('/admin/inventory/itemmodel/add/')
         assert response.status_code == 200
         self.assert_html_parts(response, parts=(
             f'<title>Add Item | PyInventory v{__version__}</title>',
         ))
+        assert_html_response_snapshot(response=response, validate=False)
 
         assert ItemModel.objects.count() == 0
 

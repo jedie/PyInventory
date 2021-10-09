@@ -3,8 +3,7 @@ PyInventory
 ===========
 
 Web based management to catalog things including state and location etc. using Python/Django.
-
-The project is in an early stage of development. Some things are already implemented and usable. But there is still a lot to do.
+Store information in WYSIWYG-HTML-Editor field and tag them and add Files, Images and Links to them.
 
 Pull requests welcome!
 
@@ -25,31 +24,41 @@ about
 
 The focus of this project is on the management of retro computing hardware.
 
-Plan:
+Current features:
 
 * Web-based
 
-* Multiuser ready
+* Multiuser ready (Every user see and manage only his own entries)
 
 * Chaotic warehousing
 
-    * Grouped "Storage": Graphics card is in computer XY
+    * Grouped "Items" e.g.: Graphics card Foo is in computer Bar
 
 * Data structure kept as general as possible
 
-* You should be able to add the following to the items:
+* Manage information to every item:
+
+    * Description: free WYSIWYG-HTML-Editor field
 
     * Storage location
 
     * State
 
-    * Pictures and Files
-
-    * URLs
+    * Images, Files and Web-Links
 
     * receiving and delivering (when, from whom, at what price, etc.)
 
-    * Information: Publicly visible yes/no
+* Manage "Memos" (Information independent of item/location):
+
+    * A free WYSIWYG-HTML-Editor field
+
+    * Tags
+
+    * Images, Files and Web-Links
+
+Future ideas:
+
+** Information: Publicly visible yes/no
 
 * A public list of existing items (think about it, you can set in your profile if you want to)
 
@@ -219,6 +228,10 @@ history
 -------
 
 * `compare v0.10.1...master <https://github.com/jedie/PyInventory/compare/v0.10.1...master>`_ **dev** 
+
+    * NEW: Memo model/admin: Store Information (incl. images/files/links) independent of items/locations
+
+    * Bugfix CKEditor sizes and fix toolbar (e.g.: remove useless pdf generator button and add sourcecode function)
 
     * tbc
 
@@ -411,4 +424,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2021-10-09 17:18:26 with "python-creole"``
+``Note: this file is generated from README.creole 2021-10-09 20:06:41 with "python-creole"``

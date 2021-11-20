@@ -5,7 +5,7 @@ from unittest import mock
 from bx_django_utils.test_utils.datetime import MockDatetimeGenerator
 from bx_django_utils.test_utils.html_assertion import HtmlAssertionMixin
 from django.contrib.auth.models import User
-from django.template.defaulttags import CsrfTokenNode
+from django.template.defaulttags import CsrfTokenNode, NowNode
 from django.test import TestCase
 from django.utils import timezone
 from django_tools.unittest_utils.mockup import ImageDummy
@@ -40,7 +40,8 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
     def test_normal_user_create_minimal_item(self):
         self.client.force_login(self.normaluser)
 
-        with mock.patch.object(CsrfTokenNode, 'render', return_value='MockedCsrfTokenNode'):
+        with mock.patch.object(NowNode, 'render', return_value='MockedNowNode'), \
+                mock.patch.object(CsrfTokenNode, 'render', return_value='MockedCsrfTokenNode'):
             response = self.client.get('/admin/inventory/itemmodel/add/')
         assert response.status_code == 200
         self.assert_html_parts(response, parts=(
@@ -177,7 +178,8 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
 
         # Default mode, without any GET parameter -> group "automatic":
 
-        with mock.patch.object(CsrfTokenNode, 'render', return_value='MockedCsrfTokenNode'), \
+        with mock.patch.object(NowNode, 'render', return_value='MockedNowNode'), \
+                mock.patch.object(CsrfTokenNode, 'render', return_value='MockedCsrfTokenNode'), \
                 self.assertLogs(logger='inventory', level=logging.DEBUG) as logs:
             response = self.client.get(
                 path='/admin/inventory/itemmodel/',
@@ -201,7 +203,8 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
 
         # Search should disable grouping:
 
-        with mock.patch.object(CsrfTokenNode, 'render', return_value='MockedCsrfTokenNode'), \
+        with mock.patch.object(NowNode, 'render', return_value='MockedNowNode'), \
+                mock.patch.object(CsrfTokenNode, 'render', return_value='MockedCsrfTokenNode'), \
                 self.assertLogs(logger='inventory', level=logging.DEBUG) as logs:
             response = self.client.get(
                 path='/admin/inventory/itemmodel/?q=sub+item+2.',

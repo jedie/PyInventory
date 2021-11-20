@@ -2,7 +2,7 @@ from unittest import mock
 
 from bx_django_utils.test_utils.html_assertion import HtmlAssertionMixin
 from django.contrib.auth.models import User
-from django.template.defaulttags import CsrfTokenNode
+from django.template.defaulttags import CsrfTokenNode, NowNode
 from django.test import TestCase
 from django_tools.unittest_utils.mockup import ImageDummy
 from model_bakery import baker
@@ -36,7 +36,8 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
     def test_normal_user_create_minimal_item(self):
         self.client.force_login(self.normaluser)
 
-        with mock.patch.object(CsrfTokenNode, 'render', return_value='MockedCsrfTokenNode'):
+        with mock.patch.object(NowNode, 'render', return_value='MockedNowNode'), \
+                mock.patch.object(CsrfTokenNode, 'render', return_value='MockedCsrfTokenNode'):
             response = self.client.get('/admin/inventory/memomodel/add/')
         assert response.status_code == 200
         self.assert_html_parts(response, parts=(

@@ -1,11 +1,12 @@
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django_tools.model_version_protect.models import VersionProtectBaseModel
 
 from inventory.models.base import BaseModel
 
 
-class LocationModel(BaseModel):
+class LocationModel(BaseModel, VersionProtectBaseModel):
     """
     A Storage for items.
     """

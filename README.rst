@@ -237,9 +237,15 @@ Files are separated into: "/src/" and "/development/"
 history
 -------
 
-* `compare v0.11.0...master <https://github.com/jedie/PyInventory/compare/v0.11.0...master>`_ **dev** 
+* `compare v0.12.0...master <https://github.com/jedie/PyInventory/compare/v0.12.0...master>`_ **dev** 
 
     * tbc
+
+* `v0.12.0 - 22.11.2021 <https://github.com/jedie/PyInventory/compare/v0.11.0...v0.12.0>`_ 
+
+    * NEW: `Protect user to overwrite newer Item/Memo/Location with a older one (e.g.: in other browser TAB) <https://github.com/jedie/PyInventory/pull/78>`_
+
+    * update requirements
 
 * `v0.11.0 - 09.10.2021 <https://github.com/jedie/PyInventory/compare/v0.10.1...v0.11.0>`_ 
 
@@ -436,4 +442,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2021-10-09 20:31:12 with "python-creole"``
+``Note: this file is generated from README.creole 2021-11-22 19:55:39 with "python-creole"``

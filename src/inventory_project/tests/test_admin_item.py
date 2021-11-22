@@ -4,6 +4,7 @@ from unittest import mock
 
 from bx_django_utils.test_utils.datetime import MockDatetimeGenerator
 from bx_django_utils.test_utils.html_assertion import HtmlAssertionMixin
+from bx_py_utils.test_utils.snapshot import assert_html_snapshot
 from django.contrib.auth.models import User
 from django.template.defaulttags import CsrfTokenNode, NowNode
 from django.test import TestCase
@@ -15,6 +16,34 @@ from inventory import __version__
 from inventory.models import ItemImageModel, ItemModel
 from inventory.permissions import get_or_create_normal_user_group
 from inventory_project.tests.temp_utils import assert_html_response_snapshot
+
+
+ITEM_FORM_DEFAULTS = {
+    'version': 0,  # VersionProtectBaseModel field
+    'kind': 'kind',
+    'name': 'name',
+
+    'itemimagemodel_set-TOTAL_FORMS': '0',
+    'itemimagemodel_set-INITIAL_FORMS': '0',
+    'itemimagemodel_set-MIN_NUM_FORMS': '0',
+    'itemimagemodel_set-MAX_NUM_FORMS': '1000',
+    'itemimagemodel_set-__prefix__-position': '0',
+
+    'itemfilemodel_set-TOTAL_FORMS': '0',
+    'itemfilemodel_set-INITIAL_FORMS': '0',
+    'itemfilemodel_set-MIN_NUM_FORMS': '0',
+    'itemfilemodel_set-MAX_NUM_FORMS': '1000',
+    'itemfilemodel_set-__prefix__-position': '0',
+
+    'itemlinkmodel_set-TOTAL_FORMS': '0',
+    'itemlinkmodel_set-INITIAL_FORMS': '0',
+    'itemlinkmodel_set-MIN_NUM_FORMS': '0',
+    'itemlinkmodel_set-MAX_NUM_FORMS': '1000',
+    'itemlinkmodel_set-__prefix__-position': '0',
+
+    '_save': 'Save',
+}
+ITEM_FORM_DEFAULTS = tuple(ITEM_FORM_DEFAULTS.items())
 
 
 class AdminAnonymousTests(TestCase):
@@ -30,7 +59,8 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
     @classmethod
     def setUpTestData(cls):
         cls.normaluser = baker.make(
-            User, username='NormalUser',
+            User,
+            id=1, username='NormalUser',
             is_staff=True, is_active=True, is_superuser=False
         )
         assert cls.normaluser.user_permissions.count() == 0
@@ -38,59 +68,58 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
         cls.normaluser.groups.set([group])
 
     def test_normal_user_create_minimal_item(self):
-        self.client.force_login(self.normaluser)
-
-        with mock.patch.object(NowNode, 'render', return_value='MockedNowNode'), \
+        offset = datetime.timedelta(minutes=1)
+        with mock.patch.object(timezone, 'now', MockDatetimeGenerator(offset=offset)),\
+                mock.patch.object(NowNode, 'render', return_value='MockedNowNode'), \
                 mock.patch.object(CsrfTokenNode, 'render', return_value='MockedCsrfTokenNode'):
+            self.client.force_login(self.normaluser)
+
             response = self.client.get('/admin/inventory/itemmodel/add/')
-        assert response.status_code == 200
-        self.assert_html_parts(response, parts=(
-            f'<title>Add Item | PyInventory v{__version__}</title>',
-        ))
-        assert_html_response_snapshot(response=response, validate=False)
+            assert response.status_code == 200
+            self.assert_html_parts(response, parts=(
+                f'<title>Add Item | PyInventory v{__version__}</title>',
+            ))
+            assert_html_response_snapshot(response=response, validate=False)
 
-        assert ItemModel.objects.count() == 0
+            assert ItemModel.objects.count() == 0
 
-        response = self.client.post(
-            path='/admin/inventory/itemmodel/add/',
-            data={
-                'kind': 'kind',
-                'name': 'name',
+            post_data = dict(ITEM_FORM_DEFAULTS)
+            response = self.client.post(
+                path='/admin/inventory/itemmodel/add/',
+                data=post_data,
+            )
+            assert response.status_code == 302, response.content.decode('utf-8')  # Form error?
+            self.assertRedirects(response, expected_url='/admin/inventory/itemmodel/')
 
-                'itemimagemodel_set-TOTAL_FORMS': '0',
-                'itemimagemodel_set-INITIAL_FORMS': '0',
-                'itemimagemodel_set-MIN_NUM_FORMS': '0',
-                'itemimagemodel_set-MAX_NUM_FORMS': '1000',
-                'itemimagemodel_set-__prefix__-position': '0',
+            data = list(ItemModel.objects.values_list('kind__name', 'name', 'version'))
+            assert data == [('kind', 'name', 2)]  # FIXME: Save call done two times!
 
-                'itemfilemodel_set-TOTAL_FORMS': '0',
-                'itemfilemodel_set-INITIAL_FORMS': '0',
-                'itemfilemodel_set-MIN_NUM_FORMS': '0',
-                'itemfilemodel_set-MAX_NUM_FORMS': '1000',
-                'itemfilemodel_set-__prefix__-position': '0',
+            item = ItemModel.objects.first()
 
-                'itemlinkmodel_set-TOTAL_FORMS': '0',
-                'itemlinkmodel_set-INITIAL_FORMS': '0',
-                'itemlinkmodel_set-MIN_NUM_FORMS': '0',
-                'itemlinkmodel_set-MAX_NUM_FORMS': '1000',
-                'itemlinkmodel_set-__prefix__-position': '0',
+            self.assert_messages(response, expected_messages=[
+                f'The Item “<a href="/admin/inventory/itemmodel/{item.pk}/change/"> - name</a>”'
+                ' was added successfully.'
+            ])
 
-                '_save': 'Save',
-            },
-        )
-        self.assertRedirects(response, expected_url='/admin/inventory/itemmodel/')
+            assert item.user_id == self.normaluser.pk
 
-        data = list(ItemModel.objects.values_list('kind__name', 'name'))
-        assert data == [('kind', 'name')]
+            # Test django-tools VersionProtectBaseModel integration:
 
-        item = ItemModel.objects.first()
-
-        self.assert_messages(response, expected_messages=[
-            f'The Item “<a href="/admin/inventory/itemmodel/{item.pk}/change/"> - name</a>”'
-            ' was added successfully.'
-        ])
-
-        assert item.user_id == self.normaluser.pk
+            assert item.version == 2  # current Version in DB
+            post_data['version'] = 1  # Try to overwrite with older version
+            post_data['name'] = 'A new Name!'
+            response = self.client.post(
+                path=f'/admin/inventory/itemmodel/{item.pk}/change/',
+                data=post_data,
+            )
+            self.assert_html_parts(response, parts=(
+                f'<title>Change Item | PyInventory v{__version__}</title>',
+                '<li>Version error: Overwrite version 2 with 1 is forbidden!</li>',
+                '<pre>- &quot;name&quot;\n+ &quot;A new Name!&quot;</pre>'
+            ))
+            html = response.content.decode('utf-8')
+            html = html.replace(str(item.pk), '<removed-UUID>')
+            assert_html_snapshot(got=html, validate=False)
 
     def test_new_item_with_image(self):
         """
@@ -100,34 +129,16 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
 
         img = ImageDummy(width=1, height=1, format='png').in_memory_image_file(filename='test.png')
 
+        post_data = dict(ITEM_FORM_DEFAULTS)
+        post_data.update({
+            'itemimagemodel_set-TOTAL_FORMS': '1',
+            'itemimagemodel_set-0-position': '0',
+            'itemimagemodel_set-0-image': img,
+        })
+
         response = self.client.post(
             path='/admin/inventory/itemmodel/add/',
-            data={
-                'kind': 'kind',
-                'name': 'name',
-
-                'itemimagemodel_set-TOTAL_FORMS': '1',
-                'itemimagemodel_set-INITIAL_FORMS': '0',
-                'itemimagemodel_set-MIN_NUM_FORMS': '0',
-                'itemimagemodel_set-MAX_NUM_FORMS': '1000',
-                'itemimagemodel_set-0-position': '0',
-                'itemimagemodel_set-__prefix__-position': '0',
-                'itemimagemodel_set-0-image': img,
-
-                'itemfilemodel_set-TOTAL_FORMS': '0',
-                'itemfilemodel_set-INITIAL_FORMS': '0',
-                'itemfilemodel_set-MIN_NUM_FORMS': '0',
-                'itemfilemodel_set-MAX_NUM_FORMS': '1000',
-                'itemfilemodel_set-__prefix__-position': '0',
-
-                'itemlinkmodel_set-TOTAL_FORMS': '0',
-                'itemlinkmodel_set-INITIAL_FORMS': '0',
-                'itemlinkmodel_set-MIN_NUM_FORMS': '0',
-                'itemlinkmodel_set-MAX_NUM_FORMS': '1000',
-                'itemlinkmodel_set-__prefix__-position': '0',
-
-                '_save': 'Save',
-            },
+            data=post_data,
         )
         self.assertRedirects(response, expected_url='/admin/inventory/itemmodel/')
 

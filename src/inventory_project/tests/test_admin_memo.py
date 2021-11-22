@@ -50,6 +50,7 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
         response = self.client.post(
             path='/admin/inventory/memomodel/add/',
             data={
+                'version': 0,  # VersionProtectBaseModel field
                 'name': 'The Memo Name',
                 'memo': 'This is a test Memo',
 
@@ -74,6 +75,7 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
                 '_save': 'Save',
             },
         )
+        assert response.status_code == 302, response.content.decode('utf-8')  # Form error?
         self.assertRedirects(response, expected_url='/admin/inventory/memomodel/')
 
         data = list(MemoModel.objects.values_list('name', 'memo'))
@@ -99,6 +101,7 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
         response = self.client.post(
             path='/admin/inventory/memomodel/add/',
             data={
+                'version': 0,  # VersionProtectBaseModel field
                 'name': 'The Memo Name',
                 'memo': 'This is a test Memo',
 
@@ -125,6 +128,7 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
                 '_save': 'Save',
             },
         )
+        assert response.status_code == 302, response.content.decode('utf-8')  # Form error?
         memo = MemoModel.objects.first() or MemoModel()
         self.assert_messages(response, expected_messages=[
             f'The Memo “<a href="/admin/inventory/memomodel/{memo.pk}/change/">The Memo Name</a>”'

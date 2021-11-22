@@ -7,6 +7,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
+from django_tools.model_version_protect.models import VersionProtectBaseModel
 from django_tools.serve_media_app.models import user_directory_path
 
 from inventory.models.base import BaseItemAttachmentModel, BaseModel
@@ -21,7 +22,7 @@ class ItemQuerySet(models.QuerySet):
         return self.order_by('kind', 'producer', 'name')
 
 
-class ItemModel(BaseModel):
+class ItemModel(BaseModel, VersionProtectBaseModel):
     """
     A Item that can be described and store somewhere ;)
     """

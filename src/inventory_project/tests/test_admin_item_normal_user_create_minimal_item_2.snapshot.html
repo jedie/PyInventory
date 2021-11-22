@@ -2,7 +2,7 @@
 <html lang="en">
  <head>
   <title>
-   Add Item | PyInventory v0.12.0.rc1
+   Change Item | PyInventory v0.12.0.rc1
   </title>
   <link href="/static/admin/css/base.css" rel="stylesheet" type="text/css"/>
   <link href="/static/admin/css/nav_sidebar.css" rel="stylesheet" type="text/css"/>
@@ -120,7 +120,7 @@
     <a href="/admin/inventory/itemmodel/">
      Items
     </a>
-    › Add Item
+    › - A new Name!
    </div>
    <div class="main shifted" id="main">
     <button aria-label="Toggle navigation" class="sticky toggle-nav-sidebar" id="toggle-nav-sidebar">
@@ -176,12 +176,27 @@
      <!-- Content -->
      <div class="colM" id="content">
       <h1>
-       Add Item
+       Change Item
       </h1>
       <div id="content-main">
+       <ul class="object-tools">
+        <li>
+         <a class="historylink" href="/admin/inventory/itemmodel/<removed-UUID>/history/">
+          History
+         </a>
+        </li>
+       </ul>
        <form enctype="multipart/form-data" id="itemmodel_form" method="post" novalidate="">
         MockedCsrfTokenNode
         <div>
+         <p class="errornote">
+          Please correct the errors below.
+         </p>
+         <ul class="errorlist nonfield">
+          <li>
+           Version error: Overwrite version 2 with 1 is forbidden!
+          </li>
+         </ul>
          <fieldset class="module aligned collapse">
           <h2>
            Internals
@@ -192,18 +207,26 @@
              ID:
             </label>
             <div class="readonly">
-             -
+             <removed-uuid>
+             </removed-uuid>
             </div>
             <div class="help">
              ID
             </div>
            </div>
-           <div class="fieldBox field-version">
+           <div class="fieldBox field-version errors">
+            <ul class="errorlist">
+             <li>
+              Version changed:
+              <pre>- 2
++ 1</pre>
+             </li>
+            </ul>
             <label class="required inline" for="id_version">
              Version:
             </label>
-            <input id="id_version" name="version" required="" type="hidden" value="0"/>
-            0
+            <input id="id_version" name="version" required="" type="hidden" value="1"/>
+            1
             <div class="help">
              Internal version number of this entry. Used to protect the overwriting of an older entry.
             </div>
@@ -215,7 +238,7 @@
              User:
             </label>
             <div class="readonly">
-             -
+             NormalUser
             </div>
             <div class="help">
              The user who is the owner of this entry and can manage it (will be set automatically)
@@ -233,7 +256,7 @@
              Create date:
             </label>
             <div class="readonly">
-             -
+             Jan. 1, 2000, 1:16 a.m.
             </div>
             <div class="help">
              (will be set automatically)
@@ -246,7 +269,7 @@
              Last update:
             </label>
             <div class="readonly">
-             -
+             Jan. 1, 2000, 1:17 a.m.
             </div>
             <div class="help">
              (will be set automatically)
@@ -264,7 +287,7 @@
              Kind:
             </label>
             <div class="related-widget-wrapper">
-             <input autocomplete="off" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 3, "space_delimiter": false, "required": true}' data-tagulous="true" data-theme="admin-autocomplete" id="id_kind" name="kind" required="" type="text"/>
+             <input autocomplete="off" data-tag-list='["kind"]' data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 3, "space_delimiter": false, "required": true}' data-tagulous="true" data-theme="admin-autocomplete" id="id_kind" name="kind" required="" type="text" value="kind"/>
             </div>
             <div class="help">
             </div>
@@ -281,11 +304,18 @@
             <div class="help">
             </div>
            </div>
-           <div class="fieldBox field-name">
+           <div class="fieldBox field-name errors">
+            <ul class="errorlist">
+             <li>
+              changes between version 2 and 1:
+              <pre>- "name"
++ "A new Name!"</pre>
+             </li>
+            </ul>
             <label class="required inline" for="id_name">
              Name:
             </label>
-            <input class="vTextField" id="id_name" maxlength="255" name="name" required="" type="text"/>
+            <input class="vTextField" id="id_name" maxlength="255" name="name" required="" type="text" value="A new Name!"/>
             <div class="help">
              Name
             </div>
@@ -335,6 +365,9 @@
              <select id="id_parent" name="parent">
               <option selected="" value="">
                ---------
+              </option>
+              <option value="<removed-UUID>">
+               - name
               </option>
              </select>
              <a class="related-widget-wrapper-link change-related" data-href-template="/admin/inventory/itemmodel/__fk__/change/?_to_field=id&_popup=1" id="change_id_parent" title="Change selected Item">
@@ -517,7 +550,7 @@
                </td>
                <td class="original">
                 <input id="id_itemimagemodel_set-__prefix__-id" name="itemimagemodel_set-__prefix__-id" type="hidden"/>
-                <input id="id_itemimagemodel_set-__prefix__-item" name="itemimagemodel_set-__prefix__-item" type="hidden"/>
+                <input id="id_itemimagemodel_set-__prefix__-item" name="itemimagemodel_set-__prefix__-item" type="hidden" value="<removed-UUID>"/>
                 <input id="id_itemimagemodel_set-__prefix__-position" name="itemimagemodel_set-__prefix__-position" type="hidden" value="0"/>
                </td>
                <td class="field-preview">
@@ -595,7 +628,7 @@
                </td>
                <td class="original">
                 <input id="id_itemfilemodel_set-__prefix__-id" name="itemfilemodel_set-__prefix__-id" type="hidden"/>
-                <input id="id_itemfilemodel_set-__prefix__-item" name="itemfilemodel_set-__prefix__-item" type="hidden"/>
+                <input id="id_itemfilemodel_set-__prefix__-item" name="itemfilemodel_set-__prefix__-item" type="hidden" value="<removed-UUID>"/>
                 <input id="id_itemfilemodel_set-__prefix__-position" name="itemfilemodel_set-__prefix__-position" type="hidden" value="0"/>
                </td>
                <td class="field-file">
@@ -665,7 +698,7 @@
                </td>
                <td class="original">
                 <input id="id_itemlinkmodel_set-__prefix__-id" name="itemlinkmodel_set-__prefix__-id" type="hidden"/>
-                <input id="id_itemlinkmodel_set-__prefix__-item" name="itemlinkmodel_set-__prefix__-item" type="hidden"/>
+                <input id="id_itemlinkmodel_set-__prefix__-item" name="itemlinkmodel_set-__prefix__-item" type="hidden" value="<removed-UUID>"/>
                 <input id="id_itemlinkmodel_set-__prefix__-position" name="itemlinkmodel_set-__prefix__-position" type="hidden" value="0"/>
                </td>
                <td class="field-tags">
@@ -698,10 +731,15 @@
          </div>
          <div class="submit-row">
           <input class="default" name="_save" type="submit" value="Save"/>
+          <p class="deletelink-box">
+           <a class="deletelink" href="/admin/inventory/itemmodel/<removed-UUID>/delete/">
+            Delete
+           </a>
+          </p>
           <input name="_addanother" type="submit" value="Save and add another"/>
           <input name="_continue" type="submit" value="Save and continue editing"/>
          </div>
-         <script async="" data-model-name="itemmodel" id="django-admin-form-add-constants" src="/static/admin/js/change_form.js">
+         <script async="" id="django-admin-form-add-constants" src="/static/admin/js/change_form.js">
          </script>
          <script data-prepopulated-fields="[]" id="django-admin-prepopulated-fields-constants" src="/static/admin/js/prepopulate_init.js">
          </script>

@@ -124,7 +124,7 @@ class ItemModelAdmin(ImportExportMixin, BaseUserAdmin):
         (_('Internals'), {
             'classes': ('collapse',),
             'fields': (
-                'id',
+                ('id', 'version'),
                 'user',
             )
         }),

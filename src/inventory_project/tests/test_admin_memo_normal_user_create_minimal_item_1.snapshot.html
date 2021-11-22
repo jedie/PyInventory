@@ -2,7 +2,7 @@
 <html lang="en">
  <head>
   <title>
-   Add Memo | PyInventory v0.11.0
+   Add Memo | PyInventory v0.12.0.rc1
   </title>
   <link href="/static/admin/css/base.css" rel="stylesheet" type="text/css"/>
   <link href="/static/admin/css/nav_sidebar.css" rel="stylesheet" type="text/css"/>
@@ -80,7 +80,7 @@
     <div id="branding">
      <h1 id="site-name">
       <a href="/admin/">
-       PyInventory v0.11.0
+       PyInventory v0.12.0.rc1
       </a>
      </h1>
     </div>
@@ -182,8 +182,8 @@
           <h2>
            Internals
           </h2>
-          <div class="form-row field-id">
-           <div>
+          <div class="form-row field-id field-version">
+           <div class="fieldBox field-id">
             <label>
              ID:
             </label>
@@ -192,6 +192,16 @@
             </div>
             <div class="help">
              ID
+            </div>
+           </div>
+           <div class="fieldBox field-version">
+            <label class="required inline" for="id_version">
+             Version:
+            </label>
+            <input id="id_version" name="version" required="" type="hidden" value="0"/>
+            0
+            <div class="help">
+             Internal version number of this entry. Used to protect the overwriting of an older entry.
             </div>
            </div>
           </div>

@@ -6,6 +6,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
+from django_tools.model_version_protect.models import VersionProtectBaseModel
 from django_tools.serve_media_app.models import user_directory_path
 
 from inventory.models.base import BaseMemoAttachmentModel, BaseModel
@@ -15,7 +16,7 @@ from inventory.models.links import BaseLink
 logger = logging.getLogger(__name__)
 
 
-class MemoModel(BaseModel):
+class MemoModel(BaseModel, VersionProtectBaseModel):
     """
     A Memo to hold some information independ of items/location
     """

@@ -8,6 +8,9 @@ Pull requests welcome!
 | {{https://github.com/jedie/PyInventory/workflows/test/badge.svg?branch=master|Build Status on github}} | [[https://github.com/jedie/PyInventory/actions|github.com/jedie/PyInventory/actions]] |
 | {{https://codecov.io/gh/jedie/PyInventory/branch/master/graph/badge.svg|Coverage Status on codecov.io}} | [[https://codecov.io/gh/jedie/PyInventory|codecov.io/gh/jedie/PyInventory]] |
 
+[[https://install-app.yunohost.org/?app=pyinventory|Install PyInventory with YunoHost]].
+If you don't have YunoHost, please consult [[https://yunohost.org/#/install|the guide]] to learn how to install it.
+
 == about
 
 The focus of this project is on the management of retro computing hardware.
@@ -45,14 +48,14 @@ There are two main directories:
 
 |= directory |= description
 | **[[https://github.com/jedie/PyInventory/tree/master/src|/src/]]**               | The main PyInventory source code
-| **[[https://github.com/jedie/PyInventory/tree/master/deployment|/deployment/]]** | deploy PyInventory for production use case
+| **[[https://github.com/jedie/PyInventory/tree/master/deployment|/deployment/]]** | deploy PyInventory for production use case (**[[https://github.com/jedie/PyInventory/issues/81|DEPRECATED!]]**)
 
 == install
 
 There exists these kind of installation/usage:
 
 * local development installation using poetry
-* production use with docker-compose on a root server
+* production use with docker-compose on a root server (**[[https://github.com/jedie/PyInventory/issues/81|DEPRECATED!]]**)
 * Install as [[https://yunohost.org|YunoHost]] App via [[https://github.com/YunoHost-Apps/pyinventory_ynh|pyinventory_ynh]]
 
 This README contains only the information about local development installation.

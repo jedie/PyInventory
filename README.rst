@@ -18,6 +18,9 @@ Pull requests welcome!
 .. |Coverage Status on codecov.io| image:: https://codecov.io/gh/jedie/PyInventory/branch/master/graph/badge.svg
 .. _codecov.io/gh/jedie/PyInventory: https://codecov.io/gh/jedie/PyInventory
 
+`Install PyInventory with YunoHost <https://install-app.yunohost.org/?app=pyinventory>`_.
+If you don't have YunoHost, please consult `the guide <https://yunohost.org/#/install>`_ to learn how to install it.
+
 -----
 about
 -----
@@ -72,16 +75,17 @@ Project structure
 
 There are two main directories:
 
-+---------------------+--------------------------------------------+
-| directory           | description                                |
-+=====================+============================================+
-| **`/src/`_**        | The main PyInventory source code           |
-+---------------------+--------------------------------------------+
-| **`/deployment/`_** | deploy PyInventory for production use case |
-+---------------------+--------------------------------------------+
++---------------------+-----------------------------------------------------------------+
+| directory           | description                                                     |
++=====================+=================================================================+
+| **`/src/`_**        | The main PyInventory source code                                |
++---------------------+-----------------------------------------------------------------+
+| **`/deployment/`_** | deploy PyInventory for production use case (**`DEPRECATED!`_**) |
++---------------------+-----------------------------------------------------------------+
 
 .. _/src/: https://github.com/jedie/PyInventory/tree/master/src
 .. _/deployment/: https://github.com/jedie/PyInventory/tree/master/deployment
+.. _DEPRECATED!: https://github.com/jedie/PyInventory/issues/81
 
 -------
 install
@@ -91,7 +95,7 @@ There exists these kind of installation/usage:
 
 * local development installation using poetry
 
-* production use with docker-compose on a root server
+* production use with docker-compose on a root server (**`DEPRECATED!`_**)
 
 * Install as `YunoHost <https://yunohost.org>`_ App via `pyinventory_ynh <https://github.com/YunoHost-Apps/pyinventory_ynh>`_
 
@@ -442,4 +446,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2021-11-22 19:55:39 with "python-creole"``
+``Note: this file is generated from README.creole 2021-11-24 17:37:38 with "python-creole"``

@@ -1,0 +1,290 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-09 19:36+0200\n"
+"PO-Revision-Date: 2021-10-09 19:36+0200\n"
+"Last-Translator: Jaume López\n"
+"Language-Team: \n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.3\n"
+
+msgid "Group Items"
+msgstr "Agrupa"
+
+msgid "Automatic"
+msgstr "Automàtic"
+
+msgid "No"
+msgstr "No"
+
+msgid "ItemModel.verbose_name_plural"
+msgstr "Elements"
+
+msgid "Internals"
+msgstr "Interns"
+
+msgid "Meta"
+msgstr "Meta"
+
+msgid "Basic"
+msgstr "Bàsic"
+
+msgid "Lent"
+msgstr "Deixats"
+
+msgid "Received"
+msgstr "Rebuts"
+
+msgid "Handed over"
+msgstr "Donats"
+
+msgid "BaseModel.id.verbose_name"
+msgstr "ID"
+
+msgid "BaseModel.id.help_text"
+msgstr "ID"
+
+msgid "BaseModel.user.verbose_name"
+msgstr "Usuari"
+
+msgid "BaseModel.user.help_text"
+msgstr ""
+"L'usuari propietari d'aquesta entrada i pugui gestionar-la"
+"(s'assignarà automàticament)"
+
+msgid "BaseModel.name.verbose_name"
+msgstr "Nom"
+
+msgid "BaseModel.name.help_text"
+msgstr "Nom"
+
+msgid "BaseModel.tags.verbose_name"
+msgstr "Etiquetes"
+
+msgid "BaseModel.tags.help_text"
+msgstr " "
+
+msgid "BaseItemAttachmentModel.name.verbose_name"
+msgstr "Nom"
+
+msgid "BaseItemAttachmentModel.name.help_text"
+msgstr ""
+
+msgid "ItemModel.kind.verbose_name"
+msgstr "Tipus"
+
+msgid "ItemModel.kind.help_text"
+msgstr " "
+
+msgid "ItemModel.producer.verbose_name"
+msgstr "Fabricant"
+
+msgid "ItemModel.producer.help_text"
+msgstr " "
+
+msgid "ItemModel.description.verbose_name"
+msgstr "Descripció"
+
+msgid "ItemModel.description.help_text"
+msgstr " "
+
+msgid "ItemModel.fcc_id.verbose_name"
+msgstr "FCC ID"
+
+msgid "ItemModel.fcc_id.help_text"
+msgstr "Identificador únic del FCC"
+
+msgid "ItemModel.location.verbose_name"
+msgstr "Localització"
+
+msgid "ItemModel.location.help_text"
+msgstr " "
+
+msgid "ItemModel.parent.verbose_name"
+msgstr "parent"
+
+msgid "ItemModel.parent.help_text"
+msgstr " "
+
+msgid "ItemModel.lent_to.verbose_name"
+msgstr "Deixat"
+
+msgid "ItemModel.lent_to.help_text"
+msgstr " "
+
+msgid "ItemModel.lent_from_date.verbose_name"
+msgstr "Deixat des de"
+
+msgid "ItemModel.lent_from_date.help_text"
+msgstr " "
+
+msgid "ItemModel.lent_until_date.verbose_name"
+msgstr "Deixat fins el"
+
+msgid "ItemModel.lent_until_date.help_text"
+msgstr " "
+
+msgid "ItemModel.received_from.verbose_name"
+msgstr "Rebut des de"
+
+msgid "ItemModel.received_from.help_text"
+msgstr " "
+
+msgid "ItemModel.received_date.verbose_name"
+msgstr "Rebut el"
+
+msgid "ItemModel.received_date.help_text"
+msgstr " "
+
+msgid "ItemModel.received_price.verbose_name"
+msgstr "Preu d'adquisició"
+
+msgid "ItemModel.received_price.help_text"
+msgstr " "
+
+msgid "ItemModel.handed_over_to.verbose_name"
+msgstr "Donat a"
+
+msgid "ItemModel.handed_over_to.help_text"
+msgstr " "
+
+msgid "ItemModel.handed_over_date.verbose_name"
+msgstr "Donat el"
+
+msgid "ItemModel.handed_over_date.help_text"
+msgstr " "
+
+msgid "ItemModel.handed_over_price.verbose_name"
+msgstr "Preu de cessió"
+
+msgid "ItemModel.handed_over_price.help_text"
+msgstr " "
+
+msgid "ItemModel.verbose_name"
+msgstr "Element"
+
+msgid "ItemLinkModel.verbose_name"
+msgstr "Vincle"
+
+msgid "ItemLinkModel.verbose_name_plural"
+msgstr "Vincles"
+
+msgid "ItemImageModel.image.verbose_name"
+msgstr "Imatge"
+
+msgid "ItemImageModel.image.help_text"
+msgstr " "
+
+msgid "ItemImageModel.verbose_name"
+msgstr "Imatges"
+
+msgid "ItemImageModel.verbose_name_plural"
+msgstr "Imatges"
+
+msgid "ItemFileModel.file.verbose_name"
+msgstr "Arxiu"
+
+msgid "ItemFileModel.file.help_text"
+msgstr " "
+
+msgid "ItemFileModel.verbose_name"
+msgstr "Arxiu"
+
+msgid "ItemFileModel.verbose_name_plural"
+msgstr "Arxius"
+
+msgid "BaseLink.name.verbose_name"
+msgstr "Nom"
+
+msgid "BaseLink.name.help_text"
+msgstr " "
+
+msgid "Link.url.verbose_name"
+msgstr "URL"
+
+msgid "Link.url.help_text"
+msgstr " "
+
+msgid "Link.status_code.verbose_name"
+msgstr "Codi d'estat"
+
+msgid "Link.status_code.help_text"
+msgstr " "
+
+msgid "Link.page_title.verbose_name"
+msgstr "Títol de la pàgina"
+
+msgid "Link.page_title.help_text"
+msgstr " "
+
+msgid "LocationModel.description.verbose_name"
+msgstr "Descripció"
+
+msgid "LocationModel.description.help_text"
+msgstr " "
+
+msgid "LocationModel.parent.verbose_name"
+msgstr "Parent"
+
+msgid "LocationModel.parent.help_text"
+msgstr "Locations can be nested. Example: The box 12 in cupboard 3"
+msgstr "Les localitzacions poden ser sumades."
+"Exemple: La caixa 12 a l'estant 3"
+
+msgid "LocationModel.verbose_name"
+msgstr "Localització"
+
+msgid "LocationModel.verbose_name_plural"
+msgstr "Localitzacions"
+
+msgid "MemoModel.description.verbose_name"
+msgstr "Descripció"
+
+msgid "MemoModel.description.help_text"
+msgstr " "
+
+msgid "MemoModel.verbose_name"
+msgstr "Memo"
+
+msgid "MemoModel.verbose_name_plural"
+msgstr "Memos"
+
+msgid "MemoLinkModel.verbose_name"
+msgstr "Vincle"
+
+msgid "MemoLinkModel.verbose_name_plural"
+msgstr "Vincles"
+
+msgid "MemoImageModel.image.verbose_name"
+msgstr "Imatge"
+
+msgid "MemoImageModel.image.help_text"
+msgstr " "
+
+msgid "MemoImageModel.verbose_name"
+msgstr "Imatge"
+
+msgid "MemoImageModel.verbose_name_plural"
+msgstr "Imatges"
+
+msgid "MemoFileModel.file.verbose_name"
+msgstr "Arxiu"
+
+msgid "MemoFileModel.file.help_text"
+msgstr " "
+
+msgid "MemoFileModel.verbose_name"
+msgstr "Arxiu"
+
+msgid "MemoFileModel.verbose_name_plural"
+msgstr "Arxius"

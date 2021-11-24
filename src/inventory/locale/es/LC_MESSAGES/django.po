@@ -1,0 +1,289 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-09 19:36+0200\n"
+"PO-Revision-Date: 2021-10-09 19:36+0200\n"
+"Last-Translator: Jaume López\n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.3\n"
+
+msgid "Group Items"
+msgstr "Agrupa"
+
+msgid "Automatic"
+msgstr "Automático"
+
+msgid "No"
+msgstr "No"
+
+msgid "ItemModel.verbose_name_plural"
+msgstr "Elementos"
+
+msgid "Internals"
+msgstr "Internos"
+
+msgid "Meta"
+msgstr "Meta"
+
+msgid "Basic"
+msgstr "Básico"
+
+msgid "Lent"
+msgstr "Dejados"
+
+msgid "Received"
+msgstr "Recibidos"
+
+msgid "Handed over"
+msgstr "Cedidos"
+
+msgid "BaseModel.id.verbose_name"
+msgstr "ID"
+
+msgid "BaseModel.id.help_text"
+msgstr "ID"
+
+msgid "BaseModel.user.verbose_name"
+msgstr "Usuario"
+
+msgid "BaseModel.user.help_text"
+msgstr ""
+"El usuario propietario de esta entrada y pueda gestionarla"
+"(se asignará automáticamente)"
+
+msgid "BaseModel.name.verbose_name"
+msgstr "Nombre"
+
+msgid "BaseModel.name.help_text"
+msgstr "Nombre"
+
+msgid "BaseModel.tags.verbose_name"
+msgstr "Etiquetas"
+
+msgid "BaseModel.tags.help_text"
+msgstr " "
+
+msgid "BaseItemAttachmentModel.name.verbose_name"
+msgstr "Nombre"
+
+msgid "BaseItemAttachmentModel.name.help_text"
+msgstr ""
+
+msgid "ItemModel.kind.verbose_name"
+msgstr "Tipos"
+
+msgid "ItemModel.kind.help_text"
+msgstr " "
+
+msgid "ItemModel.producer.verbose_name"
+msgstr "Fabricante"
+
+msgid "ItemModel.producer.help_text"
+msgstr " "
+
+msgid "ItemModel.description.verbose_name"
+msgstr "Descripción"
+
+msgid "ItemModel.description.help_text"
+msgstr " "
+
+msgid "ItemModel.fcc_id.verbose_name"
+msgstr "FCC ID"
+
+msgid "ItemModel.fcc_id.help_text"
+msgstr "Identificador único del FCC"
+
+msgid "ItemModel.location.verbose_name"
+msgstr "Localización"
+
+msgid "ItemModel.location.help_text"
+msgstr " "
+
+msgid "ItemModel.parent.verbose_name"
+msgstr "pariente"
+
+msgid "ItemModel.parent.help_text"
+msgstr " "
+
+msgid "ItemModel.lent_to.verbose_name"
+msgstr "Dejado"
+
+msgid "ItemModel.lent_to.help_text"
+msgstr " "
+
+msgid "ItemModel.lent_from_date.verbose_name"
+msgstr "Dejado desde"
+
+msgid "ItemModel.lent_from_date.help_text"
+msgstr " "
+
+msgid "ItemModel.lent_until_date.verbose_name"
+msgstr "Dejado hasta el"
+
+msgid "ItemModel.lent_until_date.help_text"
+msgstr " "
+
+msgid "ItemModel.received_from.verbose_name"
+msgstr "Recibido desde el"
+
+msgid "ItemModel.received_from.help_text"
+msgstr " "
+
+msgid "ItemModel.received_date.verbose_name"
+msgstr "Recibido el"
+
+msgid "ItemModel.received_date.help_text"
+msgstr " "
+
+msgid "ItemModel.received_price.verbose_name"
+msgstr "Precio de adquisición"
+
+msgid "ItemModel.received_price.help_text"
+msgstr " "
+
+msgid "ItemModel.handed_over_to.verbose_name"
+msgstr "Cedido a"
+
+msgid "ItemModel.handed_over_to.help_text"
+msgstr " "
+
+msgid "ItemModel.handed_over_date.verbose_name"
+msgstr "Cedido el"
+
+msgid "ItemModel.handed_over_date.help_text"
+msgstr " "
+
+msgid "ItemModel.handed_over_price.verbose_name"
+msgstr "Precio de cesión"
+
+msgid "ItemModel.handed_over_price.help_text"
+msgstr " "
+
+msgid "ItemModel.verbose_name"
+msgstr "Elemento"
+
+msgid "ItemLinkModel.verbose_name"
+msgstr "Vínculo"
+
+msgid "ItemLinkModel.verbose_name_plural"
+msgstr "Vínculos"
+
+msgid "ItemImageModel.image.verbose_name"
+msgstr "Imagen"
+
+msgid "ItemImageModel.image.help_text"
+msgstr " "
+
+msgid "ItemImageModel.verbose_name"
+msgstr "Imágenes"
+
+msgid "ItemImageModel.verbose_name_plural"
+msgstr "Imágenes"
+
+msgid "ItemFileModel.file.verbose_name"
+msgstr "Archivo"
+
+msgid "ItemFileModel.file.help_text"
+msgstr " "
+
+msgid "ItemFileModel.verbose_name"
+msgstr "Archivo"
+
+msgid "ItemFileModel.verbose_name_plural"
+msgstr "Archivos"
+
+msgid "BaseLink.name.verbose_name"
+msgstr "Nombre"
+
+msgid "BaseLink.name.help_text"
+msgstr " "
+
+msgid "Link.url.verbose_name"
+msgstr "URL"
+
+msgid "Link.url.help_text"
+msgstr " "
+
+msgid "Link.status_code.verbose_name"
+msgstr "Código de estado"
+
+msgid "Link.status_code.help_text"
+msgstr " "
+
+msgid "Link.page_title.verbose_name"
+msgstr "Título de la página"
+
+msgid "Link.page_title.help_text"
+msgstr " "
+
+msgid "LocationModel.description.verbose_name"
+msgstr "Descripción"
+
+msgid "LocationModel.description.help_text"
+msgstr " "
+
+msgid "LocationModel.parent.verbose_name"
+msgstr "Pariente"
+
+msgid "LocationModel.parent.help_text"
+msgstr "Las localizaciones pueden ser sumadas."
+"Exemple: La caja 12 del estante 3"
+
+msgid "LocationModel.verbose_name"
+msgstr "Localización"
+
+msgid "LocationModel.verbose_name_plural"
+msgstr "Localitzaciones"
+
+msgid "MemoModel.description.verbose_name"
+msgstr "Descripción"
+
+msgid "MemoModel.description.help_text"
+msgstr " "
+
+msgid "MemoModel.verbose_name"
+msgstr "Memo"
+
+msgid "MemoModel.verbose_name_plural"
+msgstr "Memos"
+
+msgid "MemoLinkModel.verbose_name"
+msgstr "Vínculo"
+
+msgid "MemoLinkModel.verbose_name_plural"
+msgstr "Vínculos"
+
+msgid "MemoImageModel.image.verbose_name"
+msgstr "Imagen"
+
+msgid "MemoImageModel.image.help_text"
+msgstr " "
+
+msgid "MemoImageModel.verbose_name"
+msgstr "Imagen"
+
+msgid "MemoImageModel.verbose_name_plural"
+msgstr "Imágenes"
+
+msgid "MemoFileModel.file.verbose_name"
+msgstr "Archivo"
+
+msgid "MemoFileModel.file.help_text"
+msgstr " "
+
+msgid "MemoFileModel.verbose_name"
+msgstr "Archivo"
+
+msgid "MemoFileModel.verbose_name_plural"
+msgstr "Archivos"

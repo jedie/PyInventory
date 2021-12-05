@@ -11,7 +11,7 @@ from inventory_project.settings.base import *  # noqa
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+TEMPLATE_DEBUG = True
 
 # Serve static/media files for local development:
 SERVE_FILES = True

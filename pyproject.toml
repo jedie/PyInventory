@@ -134,6 +134,10 @@ omit = [".*"]
 # https://docs.pytest.org/en/latest/customize.html#pyproject-toml
 minversion = "6.0"
 DJANGO_SETTINGS_MODULE="inventory_project.settings.tests"
+
+# Don't overwrite settings.DEBUG:
+django_debug_mode="keep"
+
 norecursedirs = ".* .git __pycache__ coverage* dist htmlcov volumes"
 # sometimes helpfull "addopts" arguments:
 #    -vv

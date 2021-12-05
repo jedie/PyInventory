@@ -38,6 +38,7 @@ print(f'BASE_PATH:{BASE_PATH}')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+TEMPLATE_DEBUG = False
 
 # Serve static/media files by Django?
 # In production Caddy should serve this!

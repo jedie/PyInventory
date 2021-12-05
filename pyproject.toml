@@ -11,13 +11,14 @@ packages = [
 keywords=['inventory','django']
 classifiers = [
     # http://pypi.python.org/pypi?%3Aaction=list_classifiers
-    "Development Status :: 4 - Beta",
-    #"Development Status :: 5 - Production/Stable",
+    "Development Status :: 5 - Production/Stable",
     "Environment :: Web Environment",
     "Intended Audience :: End Users/Desktop",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3 :: Only",
     'Framework :: Django',
     "Topic :: Database :: Front-Ends",
@@ -31,6 +32,10 @@ include = ['AUTHORS', 'LICENSE', 'README.creole']
 
 # Will be generated from README.creole with: 'poetry run update_rst_readme'
 readme='README.rst'
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/jedie/PyInventory/issues"
+
 
 [tool.poetry.dependencies]
 python = ">=3.7,<4.0.0"

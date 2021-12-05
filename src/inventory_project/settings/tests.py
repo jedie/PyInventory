@@ -10,7 +10,7 @@ DATABASES = {
     }
 }
 
-SECRET_KEY = 'No individual secret for tests ;)'
+SECRET_KEY = 'No individual secret... But this settings should only be used in tests ;)'
 
 # Run the tests as on production: Without DBEUG:
 DEBUG = False

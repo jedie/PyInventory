@@ -3,7 +3,7 @@ from unittest import mock
 from bx_django_utils.test_utils.html_assertion import HtmlAssertionMixin
 from django.contrib.auth.models import User
 from django.template.defaulttags import CsrfTokenNode, NowNode
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from django_tools.unittest_utils.mockup import ImageDummy
 from model_bakery import baker
 
@@ -15,13 +15,19 @@ from inventory_project.tests.temp_utils import assert_html_response_snapshot
 
 class AdminAnonymousTests(TestCase):
     def test_login(self):
-        response = self.client.get('/admin/inventory/memomodel/add/', HTTP_ACCEPT_LANGUAGE='en')
+        response = self.client.get(
+            '/admin/inventory/memomodel/add/',
+            secure=True,
+            HTTP_ACCEPT_LANGUAGE='en'
+        )
         self.assertRedirects(
             response,
-            expected_url='/admin/login/?next=/admin/inventory/memomodel/add/'
+            expected_url='/admin/login/?next=/admin/inventory/memomodel/add/',
+            fetch_redirect_response=False,
         )
 
 
+@override_settings(SECURE_SSL_REDIRECT=False)
 class AdminTestCase(HtmlAssertionMixin, TestCase):
     @classmethod
     def setUpTestData(cls):

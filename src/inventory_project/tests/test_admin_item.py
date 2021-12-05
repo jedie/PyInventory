@@ -7,7 +7,7 @@ from bx_django_utils.test_utils.html_assertion import HtmlAssertionMixin
 from bx_py_utils.test_utils.snapshot import assert_html_snapshot
 from django.contrib.auth.models import User
 from django.template.defaulttags import CsrfTokenNode, NowNode
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from django.utils import timezone
 from django_tools.unittest_utils.mockup import ImageDummy
 from model_bakery import baker
@@ -46,15 +46,42 @@ ITEM_FORM_DEFAULTS = {
 ITEM_FORM_DEFAULTS = tuple(ITEM_FORM_DEFAULTS.items())
 
 
-class AdminAnonymousTests(TestCase):
+class AdminAnonymousTests(HtmlAssertionMixin, TestCase):
     def test_login(self):
-        response = self.client.get('/admin/inventory/itemmodel/add/', HTTP_ACCEPT_LANGUAGE='en')
+        # HTTP -> HTTPS redirect:
+        response = self.client.get('/admin/', HTTP_ACCEPT_LANGUAGE='en')
         self.assertRedirects(
             response,
-            expected_url='/admin/login/?next=/admin/inventory/itemmodel/add/'
+            expected_url='https://testserver/admin/',
+            status_code=301,  # Permanent redirect
+            fetch_redirect_response=False
         )
 
+        response = self.client.get(
+            path='/admin/inventory/itemmodel/add/',
+            secure=True,
+            HTTP_ACCEPT_LANGUAGE='en'
+        )
+        self.assertRedirects(
+            response,
+            expected_url='/admin/login/?next=/admin/inventory/itemmodel/add/',
+            fetch_redirect_response=False
+        )
+        with mock.patch.object(CsrfTokenNode, 'render', return_value='MockedCsrfTokenNode'):
+            response = self.client.get(
+                path='/admin/login/',
+                secure=True,
+                HTTP_ACCEPT_LANGUAGE='en'
+            )
+            self.assert_html_parts(response, parts=(
+                f'<title>Log in | PyInventory v{__version__}</title>',
+                '<label class="required" for="id_username">Username:</label>',
+                '<label class="required" for="id_password">Password:</label>',
+            ))
+        assert_html_response_snapshot(response, validate=False)
 
+
+@override_settings(SECURE_SSL_REDIRECT=False)
 class AdminTestCase(HtmlAssertionMixin, TestCase):
     @classmethod
     def setUpTestData(cls):

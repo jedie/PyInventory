@@ -11,7 +11,7 @@ from inventory_project.settings.base import *  # noqa
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+TEMPLATE_DEBUG = True
 
 # Serve static/media files for local development:
 SERVE_FILES = True
@@ -34,6 +34,16 @@ DATABASES = {
     }
 }
 print(f'Use Database: {DATABASES["default"]["NAME"]!r}', file=__sys.stderr)
+# _____________________________________________________________________________
+
+# Disable security features, because development server doesn't support HTTPS
+CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = False
+SECURE_PROXY_SSL_HEADER = None
+SECURE_SSL_REDIRECT = False
+SECURE_HSTS_PRELOAD = False
+SECURE_HSTS_SECONDS = 0
+SECURE_HSTS_INCLUDE_SUBDOMAINS = False
 
 # _____________________________________________________________________________
 # AlwaysLoggedInAsSuperUser

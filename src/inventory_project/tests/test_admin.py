@@ -2,7 +2,7 @@ import os
 import unittest
 
 from django.contrib.auth.models import User
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from django_processinfo.models import ProcessInfo, SiteStatistics
 from django_tools.selenium.chromedriver import chromium_available
 from django_tools.selenium.django import (
@@ -22,14 +22,15 @@ class AdminAnonymousTests(TestCase):
     """
 
     def test_login_en(self):
-        response = self.client.get("/admin/", HTTP_ACCEPT_LANGUAGE="en")
-        self.assertRedirects(response, expected_url="/admin/login/?next=/admin/")
+        response = self.client.get('/admin/', secure=True, HTTP_ACCEPT_LANGUAGE='en')
+        self.assertRedirects(response, expected_url='/admin/login/?next=/admin/', fetch_redirect_response=False)
 
     def test_login_de(self):
-        response = self.client.get("/admin/", HTTP_ACCEPT_LANGUAGE="de")
-        self.assertRedirects(response, expected_url="/admin/login/?next=/admin/")
+        response = self.client.get('/admin/', secure=True, HTTP_ACCEPT_LANGUAGE='de')
+        self.assertRedirects(response, expected_url='/admin/login/?next=/admin/', fetch_redirect_response=False)
 
 
+@override_settings(SECURE_SSL_REDIRECT=False)
 class ProcessinfoAdminTestCase(TestCase):
     @classmethod
     def setUpTestData(cls):
@@ -87,6 +88,7 @@ class ProcessinfoAdminTestCase(TestCase):
 
 @unittest.skipIf('CI' in os.environ, 'Skip, selenium tests does not work on CI run!')
 @unittest.skipUnless(chromium_available(), "Skip because Chromium is not available!")
+@override_settings(SECURE_SSL_REDIRECT=False)
 class AdminChromiumTests(SeleniumChromiumStaticLiveServerTestCase):
     def test_admin_login_page(self):
         self.driver.get(self.live_server_url + "/admin/login/")
@@ -97,6 +99,7 @@ class AdminChromiumTests(SeleniumChromiumStaticLiveServerTestCase):
 
 @unittest.skipIf('CI' in os.environ, 'Skip, selenium tests does not work on CI run!')
 @unittest.skipUnless(firefox_available(), "Skip because Firefox is not available!")
+@override_settings(SECURE_SSL_REDIRECT=False)
 class AdminFirefoxTests(SeleniumFirefoxStaticLiveServerTestCase):
     def test_admin_login_page(self):
         self.driver.get(self.live_server_url + "/admin/login/")

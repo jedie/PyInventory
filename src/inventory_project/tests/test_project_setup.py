@@ -5,6 +5,7 @@ from pathlib import Path
 
 from creole.setup_utils import update_rst_readme
 from django.conf import settings
+from django.core import checks
 from django.test import TestCase
 
 import inventory
@@ -93,3 +94,17 @@ class ProjectSettingsTestCase(TestCase):
         assert len(dirs) == 1
         template_path = Path(dirs[0]).resolve()
         assert template_path.is_dir()
+
+    def test_manage_check(self):
+        all_issues = checks.run_checks(
+            app_configs=None,
+            tags=None,
+            include_deployment_checks=True,
+            databases=None,
+        )
+        if all_issues:
+            print('=' * 100)
+            for issue in all_issues:
+                print(issue)
+            print('=' * 100)
+            raise AssertionError('There are check issues!')

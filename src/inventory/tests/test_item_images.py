@@ -10,6 +10,7 @@ from inventory.models import ItemImageModel
 from inventory.tests.fixtures.users import get_normal_pyinventory_user
 
 
+# @override_settings(SECURE_SSL_REDIRECT=False)
 class ItemImagesTestCase(TestCase):
     def test_basics(self):
         with mock.patch('secrets.token_urlsafe', return_value='user1token'):
@@ -40,23 +41,47 @@ class ItemImagesTestCase(TestCase):
                 url = image_instance.image.url
                 assert url == '/media/user1token/12345678901234567890/mock_img.jpeg'
 
+                # HTTP -> HTTPS redirect:
+                response = self.client.get(
+                    '/media/user1token/12345678901234567890/mock_img.jpeg',
+                    secure=False
+                )
+                self.assertRedirects(
+                    response,
+                    status_code=301,
+                    expected_url='https://testserver/media/user1token/12345678901234567890/mock_img.jpeg',
+                    fetch_redirect_response=False,
+                )
+
                 # Anonymous has no access:
-                response = self.client.get('/media/user1token/12345678901234567890/mock_img.jpeg')
+                response = self.client.get(
+                    '/media/user1token/12345678901234567890/mock_img.jpeg',
+                    secure=True,
+                )
                 assert response.status_code == 403
 
                 # Can't access with wrong user:
                 self.client.force_login(pyinventory_user2)
-                response = self.client.get('/media/user1token/12345678901234567890/mock_img.jpeg')
+                response = self.client.get(
+                    '/media/user1token/12345678901234567890/mock_img.jpeg',
+                    secure=True,
+                )
                 assert response.status_code == 403
 
                 # Can access with the right user:
                 self.client.force_login(pyinventory_user1)
-                response = self.client.get('/media/user1token/12345678901234567890/mock_img.jpeg')
+                response = self.client.get(
+                    '/media/user1token/12345678901234567890/mock_img.jpeg',
+                    secure=True,
+                )
                 assert response.status_code == 200
                 assert isinstance(response, FileResponse)
                 assert response.getvalue() == image_instance.image.open('rb').read()
 
                 # Test whats happen, if token was deleted
                 UserMediaTokenModel.objects.all().delete()
-                response = self.client.get('/media/user1token/12345678901234567890/mock_img.jpeg')
+                response = self.client.get(
+                    '/media/user1token/12345678901234567890/mock_img.jpeg',
+                    secure=True,
+                )
                 assert response.status_code == 400  # SuspiciousOperation -> HttpResponseBadRequest

@@ -133,6 +133,10 @@ TEMPLATES = [
 
 # _____________________________________________________________________________
 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+# _____________________________________________________________________________
+
 # Mark CSRF cookie as "secure" -> browsers sent cookie only with an HTTPS connection:
 CSRF_COOKIE_SECURE = True
 

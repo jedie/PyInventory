@@ -184,6 +184,21 @@ class PyInventoryCommandSet(DevShellBaseCommandSet):
 
             print(f'updated: {po_file_path}')
 
+    def do_update_test_snapshots(self, statement: cmd2.Statement):
+        """
+        Update all test snapshot files by run tests with RAISE_SNAPSHOT_ERRORS=0
+        """
+        verbose_check_call(
+            'pytest',
+            *statement.arg_list,
+            cwd=self.config.base_path,
+            exit_on_error=True,
+            extra_env={
+                # https://github.com/boxine/bx_py_utils#notes-about-snapshot
+                'RAISE_SNAPSHOT_ERRORS': '0'
+            }
+        )
+
 
 class DevShellCommandSet(OriginDevShellCommandSet):
 

@@ -69,7 +69,7 @@ postgres-binary = ["psycopg2-binary"]
 psycopg2-source = ["psycopg2"]
 
 [tool.poetry.dev-dependencies]
-dev_shell = ">=0.2.2"  # https://github.com/jedie/dev-shell
+dev_shell = "*"  # https://github.com/jedie/dev-shell
 poetry-publish = "*"  # https://github.com/jedie/poetry-publish
 python-creole = "*"  # https://github.com/jedie/python-creole
 cmd2_ext_test = "*"
@@ -79,17 +79,23 @@ pytest-randomly = "*"
 pytest-cov = "*"
 pytest-django = "*"
 pytest-parallel = "*"
+pytest-darker = "*"  # https://github.com/akaihola/pytest-darker
+pytest-flake8 = "*"
+pytest-isort = "*"
+# TODO: pytest-mypy = "*"
 selenium = "*"
 coveralls = "*"
 isort = "*"
 flake8 = "*"
 flynt = "*"
-autopep8 = "*"
+darker = "*"  # https://github.com/akaihola/darker
+black = "==21.12b0" # https://github.com/akaihola/darker/issues/264
 pyupgrade = "*"
 model_bakery = "*"  # https://github.com/model-bakers/model_bakery
 beautifulsoup4 = "*"
 lxml = "*"
 requests-mock = "*"
+
 
 [tool.poetry.scripts]
 devshell = 'inventory_project.dev_shell:devshell_cmdloop'
@@ -101,24 +107,33 @@ requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
 
 
-[tool.autopep8]
-# https://github.com/hhatto/autopep8#pyprojecttoml
-max_line_length = 120
-exclude=".*,*/htmlcov/*,*/migrations/*,*/volumes/*"
+[tool.darker]
+src = ['.']
+revision = "origin/main..."
+line_length = 120
+verbose = true
+skip_string_normalization = true
+diff = false
+check = false
+stdout = false
+isort = true
+lint = [
+    "flake8",
+]
+log_level = "INFO"
+
+
+[tool.flynt]
+line_length = 120
 
 
 [tool.isort]
 # https://pycqa.github.io/isort/docs/configuration/config_files/#pyprojecttoml-preferred-format
 atomic=true
+profile='black'
 line_length=120
-case_sensitive=false
 skip_glob=[".*", "*/htmlcov/*","*/migrations/*","*/volumes/*"]
-multi_line_output=3
-include_trailing_comma=true
 known_first_party=["inventory","inventory_project","inventory_tests"]
-no_lines_before="LOCALFOLDER"
-default_section="THIRDPARTY"
-sections=["FUTURE","STDLIB","THIRDPARTY","FIRSTPARTY","LOCALFOLDER"]
 lines_after_imports=2
 
 
@@ -153,12 +168,16 @@ addopts = """
     --cov-report xml
     --no-cov-on-fail
     --showlocals
+    --darker
+    --flake8
+    --isort
     --doctest-modules
     --failed-first
     --last-failed-no-failures all
     --new-first
     -p no:randomly
 """
+# TODO: --mypy
 
 
 [tool.tox]

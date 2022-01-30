@@ -13,9 +13,9 @@ Pull requests welcome!
 | |Coverage Status on codecov.io| | `codecov.io/gh/jedie/PyInventory`_      |
 +---------------------------------+-----------------------------------------+
 
-.. |Build Status on github| image:: https://github.com/jedie/PyInventory/workflows/test/badge.svg?branch=master
+.. |Build Status on github| image:: https://github.com/jedie/PyInventory/workflows/test/badge.svg?branch=main
 .. _github.com/jedie/PyInventory/actions: https://github.com/jedie/PyInventory/actions
-.. |Coverage Status on codecov.io| image:: https://codecov.io/gh/jedie/PyInventory/branch/master/graph/badge.svg
+.. |Coverage Status on codecov.io| image:: https://codecov.io/gh/jedie/PyInventory/branch/main/graph/badge.svg
 .. _codecov.io/gh/jedie/PyInventory: https://codecov.io/gh/jedie/PyInventory
 
 `Install PyInventory with YunoHost <https://install-app.yunohost.org/?app=pyinventory>`_.
@@ -83,8 +83,8 @@ There are two main directories:
 | **`/deployment/`_** | deploy PyInventory for production use case (**`DEPRECATED!`_**) |
 +---------------------+-----------------------------------------------------------------+
 
-.. _/src/: https://github.com/jedie/PyInventory/tree/master/src
-.. _/deployment/: https://github.com/jedie/PyInventory/tree/master/deployment
+.. _/src/: https://github.com/jedie/PyInventory/tree/main/src
+.. _/deployment/: https://github.com/jedie/PyInventory/tree/main/deployment
 .. _DEPRECATED!: https://github.com/jedie/PyInventory/issues/81
 
 -------
@@ -101,7 +101,7 @@ There exists these kind of installation/usage:
 
 This README contains only the information about local development installation.
 
-Read `/deployment/README <https://github.com/jedie/PyInventory/tree/master/deployment#readme>`_ for instruction to install PyInventory on a root server.
+Read `/deployment/README <https://github.com/jedie/PyInventory/tree/main/deployment#readme>`_ for instruction to install PyInventory on a root server.
 
 local development installation
 ==============================
@@ -234,14 +234,18 @@ Now, update the containers and copy the files back.
 v0.5.0
 ======
 
-Git branches "master" and "deployment" was merged into one.
+Git branches "main" and "deployment" was merged into one.
 Files are separated into: "/src/" and "/development/"
 
 -------
 history
 -------
 
-* `compare v0.13.0...master <https://github.com/jedie/PyInventory/compare/v0.13.0...master>`_ **dev** 
+* `compare v0.13.0...main <https://github.com/jedie/PyInventory/compare/v0.13.0...main>`_ **dev** 
+
+    * Rename git "master" branch into "main"
+
+    * Use darker and pytest-darker as code formatter
 
     * tbc
 
@@ -450,4 +454,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2022-01-01 14:21:31 with "python-creole"``
+``Note: this file is generated from README.creole 2022-01-30 15:15:53 with "python-creole"``

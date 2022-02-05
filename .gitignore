@@ -13,6 +13,7 @@
 
 # from test projects:
 **/static/*
+!src/inventory/static/*
 **/media/*
 *.sqlite3
 

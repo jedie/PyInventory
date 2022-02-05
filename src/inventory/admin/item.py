@@ -8,7 +8,12 @@ from django.utils.translation import gettext_lazy as _
 from import_export.admin import ImportExportMixin
 from import_export.resources import ModelResource
 
-from inventory.admin.base import BaseFileModelInline, BaseImageModelInline, BaseUserAdmin, UserInlineMixin
+from inventory.admin.base import (
+    BaseFileModelInline,
+    BaseImageModelInline,
+    BaseUserAdmin,
+    UserInlineMixin,
+)
 from inventory.models import ItemLinkModel, ItemModel
 from inventory.models.item import ItemFileModel, ItemImageModel
 

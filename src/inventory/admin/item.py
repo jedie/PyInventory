@@ -93,6 +93,7 @@ class ItemModelAdmin(ImportExportMixin, BaseUserAdmin):
         )
         return qs
 
+    @admin.display(description=_('ItemModel.verbose_name_plural'))
     def column_item(self, obj):
         context = {
             'base_item': obj,
@@ -111,8 +112,6 @@ class ItemModelAdmin(ImportExportMixin, BaseUserAdmin):
             template_name='admin/inventory/item/column_item.html',
             context=context,
         )
-
-    column_item.short_description = _('ItemModel.verbose_name_plural')
 
     date_hierarchy = 'create_dt'
     list_display = (

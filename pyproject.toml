@@ -82,7 +82,7 @@ pytest-parallel = "*"
 pytest-darker = "*"  # https://github.com/akaihola/pytest-darker
 pytest-flake8 = "*"
 pytest-isort = "*"
-# TODO: pytest-mypy = "*"
+pytest-mypy = "*"
 selenium = "*"
 coveralls = "*"
 isort = "*"
@@ -141,6 +141,19 @@ lines_after_imports=2
 omit = [".*"]
 
 
+[tool.mypy]
+warn_return_any = true
+warn_unused_configs = true
+no_site_packages=true
+warn_unused_ignores=true
+warn_unreachable=true
+show_error_context=true
+show_column_numbers=true
+show_error_codes=true
+pretty=true
+
+
+
 [tool.pytest.ini_options]
 # https://docs.pytest.org/en/latest/customize.html#pyproject-toml
 minversion = "6.0"
@@ -168,6 +181,8 @@ addopts = """
     --cov-report xml
     --no-cov-on-fail
     --showlocals
+    --mypy
+    --mypy-ignore-missing-imports
     --darker
     --flake8
     --isort

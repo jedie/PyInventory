@@ -18,7 +18,7 @@ from inventory.permissions import get_or_create_normal_user_group
 from inventory_project.tests.temp_utils import assert_html_response_snapshot
 
 
-ITEM_FORM_DEFAULTS = {
+ITEM_FORM_DEFAULT_DICT = {
     'version': 0,  # VersionProtectBaseModel field
     'kind': 'kind',
     'name': 'name',
@@ -43,7 +43,7 @@ ITEM_FORM_DEFAULTS = {
 
     '_save': 'Save',
 }
-ITEM_FORM_DEFAULTS = tuple(ITEM_FORM_DEFAULTS.items())
+ITEM_FORM_DEFAULTS = tuple(ITEM_FORM_DEFAULT_DICT.items())
 
 
 class AdminAnonymousTests(HtmlAssertionMixin, TestCase):

@@ -1,375 +1,232 @@
-<!DOCTYPE html>
-<html dir="ltr" lang="en">
- <head>
-  <title>
-   Select Item to change | PyInventory v0.13.0
-  </title>
-  <link href="/static/admin/css/base.css" rel="stylesheet" type="text/css"/>
-  <link href="/static/admin/css/nav_sidebar.css" rel="stylesheet" type="text/css"/>
-  <script defer="" src="/static/admin/js/nav_sidebar.js">
-  </script>
-  <link href="/static/admin/css/changelists.css" rel="stylesheet" type="text/css"/>
-  <script src="/admin/jsi18n/">
-  </script>
-  <meta content="notranslate" name="google"/>
-  <meta content="noindex,nofollow" name="robots">
-   <link href="/static/inventory.css" rel="stylesheet" type="text/css"/>
-   <script src="/static/admin/js/vendor/jquery/jquery.min.js">
-   </script>
-   <script src="/static/admin/js/jquery.init.js">
-   </script>
-   <script src="/static/admin/js/core.js">
-   </script>
-   <script src="/static/admin/js/admin/RelatedObjectLookups.js">
-   </script>
-   <script src="/static/admin/js/actions.js">
-   </script>
-   <script src="/static/admin/js/urlify.js">
-   </script>
-   <script src="/static/admin/js/prepopulate.js">
-   </script>
-   <script src="/static/admin/js/vendor/xregexp/xregexp.min.js">
-   </script>
-   <meta content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport"/>
-   <link href="/static/admin/css/responsive.css" rel="stylesheet" type="text/css"/>
-   <meta content="NONE,NOARCHIVE" name="robots"/>
-  </meta>
- </head>
- <body class="app-inventory model-itemmodel change-list" data-admin-utc-offset="MockedNowNode">
-  <!-- Container -->
-  <div id="container">
-   <!-- Header -->
-   <div id="header">
-    <div id="branding">
-     <h1 id="site-name">
-      <a href="/admin/">
-       PyInventory v0.13.0
-      </a>
-     </h1>
-    </div>
-    <div id="user-tools">
-     Welcome,
-     <strong>
-      NormalUser
-     </strong>
-     .
-     <a href="/">
-      View site
-     </a>
-     /
-     <a href="/admin/password_change/">
-      Change password
-     </a>
-     /
-     <a href="/admin/logout/">
-      Log out
-     </a>
-    </div>
-   </div>
-   <!-- END Header -->
-   <div class="breadcrumbs">
-    <a href="/admin/">
-     Home
+<div class="" id="content">
+ <h1>
+  Select Item to change
+ </h1>
+ <div id="content-main">
+  <ul class="object-tools">
+   <li>
+    <a class="import_link" href="/admin/inventory/itemmodel/import/">
+     Import
     </a>
-    ›
-    <a href="/admin/inventory/">
-     Inventory
+   </li>
+   <li>
+    <a class="export_link" href="/admin/inventory/itemmodel/export/?q=sub+item+2.">
+     Export
     </a>
-    › Items
-   </div>
-   <div class="main shifted" id="main">
-    <button aria-label="Toggle navigation" class="sticky toggle-nav-sidebar" id="toggle-nav-sidebar">
-    </button>
-    <nav class="sticky" id="nav-sidebar">
-     <div class="app-inventory module current-app">
-      <table>
-       <caption>
-        <a class="section" href="/admin/inventory/" title="Models in the Inventory application">
-         Inventory
+   </li>
+   <li>
+    <a class="addlink" href="/admin/inventory/itemmodel/add/?_changelist_filters=q%3Dsub%2Bitem%2B2.">
+     Add Item
+    </a>
+   </li>
+  </ul>
+  <div class="module filtered" id="changelist">
+   <div class="changelist-form-container">
+    <div id="toolbar">
+     <form id="changelist-search" method="get">
+      <div>
+       <!-- DIV needed for valid HTML -->
+       <label for="searchbar">
+        <img alt="Search" src="/static/admin/img/search.svg"/>
+       </label>
+       <input autofocus="" id="searchbar" name="q" size="40" type="text" value="sub item 2."/>
+       <input type="submit" value="Search"/>
+       <span class="small quiet">
+        2 results (
+        <a href="?">
+         6 total
         </a>
-       </caption>
-       <tr class="model-itemmodel current-model">
-        <th scope="row">
-         <a aria-current="page" href="/admin/inventory/itemmodel/">
-          Items
-         </a>
-        </th>
-        <td>
-         <a class="addlink" href="/admin/inventory/itemmodel/add/">
-          Add
-         </a>
-        </td>
-       </tr>
-       <tr class="model-locationmodel">
-        <th scope="row">
-         <a href="/admin/inventory/locationmodel/">
-          Locations
-         </a>
-        </th>
-        <td>
-         <a class="addlink" href="/admin/inventory/locationmodel/add/">
-          Add
-         </a>
-        </td>
-       </tr>
-       <tr class="model-memomodel">
-        <th scope="row">
-         <a href="/admin/inventory/memomodel/">
-          Memos
-         </a>
-        </th>
-        <td>
-         <a class="addlink" href="/admin/inventory/memomodel/add/">
-          Add
-         </a>
-        </td>
-       </tr>
-      </table>
+        )
+       </span>
+      </div>
+     </form>
+    </div>
+    <div class="xfull">
+     <ul class="toplinks">
+      <li class="date-back">
+       <a href="?create_dt__year=2000&q=sub+item+2.">
+        ‹ 2000
+       </a>
+      </li>
+      <li>
+       <a href="?create_dt__day=1&create_dt__month=1&create_dt__year=2000&q=sub+item+2.">
+        January 1
+       </a>
+      </li>
+     </ul>
+     <br class="clear"/>
+    </div>
+    <form id="changelist-form" method="post" novalidate="">
+     MockedCsrfTokenNode
+     <div class="actions">
+      <label>
+       Action:
+       <select name="action" required="">
+        <option selected="" value="">
+         ---------
+        </option>
+        <option value="delete_selected">
+         Delete selected Items
+        </option>
+       </select>
+      </label>
+      <input class="select-across" name="select_across" type="hidden" value="0"/>
+      <button class="button" name="index" title="Run the selected action" type="submit" value="0">
+       Go
+      </button>
+      <span class="action-counter" data-actions-icnt="2">
+       0 of 2 selected
+      </span>
      </div>
-    </nav>
-    <div class="content">
-     <!-- Content -->
-     <div class="" id="content">
-      <h1>
-       Select Item to change
-      </h1>
-      <div id="content-main">
-       <ul class="object-tools">
-        <li>
-         <a class="import_link" href="/admin/inventory/itemmodel/import/">
-          Import
-         </a>
-        </li>
-        <li>
-         <a class="export_link" href="/admin/inventory/itemmodel/export/?q=sub+item+2.">
-          Export
-         </a>
-        </li>
-        <li>
-         <a class="addlink" href="/admin/inventory/itemmodel/add/?_changelist_filters=q%3Dsub%2Bitem%2B2.">
-          Add Item
-         </a>
-        </li>
-       </ul>
-       <div class="module filtered" id="changelist">
-        <div class="changelist-form-container">
-         <div id="toolbar">
-          <form id="changelist-search" method="get">
-           <div>
-            <!-- DIV needed for valid HTML -->
-            <label for="searchbar">
-             <img alt="Search" src="/static/admin/img/search.svg"/>
-            </label>
-            <input autofocus="" id="searchbar" name="q" size="40" type="text" value="sub item 2."/>
-            <input type="submit" value="Search"/>
-            <span class="small quiet">
-             2 results (
-             <a href="?">
-              6 total
-             </a>
-             )
-            </span>
-           </div>
-          </form>
-         </div>
-         <div class="xfull">
-          <ul class="toplinks">
-           <li class="date-back">
-            <a href="?create_dt__year=2000&q=sub+item+2.">
-             ‹ 2000
-            </a>
-           </li>
-           <li>
-            <a href="?create_dt__day=1&create_dt__month=1&create_dt__year=2000&q=sub+item+2.">
-             January 1
-            </a>
-           </li>
-          </ul>
-          <br class="clear"/>
-         </div>
-         <form id="changelist-form" method="post" novalidate="">
-          MockedCsrfTokenNode
-          <div class="actions">
-           <label>
-            Action:
-            <select name="action" required="">
-             <option selected="" value="">
-              ---------
-             </option>
-             <option value="delete_selected">
-              Delete selected Items
-             </option>
-            </select>
-           </label>
-           <input class="select-across" name="select_across" type="hidden" value="0"/>
-           <button class="button" name="index" title="Run the selected action" type="submit" value="0">
-            Go
-           </button>
-           <span class="action-counter" data-actions-icnt="2">
-            0 of 2 selected
+     <div class="results">
+      <table id="result_list">
+       <thead>
+        <tr>
+         <th class="action-checkbox-column" scope="col">
+          <div class="text">
+           <span>
+            <input id="action-toggle" type="checkbox"/>
            </span>
           </div>
-          <div class="results">
-           <table id="result_list">
-            <thead>
-             <tr>
-              <th class="action-checkbox-column" scope="col">
-               <div class="text">
-                <span>
-                 <input id="action-toggle" type="checkbox"/>
-                </span>
-               </div>
-               <div class="clear">
-               </div>
-              </th>
-              <th class="column-_tagulous_display_kind" scope="col">
-               <div class="text">
-                <span>
-                 Kind
-                </span>
-               </div>
-               <div class="clear">
-               </div>
-              </th>
-              <th class="column-_tagulous_display_producer" scope="col">
-               <div class="text">
-                <span>
-                 Producer
-                </span>
-               </div>
-               <div class="clear">
-               </div>
-              </th>
-              <th class="column-column_item" scope="col">
-               <div class="text">
-                <span>
-                 Items
-                </span>
-               </div>
-               <div class="clear">
-               </div>
-              </th>
-              <th class="sortable column-location" scope="col">
-               <div class="text">
-                <a href="?o=4&q=sub+item+2.">
-                 Location
-                </a>
-               </div>
-               <div class="clear">
-               </div>
-              </th>
-              <th class="sortable column-received_date" scope="col">
-               <div class="text">
-                <a href="?o=5&q=sub+item+2.">
-                 Received date
-                </a>
-               </div>
-               <div class="clear">
-               </div>
-              </th>
-              <th class="sortable column-update_dt" scope="col">
-               <div class="text">
-                <a href="?o=6&q=sub+item+2.">
-                 Last update
-                </a>
-               </div>
-               <div class="clear">
-               </div>
-              </th>
-             </tr>
-            </thead>
-            <tbody>
-             <tr>
-              <td class="action-checkbox">
-               <input class="action-select" name="_selected_action" type="checkbox" value="00000000-0002-0001-0000-000000000000"/>
-              </td>
-              <td class="field-_tagulous_display_kind">
-              </td>
-              <td class="field-_tagulous_display_producer">
-              </td>
-              <td class="field-column_item">
-               <strong>
-                <a href="/admin/inventory/itemmodel/00000000-0002-0001-0000-000000000000/change/">
-                 sub item 2.1
-                </a>
-               </strong>
-              </td>
-              <td class="field-location nowrap">
-               -
-              </td>
-              <td class="field-received_date nowrap">
-               -
-              </td>
-              <td class="field-update_dt nowrap">
-               Jan. 1, 2000, 1:05 a.m.
-              </td>
-             </tr>
-             <tr>
-              <td class="action-checkbox">
-               <input class="action-select" name="_selected_action" type="checkbox" value="00000000-0002-0002-0000-000000000000"/>
-              </td>
-              <td class="field-_tagulous_display_kind">
-              </td>
-              <td class="field-_tagulous_display_producer">
-              </td>
-              <td class="field-column_item">
-               <strong>
-                <a href="/admin/inventory/itemmodel/00000000-0002-0002-0000-000000000000/change/">
-                 sub item 2.2
-                </a>
-               </strong>
-              </td>
-              <td class="field-location nowrap">
-               -
-              </td>
-              <td class="field-received_date nowrap">
-               -
-              </td>
-              <td class="field-update_dt nowrap">
-               Jan. 1, 2000, 1:06 a.m.
-              </td>
-             </tr>
-            </tbody>
-           </table>
+          <div class="clear">
           </div>
-          <p class="paginator">
-           2 Items
-          </p>
-         </form>
-        </div>
-        <div id="changelist-filter">
-         <h2>
-          Filter
-         </h2>
-         <h3>
-          By Group Items
-         </h3>
-         <ul>
-          <li class="selected">
-           <a href="?q=sub+item+2." title="Automatic">
-            Automatic
+         </th>
+         <th class="column-_tagulous_display_kind" scope="col">
+          <div class="text">
+           <span>
+            Kind
+           </span>
+          </div>
+          <div class="clear">
+          </div>
+         </th>
+         <th class="column-_tagulous_display_producer" scope="col">
+          <div class="text">
+           <span>
+            Producer
+           </span>
+          </div>
+          <div class="clear">
+          </div>
+         </th>
+         <th class="column-column_item" scope="col">
+          <div class="text">
+           <span>
+            Items
+           </span>
+          </div>
+          <div class="clear">
+          </div>
+         </th>
+         <th class="sortable column-location" scope="col">
+          <div class="text">
+           <a href="?o=4&q=sub+item+2.">
+            Location
            </a>
-          </li>
-          <li>
-           <a href="?grouping=no&q=sub+item+2." title="No">
-            No
+          </div>
+          <div class="clear">
+          </div>
+         </th>
+         <th class="sortable column-received_date" scope="col">
+          <div class="text">
+           <a href="?o=5&q=sub+item+2.">
+            Received date
            </a>
-          </li>
-         </ul>
-        </div>
-       </div>
-      </div>
-      <br class="clear"/>
+          </div>
+          <div class="clear">
+          </div>
+         </th>
+         <th class="sortable column-update_dt" scope="col">
+          <div class="text">
+           <a href="?o=6&q=sub+item+2.">
+            Last update
+           </a>
+          </div>
+          <div class="clear">
+          </div>
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td class="action-checkbox">
+          <input class="action-select" name="_selected_action" type="checkbox" value="00000000-0002-0001-0000-000000000000"/>
+         </td>
+         <td class="field-_tagulous_display_kind">
+         </td>
+         <td class="field-_tagulous_display_producer">
+         </td>
+         <td class="field-column_item">
+          <strong>
+           <a href="/admin/inventory/itemmodel/00000000-0002-0001-0000-000000000000/change/">
+            sub item 2.1
+           </a>
+          </strong>
+         </td>
+         <td class="field-location nowrap">
+          -
+         </td>
+         <td class="field-received_date nowrap">
+          -
+         </td>
+         <td class="field-update_dt nowrap">
+          Jan. 1, 2000, 1:05 a.m.
+         </td>
+        </tr>
+        <tr>
+         <td class="action-checkbox">
+          <input class="action-select" name="_selected_action" type="checkbox" value="00000000-0002-0002-0000-000000000000"/>
+         </td>
+         <td class="field-_tagulous_display_kind">
+         </td>
+         <td class="field-_tagulous_display_producer">
+         </td>
+         <td class="field-column_item">
+          <strong>
+           <a href="/admin/inventory/itemmodel/00000000-0002-0002-0000-000000000000/change/">
+            sub item 2.2
+           </a>
+          </strong>
+         </td>
+         <td class="field-location nowrap">
+          -
+         </td>
+         <td class="field-received_date nowrap">
+          -
+         </td>
+         <td class="field-update_dt nowrap">
+          Jan. 1, 2000, 1:06 a.m.
+         </td>
+        </tr>
+       </tbody>
+      </table>
      </div>
-     <!-- END Content -->
-     <div id="footer">
-      <a href="https://github.com/jedie/PyInventory">
-       https://github.com/jedie/PyInventory
+     <p class="paginator">
+      2 Items
+     </p>
+    </form>
+   </div>
+   <div id="changelist-filter">
+    <h2>
+     Filter
+    </h2>
+    <h3>
+     By Group Items
+    </h3>
+    <ul>
+     <li class="selected">
+      <a href="?q=sub+item+2." title="Automatic">
+       Automatic
       </a>
-     </div>
-    </div>
+     </li>
+     <li>
+      <a href="?grouping=no&q=sub+item+2." title="No">
+       No
+      </a>
+     </li>
+    </ul>
    </div>
   </div>
-  <!-- END Container -->
- </body>
-</html>
+ </div>
+ <br class="clear"/>
+</div>

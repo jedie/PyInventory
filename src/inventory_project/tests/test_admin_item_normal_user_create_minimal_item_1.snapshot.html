@@ -1,724 +1,529 @@
-<!DOCTYPE html>
-<html dir="ltr" lang="en">
- <head>
-  <title>
-   Add Item | PyInventory v0.13.0
-  </title>
-  <link href="/static/admin/css/base.css" rel="stylesheet" type="text/css"/>
-  <link href="/static/admin/css/nav_sidebar.css" rel="stylesheet" type="text/css"/>
-  <script defer="" src="/static/admin/js/nav_sidebar.js">
-  </script>
-  <link href="/static/admin/css/forms.css" rel="stylesheet" type="text/css"/>
-  <meta content="notranslate" name="google"/>
-  <meta content="noindex,nofollow" name="robots">
-   <link href="/static/inventory.css" rel="stylesheet" type="text/css"/>
-   <script src="/admin/jsi18n/">
-   </script>
-   <link href="/static/adminsortable2/css/sortable.css" media="all" rel="stylesheet" type="text/css"/>
-   <link href="/static/admin/css/vendor/select2/select2.min.css" media="screen" rel="stylesheet" type="text/css"/>
-   <link href="/static/admin/css/autocomplete.css" media="screen" rel="stylesheet" type="text/css"/>
-   <script src="/static/admin/js/vendor/jquery/jquery.min.js">
-   </script>
-   <script src="/static/tagulous/tagulous.js">
-   </script>
-   <script data-ckeditor-basepath="/static/ckeditor/ckeditor/" id="ckeditor-init-script" src="/static/ckeditor/ckeditor-init.js">
-   </script>
-   <script src="/static/admin/js/calendar.js">
-   </script>
-   <script src="/static/admin/js/collapse.js">
-   </script>
-   <script src="/static/admin/js/vendor/select2/select2.full.min.js">
-   </script>
-   <script src="/static/tagulous/adaptor/select2-4.js">
-   </script>
-   <script src="/static/ckeditor/ckeditor/ckeditor.js">
-   </script>
-   <script src="/static/admin/js/admin/DateTimeShortcuts.js">
-   </script>
-   <script src="/static/admin/js/vendor/select2/i18n/en.js">
-   </script>
-   <script src="/static/admin/js/jquery.init.js">
-   </script>
-   <script src="/static/admin/js/core.js">
-   </script>
-   <script src="/static/admin/js/autocomplete.js">
-   </script>
-   <script src="/static/admin/js/inlines.js">
-   </script>
-   <script src="/static/adminsortable2/js/plugins/admincompat.js">
-   </script>
-   <script src="/static/admin/js/admin/RelatedObjectLookups.js">
-   </script>
-   <script src="/static/adminsortable2/js/libs/jquery.ui.core-1.11.4.js">
-   </script>
-   <script src="/static/admin/js/actions.js">
-   </script>
-   <script src="/static/adminsortable2/js/libs/jquery.ui.widget-1.11.4.js">
-   </script>
-   <script src="/static/admin/js/urlify.js">
-   </script>
-   <script src="/static/adminsortable2/js/libs/jquery.ui.mouse-1.11.4.js">
-   </script>
-   <script src="/static/admin/js/prepopulate.js">
-   </script>
-   <script src="/static/adminsortable2/js/libs/jquery.ui.touch-punch-0.2.3.js">
-   </script>
-   <script src="/static/admin/js/vendor/xregexp/xregexp.min.js">
-   </script>
-   <script src="/static/adminsortable2/js/libs/jquery.ui.sortable-1.11.4.js">
-   </script>
-   <script src="/static/adminsortable2/js/inline-sortable.js">
-   </script>
-   <script src="/static/adminsortable2/js/inline-tabular.js">
-   </script>
-   <meta content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport"/>
-   <link href="/static/admin/css/responsive.css" rel="stylesheet" type="text/css"/>
-   <meta content="NONE,NOARCHIVE" name="robots"/>
-  </meta>
- </head>
- <body class="app-inventory model-itemmodel change-form" data-admin-utc-offset="MockedNowNode">
-  <!-- Container -->
-  <div id="container">
-   <!-- Header -->
-   <div id="header">
-    <div id="branding">
-     <h1 id="site-name">
-      <a href="/admin/">
-       PyInventory v0.13.0
-      </a>
-     </h1>
-    </div>
-    <div id="user-tools">
-     Welcome,
-     <strong>
-      NormalUser
-     </strong>
-     .
-     <a href="/">
-      View site
-     </a>
-     /
-     <a href="/admin/password_change/">
-      Change password
-     </a>
-     /
-     <a href="/admin/logout/">
-      Log out
-     </a>
-    </div>
-   </div>
-   <!-- END Header -->
-   <div class="breadcrumbs">
-    <a href="/admin/">
-     Home
-    </a>
-    ›
-    <a href="/admin/inventory/">
-     Inventory
-    </a>
-    ›
-    <a href="/admin/inventory/itemmodel/">
-     Items
-    </a>
-    › Add Item
-   </div>
-   <div class="main shifted" id="main">
-    <button aria-label="Toggle navigation" class="sticky toggle-nav-sidebar" id="toggle-nav-sidebar">
-    </button>
-    <nav class="sticky" id="nav-sidebar">
-     <div class="app-inventory module current-app">
-      <table>
-       <caption>
-        <a class="section" href="/admin/inventory/" title="Models in the Inventory application">
-         Inventory
-        </a>
-       </caption>
-       <tr class="model-itemmodel current-model">
-        <th scope="row">
-         <a aria-current="page" href="/admin/inventory/itemmodel/">
-          Items
-         </a>
-        </th>
-        <td>
-         <a class="addlink" href="/admin/inventory/itemmodel/add/">
-          Add
-         </a>
-        </td>
-       </tr>
-       <tr class="model-locationmodel">
-        <th scope="row">
-         <a href="/admin/inventory/locationmodel/">
-          Locations
-         </a>
-        </th>
-        <td>
-         <a class="addlink" href="/admin/inventory/locationmodel/add/">
-          Add
-         </a>
-        </td>
-       </tr>
-       <tr class="model-memomodel">
-        <th scope="row">
-         <a href="/admin/inventory/memomodel/">
-          Memos
-         </a>
-        </th>
-        <td>
-         <a class="addlink" href="/admin/inventory/memomodel/add/">
-          Add
-         </a>
-        </td>
-       </tr>
-      </table>
+<div class="colM" id="content">
+ <h1>
+  Add Item
+ </h1>
+ <div id="content-main">
+  <form enctype="multipart/form-data" id="itemmodel_form" method="post" novalidate="">
+   MockedCsrfTokenNode
+   <div>
+    <fieldset class="module aligned collapse">
+     <h2>
+      Internals
+     </h2>
+     <div class="form-row field-id field-version">
+      <div class="fieldBox field-id">
+       <label>
+        ID:
+       </label>
+       <div class="readonly">
+        -
+       </div>
+       <div class="help">
+        ID
+       </div>
+      </div>
+      <div class="fieldBox field-version">
+       <label class="required inline" for="id_version">
+        Version:
+       </label>
+       <input id="id_version" name="version" required="" type="hidden" value="0"/>
+       0
+       <div class="help">
+        Internal version number of this entry. Used to protect the overwriting of an older entry.
+       </div>
+      </div>
      </div>
-    </nav>
-    <div class="content">
-     <!-- Content -->
-     <div class="colM" id="content">
-      <h1>
-       Add Item
-      </h1>
-      <div id="content-main">
-       <form enctype="multipart/form-data" id="itemmodel_form" method="post" novalidate="">
-        MockedCsrfTokenNode
-        <div>
-         <fieldset class="module aligned collapse">
-          <h2>
-           Internals
-          </h2>
-          <div class="form-row field-id field-version">
-           <div class="fieldBox field-id">
-            <label>
-             ID:
-            </label>
-            <div class="readonly">
-             -
-            </div>
-            <div class="help">
-             ID
-            </div>
+     <div class="form-row field-user">
+      <div>
+       <label>
+        User:
+       </label>
+       <div class="readonly">
+        -
+       </div>
+       <div class="help">
+        The user who is the owner of this entry and can manage it (will be set automatically)
+       </div>
+      </div>
+     </div>
+    </fieldset>
+    <fieldset class="module aligned collapse">
+     <h2>
+      Meta
+     </h2>
+     <div class="form-row field-create_dt">
+      <div>
+       <label>
+        Create date:
+       </label>
+       <div class="readonly">
+        -
+       </div>
+       <div class="help">
+        (will be set automatically)
+       </div>
+      </div>
+     </div>
+     <div class="form-row field-update_dt">
+      <div>
+       <label>
+        Last update:
+       </label>
+       <div class="readonly">
+        -
+       </div>
+       <div class="help">
+        (will be set automatically)
+       </div>
+      </div>
+     </div>
+    </fieldset>
+    <fieldset class="module aligned">
+     <h2>
+      Basic
+     </h2>
+     <div class="form-row field-kind">
+      <div>
+       <label class="required" for="id_kind">
+        Kind:
+       </label>
+       <div class="related-widget-wrapper">
+        <input autocomplete="off" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 3, "space_delimiter": false, "required": true}' data-tagulous="true" data-theme="admin-autocomplete" id="id_kind" name="kind" required="" type="text"/>
+       </div>
+       <div class="help">
+       </div>
+      </div>
+     </div>
+     <div class="form-row field-producer field-name">
+      <div class="fieldBox field-producer">
+       <label for="id_producer">
+        Producer:
+       </label>
+       <div class="related-widget-wrapper">
+        <input autocomplete="off" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 1, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_producer" name="producer" type="text"/>
+       </div>
+       <div class="help">
+       </div>
+      </div>
+      <div class="fieldBox field-name">
+       <label class="required inline" for="id_name">
+        Name:
+       </label>
+       <input class="vTextField" id="id_name" maxlength="255" name="name" required="" type="text"/>
+       <div class="help">
+        Name
+       </div>
+      </div>
+     </div>
+     <div class="form-row field-description">
+      <div>
+       <label for="id_description">
+        Description:
+       </label>
+       <textarea class="vLargeTextField" cols="40" id="id_description" name="description" rows="10">
+</textarea>
+       <div class="help">
+       </div>
+      </div>
+     </div>
+     <div class="form-row field-tags">
+      <div>
+       <label for="id_tags">
+        Tags:
+       </label>
+       <div class="related-widget-wrapper">
+        <input autocomplete="off" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 10, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_tags" name="tags" type="text"/>
+       </div>
+       <div class="help">
+       </div>
+      </div>
+     </div>
+     <div class="form-row field-fcc_id">
+      <div>
+       <label for="id_fcc_id">
+        FCC ID:
+       </label>
+       <input class="vTextField" id="id_fcc_id" maxlength="20" name="fcc_id" type="text"/>
+       <div class="help">
+        Unique number from the FCC
+       </div>
+      </div>
+     </div>
+     <div class="form-row field-parent">
+      <div>
+       <label for="id_parent">
+        Parent:
+       </label>
+       <div class="related-widget-wrapper">
+        <select id="id_parent" name="parent">
+         <option selected="" value="">
+          ---------
+         </option>
+        </select>
+        <a class="related-widget-wrapper-link change-related" data-href-template="/admin/inventory/itemmodel/__fk__/change/?_to_field=id&_popup=1" id="change_id_parent" title="Change selected Item">
+         <img alt="Change" src="/static/admin/img/icon-changelink.svg"/>
+        </a>
+        <a class="related-widget-wrapper-link add-related" href="/admin/inventory/itemmodel/add/?_to_field=id&_popup=1" id="add_id_parent" title="Add another Item">
+         <img alt="Add" src="/static/admin/img/icon-addlink.svg"/>
+        </a>
+        <a class="related-widget-wrapper-link delete-related" data-href-template="/admin/inventory/itemmodel/__fk__/delete/?_to_field=id&_popup=1" id="delete_id_parent" title="Delete selected Item">
+         <img alt="Delete" src="/static/admin/img/icon-deletelink.svg"/>
+        </a>
+       </div>
+       <div class="help">
+       </div>
+      </div>
+     </div>
+     <div class="form-row field-location">
+      <div>
+       <label for="id_location">
+        Location:
+       </label>
+       <div class="related-widget-wrapper">
+        <select id="id_location" name="location">
+         <option selected="" value="">
+          ---------
+         </option>
+        </select>
+        <a class="related-widget-wrapper-link change-related" data-href-template="/admin/inventory/locationmodel/__fk__/change/?_to_field=id&_popup=1" id="change_id_location" title="Change selected Location">
+         <img alt="Change" src="/static/admin/img/icon-changelink.svg"/>
+        </a>
+        <a class="related-widget-wrapper-link add-related" href="/admin/inventory/locationmodel/add/?_to_field=id&_popup=1" id="add_id_location" title="Add another Location">
+         <img alt="Add" src="/static/admin/img/icon-addlink.svg"/>
+        </a>
+        <a class="related-widget-wrapper-link delete-related" data-href-template="/admin/inventory/locationmodel/__fk__/delete/?_to_field=id&_popup=1" id="delete_id_location" title="Delete selected Location">
+         <img alt="Delete" src="/static/admin/img/icon-deletelink.svg"/>
+        </a>
+       </div>
+       <div class="help">
+       </div>
+      </div>
+     </div>
+    </fieldset>
+    <fieldset class="module aligned collapse">
+     <h2>
+      Lent
+     </h2>
+     <div class="form-row field-lent_to">
+      <div>
+       <label for="id_lent_to">
+        Lent to:
+       </label>
+       <input class="vTextField" id="id_lent_to" maxlength="64" name="lent_to" type="text"/>
+       <div class="help">
+       </div>
+      </div>
+     </div>
+     <div class="form-row field-lent_from_date field-lent_until_date">
+      <div class="fieldBox field-lent_from_date">
+       <label for="id_lent_from_date">
+        Lent from date:
+       </label>
+       <input class="vDateField" id="id_lent_from_date" name="lent_from_date" size="10" type="text"/>
+       <div class="help">
+       </div>
+      </div>
+      <div class="fieldBox field-lent_until_date">
+       <label class="inline" for="id_lent_until_date">
+        Lent until date:
+       </label>
+       <input class="vDateField" id="id_lent_until_date" name="lent_until_date" size="10" type="text"/>
+       <div class="help">
+       </div>
+      </div>
+     </div>
+    </fieldset>
+    <fieldset class="module aligned collapse">
+     <h2>
+      Received
+     </h2>
+     <div class="form-row field-received_from field-received_date field-received_price">
+      <div class="fieldBox field-received_from">
+       <label for="id_received_from">
+        Received from:
+       </label>
+       <input class="vTextField" id="id_received_from" maxlength="64" name="received_from" type="text"/>
+       <div class="help">
+       </div>
+      </div>
+      <div class="fieldBox field-received_date">
+       <label class="inline" for="id_received_date">
+        Received date:
+       </label>
+       <input class="vDateField" id="id_received_date" name="received_date" size="10" type="text"/>
+       <div class="help">
+       </div>
+      </div>
+      <div class="fieldBox field-received_price">
+       <label class="inline" for="id_received_price">
+        Received price:
+       </label>
+       <input id="id_received_price" name="received_price" step="0.01" type="number"/>
+       <div class="help">
+       </div>
+      </div>
+     </div>
+    </fieldset>
+    <fieldset class="module aligned collapse">
+     <h2>
+      Handed over
+     </h2>
+     <div class="form-row field-handed_over_to field-handed_over_date field-handed_over_price">
+      <div class="fieldBox field-handed_over_to">
+       <label for="id_handed_over_to">
+        Handed over to:
+       </label>
+       <input class="vTextField" id="id_handed_over_to" maxlength="64" name="handed_over_to" type="text"/>
+       <div class="help">
+       </div>
+      </div>
+      <div class="fieldBox field-handed_over_date">
+       <label class="inline" for="id_handed_over_date">
+        Handed over date:
+       </label>
+       <input class="vDateField" id="id_handed_over_date" name="handed_over_date" size="10" type="text"/>
+       <div class="help">
+       </div>
+      </div>
+      <div class="fieldBox field-handed_over_price">
+       <label class="inline" for="id_handed_over_price">
+        Handed over price:
+       </label>
+       <input id="id_handed_over_price" name="handed_over_price" step="0.01" type="number"/>
+       <div class="help">
+       </div>
+      </div>
+     </div>
+    </fieldset>
+    <div class="inline-group sortable" id="itemimagemodel_set-group">
+     <div class="tabular inline-related">
+      <input id="id_itemimagemodel_set-TOTAL_FORMS" name="itemimagemodel_set-TOTAL_FORMS" type="hidden" value="0"/>
+      <input id="id_itemimagemodel_set-INITIAL_FORMS" name="itemimagemodel_set-INITIAL_FORMS" type="hidden" value="0"/>
+      <input id="id_itemimagemodel_set-MIN_NUM_FORMS" name="itemimagemodel_set-MIN_NUM_FORMS" type="hidden" value="0"/>
+      <input id="id_itemimagemodel_set-MAX_NUM_FORMS" name="itemimagemodel_set-MAX_NUM_FORMS" type="hidden" value="1000"/>
+      <fieldset class="module">
+       <h2>
+        Images
+       </h2>
+       <table>
+        <thead>
+         <tr>
+          <th>
+           Sort
+          </th>
+          <th colspan="2">
+           Preview
+          </th>
+          <th class="required">
+           Image
+           <img alt="( )" class="help help-tooltip" height="10" src="/static/admin/img/icon-unknown.svg" title=" " width="10"/>
+          </th>
+          <th>
+           Name
+           <img alt="(BaseItemAttachmentModel.name.help_text)" class="help help-tooltip" height="10" src="/static/admin/img/icon-unknown.svg" title="BaseItemAttachmentModel.name.help_text" width="10"/>
+          </th>
+          <th>
+           Tags
+           <img alt="( )" class="help help-tooltip" height="10" src="/static/admin/img/icon-unknown.svg" title=" " width="10"/>
+          </th>
+          <th>
+           Delete?
+          </th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr class="form-row row1 empty-form" id="itemimagemodel_set-empty">
+          <td class="drag">
+          </td>
+          <td class="original">
+           <input id="id_itemimagemodel_set-__prefix__-id" name="itemimagemodel_set-__prefix__-id" type="hidden"/>
+           <input id="id_itemimagemodel_set-__prefix__-item" name="itemimagemodel_set-__prefix__-item" type="hidden"/>
+           <input id="id_itemimagemodel_set-__prefix__-position" name="itemimagemodel_set-__prefix__-position" type="hidden" value="0"/>
+          </td>
+          <td class="field-preview">
+           <p>
+            -
+           </p>
+          </td>
+          <td class="field-image">
+           <input accept="image/*" id="id_itemimagemodel_set-__prefix__-image" name="itemimagemodel_set-__prefix__-image" type="file"/>
+          </td>
+          <td class="field-name">
+           <input class="vTextField" id="id_itemimagemodel_set-__prefix__-name" maxlength="255" name="itemimagemodel_set-__prefix__-name" type="text"/>
+          </td>
+          <td class="field-tags">
+           <div class="related-widget-wrapper">
+            <input autocomplete="off" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 10, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_itemimagemodel_set-__prefix__-tags" name="itemimagemodel_set-__prefix__-tags" type="text"/>
            </div>
-           <div class="fieldBox field-version">
-            <label class="required inline" for="id_version">
-             Version:
-            </label>
-            <input id="id_version" name="version" required="" type="hidden" value="0"/>
-            0
-            <div class="help">
-             Internal version number of this entry. Used to protect the overwriting of an older entry.
-            </div>
-           </div>
-          </div>
-          <div class="form-row field-user">
-           <div>
-            <label>
-             User:
-            </label>
-            <div class="readonly">
-             -
-            </div>
-            <div class="help">
-             The user who is the owner of this entry and can manage it (will be set automatically)
-            </div>
-           </div>
-          </div>
-         </fieldset>
-         <fieldset class="module aligned collapse">
-          <h2>
-           Meta
-          </h2>
-          <div class="form-row field-create_dt">
-           <div>
-            <label>
-             Create date:
-            </label>
-            <div class="readonly">
-             -
-            </div>
-            <div class="help">
-             (will be set automatically)
-            </div>
-           </div>
-          </div>
-          <div class="form-row field-update_dt">
-           <div>
-            <label>
-             Last update:
-            </label>
-            <div class="readonly">
-             -
-            </div>
-            <div class="help">
-             (will be set automatically)
-            </div>
-           </div>
-          </div>
-         </fieldset>
-         <fieldset class="module aligned">
-          <h2>
-           Basic
-          </h2>
-          <div class="form-row field-kind">
-           <div>
-            <label class="required" for="id_kind">
-             Kind:
-            </label>
-            <div class="related-widget-wrapper">
-             <input autocomplete="off" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 3, "space_delimiter": false, "required": true}' data-tagulous="true" data-theme="admin-autocomplete" id="id_kind" name="kind" required="" type="text"/>
-            </div>
-            <div class="help">
-            </div>
-           </div>
-          </div>
-          <div class="form-row field-producer field-name">
-           <div class="fieldBox field-producer">
-            <label for="id_producer">
-             Producer:
-            </label>
-            <div class="related-widget-wrapper">
-             <input autocomplete="off" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 1, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_producer" name="producer" type="text"/>
-            </div>
-            <div class="help">
-            </div>
-           </div>
-           <div class="fieldBox field-name">
-            <label class="required inline" for="id_name">
-             Name:
-            </label>
-            <input class="vTextField" id="id_name" maxlength="255" name="name" required="" type="text"/>
-            <div class="help">
-             Name
-            </div>
-           </div>
-          </div>
-          <div class="form-row field-description">
-           <div>
-            <label for="id_description">
-             Description:
-            </label>
-            <div class="django-ckeditor-widget" data-field-id="id_description" style="display: inline-block;">
-             <textarea cols="40" data-config='{"skin": "moono-lisa", "toolbar_Basic": [["Source", "-", "Bold", "Italic"]], "toolbar_Full": [["Styles", "Format", "Bold", "Italic", "Underline", "Strike", "SpellChecker", "Undo", "Redo"], ["Link", "Unlink", "Anchor"], ["Image", "Flash", "Table", "HorizontalRule"], ["TextColor", "BGColor"], ["Smiley", "SpecialChar"], ["Source"]], "toolbar": "PyInventoryToolbarConfig", "height": "25em", "width": "100%", "filebrowserWindowWidth": 940, "filebrowserWindowHeight": 725, "removeButtons": "Language,Cut,Copy,Paste,Undo,Redo,Anchor", "removePlugins": ["a11yhelp", "adobeair", "ajax", "autoembed", "autolink", "bbcode", "bidi", "clipboard", "codesnippet", "codesnippetgeshi", "contextmenu", "copyformatting", "devtools", "dialog", "dialogadvtab", "div", "divarea", "docprops", "embed", "embedbase", "embedsemantic", "enterkey", "exportpdf", "find", "flash", "forms", "htmlwriter", "iframe", "iframedialog", "language", "magicline", "mathjax", "newpage", "notification", "notificationaggregator", "pagebreak", "pastefromgdocs", "pastefromword", "pastetext", "pastetools", "placeholder", "preview", "print", "save", "scayt", "selectall", "sharedspace", "smiley", "sourcedialog", "specialchar", "stylescombo", "stylesheetparser", "tab", "templates", "uicolor", "widget", "wsc", "xml"], "toolbar_PyInventoryToolbarConfig": [{"name": "basicstyles", "items": ["Bold", "Italic", "Underline", "Strike", "-", "RemoveFormat"]}, {"name": "paragraph", "items": ["NumberedList", "BulletedList", "-", "Outdent", "Indent", "-", "Blockquote", "-", "JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock"]}, {"name": "links", "items": ["Link", "Unlink", "Anchor"]}, {"name": "insert", "items": ["Image", "Table", "HorizontalRule"]}, "/", {"name": "styles", "items": ["Styles", "Format", "Font", "FontSize"]}, {"name": "colors", "items": ["TextColor", "BGColor"]}, {"name": "tools", "items": ["Maximize", "ShowBlocks", "Source"]}, {"name": "about", "items": ["About"]}], "filebrowserUploadUrl": "/ckeditor/upload/", "filebrowserBrowseUrl": "/ckeditor/browse/", "language": "en"}' data-external-plugin-resources="[]" data-id="id_description" data-processed="0" data-type="ckeditortype" id="id_description" name="description" rows="10"></textarea>
-            </div>
-            <div class="help">
-            </div>
-           </div>
-          </div>
-          <div class="form-row field-tags">
-           <div>
-            <label for="id_tags">
-             Tags:
-            </label>
-            <div class="related-widget-wrapper">
-             <input autocomplete="off" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 10, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_tags" name="tags" type="text"/>
-            </div>
-            <div class="help">
-            </div>
-           </div>
-          </div>
-          <div class="form-row field-fcc_id">
-           <div>
-            <label for="id_fcc_id">
-             FCC ID:
-            </label>
-            <input class="vTextField" id="id_fcc_id" maxlength="20" name="fcc_id" type="text"/>
-            <div class="help">
-             Unique number from the FCC
-            </div>
-           </div>
-          </div>
-          <div class="form-row field-parent">
-           <div>
-            <label for="id_parent">
-             Parent:
-            </label>
-            <div class="related-widget-wrapper">
-             <select id="id_parent" name="parent">
-              <option selected="" value="">
-               ---------
-              </option>
-             </select>
-             <a class="related-widget-wrapper-link change-related" data-href-template="/admin/inventory/itemmodel/__fk__/change/?_to_field=id&_popup=1" id="change_id_parent" title="Change selected Item">
-              <img alt="Change" src="/static/admin/img/icon-changelink.svg"/>
-             </a>
-             <a class="related-widget-wrapper-link add-related" href="/admin/inventory/itemmodel/add/?_to_field=id&_popup=1" id="add_id_parent" title="Add another Item">
-              <img alt="Add" src="/static/admin/img/icon-addlink.svg"/>
-             </a>
-             <a class="related-widget-wrapper-link delete-related" data-href-template="/admin/inventory/itemmodel/__fk__/delete/?_to_field=id&_popup=1" id="delete_id_parent" title="Delete selected Item">
-              <img alt="Delete" src="/static/admin/img/icon-deletelink.svg"/>
-             </a>
-            </div>
-            <div class="help">
-            </div>
-           </div>
-          </div>
-          <div class="form-row field-location">
-           <div>
-            <label for="id_location">
-             Location:
-            </label>
-            <div class="related-widget-wrapper">
-             <select id="id_location" name="location">
-              <option selected="" value="">
-               ---------
-              </option>
-             </select>
-             <a class="related-widget-wrapper-link change-related" data-href-template="/admin/inventory/locationmodel/__fk__/change/?_to_field=id&_popup=1" id="change_id_location" title="Change selected Location">
-              <img alt="Change" src="/static/admin/img/icon-changelink.svg"/>
-             </a>
-             <a class="related-widget-wrapper-link add-related" href="/admin/inventory/locationmodel/add/?_to_field=id&_popup=1" id="add_id_location" title="Add another Location">
-              <img alt="Add" src="/static/admin/img/icon-addlink.svg"/>
-             </a>
-             <a class="related-widget-wrapper-link delete-related" data-href-template="/admin/inventory/locationmodel/__fk__/delete/?_to_field=id&_popup=1" id="delete_id_location" title="Delete selected Location">
-              <img alt="Delete" src="/static/admin/img/icon-deletelink.svg"/>
-             </a>
-            </div>
-            <div class="help">
-            </div>
-           </div>
-          </div>
-         </fieldset>
-         <fieldset class="module aligned collapse">
-          <h2>
-           Lent
-          </h2>
-          <div class="form-row field-lent_to">
-           <div>
-            <label for="id_lent_to">
-             Lent to:
-            </label>
-            <input class="vTextField" id="id_lent_to" maxlength="64" name="lent_to" type="text"/>
-            <div class="help">
-            </div>
-           </div>
-          </div>
-          <div class="form-row field-lent_from_date field-lent_until_date">
-           <div class="fieldBox field-lent_from_date">
-            <label for="id_lent_from_date">
-             Lent from date:
-            </label>
-            <input class="vDateField" id="id_lent_from_date" name="lent_from_date" size="10" type="text"/>
-            <div class="help">
-            </div>
-           </div>
-           <div class="fieldBox field-lent_until_date">
-            <label class="inline" for="id_lent_until_date">
-             Lent until date:
-            </label>
-            <input class="vDateField" id="id_lent_until_date" name="lent_until_date" size="10" type="text"/>
-            <div class="help">
-            </div>
-           </div>
-          </div>
-         </fieldset>
-         <fieldset class="module aligned collapse">
-          <h2>
-           Received
-          </h2>
-          <div class="form-row field-received_from field-received_date field-received_price">
-           <div class="fieldBox field-received_from">
-            <label for="id_received_from">
-             Received from:
-            </label>
-            <input class="vTextField" id="id_received_from" maxlength="64" name="received_from" type="text"/>
-            <div class="help">
-            </div>
-           </div>
-           <div class="fieldBox field-received_date">
-            <label class="inline" for="id_received_date">
-             Received date:
-            </label>
-            <input class="vDateField" id="id_received_date" name="received_date" size="10" type="text"/>
-            <div class="help">
-            </div>
-           </div>
-           <div class="fieldBox field-received_price">
-            <label class="inline" for="id_received_price">
-             Received price:
-            </label>
-            <input id="id_received_price" name="received_price" step="0.01" type="number"/>
-            <div class="help">
-            </div>
-           </div>
-          </div>
-         </fieldset>
-         <fieldset class="module aligned collapse">
-          <h2>
-           Handed over
-          </h2>
-          <div class="form-row field-handed_over_to field-handed_over_date field-handed_over_price">
-           <div class="fieldBox field-handed_over_to">
-            <label for="id_handed_over_to">
-             Handed over to:
-            </label>
-            <input class="vTextField" id="id_handed_over_to" maxlength="64" name="handed_over_to" type="text"/>
-            <div class="help">
-            </div>
-           </div>
-           <div class="fieldBox field-handed_over_date">
-            <label class="inline" for="id_handed_over_date">
-             Handed over date:
-            </label>
-            <input class="vDateField" id="id_handed_over_date" name="handed_over_date" size="10" type="text"/>
-            <div class="help">
-            </div>
-           </div>
-           <div class="fieldBox field-handed_over_price">
-            <label class="inline" for="id_handed_over_price">
-             Handed over price:
-            </label>
-            <input id="id_handed_over_price" name="handed_over_price" step="0.01" type="number"/>
-            <div class="help">
-            </div>
-           </div>
-          </div>
-         </fieldset>
-         <div class="inline-group sortable" id="itemimagemodel_set-group">
-          <div class="tabular inline-related">
-           <input id="id_itemimagemodel_set-TOTAL_FORMS" name="itemimagemodel_set-TOTAL_FORMS" type="hidden" value="0"/>
-           <input id="id_itemimagemodel_set-INITIAL_FORMS" name="itemimagemodel_set-INITIAL_FORMS" type="hidden" value="0"/>
-           <input id="id_itemimagemodel_set-MIN_NUM_FORMS" name="itemimagemodel_set-MIN_NUM_FORMS" type="hidden" value="0"/>
-           <input id="id_itemimagemodel_set-MAX_NUM_FORMS" name="itemimagemodel_set-MAX_NUM_FORMS" type="hidden" value="1000"/>
-           <fieldset class="module">
-            <h2>
-             Images
-            </h2>
-            <table>
-             <thead>
-              <tr>
-               <th>
-                Sort
-               </th>
-               <th colspan="2">
-                Preview
-               </th>
-               <th class="required">
-                Image
-                <img alt="( )" class="help help-tooltip" height="10" src="/static/admin/img/icon-unknown.svg" title=" " width="10">
-                </img>
-               </th>
-               <th>
-                Name
-                <img alt="(BaseItemAttachmentModel.name.help_text)" class="help help-tooltip" height="10" src="/static/admin/img/icon-unknown.svg" title="BaseItemAttachmentModel.name.help_text" width="10">
-                </img>
-               </th>
-               <th>
-                Tags
-                <img alt="( )" class="help help-tooltip" height="10" src="/static/admin/img/icon-unknown.svg" title=" " width="10">
-                </img>
-               </th>
-               <th>
-                Delete?
-               </th>
-              </tr>
-             </thead>
-             <tbody>
-              <tr class="form-row row1 empty-form" id="itemimagemodel_set-empty">
-               <td class="drag">
-               </td>
-               <td class="original">
-                <input id="id_itemimagemodel_set-__prefix__-id" name="itemimagemodel_set-__prefix__-id" type="hidden"/>
-                <input id="id_itemimagemodel_set-__prefix__-item" name="itemimagemodel_set-__prefix__-item" type="hidden"/>
-                <input id="id_itemimagemodel_set-__prefix__-position" name="itemimagemodel_set-__prefix__-position" type="hidden" value="0"/>
-               </td>
-               <td class="field-preview">
-                <p>
-                 -
-                </p>
-               </td>
-               <td class="field-image">
-                <input accept="image/*" id="id_itemimagemodel_set-__prefix__-image" name="itemimagemodel_set-__prefix__-image" type="file"/>
-               </td>
-               <td class="field-name">
-                <input class="vTextField" id="id_itemimagemodel_set-__prefix__-name" maxlength="255" name="itemimagemodel_set-__prefix__-name" type="text"/>
-               </td>
-               <td class="field-tags">
-                <div class="related-widget-wrapper">
-                 <input autocomplete="off" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 10, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_itemimagemodel_set-__prefix__-tags" name="itemimagemodel_set-__prefix__-tags" type="text"/>
-                </div>
-               </td>
-               <td class="delete">
-               </td>
-              </tr>
-             </tbody>
-            </table>
-           </fieldset>
-          </div>
-         </div>
-         <script class="inline-tabular-config" type="application/json">
-          {
+          </td>
+          <td class="delete">
+          </td>
+         </tr>
+        </tbody>
+       </table>
+      </fieldset>
+     </div>
+    </div>
+    <script class="inline-tabular-config" type="application/json">
+     {
   "prefix": "itemimagemodel_set",
   "addText": "Add another Image",
   "deleteText": "Remove"
 }
-         </script>
-         <div class="default_order_field" default_order_direction="" default_order_field="position">
-         </div>
-         <div class="inline-group sortable" id="itemfilemodel_set-group">
-          <div class="tabular inline-related">
-           <input id="id_itemfilemodel_set-TOTAL_FORMS" name="itemfilemodel_set-TOTAL_FORMS" type="hidden" value="0"/>
-           <input id="id_itemfilemodel_set-INITIAL_FORMS" name="itemfilemodel_set-INITIAL_FORMS" type="hidden" value="0"/>
-           <input id="id_itemfilemodel_set-MIN_NUM_FORMS" name="itemfilemodel_set-MIN_NUM_FORMS" type="hidden" value="0"/>
-           <input id="id_itemfilemodel_set-MAX_NUM_FORMS" name="itemfilemodel_set-MAX_NUM_FORMS" type="hidden" value="1000"/>
-           <fieldset class="module">
-            <h2>
-             Files
-            </h2>
-            <table>
-             <thead>
-              <tr>
-               <th>
-                Sort
-               </th>
-               <th class="required" colspan="2">
-                File
-                <img alt="( )" class="help help-tooltip" height="10" src="/static/admin/img/icon-unknown.svg" title=" " width="10">
-                </img>
-               </th>
-               <th>
-                Name
-                <img alt="(BaseItemAttachmentModel.name.help_text)" class="help help-tooltip" height="10" src="/static/admin/img/icon-unknown.svg" title="BaseItemAttachmentModel.name.help_text" width="10">
-                </img>
-               </th>
-               <th>
-                Tags
-                <img alt="( )" class="help help-tooltip" height="10" src="/static/admin/img/icon-unknown.svg" title=" " width="10">
-                </img>
-               </th>
-               <th>
-                Delete?
-               </th>
-              </tr>
-             </thead>
-             <tbody>
-              <tr class="form-row row1 empty-form" id="itemfilemodel_set-empty">
-               <td class="drag">
-               </td>
-               <td class="original">
-                <input id="id_itemfilemodel_set-__prefix__-id" name="itemfilemodel_set-__prefix__-id" type="hidden"/>
-                <input id="id_itemfilemodel_set-__prefix__-item" name="itemfilemodel_set-__prefix__-item" type="hidden"/>
-                <input id="id_itemfilemodel_set-__prefix__-position" name="itemfilemodel_set-__prefix__-position" type="hidden" value="0"/>
-               </td>
-               <td class="field-file">
-                <input id="id_itemfilemodel_set-__prefix__-file" name="itemfilemodel_set-__prefix__-file" type="file"/>
-               </td>
-               <td class="field-name">
-                <input class="vTextField" id="id_itemfilemodel_set-__prefix__-name" maxlength="255" name="itemfilemodel_set-__prefix__-name" type="text"/>
-               </td>
-               <td class="field-tags">
-                <div class="related-widget-wrapper">
-                 <input autocomplete="off" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 10, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_itemfilemodel_set-__prefix__-tags" name="itemfilemodel_set-__prefix__-tags" type="text"/>
-                </div>
-               </td>
-               <td class="delete">
-               </td>
-              </tr>
-             </tbody>
-            </table>
-           </fieldset>
-          </div>
-         </div>
-         <script class="inline-tabular-config" type="application/json">
-          {
+    </script>
+    <div class="default_order_field" default_order_direction="" default_order_field="position">
+    </div>
+    <div class="inline-group sortable" id="itemfilemodel_set-group">
+     <div class="tabular inline-related">
+      <input id="id_itemfilemodel_set-TOTAL_FORMS" name="itemfilemodel_set-TOTAL_FORMS" type="hidden" value="0"/>
+      <input id="id_itemfilemodel_set-INITIAL_FORMS" name="itemfilemodel_set-INITIAL_FORMS" type="hidden" value="0"/>
+      <input id="id_itemfilemodel_set-MIN_NUM_FORMS" name="itemfilemodel_set-MIN_NUM_FORMS" type="hidden" value="0"/>
+      <input id="id_itemfilemodel_set-MAX_NUM_FORMS" name="itemfilemodel_set-MAX_NUM_FORMS" type="hidden" value="1000"/>
+      <fieldset class="module">
+       <h2>
+        Files
+       </h2>
+       <table>
+        <thead>
+         <tr>
+          <th>
+           Sort
+          </th>
+          <th class="required" colspan="2">
+           File
+           <img alt="( )" class="help help-tooltip" height="10" src="/static/admin/img/icon-unknown.svg" title=" " width="10"/>
+          </th>
+          <th>
+           Name
+           <img alt="(BaseItemAttachmentModel.name.help_text)" class="help help-tooltip" height="10" src="/static/admin/img/icon-unknown.svg" title="BaseItemAttachmentModel.name.help_text" width="10"/>
+          </th>
+          <th>
+           Tags
+           <img alt="( )" class="help help-tooltip" height="10" src="/static/admin/img/icon-unknown.svg" title=" " width="10"/>
+          </th>
+          <th>
+           Delete?
+          </th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr class="form-row row1 empty-form" id="itemfilemodel_set-empty">
+          <td class="drag">
+          </td>
+          <td class="original">
+           <input id="id_itemfilemodel_set-__prefix__-id" name="itemfilemodel_set-__prefix__-id" type="hidden"/>
+           <input id="id_itemfilemodel_set-__prefix__-item" name="itemfilemodel_set-__prefix__-item" type="hidden"/>
+           <input id="id_itemfilemodel_set-__prefix__-position" name="itemfilemodel_set-__prefix__-position" type="hidden" value="0"/>
+          </td>
+          <td class="field-file">
+           <input id="id_itemfilemodel_set-__prefix__-file" name="itemfilemodel_set-__prefix__-file" type="file"/>
+          </td>
+          <td class="field-name">
+           <input class="vTextField" id="id_itemfilemodel_set-__prefix__-name" maxlength="255" name="itemfilemodel_set-__prefix__-name" type="text"/>
+          </td>
+          <td class="field-tags">
+           <div class="related-widget-wrapper">
+            <input autocomplete="off" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 10, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_itemfilemodel_set-__prefix__-tags" name="itemfilemodel_set-__prefix__-tags" type="text"/>
+           </div>
+          </td>
+          <td class="delete">
+          </td>
+         </tr>
+        </tbody>
+       </table>
+      </fieldset>
+     </div>
+    </div>
+    <script class="inline-tabular-config" type="application/json">
+     {
   "prefix": "itemfilemodel_set",
   "addText": "Add another File",
   "deleteText": "Remove"
 }
-         </script>
-         <div class="default_order_field" default_order_direction="" default_order_field="position">
-         </div>
-         <div class="inline-group sortable" id="itemlinkmodel_set-group">
-          <div class="tabular inline-related last-related">
-           <input id="id_itemlinkmodel_set-TOTAL_FORMS" name="itemlinkmodel_set-TOTAL_FORMS" type="hidden" value="0"/>
-           <input id="id_itemlinkmodel_set-INITIAL_FORMS" name="itemlinkmodel_set-INITIAL_FORMS" type="hidden" value="0"/>
-           <input id="id_itemlinkmodel_set-MIN_NUM_FORMS" name="itemlinkmodel_set-MIN_NUM_FORMS" type="hidden" value="0"/>
-           <input id="id_itemlinkmodel_set-MAX_NUM_FORMS" name="itemlinkmodel_set-MAX_NUM_FORMS" type="hidden" value="1000"/>
-           <fieldset class="module">
-            <h2>
-             Links
-            </h2>
-            <table>
-             <thead>
-              <tr>
-               <th>
-                Sort
-               </th>
-               <th colspan="2">
-                Tags
-                <img alt="( )" class="help help-tooltip" height="10" src="/static/admin/img/icon-unknown.svg" title=" " width="10"/>
-               </th>
-               <th>
-                Name
-                <img alt="( )" class="help help-tooltip" height="10" src="/static/admin/img/icon-unknown.svg" title=" " width="10"/>
-               </th>
-               <th class="required">
-                URL
-                <img alt="( )" class="help help-tooltip" height="10" src="/static/admin/img/icon-unknown.svg" title=" " width="10"/>
-               </th>
-               <th>
-                Delete?
-               </th>
-              </tr>
-             </thead>
-             <tbody>
-              <tr class="form-row row1 empty-form" id="itemlinkmodel_set-empty">
-               <td class="drag">
-               </td>
-               <td class="original">
-                <input id="id_itemlinkmodel_set-__prefix__-id" name="itemlinkmodel_set-__prefix__-id" type="hidden"/>
-                <input id="id_itemlinkmodel_set-__prefix__-item" name="itemlinkmodel_set-__prefix__-item" type="hidden"/>
-                <input id="id_itemlinkmodel_set-__prefix__-position" name="itemlinkmodel_set-__prefix__-position" type="hidden" value="0"/>
-               </td>
-               <td class="field-tags">
-                <div class="related-widget-wrapper">
-                 <input autocomplete="off" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 10, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_itemlinkmodel_set-__prefix__-tags" name="itemlinkmodel_set-__prefix__-tags" type="text"/>
-                </div>
-               </td>
-               <td class="field-name">
-                <input class="vTextField" id="id_itemlinkmodel_set-__prefix__-name" maxlength="255" name="itemlinkmodel_set-__prefix__-name" type="text"/>
-               </td>
-               <td class="field-url">
-                <input class="vURLField" id="id_itemlinkmodel_set-__prefix__-url" maxlength="200" name="itemlinkmodel_set-__prefix__-url" type="url"/>
-               </td>
-               <td class="delete">
-               </td>
-              </tr>
-             </tbody>
-            </table>
-           </fieldset>
-          </div>
-         </div>
-         <script class="inline-tabular-config" type="application/json">
-          {
+    </script>
+    <div class="default_order_field" default_order_direction="" default_order_field="position">
+    </div>
+    <div class="inline-group sortable" id="itemlinkmodel_set-group">
+     <div class="tabular inline-related last-related">
+      <input id="id_itemlinkmodel_set-TOTAL_FORMS" name="itemlinkmodel_set-TOTAL_FORMS" type="hidden" value="0"/>
+      <input id="id_itemlinkmodel_set-INITIAL_FORMS" name="itemlinkmodel_set-INITIAL_FORMS" type="hidden" value="0"/>
+      <input id="id_itemlinkmodel_set-MIN_NUM_FORMS" name="itemlinkmodel_set-MIN_NUM_FORMS" type="hidden" value="0"/>
+      <input id="id_itemlinkmodel_set-MAX_NUM_FORMS" name="itemlinkmodel_set-MAX_NUM_FORMS" type="hidden" value="1000"/>
+      <fieldset class="module">
+       <h2>
+        Links
+       </h2>
+       <table>
+        <thead>
+         <tr>
+          <th>
+           Sort
+          </th>
+          <th colspan="2">
+           Tags
+           <img alt="( )" class="help help-tooltip" height="10" src="/static/admin/img/icon-unknown.svg" title=" " width="10"/>
+          </th>
+          <th>
+           Name
+           <img alt="( )" class="help help-tooltip" height="10" src="/static/admin/img/icon-unknown.svg" title=" " width="10"/>
+          </th>
+          <th class="required">
+           URL
+           <img alt="( )" class="help help-tooltip" height="10" src="/static/admin/img/icon-unknown.svg" title=" " width="10"/>
+          </th>
+          <th>
+           Delete?
+          </th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr class="form-row row1 empty-form" id="itemlinkmodel_set-empty">
+          <td class="drag">
+          </td>
+          <td class="original">
+           <input id="id_itemlinkmodel_set-__prefix__-id" name="itemlinkmodel_set-__prefix__-id" type="hidden"/>
+           <input id="id_itemlinkmodel_set-__prefix__-item" name="itemlinkmodel_set-__prefix__-item" type="hidden"/>
+           <input id="id_itemlinkmodel_set-__prefix__-position" name="itemlinkmodel_set-__prefix__-position" type="hidden" value="0"/>
+          </td>
+          <td class="field-tags">
+           <div class="related-widget-wrapper">
+            <input autocomplete="off" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 10, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_itemlinkmodel_set-__prefix__-tags" name="itemlinkmodel_set-__prefix__-tags" type="text"/>
+           </div>
+          </td>
+          <td class="field-name">
+           <input class="vTextField" id="id_itemlinkmodel_set-__prefix__-name" maxlength="255" name="itemlinkmodel_set-__prefix__-name" type="text"/>
+          </td>
+          <td class="field-url">
+           <input class="vURLField" id="id_itemlinkmodel_set-__prefix__-url" maxlength="200" name="itemlinkmodel_set-__prefix__-url" type="url"/>
+          </td>
+          <td class="delete">
+          </td>
+         </tr>
+        </tbody>
+       </table>
+      </fieldset>
+     </div>
+    </div>
+    <script class="inline-tabular-config" type="application/json">
+     {
   "prefix": "itemlinkmodel_set",
   "addText": "Add another Link",
   "deleteText": "Remove"
 }
-         </script>
-         <div class="default_order_field" default_order_direction="" default_order_field="position">
-         </div>
-         <div class="submit-row">
-          <input class="default" name="_save" type="submit" value="Save"/>
-          <input name="_addanother" type="submit" value="Save and add another"/>
-          <input name="_continue" type="submit" value="Save and continue editing"/>
-         </div>
-         <script async="" data-model-name="itemmodel" id="django-admin-form-add-constants" src="/static/admin/js/change_form.js">
-         </script>
-         <script data-prepopulated-fields="[]" id="django-admin-prepopulated-fields-constants" src="/static/admin/js/prepopulate_init.js">
-         </script>
-        </div>
-       </form>
-      </div>
-      <br class="clear"/>
-     </div>
-     <!-- END Content -->
-     <div id="footer">
-      <a href="https://github.com/jedie/PyInventory">
-       https://github.com/jedie/PyInventory
-      </a>
-     </div>
+    </script>
+    <div class="default_order_field" default_order_direction="" default_order_field="position">
     </div>
+    <div class="submit-row">
+     <input class="default" name="_save" type="submit" value="Save"/>
+     <input name="_addanother" type="submit" value="Save and add another"/>
+     <input name="_continue" type="submit" value="Save and continue editing"/>
+    </div>
+    <script async="" data-model-name="itemmodel" id="django-admin-form-add-constants" src="/static/admin/js/change_form.js">
+    </script>
+    <script data-prepopulated-fields="[]" id="django-admin-prepopulated-fields-constants" src="/static/admin/js/prepopulate_init.js">
+    </script>
    </div>
-  </div>
-  <!-- END Container -->
- </body>
-</html>
+  </form>
+ </div>
+ <br class="clear"/>
+</div>

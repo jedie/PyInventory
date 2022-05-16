@@ -36,8 +36,10 @@ readme='README.rst'
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/jedie/PyInventory/issues"
 
+license = "GPL"
 
 [tool.poetry.dependencies]
+# Keep Python 3.7 until Yunohost contains a newer Python Version ;)
 python = ">=3.7,<4.0.0"
 django = "*"
 colorlog = "*"  # https://github.com/borntyping/python-colorlog
@@ -103,8 +105,8 @@ run_testserver = 'inventory_project.manage:start_test_server'
 
 
 [build-system]
-requires = ["poetry>=0.12"]
-build-backend = "poetry.masonry.api"
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
 
 
 [tool.darker]
@@ -158,7 +160,6 @@ norecursedirs = ".* .git __pycache__ coverage* dist htmlcov volumes"
 #    --full-trace
 #    -p no:warnings
 addopts = """
-    --import-mode=importlib
     --ignore-glob=deployment/django/*
     --reuse-db
     --nomigrations

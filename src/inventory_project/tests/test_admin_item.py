@@ -3,7 +3,10 @@ import logging
 from unittest import mock
 
 from bx_django_utils.test_utils.datetime import MockDatetimeGenerator
-from bx_django_utils.test_utils.html_assertion import HtmlAssertionMixin
+from bx_django_utils.test_utils.html_assertion import (
+    HtmlAssertionMixin,
+    assert_html_response_snapshot,
+)
 from bx_py_utils.test_utils.snapshot import assert_html_snapshot
 from django.contrib.auth.models import User
 from django.template.defaulttags import CsrfTokenNode, NowNode
@@ -15,7 +18,6 @@ from model_bakery import baker
 from inventory import __version__
 from inventory.models import ItemImageModel, ItemModel
 from inventory.permissions import get_or_create_normal_user_group
-from inventory_project.tests.temp_utils import assert_html_response_snapshot
 
 
 ITEM_FORM_DEFAULTS = {

@@ -21,3 +21,7 @@ ALLOWED_HOSTS = ('127.0.0.1', '0.0.0.0', 'localhost')
 LOGGING['formatters']['colored']['format'] = (
     '%(log_color)s%(name)s %(levelname)8s %(cut_path)s:%(lineno)-3s %(message)s'
 )
+
+
+# https://github.com/microsoft/playwright-pytest/issues/115
+SECURE_SSL_REDIRECT = False

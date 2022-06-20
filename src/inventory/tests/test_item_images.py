@@ -10,7 +10,7 @@ from inventory.models import ItemImageModel
 from inventory.tests.fixtures.users import get_normal_pyinventory_user
 
 
-# @override_settings(SECURE_SSL_REDIRECT=False)
+@override_settings(SECURE_SSL_REDIRECT=True)
 class ItemImagesTestCase(TestCase):
     def test_basics(self):
         with mock.patch('secrets.token_urlsafe', return_value='user1token'):

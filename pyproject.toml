@@ -85,8 +85,7 @@ pytest-darker = "*"  # https://github.com/akaihola/pytest-darker
 pytest-flake8 = "*"
 pytest-isort = "*"
 # TODO: pytest-mypy = "*"
-selenium = "*"
-webdriver-manager = "*"  # https://github.com/SergeyPirogov/webdriver_manager
+pytest-playwright = "*"  # https://playwright.dev/python/docs/test-runners
 coveralls = "*"
 isort = "*"
 flake8 = "*"
@@ -151,6 +150,10 @@ DJANGO_SETTINGS_MODULE="inventory_project.settings.tests"
 # Don't overwrite settings.DEBUG:
 django_debug_mode="keep"
 
+markers = [
+    "playwright: marks Playwright tests",
+]
+
 norecursedirs = ".* .git __pycache__ coverage* dist htmlcov volumes"
 # sometimes helpfull "addopts" arguments:
 #    -vv
@@ -159,19 +162,16 @@ norecursedirs = ".* .git __pycache__ coverage* dist htmlcov volumes"
 #    --trace-config
 #    --full-trace
 #    -p no:warnings
+#    -m "not playwright"
 addopts = """
     --ignore-glob=deployment/django/*
     --reuse-db
     --nomigrations
     --cov=.
     --cov-report term-missing
-    --cov-report html
-    --cov-report xml
     --no-cov-on-fail
     --showlocals
     --darker
-    --flake8
-    --isort
     --doctest-modules
     --failed-first
     --last-failed-no-failures all

@@ -86,12 +86,12 @@ pytest-flake8 = "*"
 pytest-isort = "*"
 # TODO: pytest-mypy = "*"
 selenium = "*"
+webdriver-manager = "*"  # https://github.com/SergeyPirogov/webdriver_manager
 coveralls = "*"
 isort = "*"
 flake8 = "*"
 flynt = "*"
 darker = "*"  # https://github.com/akaihola/darker
-black = "==21.12b0" # https://github.com/akaihola/darker/issues/264
 pyupgrade = "*"
 model_bakery = "*"  # https://github.com/model-bakers/model_bakery
 beautifulsoup4 = "*"
@@ -186,7 +186,7 @@ addopts = """
 legacy_tox_ini = """
 [tox]
 isolated_build = True
-envlist = py39,py38,py37
+envlist = py{37,38,39,310}
 skip_missing_interpreters = True
 
 [testenv]

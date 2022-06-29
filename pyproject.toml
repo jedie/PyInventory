@@ -169,6 +169,7 @@ addopts = """
     --nomigrations
     --cov=.
     --cov-report term-missing
+    --cov-report xml
     --no-cov-on-fail
     --showlocals
     --darker

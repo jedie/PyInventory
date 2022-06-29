@@ -50,5 +50,7 @@ jobs:
         python3 devshell.py pytest -vv
 
     - name: 'Upload coverage report'
-      if: matrix.os == 'ubuntu-latest'
-      run: bash <(curl -s https://codecov.io/bash)
+      uses: codecov/codecov-action@v2
+      with:
+        fail_ci_if_error: false
+        verbose: true

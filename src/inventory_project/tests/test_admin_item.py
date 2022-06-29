@@ -18,6 +18,7 @@ from model_bakery import baker
 from inventory import __version__
 from inventory.models import ItemImageModel, ItemModel
 from inventory.permissions import get_or_create_normal_user_group
+from inventory_project.tests.fixtures import get_normal_user
 
 
 ITEM_FORM_DEFAULTS = {
@@ -88,14 +89,7 @@ class AdminAnonymousTests(HtmlAssertionMixin, TestCase):
 class AdminTestCase(HtmlAssertionMixin, TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.normaluser = baker.make(
-            User,
-            id=1, username='NormalUser',
-            is_staff=True, is_active=True, is_superuser=False
-        )
-        assert cls.normaluser.user_permissions.count() == 0
-        group = get_or_create_normal_user_group()[0]
-        cls.normaluser.groups.set([group])
+        cls.normaluser = get_normal_user()
 
     def test_normal_user_create_minimal_item(self):
         offset = datetime.timedelta(minutes=1)

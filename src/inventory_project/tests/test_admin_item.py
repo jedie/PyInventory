@@ -48,6 +48,7 @@ ITEM_FORM_DEFAULTS = {
 ITEM_FORM_DEFAULTS = tuple(ITEM_FORM_DEFAULTS.items())
 
 
+@override_settings(SECURE_SSL_REDIRECT=True)
 class AdminAnonymousTests(HtmlAssertionMixin, TestCase):
     def test_login(self):
         # HTTP -> HTTPS redirect:

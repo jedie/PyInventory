@@ -37,6 +37,10 @@ jobs:
       run: |
         python3 devshell.py quit
 
+    - name: 'Install Browsers for Playwright tests'
+      run: |
+        python3 devshell.py playwright_install
+
     - name: 'List installed packages'
       run: |
         python3 devshell.py list_venv_packages

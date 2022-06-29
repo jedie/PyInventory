@@ -198,6 +198,38 @@ class PyInventoryCommandSet(DevShellBaseCommandSet):
             }
         )
 
+    def do_playwright(self, statement: cmd2.Statement):
+        """
+        Interact with "playwright"
+        """
+        verbose_check_call('playwright', *statement.arg_list, cwd=self.config.base_path)
+
+    def do_playwright_install(self, statement: cmd2.Statement):
+        """
+        Update all test snapshot files by run tests with RAISE_SNAPSHOT_ERRORS=0
+        """
+        args = statement.arg_list
+        if not args:
+            args = ['chromium', 'firefox']
+        verbose_check_call('playwright', 'install', *args, cwd=self.config.base_path)
+
+    def do_playwright_inspector(self, statement: cmd2.Statement):
+        """
+        Run Playwright test with the Inspector (Excludes all non Playwright tests)
+        """
+        verbose_check_call(
+            'pytest',
+            '-s',
+            '-m',
+            'playwright',
+            *statement.arg_list,
+            cwd=self.config.base_path,
+            exit_on_error=True,
+            extra_env={
+                'PWDEBUG': '1',
+            },
+        )
+
 
 class DevShellCommandSet(OriginDevShellCommandSet):
 

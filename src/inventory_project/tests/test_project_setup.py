@@ -61,7 +61,7 @@ def test_poetry_check(package_root=None):
 
     output = subprocess.check_output(
         [poerty_bin, 'check'],
-        universal_newlines=True,
+        text=True,
         env=os.environ,
         stderr=subprocess.STDOUT,
         cwd=str(package_root),
@@ -102,7 +102,12 @@ class ProjectSettingsTestCase(TestCase):
             include_deployment_checks=True,
             databases=None,
         )
-        if all_issues:
+        all_issue_ids = {issue.id for issue in all_issues}
+        excpeted_issues = {
+            'security.W008',  # settings.SECURE_SSL_REDIRECT=False
+            'async.E001',  # os.environ['DJANGO_ALLOW_ASYNC_UNSAFE'] exists
+        }
+        if all_issue_ids != excpeted_issues:
             print('=' * 100)
             for issue in all_issues:
                 print(issue)

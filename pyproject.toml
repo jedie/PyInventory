@@ -71,7 +71,7 @@ postgres-binary = ["psycopg2-binary"]
 psycopg2-source = ["psycopg2"]
 
 [tool.poetry.dev-dependencies]
-dev_shell = "*"  # https://github.com/jedie/dev-shell
+dev_shell = ">=0.6.0rc1"  # https://github.com/jedie/dev-shell
 poetry-publish = "*"  # https://github.com/jedie/poetry-publish
 python-creole = "*"  # https://github.com/jedie/python-creole
 cmd2_ext_test = "*"

@@ -2,16 +2,14 @@ import os
 from pathlib import Path
 
 import cmd2
-from creole.setup_utils import assert_rst_readme, update_rst_readme
+from creole.setup_utils import update_rst_readme
 from dev_shell.base_cmd2_app import DevShellBaseApp, run_cmd2_app
 from dev_shell.command_sets import DevShellBaseCommandSet
-from dev_shell.command_sets.dev_shell_commands import DevShellCommandSet as OriginDevShellCommandSet
-from dev_shell.command_sets.dev_shell_commands import run_linters
+from dev_shell.command_sets.dev_shell_commands import DevShellCommandSet
 from dev_shell.config import DevShellConfig
 from dev_shell.utils.assertion import assert_is_dir
 from dev_shell.utils.colorful import blue, bright_yellow, print_error
 from dev_shell.utils.subprocess_utils import argv2str, make_relative_path, verbose_check_call
-from poetry_publish.publish import poetry_publish
 
 import inventory
 from inventory_project.manage import main
@@ -228,32 +226,6 @@ class PyInventoryCommandSet(DevShellBaseCommandSet):
             extra_env={
                 'PWDEBUG': '1',
             },
-        )
-
-
-class DevShellCommandSet(OriginDevShellCommandSet):
-
-    # TODO:
-    # pyupgrade --exit-zero-even-if-changed --py3-plus --py36-plus --py37-plus --py38-plus
-    # `find . -name "*.py" -type f ! -path "./.tox/*" ! -path "./htmlcov/*" ! -path "*/volumes/*"
-
-    def do_publish(self, statement: cmd2.Statement):
-        """
-        Publish "dev-shell" to PyPi
-        """
-        # don't publish if README is not up-to-date:
-        assert_rst_readme(package_root=PACKAGE_ROOT, filename='README.creole')
-
-        # don't publish if code style wrong:
-        run_linters()
-
-        # don't publish if test fails:
-        verbose_check_call('pytest', '-x')
-
-        poetry_publish(
-            package_root=PACKAGE_ROOT,
-            version=inventory.__version__,
-            creole_readme=True  # don't publish if README.rst is not up-to-date
         )
 
 

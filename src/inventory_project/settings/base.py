@@ -35,6 +35,11 @@ print(f'BASE_PATH:{BASE_PATH}')
 
 ###############################################################################
 
+# Max length of Item/Location "path name" in change list:
+TREE_PATH_STR_MAX_LENGTH = 70
+
+###############################################################################
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False

@@ -33,8 +33,9 @@ include = ['AUTHORS', 'LICENSE', 'README.creole']
 # Will be generated from README.creole with: 'poetry run update_rst_readme'
 readme='README.rst'
 
-[tool.poetry.urls]
-"Bug Tracker" = "https://github.com/jedie/PyInventory/issues"
+# FIXME: Invalid value for project_urls. Error: Use valid URL.
+#[tool.poetry.urls]
+#"Bug Tracker" = "https://github.com/jedie/PyInventory/issues"
 
 license = "GPL"
 

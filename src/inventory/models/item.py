@@ -10,7 +10,7 @@ from django.utils.translation import gettext_lazy as _
 from django_tools.model_version_protect.models import VersionProtectBaseModel
 from django_tools.serve_media_app.models import user_directory_path
 
-from inventory.models.base import BaseItemAttachmentModel, BaseModel
+from inventory.models.base import BaseItemAttachmentModel, BaseParentTreeModel
 from inventory.models.links import BaseLink
 
 
@@ -22,7 +22,7 @@ class ItemQuerySet(models.QuerySet):
         return self.order_by('kind', 'producer', 'name')
 
 
-class ItemModel(BaseModel, VersionProtectBaseModel):
+class ItemModel(BaseParentTreeModel, VersionProtectBaseModel):
     """
     A Item that can be described and store somewhere ;)
     """
@@ -62,14 +62,6 @@ class ItemModel(BaseModel, VersionProtectBaseModel):
         blank=True, null=True, on_delete=models.SET_NULL,
         verbose_name=_('ItemModel.location.verbose_name'),
         help_text=_('ItemModel.location.help_text')
-    )
-    parent = models.ForeignKey(
-        'self',
-        limit_choices_to={'parent_id': None},
-        on_delete=models.SET_NULL,
-        blank=True, null=True,
-        verbose_name=_('ItemModel.parent.verbose_name'),
-        help_text=_('ItemModel.parent.help_text')
     )
 
     # ________________________________________________________________________
@@ -142,21 +134,8 @@ class ItemModel(BaseModel, VersionProtectBaseModel):
         parts = [str(part) for part in (self.kind, self.producer, self.name)]
         return ' - '.join(part for part in parts if part)
 
-    def __str__(self):
-        if self.parent_id is None:
-            title = self.name
-        else:
-            title = f'{self.name} › {self.parent}'
-
-        if self.producer:
-            title = f'{self.producer} - {title}'
-
-        if self.location_id is not None:
-            title = f'{title} ({self.location})'
-
-        return title
-
     class Meta:
+        ordering = ('path_str',)
         verbose_name = _('ItemModel.verbose_name')
         verbose_name_plural = _('ItemModel.verbose_name_plural')
 

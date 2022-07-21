@@ -2,8 +2,10 @@ import logging
 
 import tagulous
 from adminsortable2.admin import SortableInlineAdminMixin
+from django.conf import settings
 from django.contrib import admin
-from django.template.loader import render_to_string
+from django.urls import reverse
+from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 from import_export.admin import ImportExportMixin
 from import_export.resources import ModelResource
@@ -12,10 +14,12 @@ from inventory.admin.base import (
     BaseFileModelInline,
     BaseImageModelInline,
     BaseUserAdmin,
+    LimitTreeDepthListFilter,
     UserInlineMixin,
 )
 from inventory.models import ItemLinkModel, ItemModel
 from inventory.models.item import ItemFileModel, ItemImageModel
+from inventory.string_utils import ltruncatechars
 
 
 logger = logging.getLogger(__name__)
@@ -39,52 +43,25 @@ class ItemModelResource(ModelResource):
         model = ItemModel
 
 
-class GroupItemsListFilter(admin.SimpleListFilter):
-    title = _('Group Items')
-    parameter_name = 'grouping'
-
-    GET_KEY_AUTO = 'auto'
-    GET_KEY_NO = 'no'
-
-    def lookups(self, request, model_admin):
-        return (
-            (self.GET_KEY_AUTO, _('Automatic')),
-            (self.GET_KEY_NO, _('No')),
-        )
-
-    def value(self):
-        return super().value() or self.GET_KEY_AUTO
-
-    def queryset(self, request, queryset):
-        auto_mode = self.value() == self.GET_KEY_AUTO
-        if auto_mode:
-            request.group_items = not request.GET.keys()
-        else:
-            request.group_items = self.value() != self.GET_KEY_NO
-
-        logger.info('Group items: %r (auto mode: %r)', request.group_items, auto_mode)
-
-        if request.group_items:
-            queryset = queryset.filter(parent__isnull=True)
-
-        return queryset
-
-    def choices(self, changelist):
-        for lookup, title in self.lookup_choices:
-            if lookup == self.GET_KEY_AUTO:
-                query_string = changelist.get_query_string(remove=[self.parameter_name])
-            else:
-                query_string = changelist.get_query_string({self.parameter_name: lookup})
-
-            yield {
-                'selected': self.value() == lookup,
-                'query_string': query_string,
-                'display': title,
-            }
-
-
 @admin.register(ItemModel)
 class ItemModelAdmin(ImportExportMixin, BaseUserAdmin):
+    @admin.display(ordering='path_str', description=_('ItemModel.verbose_name'))
+    def item(self, obj):
+        path = obj.path
+        if len(path) > 1:
+            prefixes = ' › '.join(path[:-1] + [''])
+            prefixes = ltruncatechars(prefixes, max_length=settings.TREE_PATH_STR_MAX_LENGTH)
+        else:
+            prefixes = ''
+        item = path[-1]
+        url = reverse('admin:inventory_itemmodel_change', args=[obj.pk])
+        return format_html(
+            '<a href="{}">{}<strong>{}</strong></a>',
+            url,
+            prefixes,
+            item,
+        )
+
     def get_queryset(self, request):
         qs = super().get_queryset(request)
         qs = qs.prefetch_related(
@@ -93,37 +70,11 @@ class ItemModelAdmin(ImportExportMixin, BaseUserAdmin):
         )
         return qs
 
-    def column_item(self, obj):
-        context = {
-            'base_item': obj,
-        }
-
-        if self.request.group_items:  # Attribute added in GroupItemsListFilter.queryset()
-            logger.debug('Display sub items inline')
-            # TODO: annotate "sub_items" !
-            qs = ItemModel.objects.filter(
-                user=self.user  # user added in BaseUserAdmin.get_changelist()
-            )
-            qs = qs.filter(parent=obj).sort()
-            context['sub_items'] = qs
-
-        return render_to_string(
-            template_name='admin/inventory/item/column_item.html',
-            context=context,
-        )
-
-    column_item.short_description = _('ItemModel.verbose_name_plural')
-
     date_hierarchy = 'create_dt'
-    list_display = (
-        'kind', 'producer',
-        'column_item',
-        'location',
-        'received_date', 'update_dt'
-    )
-    ordering = ('kind', 'producer', 'name')
+    list_display = ('item', 'kind', 'producer', 'location', 'received_date', 'update_dt')
+    ordering = ('path_str',)
     list_display_links = None
-    list_filter = (GroupItemsListFilter, 'kind', 'location', 'producer', 'tags')
+    list_filter = (LimitTreeDepthListFilter, 'kind', 'location', 'producer', 'tags')
     search_fields = ('name', 'description', 'kind__name', 'tags__name')
     fieldsets = (
         (_('Internals'), {

@@ -31,13 +31,6 @@
        </label>
        <input autofocus="" id="searchbar" name="q" size="40" type="text" value=""/>
        <input type="submit" value="Search"/>
-       <span class="small quiet">
-        2 results (
-        <a href="?">
-         6 total
-        </a>
-        )
-       </span>
       </div>
      </form>
     </div>
@@ -74,8 +67,8 @@
       <button class="button" name="index" title="Run the selected action" type="submit" value="0">
        Go
       </button>
-      <span class="action-counter" data-actions-icnt="2">
-       0 of 2 selected
+      <span class="action-counter" data-actions-icnt="6">
+       0 of 6 selected
       </span>
      </div>
      <div class="results">
@@ -87,6 +80,21 @@
            <span>
             <input id="action-toggle" type="checkbox"/>
            </span>
+          </div>
+          <div class="clear">
+          </div>
+         </th>
+         <th class="sortable column-item sorted ascending" scope="col">
+          <div class="sortoptions">
+           <a class="sortremove" href="?o=" title="Remove from sorting">
+           </a>
+           <a class="toggle ascending" href="?o=-1" title="Toggle sorting">
+           </a>
+          </div>
+          <div class="text">
+           <a href="?o=-1">
+            Item
+           </a>
           </div>
           <div class="clear">
           </div>
@@ -109,18 +117,9 @@
           <div class="clear">
           </div>
          </th>
-         <th class="column-column_item" scope="col">
-          <div class="text">
-           <span>
-            Items
-           </span>
-          </div>
-          <div class="clear">
-          </div>
-         </th>
          <th class="sortable column-location" scope="col">
           <div class="text">
-           <a href="?o=4">
+           <a href="?o=4.1">
             Location
            </a>
           </div>
@@ -129,7 +128,7 @@
          </th>
          <th class="sortable column-received_date" scope="col">
           <div class="text">
-           <a href="?o=5">
+           <a href="?o=5.1">
             Received date
            </a>
           </div>
@@ -138,7 +137,7 @@
          </th>
          <th class="sortable column-update_dt" scope="col">
           <div class="text">
-           <a href="?o=6">
+           <a href="?o=6.1">
             Last update
            </a>
           </div>
@@ -152,28 +151,16 @@
          <td class="action-checkbox">
           <input class="action-select" name="_selected_action" type="checkbox" value="00000000-0001-0000-0000-000000000000"/>
          </td>
+         <td class="field-item">
+          <a href="/admin/inventory/itemmodel/00000000-0001-0000-0000-000000000000/change/">
+           <strong>
+            main item 1
+           </strong>
+          </a>
+         </td>
          <td class="field-_tagulous_display_kind">
          </td>
          <td class="field-_tagulous_display_producer">
-         </td>
-         <td class="field-column_item">
-          <strong>
-           <a href="/admin/inventory/itemmodel/00000000-0001-0000-0000-000000000000/change/">
-            main item 1
-           </a>
-          </strong>
-          <ul>
-           <li>
-            <a href="/admin/inventory/itemmodel/00000000-0001-0001-0000-000000000000/change/">
-             sub item 1.1
-            </a>
-           </li>
-           <li>
-            <a href="/admin/inventory/itemmodel/00000000-0001-0002-0000-000000000000/change/">
-             sub item 1.2
-            </a>
-           </li>
-          </ul>
          </td>
          <td class="field-location nowrap">
           -
@@ -187,30 +174,70 @@
         </tr>
         <tr>
          <td class="action-checkbox">
-          <input class="action-select" name="_selected_action" type="checkbox" value="00000000-0002-0000-0000-000000000000"/>
+          <input class="action-select" name="_selected_action" type="checkbox" value="00000000-0001-0001-0000-000000000000"/>
+         </td>
+         <td class="field-item">
+          <a href="/admin/inventory/itemmodel/00000000-0001-0001-0000-000000000000/change/">
+           main item 1 ›
+           <strong>
+            sub item 1.1
+           </strong>
+          </a>
          </td>
          <td class="field-_tagulous_display_kind">
          </td>
          <td class="field-_tagulous_display_producer">
          </td>
-         <td class="field-column_item">
-          <strong>
-           <a href="/admin/inventory/itemmodel/00000000-0002-0000-0000-000000000000/change/">
+         <td class="field-location nowrap">
+          -
+         </td>
+         <td class="field-received_date nowrap">
+          -
+         </td>
+         <td class="field-update_dt nowrap">
+          Jan. 1, 2000, 1:02 a.m.
+         </td>
+        </tr>
+        <tr>
+         <td class="action-checkbox">
+          <input class="action-select" name="_selected_action" type="checkbox" value="00000000-0001-0002-0000-000000000000"/>
+         </td>
+         <td class="field-item">
+          <a href="/admin/inventory/itemmodel/00000000-0001-0002-0000-000000000000/change/">
+           main item 1 ›
+           <strong>
+            sub item 1.2
+           </strong>
+          </a>
+         </td>
+         <td class="field-_tagulous_display_kind">
+         </td>
+         <td class="field-_tagulous_display_producer">
+         </td>
+         <td class="field-location nowrap">
+          -
+         </td>
+         <td class="field-received_date nowrap">
+          -
+         </td>
+         <td class="field-update_dt nowrap">
+          Jan. 1, 2000, 1:03 a.m.
+         </td>
+        </tr>
+        <tr>
+         <td class="action-checkbox">
+          <input class="action-select" name="_selected_action" type="checkbox" value="00000000-0002-0000-0000-000000000000"/>
+         </td>
+         <td class="field-item">
+          <a href="/admin/inventory/itemmodel/00000000-0002-0000-0000-000000000000/change/">
+           <strong>
             main item 2
-           </a>
-          </strong>
-          <ul>
-           <li>
-            <a href="/admin/inventory/itemmodel/00000000-0002-0001-0000-000000000000/change/">
-             sub item 2.1
-            </a>
-           </li>
-           <li>
-            <a href="/admin/inventory/itemmodel/00000000-0002-0002-0000-000000000000/change/">
-             sub item 2.2
-            </a>
-           </li>
-          </ul>
+           </strong>
+          </a>
+         </td>
+         <td class="field-_tagulous_display_kind">
+         </td>
+         <td class="field-_tagulous_display_producer">
          </td>
          <td class="field-location nowrap">
           -
@@ -222,11 +249,63 @@
           Jan. 1, 2000, 1:04 a.m.
          </td>
         </tr>
+        <tr>
+         <td class="action-checkbox">
+          <input class="action-select" name="_selected_action" type="checkbox" value="00000000-0002-0001-0000-000000000000"/>
+         </td>
+         <td class="field-item">
+          <a href="/admin/inventory/itemmodel/00000000-0002-0001-0000-000000000000/change/">
+           main item 2 ›
+           <strong>
+            sub item 2.1
+           </strong>
+          </a>
+         </td>
+         <td class="field-_tagulous_display_kind">
+         </td>
+         <td class="field-_tagulous_display_producer">
+         </td>
+         <td class="field-location nowrap">
+          -
+         </td>
+         <td class="field-received_date nowrap">
+          -
+         </td>
+         <td class="field-update_dt nowrap">
+          Jan. 1, 2000, 1:05 a.m.
+         </td>
+        </tr>
+        <tr>
+         <td class="action-checkbox">
+          <input class="action-select" name="_selected_action" type="checkbox" value="00000000-0002-0002-0000-000000000000"/>
+         </td>
+         <td class="field-item">
+          <a href="/admin/inventory/itemmodel/00000000-0002-0002-0000-000000000000/change/">
+           main item 2 ›
+           <strong>
+            sub item 2.2
+           </strong>
+          </a>
+         </td>
+         <td class="field-_tagulous_display_kind">
+         </td>
+         <td class="field-_tagulous_display_producer">
+         </td>
+         <td class="field-location nowrap">
+          -
+         </td>
+         <td class="field-received_date nowrap">
+          -
+         </td>
+         <td class="field-update_dt nowrap">
+          Jan. 1, 2000, 1:06 a.m.
+         </td>
+        </tr>
        </tbody>
       </table>
      </div>
      <p class="paginator">
-      2 Items
+      6 Items
      </p>
     </form>
    </div>
@@ -235,17 +314,27 @@
      Filter
     </h2>
     <h3>
-     By Group Items
+     By Limit tree depth
     </h3>
     <ul>
      <li class="selected">
-      <a href="?" title="Automatic">
-       Automatic
+      <a href="?" title="All">
+       All
       </a>
      </li>
      <li>
-      <a href="?grouping=no" title="No">
-       No
+      <a href="?level=1" title="Only root">
+       Only root
+      </a>
+     </li>
+     <li>
+      <a href="?level=2" title="Root + first sub">
+       Root + first sub
+      </a>
+     </li>
+     <li>
+      <a href="?level=3" title="Root + first + second sub">
+       Root + first + second sub
       </a>
      </li>
     </ul>

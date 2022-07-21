@@ -1,6 +1,7 @@
 from adminsortable2.admin import SortableInlineAdminMixin
 from django.contrib import admin
 from django.utils.html import format_html
+from django.utils.translation import gettext_lazy as _
 from reversion_compare.admin import CompareVersionAdmin
 
 from inventory.forms import OnlyUserRelationsModelForm
@@ -66,3 +67,21 @@ class BaseFileModelInline(UserInlineMixin, SortableInlineAdminMixin, admin.Tabul
     fields = (
         'position', 'file', 'name', 'tags'
     )
+
+
+class LimitTreeDepthListFilter(admin.SimpleListFilter):
+    title = _('Limit tree depth')
+    parameter_name = 'level'
+
+    def lookups(self, request, model_admin):
+        return (
+            ('1', _('Only root')),
+            ('2', _('Root + first sub')),
+            ('3', _('Root + first + second sub')),
+        )
+
+    def queryset(self, request, queryset):
+        level = self.value()
+        if level:
+            level = int(level)
+            return queryset.filter(level__lte=level)

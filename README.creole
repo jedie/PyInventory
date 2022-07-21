@@ -176,6 +176,11 @@ Files are separated into: "/src/" and "/development/"
 
 * [[https://github.com/jedie/PyInventory/compare/v0.13.1...main|compare v0.13.1...main]] **dev**
 ** tbc
+* [[https://github.com/jedie/PyInventory/compare/v0.13.1...v0.14.0.rc1|v0.14.0.rc1 - 22.07.2022]]
+** [[https://github.com/jedie/PyInventory/issues/102|Fix #102]] by remove limitation of item parents.
+** Remove "Group Items" functionality
+** Replace "Group Items" change list filter by "Limit tree depth" for Item and Location.
+** Display Item and Location as a tree.
 * [[https://github.com/jedie/PyInventory/compare/v0.13.0...v0.13.1|v0.13.1 - 21.07.2022]]
 ** Rename git "master" branch into "main"
 ** Update CI/Test setup:

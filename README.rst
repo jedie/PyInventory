@@ -245,6 +245,16 @@ history
 
     * tbc
 
+* `v0.14.0.rc1 - 22.07.2022 <https://github.com/jedie/PyInventory/compare/v0.13.1...v0.14.0.rc1>`_ 
+
+    * `Fix #102 <https://github.com/jedie/PyInventory/issues/102>`_ by remove limitation of item parents.
+
+    * Remove "Group Items" functionality
+
+    * Replace "Group Items" change list filter by "Limit tree depth" for Item and Location.
+
+    * Display Item and Location as a tree.
+
 * `v0.13.1 - 21.07.2022 <https://github.com/jedie/PyInventory/compare/v0.13.0...v0.13.1>`_ 
 
     * Rename git "master" branch into "main"
@@ -462,4 +472,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2022-07-21 16:53:31 with "python-creole"``
+``Note: this file is generated from README.creole 2022-07-22 19:32:28 with "python-creole"``

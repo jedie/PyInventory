@@ -1,5 +1,4 @@
 import datetime
-import logging
 from unittest import mock
 
 from bx_django_utils.test_utils.datetime import MockDatetimeGenerator
@@ -8,16 +7,13 @@ from bx_django_utils.test_utils.html_assertion import (
     assert_html_response_snapshot,
 )
 from bx_py_utils.test_utils.snapshot import assert_html_snapshot
-from django.contrib.auth.models import User
 from django.template.defaulttags import CsrfTokenNode, NowNode
 from django.test import TestCase, override_settings
 from django.utils import timezone
 from django_tools.unittest_utils.mockup import ImageDummy
-from model_bakery import baker
 
 from inventory import __version__
 from inventory.models import ItemImageModel, ItemModel
-from inventory.permissions import get_or_create_normal_user_group
 from inventory_project.tests.fixtures import get_normal_user
 
 
@@ -120,10 +116,13 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
 
             item = ItemModel.objects.first()
 
-            self.assert_messages(response, expected_messages=[
-                f'The Item “<a href="/admin/inventory/itemmodel/{item.pk}/change/"> - name</a>”'
-                ' was added successfully.'
-            ])
+            self.assert_messages(
+                response,
+                expected_messages=[
+                    f'The Item “<a href="/admin/inventory/itemmodel/{item.pk}/change/">name</a>”'
+                    ' was added successfully.'
+                ],
+            )
 
             assert item.user_id == self.normaluser.pk
 
@@ -171,10 +170,13 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
 
         item = ItemModel.objects.first()
 
-        self.assert_messages(response, expected_messages=[
-            f'The Item “<a href="/admin/inventory/itemmodel/{item.pk}/change/"> - name</a>”'
-            ' was added successfully.'
-        ])
+        self.assert_messages(
+            response,
+            expected_messages=[
+                f'The Item “<a href="/admin/inventory/itemmodel/{item.pk}/change/">name</a>”'
+                ' was added successfully.'
+            ],
+        )
 
         assert item.user_id == self.normaluser.pk
 
@@ -211,52 +213,21 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
             'main item 2', 'sub item 2.1', 'sub item 2.2',
         ]
 
-        # Default mode, without any GET parameter -> group "automatic":
-
-        with mock.patch.object(NowNode, 'render', return_value='MockedNowNode'), \
-                mock.patch.object(CsrfTokenNode, 'render', return_value='MockedCsrfTokenNode'), \
-                self.assertLogs(logger='inventory', level=logging.DEBUG) as logs:
+        with mock.patch.object(NowNode, 'render', return_value='MockedNowNode'), mock.patch.object(
+            CsrfTokenNode, 'render', return_value='MockedCsrfTokenNode'
+        ):
             response = self.client.get(
                 path='/admin/inventory/itemmodel/',
             )
             assert response.status_code == 200
-        self.assert_html_parts(response, parts=(
-            f'<title>Select Item to change | PyInventory v{__version__}</title>',
-
-            '<a href="/admin/inventory/itemmodel/00000000-0001-0000-0000-000000000000/change/">'
-            'main item 1</a>',
-
-            '<li><a href="/admin/inventory/itemmodel/00000000-0001-0001-0000-000000000000/change/">'
-            'sub item 1.1</a></li>',
-        ))
-        assert logs.output == [
-            'INFO:inventory.admin.item:Group items: True (auto mode: True)',
-            'DEBUG:inventory.admin.item:Display sub items inline',
-            'DEBUG:inventory.admin.item:Display sub items inline'
-        ]
-        assert_html_response_snapshot(response=response, validate=False)
-
-        # Search should disable grouping:
-
-        with mock.patch.object(NowNode, 'render', return_value='MockedNowNode'), \
-                mock.patch.object(CsrfTokenNode, 'render', return_value='MockedCsrfTokenNode'), \
-                self.assertLogs(logger='inventory', level=logging.DEBUG) as logs:
-            response = self.client.get(
-                path='/admin/inventory/itemmodel/?q=sub+item+2.',
-            )
-            assert response.status_code == 200
-        self.assert_html_parts(response, parts=(
-            '<input type="text" size="40" name="q" value="sub item 2." id="searchbar" autofocus>',
-            '2 results (<a href="?">6 total</a>)',
-
-            '<a href="/admin/inventory/itemmodel/00000000-0002-0001-0000-000000000000/change/">'
-            'sub item 2.1</a>',
-
-            '<a href="/admin/inventory/itemmodel/00000000-0002-0002-0000-000000000000/change/">'
-            'sub item 2.2</a>',
-        ))
-        assert logs.output == [
-            # grouping disabled?
-            'INFO:inventory.admin.item:Group items: False (auto mode: True)'
-        ]
+        self.assert_html_parts(
+            response,
+            parts=(
+                f'<title>Select Item to change | PyInventory v{__version__}</title>',
+                '<a href="/admin/inventory/itemmodel/00000000-0001-0000-0000-000000000000/change/">'
+                '<strong>main item 1</strong></a>',
+                '<a href="/admin/inventory/itemmodel/00000000-0001-0001-0000-000000000000/change/">'
+                'main item 1 › <strong>sub item 1.1</strong></a>',
+            ),
+        )
         assert_html_response_snapshot(response=response, validate=False)

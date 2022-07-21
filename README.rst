@@ -241,13 +241,21 @@ Files are separated into: "/src/" and "/development/"
 history
 -------
 
-* `compare v0.13.0...main <https://github.com/jedie/PyInventory/compare/v0.13.0...main>`_ **dev** 
+* `compare v0.13.1...main <https://github.com/jedie/PyInventory/compare/v0.13.1...main>`_ **dev** 
+
+    * tbc
+
+* `v0.13.1 - 21.07.2022 <https://github.com/jedie/PyInventory/compare/v0.13.0...v0.13.1>`_ 
 
     * Rename git "master" branch into "main"
 
-    * Use darker and pytest-darker as code formatter
+    * Update CI/Test setup:
 
-    * tbc
+        * Use darker and pytest-darker as code formatter
+
+        * Run tests with Python 3.10, too and update requirements
+
+        * Replace Selenium tests with Playwright
 
 * `v0.13.0 - 01.01.2022 <https://github.com/jedie/PyInventory/compare/v0.12.0...v0.13.0>`_ 
 
@@ -454,4 +462,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2022-01-30 15:15:53 with "python-creole"``
+``Note: this file is generated from README.creole 2022-07-21 16:53:31 with "python-creole"``

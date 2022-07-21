@@ -174,10 +174,14 @@ Files are separated into: "/src/" and "/development/"
 
 == history
 
-* [[https://github.com/jedie/PyInventory/compare/v0.13.0...main|compare v0.13.0...main]] **dev**
-** Rename git "master" branch into "main"
-** Use darker and pytest-darker as code formatter
+* [[https://github.com/jedie/PyInventory/compare/v0.13.1...main|compare v0.13.1...main]] **dev**
 ** tbc
+* [[https://github.com/jedie/PyInventory/compare/v0.13.0...v0.13.1|v0.13.1 - 21.07.2022]]
+** Rename git "master" branch into "main"
+** Update CI/Test setup:
+*** Use darker and pytest-darker as code formatter
+*** Run tests with Python 3.10, too and update requirements
+*** Replace Selenium tests with Playwright
 * [[https://github.com/jedie/PyInventory/compare/v0.12.0...v0.13.0|v0.13.0 - 01.01.2022]]
 ** [[https://github.com/jedie/PyInventory/pull/83|Update requirements, e.g.: Django v3.2]]
 * [[https://github.com/jedie/PyInventory/compare/v0.11.0...v0.12.0|v0.12.0 - 22.11.2021]]

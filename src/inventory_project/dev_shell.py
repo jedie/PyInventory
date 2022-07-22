@@ -54,7 +54,7 @@ class PyInventoryCommandSet(DevShellBaseCommandSet):
         """
         Call PyInventory test "manage.py"
         """
-        call_manage_py(*statement.arg_list, cwd=PACKAGE_ROOT / 'src' / 'inventory')
+        call_manage_py(*statement.arg_list, cwd=PACKAGE_ROOT)
 
     def do_run_testserver(self, statement: cmd2.Statement):
         """

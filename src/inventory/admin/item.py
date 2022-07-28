@@ -65,6 +65,7 @@ class ItemModelAdmin(ImportExportMixin, BaseUserAdmin):
     def get_queryset(self, request):
         qs = super().get_queryset(request)
         qs = qs.prefetch_related(
+            'location',
             'kind',
             'producer',
         )

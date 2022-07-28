@@ -228,6 +228,13 @@ class PyInventoryCommandSet(DevShellBaseCommandSet):
             },
         )
 
+    def do_seed_data(self, statement: cmd2.Statement):
+        """
+        Fill database with example data
+        """
+        args = ['seed_data', *statement.arg_list]
+        call_manage_py(*args, cwd=PACKAGE_ROOT)
+
 
 class DevShellCommandSet(OriginDevShellCommandSet):
     pass

@@ -24,5 +24,6 @@ class LocationModelAdmin(ImportExportMixin, BaseUserAdmin):
         return text
 
     list_display = ('location', 'create_dt', 'update_dt')
+    list_display_links = ('location',)
     list_filter = (LimitTreeDepthListFilter,)
     ordering = ('path_str',)

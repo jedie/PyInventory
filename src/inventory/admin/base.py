@@ -43,6 +43,26 @@ class BaseUserAdmin(CompareVersionAdmin):
 
         return qs
 
+    def get_list_filter(self, request):
+        list_filter = self.list_filter
+
+        if request.user.is_superuser:
+            # Superuser sees entries from all users -> Add "By user" filter
+            list_filter = list(list_filter)
+            list_filter.insert(0, 'user')
+
+        return list_filter
+
+    def get_list_display(self, request):
+        list_display = self.list_display
+
+        if request.user.is_superuser:
+            # Superuser sees entries from all users -> Display the user in change list
+            list_display = list(list_display)
+            list_display.insert(0, 'user')
+
+        return list_display
+
 
 class BaseImageModelInline(UserInlineMixin, SortableInlineAdminMixin, admin.TabularInline):
     def preview(self, instance):

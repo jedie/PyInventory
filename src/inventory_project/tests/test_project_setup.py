@@ -7,6 +7,7 @@ from creole.setup_utils import update_rst_readme
 from django.conf import settings
 from django.core import checks
 from django.test import TestCase
+from django_tools.unittest_utils.project_setup import check_editor_config
 
 import inventory
 
@@ -113,3 +114,7 @@ class ProjectSettingsTestCase(TestCase):
                 print(issue)
             print('=' * 100)
             raise AssertionError('There are check issues!')
+
+
+def test_check_editor_config():
+    check_editor_config(package_root=PACKAGE_ROOT)

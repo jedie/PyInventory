@@ -23,16 +23,25 @@ def call_devshell_commands(*args):
 class DevShellTestCase(TestCase):
     def test_run_testserver(self):
         output = call_devshell_commands('run_testserver', '--help')
-        assert 'usage: manage.py run_testserver' in output
-        assert 'Run Django dev. Server' in output
-        assert 'Optional port number, or ipaddr:port' in output
+        assert 'Setup test project and run django developer server' in output
 
-    def test_pass_wrong_addrport(self):
-        output = call_devshell_commands('run_testserver', 'not-ip:no-port')
-        assert "call 'runserver' command with" in output
-        assert (
-            'CommandError: "not-ip:no-port" is not a valid port number or address:port pair.'
-        ) in output
+        # From own run_testserver command:
+        assert '--nomakemigrations' in output
+        assert '--nomigrate' in output
+
+        # From django.core.management.commands.runserver command:
+        assert '[addrport]' in output
+
+    def test_run_testserver_invalid_addr(self):
+        output = call_devshell_commands(
+            'run_testserver',
+            '--nomigrate',
+            '--nomakemigrations',
+            'invalid:addr',
+        )
+
+        assert 'Call "runserver"' in output
+        assert 'is not a valid port number or address' in output
 
     def test_manage_command(self):
         output = call_devshell_commands('manage', 'diffsettings')

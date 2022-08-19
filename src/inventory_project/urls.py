@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.conf.urls import include, re_path, static
+from django.conf.urls import include, re_path
 from django.contrib import admin
 from django.urls import path
 from django.views.generic import RedirectView
@@ -15,10 +15,6 @@ urlpatterns = [  # Don't use i18n_patterns() here
     path('ckeditor/', include('ckeditor_uploader.urls')),  # TODO: check permissions?
     path(settings.MEDIA_URL.lstrip('/'), include('django_tools.serve_media_app.urls')),
 ]
-
-
-if settings.SERVE_FILES:
-    urlpatterns += static.static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
 if settings.DEBUG:

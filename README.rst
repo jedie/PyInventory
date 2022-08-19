@@ -241,9 +241,21 @@ Files are separated into: "/src/" and "/development/"
 history
 -------
 
-* `compare v0.14.0...main <https://github.com/jedie/PyInventory/compare/v0.14.0...main>`_ **dev** 
+* `compare v0.15.0...main <https://github.com/jedie/PyInventory/compare/v0.15.0...main>`_ **dev** 
 
     * tbc
+
+* `v0.15.0 - 19.08.2022 <https://github.com/jedie/PyInventory/compare/v0.14.0...v0.15.0>`_ 
+
+    * Speedup item change list by prefetch "location"
+
+    * Better changelists for super users
+
+    * Add ``./devsetup.py manage seed_data`` command to fill the database for development
+
+    * Update requirements
+
+    * Update project setup
 
 * `v0.14.0 - 24.07.2022 <https://github.com/jedie/PyInventory/compare/v0.13.1...v0.14.0>`_ 
 
@@ -472,4 +484,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2022-07-24 20:16:16 with "python-creole"``
+``Note: this file is generated from README.creole 2022-08-19 09:18:39 with "python-creole"``

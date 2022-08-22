@@ -35,9 +35,9 @@ Current features:
 
 Future ideas:
 
-** Information: Publicly visible yes/no
-* A public list of existing items (think about it, you can set in your profile if you want to)
-* administration a wish & exchange list
+* Information: Publicly visible yes/no
+** A public list of existing items (think about it, you can set in your profile if you want to)
+** administration a wish & exchange list
 
 any many more... ;)
 

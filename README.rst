@@ -61,11 +61,11 @@ Current features:
 
 Future ideas:
 
-** Information: Publicly visible yes/no
+* Information: Publicly visible yes/no
 
-* A public list of existing items (think about it, you can set in your profile if you want to)
+    * A public list of existing items (think about it, you can set in your profile if you want to)
 
-* administration a wish & exchange list
+    * administration a wish & exchange list
 
 any many more... ;)
 
@@ -484,4 +484,4 @@ donation
 
 ------------
 
-``Note: this file is generated from README.creole 2022-08-19 09:18:39 with "python-creole"``
+``Note: this file is generated from README.creole 2022-08-20 23:41:15 with "python-creole"``

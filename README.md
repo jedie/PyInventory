@@ -48,30 +48,6 @@ Future ideas:
 any many more... ;)
 
 
-## local development installation
-
-e.g.:
-```
-# Clone project (Use your fork SSH url!):
-~$ git clone https://github.com/jedie/PyInventory.git
-~$ cd PyInventory
-~/PyInventory$ ./devshell.py
-```
-
-Helpful for writing and debugging unittests is to run a local test server.
-e.g.:
-```
-~/PyInventory$ ./devshell.py run_testserver
-```
-
-The web page is available via: `http://127.0.0.1:8000/`
-
-You can also pass a other port number or `ipaddr:port` combination. See: `./devshell.py run_testserver --help`
-
-Call manage commands from test project, e.g.:
-```
-~/PyInventory$ ./devshell.py manage --help
-```
 
 
 ## Screenshots
@@ -117,6 +93,37 @@ e.g.:
 ![normal user example](https://raw.githubusercontent.com/jedie/jedie.github.io/master/screenshots/PyInventory/PyInventory%20normal%20user%20example.png "normal user example")
 
 More screenshots are here: [jedie.github.io/tree/master/screenshots/PyInventory](https://github.com/jedie/jedie.github.io/blob/master/screenshots/PyInventory/README.creole)
+
+
+## local development installation
+
+e.g.:
+```
+# Clone project (Use your fork SSH url!):
+~$ git clone https://github.com/jedie/PyInventory.git
+~$ cd PyInventory
+~/PyInventory$ ./devshell.py
+```
+
+Helpful for writing and debugging unittests is to run a local test server.
+e.g.:
+```
+~/PyInventory$ ./devshell.py run_testserver
+```
+
+The web page is available via: `http://127.0.0.1:8000/`
+
+You can also pass a other port number or `ipaddr:port` combination. See: `./devshell.py run_testserver --help`
+
+Run tests, e.g.:
+```
+~/PyInventory$ ./devshell.py pytest
+```
+
+Call manage commands from test project, e.g.:
+```
+~/PyInventory$ ./devshell.py manage --help
+```
 
 ## Backwards-incompatible changes
 

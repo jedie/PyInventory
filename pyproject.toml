@@ -28,10 +28,8 @@ classifiers = [
     "Topic :: Internet :: WWW/HTTP :: WSGI :: Application",
     "Operating System :: OS Independent",
 ]
-include = ['AUTHORS', 'LICENSE', 'README.creole']
-
-# Will be generated from README.creole with: 'poetry run update_rst_readme'
-readme='README.rst'
+include = ['AUTHORS', 'LICENSE']
+readme='README.md'
 
 # FIXME: Invalid value for project_urls. Error: Use valid URL.
 #[tool.poetry.urls]
@@ -74,7 +72,6 @@ psycopg2-source = ["psycopg2"]
 [tool.poetry.dev-dependencies]
 dev_shell = "*"  # https://github.com/jedie/dev-shell
 poetry-publish = "*"  # https://github.com/jedie/poetry-publish
-python-creole = "*"  # https://github.com/jedie/python-creole
 cmd2_ext_test = "*"
 tox = "*"
 pytest = "*"

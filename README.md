@@ -47,29 +47,8 @@ Future ideas:
 
 any many more... ;)
 
-## Project structure
 
-There are two main directories:
-
-| directory                                                                     | description                                                                                                    |
-| ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| **[/src/](https://github.com/jedie/PyInventory/tree/main/src)**               | The main PyInventory source code                                                                               |
-| **[/deployment/](https://github.com/jedie/PyInventory/tree/main/deployment)** | deploy PyInventory for production use case (**[DEPRECATED!](https://github.com/jedie/PyInventory/issues/81)**) |
-
-## install
-
-There exists these kind of installation/usage:
-
-
-* local development installation using poetry
-* production use with docker-compose on a root server (**[DEPRECATED!](https://github.com/jedie/PyInventory/issues/81)**)
-* Install as [YunoHost](https://yunohost.org) App via [pyinventory_ynh](https://github.com/YunoHost-Apps/pyinventory_ynh)
-
-This README contains only the information about local development installation.
-
-Read [/deployment/README](https://github.com/jedie/PyInventory/tree/main/deployment#readme) for instruction to install PyInventory on a root server.
-
-### local development installation
+## local development installation
 
 e.g.:
 ```
@@ -94,16 +73,6 @@ Call manage commands from test project, e.g.:
 ~/PyInventory$ ./devshell.py manage --help
 ```
 
-### local docker dev run
-
-You can run the deployment docker containers with current source code with:
-```
-~/PyInventory$ make run-docker-dev-server
-```
-
-Just hit Cntl-C to stop the containers
-
-The web page is available via: `https://localhost/`
 
 ## Screenshots
 
@@ -178,7 +147,10 @@ Files are separated into: "/src/" and "/development/"
 ## history
 
 
-* [compare v0.15.0...main](https://github.com/jedie/PyInventory/compare/v0.15.0...main)**dev**
+* [**dev**](https://github.com/jedie/PyInventory/compare/v0.15.0...main)
+  * Update requirements
+  * Replace Creole base README with markdown
+  * Remove Docker stuff from README
   * tbc
 * [v0.15.0 - 19.08.2022](https://github.com/jedie/PyInventory/compare/v0.14.0...v0.15.0)
   * Speedup item change list by prefetch "location"

@@ -264,6 +264,8 @@ Files are separated into: "/src/" and "/development/"
 
 ## links
 
+|          |                                                                                |
+|----------|--------------------------------------------------------------------------------|
 | Homepage | [http://github.com/jedie/PyInventory](http://github.com/jedie/PyInventory)     |
 | PyPi     | [https://pypi.org/project/PyInventory/](https://pypi.org/project/PyInventory/) |
 

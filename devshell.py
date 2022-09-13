@@ -9,7 +9,7 @@
     This file is from: https://pypi.org/project/dev-shell/
     Source: https://github.com/jedie/dev-shell/blob/main/devshell.py
 
-    :copyleft: 2021 by Jens Diemer
+    :copyleft: 2021-2022 by Jens Diemer
     :license: GNU GPL v3 or above
 """
 
@@ -124,7 +124,7 @@ def main(argv):
     if not POETRY_PATH.is_file() or force_update:
         # Note: Under Windows pip.exe can't replace this own .exe file, so use the module way:
         verbose_check_call(PYTHON_PATH, '-m', 'pip', 'install', '-U', 'pip', 'setuptools')
-        verbose_check_call(PIP_PATH, 'install', 'poetry')
+        verbose_check_call(PIP_PATH, 'install', 'poetry!=1.2.0')
 
     # install via poetry, if:
     #   1. .venv not exists

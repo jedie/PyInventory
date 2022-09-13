@@ -154,11 +154,13 @@ Files are separated into: "/src/" and "/development/"
 ## history
 
 
-* [**dev**](https://github.com/jedie/PyInventory/compare/v0.15.0...main)
+* [**dev**](https://github.com/jedie/PyInventory/compare/0.16.0rc1...main)
+  * tbc
+* [v0.16.0rc1 - 19.08.2022](https://github.com/jedie/PyInventory/compare/v0.15.0...0.16.0rc1)
   * Update requirements
+  * Bugfix missing CK-Editor
   * Replace Creole base README with markdown
   * Remove Docker stuff from README
-  * tbc
 * [v0.15.0 - 19.08.2022](https://github.com/jedie/PyInventory/compare/v0.14.0...v0.15.0)
   * Speedup item change list by prefetch "location"
   * Better changelists for super users

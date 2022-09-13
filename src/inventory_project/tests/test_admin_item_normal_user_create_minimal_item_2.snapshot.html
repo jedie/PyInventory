@@ -21,6 +21,8 @@
    </script>
    <script src="/static/tagulous/tagulous.js">
    </script>
+   <script data-ckeditor-basepath="/static/ckeditor/ckeditor/" id="ckeditor-init-script" src="/static/ckeditor/ckeditor-init.js">
+   </script>
    <script src="/static/admin/js/calendar.js">
    </script>
    <script src="/static/admin/js/collapse.js">
@@ -28,6 +30,8 @@
    <script src="/static/admin/js/vendor/select2/select2.full.min.js">
    </script>
    <script src="/static/tagulous/adaptor/select2-4.js">
+   </script>
+   <script src="/static/ckeditor/ckeditor/ckeditor.js">
    </script>
    <script src="/static/admin/js/admin/DateTimeShortcuts.js">
    </script>
@@ -327,8 +331,9 @@
             <label for="id_description">
              Description:
             </label>
-            <textarea class="vLargeTextField" cols="40" id="id_description" name="description" rows="10">
-</textarea>
+            <div class="django-ckeditor-widget" data-field-id="id_description" style="display: inline-block;">
+             <textarea cols="40" data-config='{"skin": "moono-lisa", "toolbar_Basic": [["Source", "-", "Bold", "Italic"]], "toolbar_Full": [["Styles", "Format", "Bold", "Italic", "Underline", "Strike", "SpellChecker", "Undo", "Redo"], ["Link", "Unlink", "Anchor"], ["Image", "Flash", "Table", "HorizontalRule"], ["TextColor", "BGColor"], ["Smiley", "SpecialChar"], ["Source"]], "toolbar": "PyInventoryToolbarConfig", "height": "25em", "width": "100%", "filebrowserWindowWidth": 940, "filebrowserWindowHeight": 725, "removeButtons": "Language,Cut,Copy,Paste,Undo,Redo,Anchor", "removePlugins": ["a11yhelp", "adobeair", "ajax", "autoembed", "autolink", "bbcode", "bidi", "clipboard", "codesnippet", "codesnippetgeshi", "contextmenu", "copyformatting", "devtools", "dialog", "dialogadvtab", "div", "divarea", "docprops", "embed", "embedbase", "embedsemantic", "enterkey", "exportpdf", "find", "flash", "forms", "htmlwriter", "iframe", "iframedialog", "language", "magicline", "mathjax", "newpage", "notification", "notificationaggregator", "pagebreak", "pastefromgdocs", "pastefromword", "pastetext", "pastetools", "placeholder", "preview", "print", "save", "scayt", "selectall", "sharedspace", "smiley", "sourcedialog", "specialchar", "stylescombo", "stylesheetparser", "tab", "templates", "uicolor", "widget", "wsc", "xml"], "toolbar_PyInventoryToolbarConfig": [{"name": "basicstyles", "items": ["Bold", "Italic", "Underline", "Strike", "-", "RemoveFormat"]}, {"name": "paragraph", "items": ["NumberedList", "BulletedList", "-", "Outdent", "Indent", "-", "Blockquote", "-", "JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock"]}, {"name": "links", "items": ["Link", "Unlink", "Anchor"]}, {"name": "insert", "items": ["Image", "Table", "HorizontalRule"]}, "/", {"name": "styles", "items": ["Styles", "Format", "Font", "FontSize"]}, {"name": "colors", "items": ["TextColor", "BGColor"]}, {"name": "tools", "items": ["Maximize", "ShowBlocks", "Source"]}, {"name": "about", "items": ["About"]}], "filebrowserUploadUrl": "/ckeditor/upload/", "filebrowserBrowseUrl": "/ckeditor/browse/", "language": "en"}' data-external-plugin-resources="[]" data-id="id_description" data-processed="0" data-type="ckeditortype" id="id_description" name="description" rows="10"></textarea>
+            </div>
             <div class="help">
             </div>
            </div>

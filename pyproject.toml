@@ -49,7 +49,12 @@ django-import-export = "*"  # https://github.com/django-import-export/django-imp
 django-dbbackup = "*"  # https://github.com/django-dbbackup/django-dbbackup
 django-tools = ">=0.49.0"  # https://github.com/jedie/django-tools/
 django-reversion-compare = "*"  # https://github.com/jedie/django-reversion-compare/
-django-ckeditor = "*"  # https://github.com/django-ckeditor/django-ckeditor
+
+# Skip Version 6.3.1-6.3.x
+# Because [1] brokes the form widget!
+# [1] https://github.com/django-ckeditor/django-ckeditor/commit/6665cb73a11d37216cd83c4b9e85bf4291fa73e6
+django-ckeditor = "<=6.3.0,<=6.4.0"  # https://github.com/django-ckeditor/django-ckeditor
+
 bx_py_utils = "*"  # https://github.com/boxine/bx_py_utils
 bx_django_utils = "*"  # https://github.com/boxine/bx_django_utils
 django-tagulous = "*"  # https://github.com/radiac/django-tagulous

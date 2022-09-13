@@ -156,6 +156,7 @@ Files are separated into: "/src/" and "/development/"
 
 * [**dev**](https://github.com/jedie/PyInventory/compare/v0.15.0...main)
   * Update requirements
+  * Bugfix missing CK-Editor
   * Replace Creole base README with markdown
   * Remove Docker stuff from README
   * tbc

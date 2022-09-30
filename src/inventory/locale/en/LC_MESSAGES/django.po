@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-30 20:11+0200\n"
+"POT-Creation-Date: 2022-09-30 20:48+0200\n"
 "PO-Revision-Date: 2021-10-09 19:36+0200\n"
 "Last-Translator: Jens Diemer\n"
 "Language-Team: \n"
@@ -54,8 +54,14 @@ msgstr ""
 msgid "Handed over"
 msgstr ""
 
+msgid "ItemModel.verbose_name_plural"
+msgstr "Items"
+
 msgid "LocationModel.verbose_name"
 msgstr "Location"
+
+msgid "Items in this Location"
+msgstr ""
 
 msgid "BaseModel.id.verbose_name"
 msgstr "ID"
@@ -178,9 +184,6 @@ msgstr "Handed over price"
 
 msgid "ItemModel.handed_over_price.help_text"
 msgstr " "
-
-msgid "ItemModel.verbose_name_plural"
-msgstr "Items"
 
 msgid "ItemLinkModel.verbose_name"
 msgstr "Link"

@@ -1,0 +1,77 @@
+<div class="" id="content">
+ <h1>
+  Select Location to change
+ </h1>
+ <div id="content-main">
+  <ul class="object-tools">
+   <li>
+    <a class="import_link" href="/admin/inventory/locationmodel/import/">
+     Import
+    </a>
+   </li>
+   <li>
+    <a class="export_link" href="/admin/inventory/locationmodel/export/?">
+     Export
+    </a>
+   </li>
+   <li>
+    <a class="addlink" href="/admin/inventory/locationmodel/add/">
+     Add Location
+    </a>
+   </li>
+  </ul>
+  <div class="module filtered" id="changelist">
+   <div class="changelist-form-container">
+    <div id="toolbar">
+     <form id="changelist-search" method="get">
+      <div>
+       <!-- DIV needed for valid HTML -->
+       <label for="searchbar">
+        <img alt="Search" src="/static/admin/img/search.svg"/>
+       </label>
+       <input autofocus="" id="searchbar" name="q" size="40" type="text" value=""/>
+       <input type="submit" value="Search"/>
+      </div>
+     </form>
+    </div>
+    <form id="changelist-form" method="post" novalidate="">
+     MockedCsrfTokenNode
+     <p class="paginator">
+      0 Locations
+     </p>
+    </form>
+   </div>
+   <div id="changelist-filter">
+    <h2>
+     Filter
+    </h2>
+    <h3>
+     By Limit tree depth
+    </h3>
+    <ul>
+     <li class="selected">
+      <a href="?" title="All">
+       All
+      </a>
+     </li>
+     <li>
+      <a href="?level=1" title="Only root">
+       Only root
+      </a>
+     </li>
+     <li>
+      <a href="?level=2" title="Root + first sub">
+       Root + first sub
+      </a>
+     </li>
+     <li>
+      <a href="?level=3" title="Root + first + second sub">
+       Root + first + second sub
+      </a>
+     </li>
+    </ul>
+   </div>
+  </div>
+ </div>
+ <br class="clear"/>
+</div>

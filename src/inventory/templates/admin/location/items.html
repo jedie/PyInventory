@@ -1,0 +1,18 @@
+{% load i18n admin_urls %}
+
+<table>
+<thead>
+    <tr>
+        <th>{% trans "No." %}</th>
+        <th>{% trans "ItemModel.verbose_name_plural" %}</th>
+    </tr>
+</thead>
+<tbody>
+    {% for obj in items %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td><a href="{% url opts|admin_urlname:'change' obj.pk %}">{{ obj }}</a></td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>

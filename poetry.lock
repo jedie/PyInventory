@@ -1669,7 +1669,7 @@ psycopg2-source = ["psycopg2"]
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7,<4.0.0"
-content-hash = "28d76dfa0e52c7c964d97e434d478f24e647789f9e8ba44a2467a6f2244cf405"
+content-hash = "6d8921c023a698c5daf4e99e986c8c6e0023953a80be0f4c68416bc3aba3e7d7"
 
 [metadata.files]
 asgiref = [

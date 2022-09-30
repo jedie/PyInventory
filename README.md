@@ -155,6 +155,8 @@ Files are separated into: "/src/" and "/development/"
 
 
 * [**dev**](https://github.com/jedie/PyInventory/compare/0.16.0...main)
+  * Change `parent` and `location` fields on `item` change page to a autocompele field.
+  * Add search to `location`
   * tbc
 * [v0.16.0 - 14.09.2022](https://github.com/jedie/PyInventory/compare/v0.15.0...0.16.0)
   * Update requirements

@@ -1,4 +1,5 @@
 from bx_django_utils.test_utils.assert_queries import AssertQueries
+from django.db.models import QuerySet
 from django.test import TestCase
 
 from inventory.admin import ItemModelAdmin, LocationModelAdmin
@@ -54,6 +55,11 @@ class TreeModelTests(TestCase):
         ]
 
         item_2_1 = ItemModel.objects.get(name='2.1.')
+
+        related_qs = ItemModel.tree_objects.related_objects(instance=item_2_1)
+        data = list(related_qs.values_list('name', flat=True))
+        assert data == ['2.', '2.1.', '2.1.1.', '2.1.2.', '2.2.', '2.2.1.', '2.2.2.']
+
         item_2_1.name = 'NEW 2.1. Name'
         with AssertQueries() as queries:
             item_2_1.save()
@@ -92,6 +98,12 @@ class TreeModelTests(TestCase):
             duplicated=True,
             similar=True,
         )
+
+    def test_related_objects(self):
+        item = ItemModel()
+        qs = ItemModel.tree_objects.related_objects(instance=item)
+        assert isinstance(qs, QuerySet)
+        assert qs.query.is_empty() is True
 
     def test_parent_tree_model_ordering(self):
         assert LocationModel._meta.ordering == ('path_str',)

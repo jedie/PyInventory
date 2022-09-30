@@ -4,6 +4,7 @@ import tagulous
 from adminsortable2.admin import SortableInlineAdminMixin
 from django.conf import settings
 from django.contrib import admin
+from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
@@ -45,6 +46,19 @@ class ItemModelResource(ModelResource):
 
 @admin.register(ItemModel)
 class ItemModelAdmin(ImportExportMixin, BaseUserAdmin):
+    @admin.display(description=_('Related items'))
+    def related_items(self, obj):
+        if obj.pk is None:
+            # Add a new item -> there are no related items ;)
+            return '-'
+
+        related_qs = ItemModel.tree_objects.related_objects(instance=obj)
+        context = {
+            'items': related_qs,
+            'opts': self.opts,
+        }
+        return render_to_string('admin/item/related_items.html', context)
+
     @admin.display(ordering='path_str', description=_('ItemModel.verbose_name'))
     def item(self, obj):
         path = obj.path
@@ -78,47 +92,62 @@ class ItemModelAdmin(ImportExportMixin, BaseUserAdmin):
     list_filter = (LimitTreeDepthListFilter, 'kind', 'location', 'producer', 'tags')
     search_fields = ('name', 'description', 'kind__name', 'tags__name')
     fieldsets = (
-        (_('Internals'), {
-            'classes': ('collapse',),
-            'fields': (
-                ('id', 'version'),
-                'user',
-            )
-        }),
-        (_('Meta'), {
-            'classes': ('collapse',),
-            'fields': (
-                'create_dt', 'update_dt'
-            )
-        }),
-        (_('Basic'), {'fields': (
-            'kind',
-            ('producer', 'name'),
-            'description',
-            'tags',
-            'fcc_id',
-            'parent',
-            'location',
-        )}),
-        (_('Lent'), {
-            'classes': ('collapse',),
-            'fields': (
-                'lent_to',
-                ('lent_from_date', 'lent_until_date',)
-            )}),
-        (_('Received'), {
-            'classes': ('collapse',),
-            'fields': (
-                ('received_from', 'received_date', 'received_price'),
-            )}),
-        (_('Handed over'), {
-            'classes': ('collapse',),
-            'fields': (
-                ('handed_over_to', 'handed_over_date', 'handed_over_price'),
-            )}),
+        (
+            _('Internals'),
+            {
+                'classes': ('collapse',),
+                'fields': (
+                    ('id', 'version'),
+                    'user',
+                ),
+            },
+        ),
+        (_('Meta'), {'classes': ('collapse',), 'fields': ('create_dt', 'update_dt')}),
+        (
+            _('Basic'),
+            {
+                'fields': (
+                    'kind',
+                    ('producer', 'name'),
+                    'description',
+                    'tags',
+                    'fcc_id',
+                    'parent',
+                    'location',
+                )
+            },
+        ),
+        (_('Related items'), {'classes': ('collapse',), 'fields': ('related_items',)}),
+        (
+            _('Lent'),
+            {
+                'classes': ('collapse',),
+                'fields': (
+                    'lent_to',
+                    (
+                        'lent_from_date',
+                        'lent_until_date',
+                    ),
+                ),
+            },
+        ),
+        (
+            _('Received'),
+            {
+                'classes': ('collapse',),
+                'fields': (('received_from', 'received_date', 'received_price'),),
+            },
+        ),
+        (
+            _('Handed over'),
+            {
+                'classes': ('collapse',),
+                'fields': (('handed_over_to', 'handed_over_date', 'handed_over_price'),),
+            },
+        ),
     )
     autocomplete_fields = ('parent', 'location')
-    readonly_fields = ('id', 'create_dt', 'update_dt', 'user')
+    readonly_fields = ('id', 'create_dt', 'update_dt', 'user', 'related_items')
     inlines = (ItemImageModelInline, ItemFileModelInline, ItemLinkModelInline)
 
 

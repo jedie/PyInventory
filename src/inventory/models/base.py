@@ -8,6 +8,7 @@ import tagulous.models
 from bx_django_utils.models.timetracking import TimetrackingBaseModel
 from django.conf import settings
 from django.db import models
+from django.db.models import QuerySet
 from django.utils.translation import gettext_lazy as _
 
 from inventory.parent_tree import ValuesListTree
@@ -78,7 +79,7 @@ def generate_path_str(path):
 
 
 class ParentTreeModelManager(models.Manager):
-    def update_tree_info(self):
+    def update_tree_info(self) -> None:
         start_time = time.monotonic()
 
         values = self.all().values('pk', 'name', 'parent__pk', 'path')
@@ -106,6 +107,20 @@ class ParentTreeModelManager(models.Manager):
 
             duration = (time.monotonic() - start_time) * 1000
             logger.info('Update %i entries in %ims', len(entries), duration)
+
+    def related_objects(self, instance: 'BaseParentTreeModel') -> QuerySet:
+        """
+        Returns a QuerySet with relation section of the tree
+        """
+        path = instance.path
+        if path is None:
+            # Not saved -> Can't have related objects ;)
+            return self.none()
+
+        root_entry = path[0]
+        qs = self.all()
+        qs = qs.filter(path__0=root_entry)
+        return qs
 
 
 class BaseParentTreeModel(BaseModel):

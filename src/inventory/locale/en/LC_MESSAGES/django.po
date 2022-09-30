@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-09 19:36+0200\n"
+"POT-Creation-Date: 2022-09-30 20:11+0200\n"
 "PO-Revision-Date: 2021-10-09 19:36+0200\n"
 "Last-Translator: Jens Diemer\n"
 "Language-Team: \n"
@@ -18,17 +18,23 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.3\n"
 
-msgid "Group Items"
+msgid "Limit tree depth"
 msgstr ""
 
-msgid "Automatic"
+msgid "Only root"
 msgstr ""
 
-msgid "No"
+msgid "Root + first sub"
 msgstr ""
 
-msgid "ItemModel.verbose_name_plural"
-msgstr "Items"
+msgid "Root + first + second sub"
+msgstr ""
+
+msgid "Related items"
+msgstr ""
+
+msgid "ItemModel.verbose_name"
+msgstr "Item"
 
 msgid "Internals"
 msgstr ""
@@ -47,6 +53,9 @@ msgstr ""
 
 msgid "Handed over"
 msgstr ""
+
+msgid "LocationModel.verbose_name"
+msgstr "Location"
 
 msgid "BaseModel.id.verbose_name"
 msgstr "ID"
@@ -73,6 +82,12 @@ msgstr "Tags"
 
 msgid "BaseModel.tags.help_text"
 msgstr " "
+
+msgid "LocationModel.parent.verbose_name"
+msgstr "Parent"
+
+msgid "LocationModel.parent.help_text"
+msgstr "Locations can be nested. Example: The box 12 in cupboard 3"
 
 msgid "BaseItemAttachmentModel.name.verbose_name"
 msgstr "Name"
@@ -108,12 +123,6 @@ msgid "ItemModel.location.verbose_name"
 msgstr "Location"
 
 msgid "ItemModel.location.help_text"
-msgstr " "
-
-msgid "ItemModel.parent.verbose_name"
-msgstr "parent"
-
-msgid "ItemModel.parent.help_text"
 msgstr " "
 
 msgid "ItemModel.lent_to.verbose_name"
@@ -170,8 +179,8 @@ msgstr "Handed over price"
 msgid "ItemModel.handed_over_price.help_text"
 msgstr " "
 
-msgid "ItemModel.verbose_name"
-msgstr "Item"
+msgid "ItemModel.verbose_name_plural"
+msgstr "Items"
 
 msgid "ItemLinkModel.verbose_name"
 msgstr "Link"
@@ -233,15 +242,6 @@ msgstr "Description"
 msgid "LocationModel.description.help_text"
 msgstr " "
 
-msgid "LocationModel.parent.verbose_name"
-msgstr "Parent"
-
-msgid "LocationModel.parent.help_text"
-msgstr "Locations can be nested. Example: The box 12 in cupboard 3"
-
-msgid "LocationModel.verbose_name"
-msgstr "Location"
-
 msgid "LocationModel.verbose_name_plural"
 msgstr "Locations"
 
@@ -286,3 +286,6 @@ msgstr "File"
 
 msgid "MemoFileModel.verbose_name_plural"
 msgstr "Files"
+
+msgid "No."
+msgstr ""

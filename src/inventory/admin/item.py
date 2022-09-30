@@ -117,6 +117,7 @@ class ItemModelAdmin(ImportExportMixin, BaseUserAdmin):
                 ('handed_over_to', 'handed_over_date', 'handed_over_price'),
             )}),
     )
+    autocomplete_fields = ('parent', 'location')
     readonly_fields = ('id', 'create_dt', 'update_dt', 'user')
     inlines = (ItemImageModelInline, ItemFileModelInline, ItemLinkModelInline)
 

@@ -158,6 +158,7 @@ Files are separated into: "/src/" and "/development/"
   * NEW: List all related objects on `item` change page with edit links.
   * Change `parent` and `location` fields on `item` change page to a autocompele field.
   * Add search to `location`
+  * NEW: List number of item on `location` change list
   * tbc
 * [v0.16.0 - 14.09.2022](https://github.com/jedie/PyInventory/compare/v0.15.0...0.16.0)
   * Update requirements

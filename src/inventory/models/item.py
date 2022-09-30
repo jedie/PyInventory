@@ -60,6 +60,7 @@ class ItemModel(BaseParentTreeModel, VersionProtectBaseModel):
     location = models.ForeignKey(
         'inventory.LocationModel',
         blank=True, null=True, on_delete=models.SET_NULL,
+        related_name='items',
         verbose_name=_('ItemModel.location.verbose_name'),
         help_text=_('ItemModel.location.help_text')
     )

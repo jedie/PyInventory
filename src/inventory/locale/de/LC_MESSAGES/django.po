@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-09 19:36+0200\n"
-"PO-Revision-Date: 2021-10-09 19:35+0200\n"
+"POT-Creation-Date: 2022-09-30 20:11+0200\n"
+"PO-Revision-Date: 2022-09-30 20:10+0200\n"
 "Last-Translator: Jens Diemer\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -18,17 +18,23 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.3\n"
 
-msgid "Group Items"
-msgstr "Gegenstände Gruppieren"
+msgid "Limit tree depth"
+msgstr "Tiefe des Baumes"
 
-msgid "Automatic"
-msgstr "Automatisch"
+msgid "Only root"
+msgstr "Nur Stamm"
 
-msgid "No"
-msgstr ""
+msgid "Root + first sub"
+msgstr "Stamm + erste Untergruppe"
 
-msgid "ItemModel.verbose_name_plural"
-msgstr "Gegenstände"
+msgid "Root + first + second sub"
+msgstr "Stamm + erste + zweite Untergruppe"
+
+msgid "Related items"
+msgstr "Zugehörige Gegenstände"
+
+msgid "ItemModel.verbose_name"
+msgstr "Gegenstand"
 
 msgid "Internals"
 msgstr "Intern"
@@ -37,7 +43,7 @@ msgid "Meta"
 msgstr ""
 
 msgid "Basic"
-msgstr ""
+msgstr "Basis"
 
 msgid "Lent"
 msgstr "Verleih"
@@ -47,6 +53,9 @@ msgstr "Erhalt"
 
 msgid "Handed over"
 msgstr "Abgabe"
+
+msgid "LocationModel.verbose_name"
+msgstr "Standort"
 
 msgid "BaseModel.id.verbose_name"
 msgstr "ID"
@@ -73,6 +82,12 @@ msgstr "Tags"
 
 msgid "BaseModel.tags.help_text"
 msgstr " "
+
+msgid "LocationModel.parent.verbose_name"
+msgstr "Übergeordneter Standort"
+
+msgid "LocationModel.parent.help_text"
+msgstr "Standorte können verschachtelt werden. Bsp: Der Karton 12 in Schrank 3"
 
 msgid "BaseItemAttachmentModel.name.verbose_name"
 msgstr "Name"
@@ -109,14 +124,6 @@ msgstr "Standort"
 
 msgid "ItemModel.location.help_text"
 msgstr "Wo ist dieser Gegenstand eingelagert?"
-
-msgid "ItemModel.parent.verbose_name"
-msgstr "Übergeordnet"
-
-msgid "ItemModel.parent.help_text"
-msgstr ""
-"Eingebaut in einem anderen Gegenstand? (e.g.: Grafikkarte eingebaut in "
-"Rechner)"
 
 msgid "ItemModel.lent_to.verbose_name"
 msgstr "Verliehen an"
@@ -172,8 +179,8 @@ msgstr "Abgabepreis"
 msgid "ItemModel.handed_over_price.help_text"
 msgstr "Wurde bei der Abgabe Geld eingenommen?"
 
-msgid "ItemModel.verbose_name"
-msgstr "Gegenstand"
+msgid "ItemModel.verbose_name_plural"
+msgstr "Gegenstände"
 
 msgid "ItemLinkModel.verbose_name"
 msgstr "Link"
@@ -235,15 +242,6 @@ msgstr "Beschreibung"
 msgid "LocationModel.description.help_text"
 msgstr " "
 
-msgid "LocationModel.parent.verbose_name"
-msgstr "Übergeordneter Standort"
-
-msgid "LocationModel.parent.help_text"
-msgstr "Standorte können verschachtelt werden. Bsp: Der Karton 12 in Schrank 3"
-
-msgid "LocationModel.verbose_name"
-msgstr "Standort"
-
 msgid "LocationModel.verbose_name_plural"
 msgstr "Standorte"
 
@@ -288,3 +286,6 @@ msgstr "Datei"
 
 msgid "MemoFileModel.verbose_name_plural"
 msgstr "Dateien"
+
+msgid "No."
+msgstr "Nr."

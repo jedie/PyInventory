@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-09 19:36+0200\n"
-"PO-Revision-Date: 2021-10-09 19:36+0200\n"
+"POT-Creation-Date: 2022-09-30 20:11+0200\n"
+"PO-Revision-Date: 2022-09-30 20:07+0200\n"
 "Last-Translator: Jaume López\n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -18,17 +18,23 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.3\n"
 
-msgid "Group Items"
-msgstr "Agrupa"
+msgid "Limit tree depth"
+msgstr ""
 
-msgid "Automatic"
-msgstr "Automàtic"
+msgid "Only root"
+msgstr ""
 
-msgid "No"
-msgstr "No"
+msgid "Root + first sub"
+msgstr ""
 
-msgid "ItemModel.verbose_name_plural"
-msgstr "Elements"
+msgid "Root + first + second sub"
+msgstr ""
+
+msgid "Related items"
+msgstr ""
+
+msgid "ItemModel.verbose_name"
+msgstr "Element"
 
 msgid "Internals"
 msgstr "Interns"
@@ -48,6 +54,9 @@ msgstr "Rebuts"
 msgid "Handed over"
 msgstr "Donats"
 
+msgid "LocationModel.verbose_name"
+msgstr "Localització"
+
 msgid "BaseModel.id.verbose_name"
 msgstr "ID"
 
@@ -59,8 +68,8 @@ msgstr "Usuari"
 
 msgid "BaseModel.user.help_text"
 msgstr ""
-"L'usuari propietari d'aquesta entrada i pugui gestionar-la"
-"(s'assignarà automàticament)"
+"L'usuari propietari d'aquesta entrada i pugui gestionar-la(s'assignarà "
+"automàticament)"
 
 msgid "BaseModel.name.verbose_name"
 msgstr "Nom"
@@ -73,6 +82,13 @@ msgstr "Etiquetes"
 
 msgid "BaseModel.tags.help_text"
 msgstr " "
+
+msgid "LocationModel.parent.verbose_name"
+msgstr "Parent"
+
+msgid "LocationModel.parent.help_text"
+msgstr ""
+"Las ubicaciones pueden estar anidadas. Ejemplo: La caja 12 en el armario 3"
 
 msgid "BaseItemAttachmentModel.name.verbose_name"
 msgstr "Nom"
@@ -108,12 +124,6 @@ msgid "ItemModel.location.verbose_name"
 msgstr "Localització"
 
 msgid "ItemModel.location.help_text"
-msgstr " "
-
-msgid "ItemModel.parent.verbose_name"
-msgstr "parent"
-
-msgid "ItemModel.parent.help_text"
 msgstr " "
 
 msgid "ItemModel.lent_to.verbose_name"
@@ -170,8 +180,8 @@ msgstr "Preu de cessió"
 msgid "ItemModel.handed_over_price.help_text"
 msgstr " "
 
-msgid "ItemModel.verbose_name"
-msgstr "Element"
+msgid "ItemModel.verbose_name_plural"
+msgstr "Elements"
 
 msgid "ItemLinkModel.verbose_name"
 msgstr "Vincle"
@@ -233,17 +243,6 @@ msgstr "Descripció"
 msgid "LocationModel.description.help_text"
 msgstr " "
 
-msgid "LocationModel.parent.verbose_name"
-msgstr "Parent"
-
-msgid "LocationModel.parent.help_text"
-msgstr "Locations can be nested. Example: The box 12 in cupboard 3"
-msgstr "Les localitzacions poden ser sumades."
-"Exemple: La caixa 12 a l'estant 3"
-
-msgid "LocationModel.verbose_name"
-msgstr "Localització"
-
 msgid "LocationModel.verbose_name_plural"
 msgstr "Localitzacions"
 
@@ -288,3 +287,8 @@ msgstr "Arxiu"
 
 msgid "MemoFileModel.verbose_name_plural"
 msgstr "Arxius"
+
+#, fuzzy
+#| msgid "No"
+msgid "No."
+msgstr "No"

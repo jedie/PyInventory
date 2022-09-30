@@ -155,6 +155,7 @@ Files are separated into: "/src/" and "/development/"
 
 
 * [**dev**](https://github.com/jedie/PyInventory/compare/0.16.0...main)
+  * NEW: List all related objects on `item` change page with edit links.
   * Change `parent` and `location` fields on `item` change page to a autocompele field.
   * Add search to `location`
   * tbc

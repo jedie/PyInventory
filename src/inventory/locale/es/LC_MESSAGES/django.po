@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-09 19:36+0200\n"
+"POT-Creation-Date: 2022-09-30 20:11+0200\n"
 "PO-Revision-Date: 2021-10-09 19:36+0200\n"
 "Last-Translator: Jaume López\n"
 "Language-Team: \n"
@@ -18,17 +18,23 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.3\n"
 
-msgid "Group Items"
-msgstr "Agrupa"
+msgid "Limit tree depth"
+msgstr ""
 
-msgid "Automatic"
-msgstr "Automático"
+msgid "Only root"
+msgstr ""
 
-msgid "No"
-msgstr "No"
+msgid "Root + first sub"
+msgstr ""
 
-msgid "ItemModel.verbose_name_plural"
-msgstr "Elementos"
+msgid "Root + first + second sub"
+msgstr ""
+
+msgid "Related items"
+msgstr ""
+
+msgid "ItemModel.verbose_name"
+msgstr "Elemento"
 
 msgid "Internals"
 msgstr "Internos"
@@ -48,6 +54,9 @@ msgstr "Recibidos"
 msgid "Handed over"
 msgstr "Cedidos"
 
+msgid "LocationModel.verbose_name"
+msgstr "Localización"
+
 msgid "BaseModel.id.verbose_name"
 msgstr "ID"
 
@@ -59,8 +68,8 @@ msgstr "Usuario"
 
 msgid "BaseModel.user.help_text"
 msgstr ""
-"El usuario propietario de esta entrada y pueda gestionarla"
-"(se asignará automáticamente)"
+"El usuario propietario de esta entrada y pueda gestionarla(se asignará "
+"automáticamente)"
 
 msgid "BaseModel.name.verbose_name"
 msgstr "Nombre"
@@ -73,6 +82,13 @@ msgstr "Etiquetas"
 
 msgid "BaseModel.tags.help_text"
 msgstr " "
+
+msgid "LocationModel.parent.verbose_name"
+msgstr "Pariente"
+
+msgid "LocationModel.parent.help_text"
+msgstr ""
+"Las localizaciones pueden ser sumadas.Exemple: La caja 12 del estante 3"
 
 msgid "BaseItemAttachmentModel.name.verbose_name"
 msgstr "Nombre"
@@ -108,12 +124,6 @@ msgid "ItemModel.location.verbose_name"
 msgstr "Localización"
 
 msgid "ItemModel.location.help_text"
-msgstr " "
-
-msgid "ItemModel.parent.verbose_name"
-msgstr "pariente"
-
-msgid "ItemModel.parent.help_text"
 msgstr " "
 
 msgid "ItemModel.lent_to.verbose_name"
@@ -170,8 +180,8 @@ msgstr "Precio de cesión"
 msgid "ItemModel.handed_over_price.help_text"
 msgstr " "
 
-msgid "ItemModel.verbose_name"
-msgstr "Elemento"
+msgid "ItemModel.verbose_name_plural"
+msgstr "Elementos"
 
 msgid "ItemLinkModel.verbose_name"
 msgstr "Vínculo"
@@ -233,16 +243,6 @@ msgstr "Descripción"
 msgid "LocationModel.description.help_text"
 msgstr " "
 
-msgid "LocationModel.parent.verbose_name"
-msgstr "Pariente"
-
-msgid "LocationModel.parent.help_text"
-msgstr "Las localizaciones pueden ser sumadas."
-"Exemple: La caja 12 del estante 3"
-
-msgid "LocationModel.verbose_name"
-msgstr "Localización"
-
 msgid "LocationModel.verbose_name_plural"
 msgstr "Localitzaciones"
 
@@ -287,3 +287,8 @@ msgstr "Archivo"
 
 msgid "MemoFileModel.verbose_name_plural"
 msgstr "Archivos"
+
+#, fuzzy
+#| msgid "No"
+msgid "No."
+msgstr "No"

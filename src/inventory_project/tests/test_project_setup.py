@@ -8,6 +8,7 @@ from django.core import checks
 from django.core.cache import cache
 from django.test import TestCase
 from django_tools.unittest_utils.project_setup import check_editor_config
+from packaging.version import Version
 
 import inventory
 
@@ -30,7 +31,9 @@ def test_version(package_root=None, version=None):
     if version is None:
         version = inventory.__version__
 
-    if 'dev' not in version and 'rc' not in version:
+    ver_obj = Version(inventory.__version__)
+
+    if not ver_obj.is_prerelease:
         version_string = f'v{version}'
 
         assert_file_contains_string(

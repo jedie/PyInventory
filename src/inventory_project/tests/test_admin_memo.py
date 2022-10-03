@@ -9,6 +9,7 @@ from django.template.defaulttags import CsrfTokenNode, NowNode
 from django.test import TestCase, override_settings
 from django_tools.unittest_utils.mockup import ImageDummy
 from model_bakery import baker
+from reversion.models import Revision
 
 from inventory import __version__
 from inventory.models import MemoImageModel, MemoModel
@@ -97,6 +98,10 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
         ])
 
         assert item.user_id == self.normaluser.pk
+
+        # django-revision integration:
+        comments = list(Revision.objects.order_by('date_created').values_list('comment', flat=True))
+        self.assertEqual(comments, ['Added.'])
 
     def test_new_item_with_image(self):
         """

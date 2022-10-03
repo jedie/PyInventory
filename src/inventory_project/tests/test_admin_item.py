@@ -11,6 +11,7 @@ from django.template.defaulttags import CsrfTokenNode, NowNode
 from django.test import TestCase, override_settings
 from django.utils import timezone
 from django_tools.unittest_utils.mockup import ImageDummy
+from reversion.models import Revision
 
 from inventory import __version__
 from inventory.models import ItemImageModel, ItemModel
@@ -143,6 +144,10 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
             html = response.content.decode('utf-8')
             html = html.replace(str(item.pk), '<removed-UUID>')
             assert_html_snapshot(got=html, validate=False)
+
+        # django-revision integration:
+        comments = list(Revision.objects.order_by('date_created').values_list('comment', flat=True))
+        self.assertEqual(comments, ['Added.'])
 
     def test_new_item_with_image(self):
         """

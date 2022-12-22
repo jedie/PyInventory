@@ -1,5 +1,5 @@
 #
-# Move to pyproject.toml after: https://gitlab.com/pycqa/flake8/-/issues/428
+# Move to pyproject.toml after: https://github.com/PyCQA/flake8/issues/234
 #
 [flake8]
 exclude = .*, dist, htmlcov, */migrations/*, volumes

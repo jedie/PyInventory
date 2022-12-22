@@ -5,16 +5,6 @@
  <div id="content-main">
   <ul class="object-tools">
    <li>
-    <a class="import_link" href="/admin/inventory/itemmodel/import/">
-     Import
-    </a>
-   </li>
-   <li>
-    <a class="export_link" href="/admin/inventory/itemmodel/export/?">
-     Export
-    </a>
-   </li>
-   <li>
     <a class="recoverlink" href="/admin/inventory/itemmodel/recover/">
      Recover deleted Items
     </a>
@@ -69,6 +59,8 @@
        </select>
       </label>
       <input class="select-across" name="select_across" type="hidden" value="0"/>
+      <input id="changelist-form-step" name="step" type="number" value="1"/>
+      <input id="changelist-form-page" name="page" type="number"/>
       <button class="button" name="index" title="Run the selected action" type="submit" value="0">
        Go
       </button>
@@ -89,7 +81,7 @@
           <div class="clear">
           </div>
          </th>
-         <th class="sortable column-item sorted ascending" scope="col">
+         <th class="sortable column-_reorder_ sorted ascending" scope="col">
           <div class="sortoptions">
            <a class="sortremove" href="?o=" title="Remove from sorting">
            </a>
@@ -98,6 +90,15 @@
           </div>
           <div class="text">
            <a href="?o=-1">
+            Path str
+           </a>
+          </div>
+          <div class="clear">
+          </div>
+         </th>
+         <th class="sortable column-item" scope="col">
+          <div class="text">
+           <a href="?o=2.1">
             Item
            </a>
           </div>
@@ -124,7 +125,7 @@
          </th>
          <th class="sortable column-location" scope="col">
           <div class="text">
-           <a href="?o=4.1">
+           <a href="?o=5.1">
             Location
            </a>
           </div>
@@ -133,7 +134,7 @@
          </th>
          <th class="sortable column-received_date" scope="col">
           <div class="text">
-           <a href="?o=5.1">
+           <a href="?o=6.1">
             Received date
            </a>
           </div>
@@ -142,7 +143,7 @@
          </th>
          <th class="sortable column-update_dt" scope="col">
           <div class="text">
-           <a href="?o=6.1">
+           <a href="?o=7.1">
             Last update
            </a>
           </div>
@@ -156,13 +157,19 @@
          <td class="action-checkbox">
           <input class="action-select" name="_selected_action" type="checkbox" value="00000000-0001-0000-0000-000000000000"/>
          </td>
-         <td class="field-item">
-          <a href="/admin/inventory/itemmodel/00000000-0001-0000-0000-000000000000/change/">
-           <strong>
-            main item 1
-           </strong>
-          </a>
+         <td class="field-_reorder_">
+          <div class="drag handle" order="mainitem1" pk="00000000-0001-0000-0000-000000000000">
+          </div>
          </td>
+         <th class="field-item">
+          <a href="/admin/inventory/itemmodel/00000000-0001-0000-0000-000000000000/change/">
+           <a href="/admin/inventory/itemmodel/00000000-0001-0000-0000-000000000000/change/">
+            <strong>
+             main item 1
+            </strong>
+           </a>
+          </a>
+         </th>
          <td class="field-_tagulous_display_kind">
          </td>
          <td class="field-_tagulous_display_producer">
@@ -181,14 +188,20 @@
          <td class="action-checkbox">
           <input class="action-select" name="_selected_action" type="checkbox" value="00000000-0001-0001-0000-000000000000"/>
          </td>
-         <td class="field-item">
-          <a href="/admin/inventory/itemmodel/00000000-0001-0001-0000-000000000000/change/">
-           main item 1 ›
-           <strong>
-            sub item 1.1
-           </strong>
-          </a>
+         <td class="field-_reorder_">
+          <div class="drag handle" order="mainitem1 0 subitem11" pk="00000000-0001-0001-0000-000000000000">
+          </div>
          </td>
+         <th class="field-item">
+          <a href="/admin/inventory/itemmodel/00000000-0001-0001-0000-000000000000/change/">
+           <a href="/admin/inventory/itemmodel/00000000-0001-0001-0000-000000000000/change/">
+            main item 1 ›
+            <strong>
+             sub item 1.1
+            </strong>
+           </a>
+          </a>
+         </th>
          <td class="field-_tagulous_display_kind">
          </td>
          <td class="field-_tagulous_display_producer">
@@ -207,14 +220,20 @@
          <td class="action-checkbox">
           <input class="action-select" name="_selected_action" type="checkbox" value="00000000-0001-0002-0000-000000000000"/>
          </td>
-         <td class="field-item">
-          <a href="/admin/inventory/itemmodel/00000000-0001-0002-0000-000000000000/change/">
-           main item 1 ›
-           <strong>
-            sub item 1.2
-           </strong>
-          </a>
+         <td class="field-_reorder_">
+          <div class="drag handle" order="mainitem1 0 subitem12" pk="00000000-0001-0002-0000-000000000000">
+          </div>
          </td>
+         <th class="field-item">
+          <a href="/admin/inventory/itemmodel/00000000-0001-0002-0000-000000000000/change/">
+           <a href="/admin/inventory/itemmodel/00000000-0001-0002-0000-000000000000/change/">
+            main item 1 ›
+            <strong>
+             sub item 1.2
+            </strong>
+           </a>
+          </a>
+         </th>
          <td class="field-_tagulous_display_kind">
          </td>
          <td class="field-_tagulous_display_producer">
@@ -233,13 +252,19 @@
          <td class="action-checkbox">
           <input class="action-select" name="_selected_action" type="checkbox" value="00000000-0002-0000-0000-000000000000"/>
          </td>
-         <td class="field-item">
-          <a href="/admin/inventory/itemmodel/00000000-0002-0000-0000-000000000000/change/">
-           <strong>
-            main item 2
-           </strong>
-          </a>
+         <td class="field-_reorder_">
+          <div class="drag handle" order="mainitem2" pk="00000000-0002-0000-0000-000000000000">
+          </div>
          </td>
+         <th class="field-item">
+          <a href="/admin/inventory/itemmodel/00000000-0002-0000-0000-000000000000/change/">
+           <a href="/admin/inventory/itemmodel/00000000-0002-0000-0000-000000000000/change/">
+            <strong>
+             main item 2
+            </strong>
+           </a>
+          </a>
+         </th>
          <td class="field-_tagulous_display_kind">
          </td>
          <td class="field-_tagulous_display_producer">
@@ -258,14 +283,20 @@
          <td class="action-checkbox">
           <input class="action-select" name="_selected_action" type="checkbox" value="00000000-0002-0001-0000-000000000000"/>
          </td>
-         <td class="field-item">
-          <a href="/admin/inventory/itemmodel/00000000-0002-0001-0000-000000000000/change/">
-           main item 2 ›
-           <strong>
-            sub item 2.1
-           </strong>
-          </a>
+         <td class="field-_reorder_">
+          <div class="drag handle" order="mainitem2 0 subitem21" pk="00000000-0002-0001-0000-000000000000">
+          </div>
          </td>
+         <th class="field-item">
+          <a href="/admin/inventory/itemmodel/00000000-0002-0001-0000-000000000000/change/">
+           <a href="/admin/inventory/itemmodel/00000000-0002-0001-0000-000000000000/change/">
+            main item 2 ›
+            <strong>
+             sub item 2.1
+            </strong>
+           </a>
+          </a>
+         </th>
          <td class="field-_tagulous_display_kind">
          </td>
          <td class="field-_tagulous_display_producer">
@@ -284,14 +315,20 @@
          <td class="action-checkbox">
           <input class="action-select" name="_selected_action" type="checkbox" value="00000000-0002-0002-0000-000000000000"/>
          </td>
-         <td class="field-item">
-          <a href="/admin/inventory/itemmodel/00000000-0002-0002-0000-000000000000/change/">
-           main item 2 ›
-           <strong>
-            sub item 2.2
-           </strong>
-          </a>
+         <td class="field-_reorder_">
+          <div class="drag handle" order="mainitem2 0 subitem22" pk="00000000-0002-0002-0000-000000000000">
+          </div>
          </td>
+         <th class="field-item">
+          <a href="/admin/inventory/itemmodel/00000000-0002-0002-0000-000000000000/change/">
+           <a href="/admin/inventory/itemmodel/00000000-0002-0002-0000-000000000000/change/">
+            main item 2 ›
+            <strong>
+             sub item 2.2
+            </strong>
+           </a>
+          </a>
+         </th>
          <td class="field-_tagulous_display_kind">
          </td>
          <td class="field-_tagulous_display_producer">

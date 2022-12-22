@@ -1,6 +1,7 @@
 import os
 import shutil
 import subprocess
+import sys
 from pathlib import Path
 
 from django.conf import settings
@@ -119,3 +120,49 @@ class ProjectSettingsTestCase(TestCase):
 
 def test_check_editor_config():
     check_editor_config(package_root=PACKAGE_ROOT)
+
+
+class CodeStyleTestCase(TestCase):
+    def call(self, prog, *args):
+        venv_bin_path = Path(sys.executable).parent
+        prog = shutil.which(prog, path=venv_bin_path)
+        assert prog
+
+        # Darker will call other programs like "flake8", "git"
+        # Use first our venv bin path:
+        env_path = f'{venv_bin_path}{os.pathsep}{os.environ["PATH"]}'
+
+        return subprocess.check_output(
+            (prog,) + args,
+            text=True,
+            env=dict(PATH=env_path),
+            stderr=subprocess.STDOUT,
+            cwd=str(PACKAGE_ROOT),
+        )
+
+    def check_code_style(self):
+        self.call('darker', '--check')
+        self.call('isort', '--check-only', '.')
+        self.call('flake8', '.')
+
+    def test_code_style(self):
+        # lint: ## Run code formatters and linter
+        # 	poetry run darker --check
+        # 	poetry run isort --check-only .
+        # 	poetry run flake8 .
+        #
+        # fix-code-style: ## Fix code formatting
+        # 	poetry run darker
+        # 	poetry run isort .
+
+        # First try:
+        try:
+            self.check_code_style()
+        except subprocess.CalledProcessError:
+            # Fix and test again:
+            try:
+                self.call('darker')
+                self.call('isort', '.')
+                self.check_code_style()  # Check again
+            except subprocess.CalledProcessError as err:
+                raise AssertionError(f'Linting error:\n{"-"*100}\n{err.stdout}\n{"-"*100}')

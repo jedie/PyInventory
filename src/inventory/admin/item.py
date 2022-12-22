@@ -1,7 +1,7 @@
 import logging
 
 import tagulous
-from adminsortable2.admin import SortableInlineAdminMixin
+from adminsortable2.admin import SortableAdminMixin, SortableInlineAdminMixin
 from django.conf import settings
 from django.contrib import admin
 from django.template.loader import render_to_string
@@ -45,7 +45,7 @@ class ItemModelResource(ModelResource):
 
 
 @admin.register(ItemModel)
-class ItemModelAdmin(ImportExportMixin, BaseUserAdmin):
+class ItemModelAdmin(ImportExportMixin, SortableAdminMixin, BaseUserAdmin):
     @admin.display(description=_('Related items'))
     def related_items(self, obj):
         if obj.pk is None:
@@ -85,10 +85,14 @@ class ItemModelAdmin(ImportExportMixin, BaseUserAdmin):
         )
         return qs
 
+    def get_max_order(self, request, obj=None):
+        # Work-a-round for: https://github.com/jrief/django-admin-sortable2/issues/341
+        return 0
+
     date_hierarchy = 'create_dt'
     list_display = ('item', 'kind', 'producer', 'location', 'received_date', 'update_dt')
     ordering = ('path_str',)
-    list_display_links = None
+    list_display_links = ()
     list_filter = (LimitTreeDepthListFilter, 'kind', 'location', 'producer', 'tags')
     search_fields = ('name', 'description', 'kind__name', 'tags__name')
     fieldsets = (

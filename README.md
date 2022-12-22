@@ -156,6 +156,8 @@ Files are separated into: "/src/" and "/development/"
 
 * [**dev**](https://github.com/jedie/PyInventory/compare/0.17.0...main)
   * tbc
+* [v0.18.0rc1 - *WIP*](https://github.com/jedie/PyInventory/compare/0.17.0...main)
+  * tbd
 * [v0.17.0 - 03.10.2022](https://github.com/jedie/PyInventory/compare/v0.16.0...0.17.0)
   * NEW: List all related objects on `item` change page with edit links.
   * Change `parent` and `location` fields on `item` change page to a autocompele field.

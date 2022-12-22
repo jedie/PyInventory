@@ -118,34 +118,36 @@
       </div>
      </div>
     </fieldset>
-    <div class="inline-group sortable" id="memoimagemodel_set-group">
+    <div class="js-inline-admin-formset inline-group" data-inline-formset='{"name": "#memoimagemodel_set", "options": {"prefix": "memoimagemodel_set", "addText": "Add another Image", "deleteText": "Remove"}}' data-inline-type="tabular" id="memoimagemodel_set-group">
      <div class="tabular inline-related">
       <input id="id_memoimagemodel_set-TOTAL_FORMS" name="memoimagemodel_set-TOTAL_FORMS" type="hidden" value="0"/>
       <input id="id_memoimagemodel_set-INITIAL_FORMS" name="memoimagemodel_set-INITIAL_FORMS" type="hidden" value="0"/>
       <input id="id_memoimagemodel_set-MIN_NUM_FORMS" name="memoimagemodel_set-MIN_NUM_FORMS" type="hidden" value="0"/>
       <input id="id_memoimagemodel_set-MAX_NUM_FORMS" name="memoimagemodel_set-MAX_NUM_FORMS" type="hidden" value="1000"/>
-      <fieldset class="module">
+      <fieldset class="module sortable">
        <h2>
         Images
        </h2>
        <table>
         <thead>
          <tr>
-          <th>
-           Sort
+          <th class="original">
           </th>
-          <th colspan="2">
+          <th class="column-position hidden">
+           Position
+          </th>
+          <th class="column-preview">
            Preview
           </th>
-          <th class="required">
+          <th class="column-image required">
            Image
            <img alt="( )" class="help help-tooltip" height="10" src="/static/admin/img/icon-unknown.svg" title=" " width="10"/>
           </th>
-          <th>
+          <th class="column-name">
            Name
            <img alt="(BaseItemAttachmentModel.name.help_text)" class="help help-tooltip" height="10" src="/static/admin/img/icon-unknown.svg" title="BaseItemAttachmentModel.name.help_text" width="10"/>
           </th>
-          <th>
+          <th class="column-tags">
            Tags
            <img alt="( )" class="help help-tooltip" height="10" src="/static/admin/img/icon-unknown.svg" title=" " width="10"/>
           </th>
@@ -155,13 +157,13 @@
          </tr>
         </thead>
         <tbody>
-         <tr class="form-row row1 empty-form" id="memoimagemodel_set-empty">
-          <td class="drag">
-          </td>
+         <tr class="form-row empty-form" id="memoimagemodel_set-empty">
           <td class="original">
            <input id="id_memoimagemodel_set-__prefix__-id" name="memoimagemodel_set-__prefix__-id" type="hidden"/>
            <input id="id_memoimagemodel_set-__prefix__-memo" name="memoimagemodel_set-__prefix__-memo" type="hidden"/>
-           <input id="id_memoimagemodel_set-__prefix__-position" name="memoimagemodel_set-__prefix__-position" type="hidden" value="0"/>
+          </td>
+          <td class="field-position hidden">
+           <input class="_reorder_" id="id_memoimagemodel_set-__prefix__-position" name="memoimagemodel_set-__prefix__-position" type="hidden" value="0"/>
           </td>
           <td class="field-preview">
            <p>
@@ -187,40 +189,33 @@
       </fieldset>
      </div>
     </div>
-    <script class="inline-tabular-config" type="application/json">
-     {
-  "prefix": "memoimagemodel_set",
-  "addText": "Add another Image",
-  "deleteText": "Remove"
-}
-    </script>
-    <div class="default_order_field" default_order_direction="" default_order_field="position">
-    </div>
-    <div class="inline-group sortable" id="memofilemodel_set-group">
+    <div class="js-inline-admin-formset inline-group" data-inline-formset='{"name": "#memofilemodel_set", "options": {"prefix": "memofilemodel_set", "addText": "Add another File", "deleteText": "Remove"}}' data-inline-type="tabular" id="memofilemodel_set-group">
      <div class="tabular inline-related">
       <input id="id_memofilemodel_set-TOTAL_FORMS" name="memofilemodel_set-TOTAL_FORMS" type="hidden" value="0"/>
       <input id="id_memofilemodel_set-INITIAL_FORMS" name="memofilemodel_set-INITIAL_FORMS" type="hidden" value="0"/>
       <input id="id_memofilemodel_set-MIN_NUM_FORMS" name="memofilemodel_set-MIN_NUM_FORMS" type="hidden" value="0"/>
       <input id="id_memofilemodel_set-MAX_NUM_FORMS" name="memofilemodel_set-MAX_NUM_FORMS" type="hidden" value="1000"/>
-      <fieldset class="module">
+      <fieldset class="module sortable">
        <h2>
         Files
        </h2>
        <table>
         <thead>
          <tr>
-          <th>
-           Sort
+          <th class="original">
           </th>
-          <th class="required" colspan="2">
+          <th class="column-position hidden">
+           Position
+          </th>
+          <th class="column-file required">
            File
            <img alt="( )" class="help help-tooltip" height="10" src="/static/admin/img/icon-unknown.svg" title=" " width="10"/>
           </th>
-          <th>
+          <th class="column-name">
            Name
            <img alt="(BaseItemAttachmentModel.name.help_text)" class="help help-tooltip" height="10" src="/static/admin/img/icon-unknown.svg" title="BaseItemAttachmentModel.name.help_text" width="10"/>
           </th>
-          <th>
+          <th class="column-tags">
            Tags
            <img alt="( )" class="help help-tooltip" height="10" src="/static/admin/img/icon-unknown.svg" title=" " width="10"/>
           </th>
@@ -230,13 +225,13 @@
          </tr>
         </thead>
         <tbody>
-         <tr class="form-row row1 empty-form" id="memofilemodel_set-empty">
-          <td class="drag">
-          </td>
+         <tr class="form-row empty-form" id="memofilemodel_set-empty">
           <td class="original">
            <input id="id_memofilemodel_set-__prefix__-id" name="memofilemodel_set-__prefix__-id" type="hidden"/>
            <input id="id_memofilemodel_set-__prefix__-memo" name="memofilemodel_set-__prefix__-memo" type="hidden"/>
-           <input id="id_memofilemodel_set-__prefix__-position" name="memofilemodel_set-__prefix__-position" type="hidden" value="0"/>
+          </td>
+          <td class="field-position hidden">
+           <input class="_reorder_" id="id_memofilemodel_set-__prefix__-position" name="memofilemodel_set-__prefix__-position" type="hidden" value="0"/>
           </td>
           <td class="field-file">
            <input id="id_memofilemodel_set-__prefix__-file" name="memofilemodel_set-__prefix__-file" type="file"/>
@@ -257,42 +252,35 @@
       </fieldset>
      </div>
     </div>
-    <script class="inline-tabular-config" type="application/json">
-     {
-  "prefix": "memofilemodel_set",
-  "addText": "Add another File",
-  "deleteText": "Remove"
-}
-    </script>
-    <div class="default_order_field" default_order_direction="" default_order_field="position">
-    </div>
-    <div class="inline-group sortable" id="memolinkmodel_set-group">
+    <div class="js-inline-admin-formset inline-group" data-inline-formset='{"name": "#memolinkmodel_set", "options": {"prefix": "memolinkmodel_set", "addText": "Add another Link", "deleteText": "Remove"}}' data-inline-type="tabular" id="memolinkmodel_set-group">
      <div class="tabular inline-related last-related">
       <input id="id_memolinkmodel_set-TOTAL_FORMS" name="memolinkmodel_set-TOTAL_FORMS" type="hidden" value="0"/>
       <input id="id_memolinkmodel_set-INITIAL_FORMS" name="memolinkmodel_set-INITIAL_FORMS" type="hidden" value="0"/>
       <input id="id_memolinkmodel_set-MIN_NUM_FORMS" name="memolinkmodel_set-MIN_NUM_FORMS" type="hidden" value="0"/>
       <input id="id_memolinkmodel_set-MAX_NUM_FORMS" name="memolinkmodel_set-MAX_NUM_FORMS" type="hidden" value="1000"/>
-      <fieldset class="module">
+      <fieldset class="module sortable">
        <h2>
         Links
        </h2>
        <table>
         <thead>
          <tr>
-          <th>
-           Sort
+          <th class="original">
           </th>
-          <th colspan="2">
+          <th class="column-tags">
            Tags
            <img alt="( )" class="help help-tooltip" height="10" src="/static/admin/img/icon-unknown.svg" title=" " width="10"/>
           </th>
-          <th>
+          <th class="column-name">
            Name
            <img alt="( )" class="help help-tooltip" height="10" src="/static/admin/img/icon-unknown.svg" title=" " width="10"/>
           </th>
-          <th class="required">
+          <th class="column-url required">
            URL
            <img alt="( )" class="help help-tooltip" height="10" src="/static/admin/img/icon-unknown.svg" title=" " width="10"/>
+          </th>
+          <th class="column-position hidden">
+           Position
           </th>
           <th>
            Delete?
@@ -300,13 +288,10 @@
          </tr>
         </thead>
         <tbody>
-         <tr class="form-row row1 empty-form" id="memolinkmodel_set-empty">
-          <td class="drag">
-          </td>
+         <tr class="form-row empty-form" id="memolinkmodel_set-empty">
           <td class="original">
            <input id="id_memolinkmodel_set-__prefix__-id" name="memolinkmodel_set-__prefix__-id" type="hidden"/>
            <input id="id_memolinkmodel_set-__prefix__-memo" name="memolinkmodel_set-__prefix__-memo" type="hidden"/>
-           <input id="id_memolinkmodel_set-__prefix__-position" name="memolinkmodel_set-__prefix__-position" type="hidden" value="0"/>
           </td>
           <td class="field-tags">
            <div class="related-widget-wrapper">
@@ -319,6 +304,9 @@
           <td class="field-url">
            <input class="vURLField" id="id_memolinkmodel_set-__prefix__-url" maxlength="200" name="memolinkmodel_set-__prefix__-url" type="url"/>
           </td>
+          <td class="field-position hidden">
+           <input class="_reorder_" id="id_memolinkmodel_set-__prefix__-position" name="memolinkmodel_set-__prefix__-position" type="hidden" value="0"/>
+          </td>
           <td class="delete">
           </td>
          </tr>
@@ -326,15 +314,6 @@
        </table>
       </fieldset>
      </div>
-    </div>
-    <script class="inline-tabular-config" type="application/json">
-     {
-  "prefix": "memolinkmodel_set",
-  "addText": "Add another Link",
-  "deleteText": "Remove"
-}
-    </script>
-    <div class="default_order_field" default_order_direction="" default_order_field="position">
     </div>
     <div class="submit-row">
      <input class="default" name="_save" type="submit" value="Save"/>

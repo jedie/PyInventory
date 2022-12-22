@@ -1,8 +1,13 @@
 [tool.poetry]
 name = "PyInventory"
-version = "0.17.0"
+version = "0.18.0rc1"
 description = "Web based management to catalog things including state and location etc. using Python/Django."
-authors = ["JensDiemer <git@jensdiemer.de>"]
+authors = [
+    "Jens Diemer <PyInventory@jensdiemer.de>",
+]
+maintainers = [
+    "Jens Diemer <PyInventory@jensdiemer.de>",
+]
 homepage = "https://github.com/jedie/PyInventory"
 packages = [
     { include = "inventory", from = "src" },
@@ -29,32 +34,26 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 include = ['AUTHORS', 'LICENSE']
-readme='README.md'
+license = "GPL-3.0-or-later"
+readme = 'README.md'
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/jedie/PyInventory/issues"
 
-# FIXME: Invalid value for project_urls. Error: Use valid URL.
-#[tool.poetry.urls]
-#"Bug Tracker" = "https://github.com/jedie/PyInventory/issues"
-
-license = "GPL"
 
 [tool.poetry.dependencies]
-# Keep Python 3.7 until Yunohost contains a newer Python Version ;)
-python = ">=3.7,<4.0.0"
-django = "*"
+python = ">=3.9,<4.0.0"  # Stay with 3.9 until YunoHost used >=Debian 11 (Bullseye)
+
+django = "<4.1" # FIXME: https://github.com/jedie/django-processinfo/issues/19
+
 colorlog = "*"  # https://github.com/borntyping/python-colorlog
 gunicorn = "*"  # https://github.com/benoimyproject.wsgitc/gunicorn
 django-processinfo = "*"  # https://github.com/jedie/django-processinfo/
 django-debug-toolbar = "*"  # http://django-debug-toolbar.readthedocs.io/en/stable/changes.html
 django-import-export = "*"  # https://github.com/django-import-export/django-import-export
 django-dbbackup = "*"  # https://github.com/django-dbbackup/django-dbbackup
-django-tools = ">=0.49.0"  # https://github.com/jedie/django-tools/
+django-tools = "*"  # https://github.com/jedie/django-tools/
 django-reversion-compare = "*"  # https://github.com/jedie/django-reversion-compare/
-
-# Skip Version 6.3.1-6.3.x
-# Because [1] brokes the form widget!
-# [1] https://github.com/django-ckeditor/django-ckeditor/commit/6665cb73a11d37216cd83c4b9e85bf4291fa73e6
-django-ckeditor = "<=6.3.0,<=6.4.0"  # https://github.com/django-ckeditor/django-ckeditor
-
+django-ckeditor = "*"  # https://github.com/django-ckeditor/django-ckeditor
 bx_py_utils = "*"  # https://github.com/boxine/bx_py_utils
 bx_django_utils = "*"  # https://github.com/boxine/bx_django_utils
 django-tagulous = "*"  # https://github.com/radiac/django-tagulous
@@ -70,35 +69,34 @@ psycopg2 = { version = "*", optional = true }  # install via: poetry install --e
 
 
 [tool.poetry.extras]
-docker = ["docker-compose"]
 postgres-binary = ["psycopg2-binary"]
 psycopg2-source = ["psycopg2"]
 
 [tool.poetry.dev-dependencies]
 dev_shell = "*"  # https://github.com/jedie/dev-shell
-poetry-publish = "*"  # https://github.com/jedie/poetry-publish
 cmd2_ext_test = "*"
-tox = "*"
 pytest = "*"
 pytest-randomly = "*"
 pytest-cov = "*"
 pytest-django = "*"
-pytest-darker = "*"  # https://github.com/akaihola/pytest-darker
-# TODO: pytest-mypy = "*"
 pytest-playwright = "*"  # https://playwright.dev/python/docs/test-runners
-coveralls = "*"
-isort = "*"
-flake8 = "*"
 flynt = "*"
-darker = "*"  # https://github.com/akaihola/darker
 pyupgrade = "*"
 model_bakery = "*"  # https://github.com/model-bakers/model_bakery
 beautifulsoup4 = "*"
 lxml = "*"
 requests-mock = "*"
+tox = "*"  # https://github.com/tox-dev/tox
+coveralls = "*"  # http://github.com/TheKevJames/coveralls-python
+darker = "*"  # https://github.com/akaihola/pytest-darker
+isort = "*"  # https://github.com/pycqa/isort
+flake8 = "*"  # https://github.com/pycqa/flake8
 EditorConfig = "*"  # https://github.com/editorconfig/editorconfig-core-py
+safety = "*"  # https://github.com/pyupio/safety
+mypy = "*"  # https://github.com/python/mypy
 tomli = "*"  # https://github.com/hukkin/tomli
 packaging = "*"  # https://github.com/pypa/packaging
+poetry-publish = "*"  # https://github.com/jedie/poetry-publish
 
 
 [tool.poetry.scripts]
@@ -107,7 +105,7 @@ run_testserver = 'inventory_project.manage:start_test_server'
 
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 
@@ -135,7 +133,7 @@ line_length = 100
 # https://pycqa.github.io/isort/docs/configuration/config_files/#pyprojecttoml-preferred-format
 atomic=true
 profile='black'
-line_length=100
+line_length = 100
 skip_glob=[".*", "*/htmlcov/*","*/migrations/*","*/volumes/*"]
 known_first_party=["inventory","inventory_project","inventory_tests"]
 lines_after_imports=2
@@ -175,7 +173,6 @@ addopts = """
     --cov-report xml
     --no-cov-on-fail
     --showlocals
-    --darker
     --doctest-modules
     --failed-first
     --last-failed-no-failures all
@@ -190,7 +187,7 @@ addopts = """
 legacy_tox_ini = """
 [tox]
 isolated_build = True
-envlist = py{37,38,39,310}
+envlist = py{39,310,311}
 skip_missing_interpreters = True
 
 [testenv]
@@ -201,3 +198,31 @@ commands =
     poetry run django-admin --version
     python devshell.py pytest
 """
+
+
+[tool.mypy]
+warn_unused_configs = true
+ignore_missing_imports = true
+allow_redefinition = true  # https://github.com/python/mypy/issues/7165
+show_error_codes = true
+plugins = []
+exclude = ['.venv', 'tests']
+
+
+[manageprojects] # https://github.com/jedie/manageprojects
+initial_revision = "b33d693"
+initial_date = 2022-12-21T22:53:08+01:00
+cookiecutter_template = "https://github.com/jedie/cookiecutter_templates/"
+cookiecutter_directory = "poetry-python"
+
+[manageprojects.cookiecutter_context.cookiecutter]
+full_name = "Jens Diemer"
+github_username = "jedie"
+author_email = "PyInventory@jensdiemer.de"
+package_name = "PyInventory"
+package_version = "0.18.0"
+package_description = "Web based management to catalog things including state and location etc. using Python/Django."
+package_url = "https://github.com/jedie/PyInventory"
+issues_url = "https://github.com/jedie/PyInventory/issues"
+license = "GPL-3.0-or-later"
+_template = "https://github.com/jedie/cookiecutter_templates/"

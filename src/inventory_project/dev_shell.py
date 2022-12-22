@@ -62,7 +62,7 @@ class PyInventoryCommandSet(DevShellBaseCommandSet):
         """
         # Start the "[tool.poetry.scripts]" script via subprocess
         # This works good with django dev server reloads
-        verbose_check_call('run_testserver', *statement.arg_list, cwd=PACKAGE_ROOT)
+        verbose_check_call('run_testserver', *statement.arg_list, cwd=PACKAGE_ROOT, timeout=None)
 
     def do_makemessages(self, statement: cmd2.Statement):
         """
@@ -226,6 +226,7 @@ class PyInventoryCommandSet(DevShellBaseCommandSet):
             extra_env={
                 'PWDEBUG': '1',
             },
+            timeout=None,
         )
 
     def do_seed_data(self, statement: cmd2.Statement):

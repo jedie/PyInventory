@@ -13,6 +13,7 @@ from inventory.admin.base import (
     BaseUserAdmin,
     UserInlineMixin,
 )
+from inventory.admin.tagulous_fix import TagulousModelAdminFix
 from inventory.models import MemoLinkModel, MemoModel
 from inventory.models.memo import MemoFileModel, MemoImageModel
 
@@ -39,7 +40,7 @@ class MemoModelResource(ModelResource):
 
 
 @admin.register(MemoModel)
-class MemoModelAdmin(ImportExportMixin, SortableAdminMixin, BaseUserAdmin):
+class MemoModelAdmin(TagulousModelAdminFix, ImportExportMixin, SortableAdminMixin, BaseUserAdmin):
     def get_max_order(self, request, obj=None):
         # Work-a-round for: https://github.com/jrief/django-admin-sortable2/issues/341
         return 0

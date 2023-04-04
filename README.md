@@ -154,16 +154,17 @@ Files are separated into: "/src/" and "/development/"
 ## history
 
 
-* [**dev**](https://github.com/jedie/PyInventory/compare/0.17.0...main)
+* [**dev**](https://github.com/jedie/PyInventory/compare/v0.17.0...main)
   * tbc
-* [v0.18.0rc1 - *WIP*](https://github.com/jedie/PyInventory/compare/0.17.0...main)
-  * tbd
-* [v0.17.0 - 03.10.2022](https://github.com/jedie/PyInventory/compare/v0.16.0...0.17.0)
+* [v0.18.0rc2 - *WIP*](https://github.com/jedie/PyInventory/compare/v0.17.0...main)
+  * Bugfix missing static files by tagulous bug
+  * Update requirements and project setup
+* [v0.17.0 - 03.10.2022](https://github.com/jedie/PyInventory/compare/v0.16.0...v0.17.0)
   * NEW: List all related objects on `item` change page with edit links.
   * Change `parent` and `location` fields on `item` change page to a autocompele field.
   * Add search to `location`
   * NEW: List number of item on `location` change list
-* [v0.16.0 - 14.09.2022](https://github.com/jedie/PyInventory/compare/v0.15.0...0.16.0)
+* [v0.16.0 - 14.09.2022](https://github.com/jedie/PyInventory/compare/v0.15.0...v0.16.0)
   * Update requirements
   * Bugfix missing CK-Editor
   * Replace Creole base README with markdown

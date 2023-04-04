@@ -2,10 +2,7 @@ import datetime
 from unittest import mock
 
 from bx_django_utils.test_utils.datetime import MockDatetimeGenerator
-from bx_django_utils.test_utils.html_assertion import (
-    HtmlAssertionMixin,
-    assert_html_response_snapshot,
-)
+from bx_django_utils.test_utils.html_assertion import HtmlAssertionMixin, assert_html_response_snapshot
 from bx_py_utils.test_utils.snapshot import assert_html_snapshot
 from django.template.defaulttags import CsrfTokenNode, NowNode
 from django.test import TestCase, override_settings

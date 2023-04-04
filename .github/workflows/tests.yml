@@ -14,33 +14,31 @@ jobs:
   test:
     runs-on: ubuntu-latest
     strategy:
-      max-parallel: 2
       fail-fast: false
       matrix:
-        os: [ubuntu-latest] # TODO: macOS-latest, windows-latest
         python-version: ["3.11", "3.10", "3.9"]
     env:
       PYTHONUNBUFFERED: 1
       PYTHONWARNINGS: always
     steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-    - name: 'fetch main'
+    - name: Checkout
       run: |
-        git fetch origin main
+        echo $GITHUB_REF $GITHUB_SHA
+        git clone --depth 1 https://github.com/$GITHUB_REPOSITORY.git .
+        git fetch origin $GITHUB_SHA:temporary-ci-branch
+        git checkout $GITHUB_SHA || (git fetch && git checkout $GITHUB_SHA)
+
     - name: 'Set up Python ${{ matrix.python-version }}'
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
+      # https://github.com/marketplace/actions/setup-python
       with:
         python-version: '${{ matrix.python-version }}'
+        cache: 'pip' # caching pip dependencies
+        cache-dependency-path: '**/poetry.lock'
 
     - name: 'Bootstrap'
       run: |
         python3 devshell.py quit
-    - uses: actions/cache@v2
-      with:
-        path: ~/.cache/
-        key: dot-cache-files
 
     - name: 'Install Browsers for Playwright tests'
       run: |
@@ -55,7 +53,8 @@ jobs:
         python3 devshell.py pytest -vv
 
     - name: 'Upload coverage report'
-      uses: codecov/codecov-action@v2
+      uses: codecov/codecov-action@v3
+      # https://github.com/marketplace/actions/codecov
       with:
         fail_ci_if_error: false
         verbose: true

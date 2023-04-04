@@ -1,6 +1,9 @@
 .*
+*.egg-info
 __pycache__
-coverage.json
+/dist/
+/coverage.json
+/coverage.xml
 
 !.github
 !.editorconfig

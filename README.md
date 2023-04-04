@@ -154,9 +154,9 @@ Files are separated into: "/src/" and "/development/"
 ## history
 
 
-* [**dev**](https://github.com/jedie/PyInventory/compare/v0.17.0...main)
+* [**dev**](https://github.com/jedie/PyInventory/compare/v0.18.0...main)
   * tbc
-* [v0.18.0rc2 - *WIP*](https://github.com/jedie/PyInventory/compare/v0.17.0...main)
+* [v0.18.0 - 04.04.2023](https://github.com/jedie/PyInventory/compare/v0.17.0...v0.18.0)
   * Bugfix missing static files by tagulous bug
   * Update requirements and project setup
 * [v0.17.0 - 03.10.2022](https://github.com/jedie/PyInventory/compare/v0.16.0...v0.17.0)

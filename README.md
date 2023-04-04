@@ -3,11 +3,11 @@
 Web based management to catalog things including state and location etc. using Python/Django.
 Store information in WYSIWYG-HTML-Editor field and tag them and add Files, Images and Links to them.
 
-[![Test](https://github.com/jedie/PyInventory/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/jedie/PyInventory/actions/workflows/ci.yml)
-[![Coverage Status on codecov.io](https://codecov.io/gh/jedie/PyInventory/branch/main/graph/badge.svg)](https://codecov.io/gh/jedie/PyInventory)
+[![tests](https://github.com/jedie/PyInventory/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/jedie/PyInventory/actions/workflows/tests.yml)
+[![codecov](https://codecov.io/github/jedie/PyInventory/branch/main/graph/badge.svg)](https://app.codecov.io/github/jedie/PyInventory)
 [![PyInventory @ PyPi](https://img.shields.io/pypi/v/PyInventory?label=PyInventory%20%40%20PyPi)](https://pypi.org/project/PyInventory/)
 [![Python Versions](https://img.shields.io/pypi/pyversions/PyInventory)](https://github.com/jedie/PyInventory/blob/main/pyproject.toml)
-[![License GPL](https://img.shields.io/pypi/l/PyInventory)](https://github.com/jedie/PyInventory/blob/main/LICENSE)
+[![License GPL-3.0-or-later](https://img.shields.io/pypi/l/PyInventory)](https://github.com/jedie/PyInventory/blob/main/LICENSE)
 
 [![Install PyInventory with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=pyinventory)
 

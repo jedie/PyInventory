@@ -80,7 +80,6 @@ pytest-randomly = "*"
 pytest-cov = "*"
 pytest-django = "*"
 pytest-playwright = "*"  # https://playwright.dev/python/docs/test-runners
-flynt = "*"
 pyupgrade = "*"
 model_bakery = "*"  # https://github.com/model-bakers/model_bakery
 beautifulsoup4 = "*"
@@ -88,16 +87,23 @@ lxml = "*"
 requests-mock = "*"
 tox = "*"  # https://github.com/tox-dev/tox
 coveralls = "*"  # http://github.com/TheKevJames/coveralls-python
-darker = "*"  # https://github.com/akaihola/pytest-darker
-isort = "*"  # https://github.com/pycqa/isort
 flake8 = "*"  # https://github.com/pycqa/flake8
 EditorConfig = "*"  # https://github.com/editorconfig/editorconfig-core-py
 safety = "*"  # https://github.com/pyupio/safety
 mypy = "*"  # https://github.com/python/mypy
-tomli = "*"  # https://github.com/hukkin/tomli
-packaging = "*"  # https://github.com/pypa/packaging
+twine = "*"  # https://github.com/pypa/twine
 poetry-publish = "*"  # https://github.com/jedie/poetry-publish
 
+# https://github.com/akaihola/darker
+# https://github.com/ikamensh/flynt
+# https://github.com/pycqa/isort
+# https://github.com/pygments/pygments
+darker = { version = "*", extras = ["flynt", "isort", "color"]}
+
+tomli = "*"  # https://github.com/hukkin/tomli
+# tomli only needed for Python <3.11, but see bug:
+# https://github.com/pypa/pip/issues/9644#issuecomment-1456583402
+#tomli = {version = "*", markers = "python_version < \"3.11\""}  # https://github.com/hukkin/tomli
 
 [tool.poetry.scripts]
 devshell = 'inventory_project.dev_shell:devshell_cmdloop'
@@ -112,35 +118,49 @@ build-backend = "poetry.core.masonry.api"
 [tool.darker]
 src = ['.']
 revision = "origin/main..."
-line_length = 100
+line_length = 119
 verbose = true
+color = true
 skip_string_normalization = true
 diff = false
 check = false
 stdout = false
 isort = true
+flynt = true
 lint = [
     "flake8",
 ]
 log_level = "INFO"
 
 
-[tool.flynt]
-line_length = 100
-
-
 [tool.isort]
 # https://pycqa.github.io/isort/docs/configuration/config_files/#pyprojecttoml-preferred-format
 atomic=true
 profile='black'
-line_length = 100
 skip_glob=[".*", "*/htmlcov/*","*/migrations/*","*/volumes/*"]
 known_first_party=["inventory","inventory_project","inventory_tests"]
+line_length=119
 lines_after_imports=2
 
 
 [tool.coverage.run]
-omit = [".*"]
+branch = false  # coverage.exceptions.DataError: Can't combine arc data with line data
+parallel = true
+source = ['.']
+concurrency = ["multiprocessing"]
+command_line = "-m unittest --locals --verbose"
+
+[tool.coverage.report]
+omit = ['.*', '*/tests/*']
+skip_empty = true
+fail_under = 30
+show_missing = true
+exclude_lines = [
+    'if self.debug:',
+    'pragma: no cover',
+    'raise NotImplementedError',
+    'if __name__ == .__main__.:',
+]
 
 
 [tool.pytest.ini_options]
@@ -182,12 +202,11 @@ addopts = """
 # TODO: --mypy
 
 
-[tool.tox]
-# https://tox.readthedocs.io/en/latest/example/basic.html#pyproject-toml-tox-legacy-ini
+[tool.tox]  # https://tox.wiki/en/latest/config.html#pyproject-toml
 legacy_tox_ini = """
 [tox]
 isolated_build = True
-envlist = py{39,310,311}
+envlist = py{311,310,39}
 skip_missing_interpreters = True
 
 [testenv]
@@ -214,6 +233,9 @@ initial_revision = "b33d693"
 initial_date = 2022-12-21T22:53:08+01:00
 cookiecutter_template = "https://github.com/jedie/cookiecutter_templates/"
 cookiecutter_directory = "poetry-python"
+applied_migrations = [
+    "183124a", # 2023-04-04T12:26:15+02:00
+]
 
 [manageprojects.cookiecutter_context.cookiecutter]
 full_name = "Jens Diemer"

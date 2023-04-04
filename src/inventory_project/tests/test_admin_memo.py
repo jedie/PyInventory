@@ -1,9 +1,6 @@
 from unittest import mock
 
-from bx_django_utils.test_utils.html_assertion import (
-    HtmlAssertionMixin,
-    assert_html_response_snapshot,
-)
+from bx_django_utils.test_utils.html_assertion import HtmlAssertionMixin, assert_html_response_snapshot
 from django.contrib.auth.models import User
 from django.template.defaulttags import CsrfTokenNode, NowNode
 from django.test import TestCase, override_settings

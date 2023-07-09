@@ -43,7 +43,7 @@ readme = 'README.md'
 [tool.poetry.dependencies]
 python = ">=3.9,<4.0.0"  # Stay with 3.9 until YunoHost used >=Debian 11 (Bullseye)
 
-django = "<4.1" # FIXME: https://github.com/jedie/django-processinfo/issues/19
+django = "<4.2" # FIXME: https://github.com/jedie/django-processinfo/issues/19
 
 colorlog = "*"  # https://github.com/borntyping/python-colorlog
 gunicorn = "*"  # https://github.com/benoimyproject.wsgitc/gunicorn

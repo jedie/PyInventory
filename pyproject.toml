@@ -208,7 +208,7 @@ skip_missing_interpreters = True
 
 [testenv]
 passenv = *
-whitelist_externals = poetry
+allowlist_externals = poetry
 commands =
     python --version
     poetry run django-admin --version

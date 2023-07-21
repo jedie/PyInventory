@@ -102,61 +102,46 @@ e.g.:
 # Clone project (Use your fork SSH url!):
 ~$ git clone https://github.com/jedie/PyInventory.git
 ~$ cd PyInventory
-~/PyInventory$ ./devshell.py
+~/PyInventory$ ./manage.py
 ```
 
 Helpful for writing and debugging unittests is to run a local test server.
 e.g.:
 ```
-~/PyInventory$ ./devshell.py run_testserver
+~/PyInventory$ ./manage.py run_dev_server
 ```
 
 The web page is available via: `http://127.0.0.1:8000/`
 
-You can also pass a other port number or `ipaddr:port` combination. See: `./devshell.py run_testserver --help`
+You can also pass a other port number or `ipaddr:port` combination. See: `./manage.py run_dev_server --help`
 
 Run tests, e.g.:
 ```
-~/PyInventory$ ./devshell.py pytest
+~/PyInventory$ ./manage.py test
+~/PyInventory$ ./manage.py coverage
+~/PyInventory$ ./manage.py tox
 ```
 
-Call manage commands from test project, e.g.:
+Install Playwright browsers, e.g.:
 ```
-~/PyInventory$ ./devshell.py manage --help
+~/PyInventory$ .venv/bin/playwright install
 ```
+
+Run only Playwright tests with the Playwright Inspector, e.g.:
+```
+~/PyInventory$ PWDEBUG=1 ./manage.py test --tag playwright
+```
+
 
 ## Backwards-incompatible changes
 
-### v0.7.0
-
-Docker-Compose usage: The MEDIA files was not stored on a docker volumes.
-
-You should backup rhe media files **before** update the containers!
-
-e.g.:
-```
-~/PyInventory/deployment$ make shell_inventory
-root@inventory:/django# cp -Rfv /media/ /django_volumes/media/
-```
-
-The files are stored locally here:
-```
-~/PyInventory/deployment$ ls -la volumes/django/media/
-```
-
-Now, update the containers and copy the files back.
-
-### v0.5.0
-
-Git branches "main" and "deployment" was merged into one.
-Files are separated into: "/src/" and "/development/"
-
 ### v0.19.0
 
-Remove ["/development/"](https://github.com/jedie/PyInventory/tree/v0.18.1/deployment) (unmaintained "docker-compose" installation),
+* Remove ["/development/"](https://github.com/jedie/PyInventory/tree/v0.18.1/deployment) (unmaintained "docker-compose" installation),
 please use YunoHost ;)
-
-Removed django-processinfo and django-axes in test project
+* Removed `django-processinfo` and `django-axes` in test project.
+* Remove `poetry`, `pytest` and `devshell`
+* Use `pip-tools`, `unittests` and [manage_django_project](https://github.com/jedie/manage_django_project)
 
 
 ## history
@@ -164,10 +149,11 @@ Removed django-processinfo and django-axes in test project
 
 * [**dev**](https://github.com/jedie/PyInventory/compare/v0.19.0...main)
   * tbc
-* [v0.19.0 - 15.06.2023](https://github.com/jedie/PyInventory/compare/v0.18.1...v0.19.0)
+* [v0.19.0 - 21.07.2023](https://github.com/jedie/PyInventory/compare/v0.18.1...v0.19.0)
   * Update to Django 4.2
-  * remove django-processinfo, django-axes and "/development/"
-  * Bugfix ItemModelAdmin
+  * Remove `django-processinfo`, `django-axes` and unmaintained "docker-compose" installation
+  * Use `pip-tools`, `unittests` and [manage_django_project](https://github.com/jedie/manage_django_project)
+  * Bugfix `ItemModelAdmin`
 * [v0.18.1 - 15.06.2023](https://github.com/jedie/PyInventory/compare/v0.18.0...v0.18.1)
   * Update requirements
 * [v0.18.0 - 04.04.2023](https://github.com/jedie/PyInventory/compare/v0.17.0...v0.18.0)

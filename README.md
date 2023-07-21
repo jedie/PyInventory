@@ -151,6 +151,12 @@ Now, update the containers and copy the files back.
 Git branches "main" and "deployment" was merged into one.
 Files are separated into: "/src/" and "/development/"
 
+### v0.19.0
+
+Remove ["/development/"](https://github.com/jedie/PyInventory/tree/v0.18.1/deployment) (unmaintained "docker-compose" installation),
+please use YunoHost ;)
+
+
 ## history
 
 
@@ -158,7 +164,7 @@ Files are separated into: "/src/" and "/development/"
   * tbc
 * [v0.19.0 - 15.06.2023](https://github.com/jedie/PyInventory/compare/v0.18.1...v0.19.0)
   * Update to Django 4.2
-  * remove django-processinfo
+  * remove django-processinfo and "/development/"
   * Bugfix ItemModelAdmin
 * [v0.18.1 - 15.06.2023](https://github.com/jedie/PyInventory/compare/v0.18.0...v0.18.1)
   * Update requirements

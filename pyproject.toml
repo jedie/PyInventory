@@ -59,8 +59,6 @@ django-axes = "*"  # https://github.com/jazzband/django-axes
 requests = "*"  # https://github.com/psf/requests
 pillow = "*"
 
-docker-compose = { version = "*", optional = true }  # install via: poetry install --extras "docker"
-
 psycopg2-binary = { version = "*", optional = true }  # install via: poetry install --extras "postgres-binary"
 psycopg2 = { version = "*", optional = true }  # install via: poetry install --extras "psycopg2-source"
 

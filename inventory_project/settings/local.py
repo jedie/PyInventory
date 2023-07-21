@@ -4,14 +4,18 @@
     Django settings for local development
 """
 
+import os as __os
 import sys as __sys
 
-from inventory_project.settings.base import *  # noqa
+from inventory_project.settings.prod import *  # noqa
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-TEMPLATE_DEBUG = True
+
+
+# Serve static/media files for local development:
+SERVE_FILES = True
 
 
 # Disable caches:
@@ -25,37 +29,33 @@ ALLOWED_HOSTS = INTERNAL_IPS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': str(BASE_PATH / 'PyInventory-database.sqlite3'),
+        'NAME': str(BASE_PATH / 'inventory-database.sqlite3'),
         # https://docs.djangoproject.com/en/dev/ref/databases/#database-is-locked-errors
         'timeout': 30,
     }
 }
 print(f'Use Database: {DATABASES["default"]["NAME"]!r}', file=__sys.stderr)
-# _____________________________________________________________________________
-
-# Disable security features, because development server doesn't support HTTPS
-CSRF_COOKIE_SECURE = False
-SESSION_COOKIE_SECURE = False
-SECURE_PROXY_SSL_HEADER = None
-SECURE_SSL_REDIRECT = False
-SECURE_HSTS_PRELOAD = False
-SECURE_HSTS_SECONDS = 0
-SECURE_HSTS_INCLUDE_SUBDOMAINS = False
 
 # _____________________________________________________________________________
-# AlwaysLoggedInAsSuperUser
 
-DEFAULT_USERNAME = 'local-test-superuser'
-DEFAULT_USERPASS = 'test'
-DEFAULT_USEREMAIL = 'nobody@local.intranet'
+# Download map via geotiler in inventory.gpx_tools.gpxpy2map.generate_map
+MAP_DOWNLOAD = True
 
-MIDDLEWARE = MIDDLEWARE.copy()
-MIDDLEWARE.append('django_tools.middlewares.local_auto_login.AlwaysLoggedInAsSuperUserMiddleware')
+if __os.environ.get('AUTOLOGIN') == '1':
+    # Auto login for dev. server:
+    MIDDLEWARE = MIDDLEWARE.copy()
+    MIDDLEWARE += ['django_tools.middlewares.local_auto_login.AlwaysLoggedInAsSuperUserMiddleware']
+
+# _____________________________________________________________________________
+# Manage Django Project
+
+INSTALLED_APPS.append('manage_django_project')
+
 # _____________________________________________________________________________
 # Django-Debug-Toolbar
 
-INSTALLED_APPS.copy()
-INSTALLED_APPS += ['debug_toolbar']
+
+INSTALLED_APPS.append('debug_toolbar')
 MIDDLEWARE.append('debug_toolbar.middleware.DebugToolbarMiddleware')
 
 DEBUG_TOOLBAR_PATCH_SETTINGS = True

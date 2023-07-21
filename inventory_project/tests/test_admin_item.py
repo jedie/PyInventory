@@ -8,6 +8,7 @@ from django.template.defaulttags import CsrfTokenNode, NowNode
 from django.test import TestCase, override_settings
 from django.utils import timezone
 from django_tools.unittest_utils.mockup import ImageDummy
+from override_storage import locmem_stats_override_storage
 from reversion.models import Revision
 
 from inventory.models import ItemImageModel, ItemModel
@@ -157,32 +158,36 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
             }
         )
 
-        response = self.client.post(
-            path='/admin/inventory/itemmodel/add/',
-            data=post_data,
-        )
-        self.assertRedirects(response, expected_url='/admin/inventory/itemmodel/')
+        with locmem_stats_override_storage() as storage_stats:
+            response = self.client.post(
+                path='/admin/inventory/itemmodel/add/',
+                data=post_data,
+            )
+            self.assertRedirects(response, expected_url='/admin/inventory/itemmodel/')
 
-        data = list(ItemModel.objects.values_list('kind__name', 'name'))
-        assert data == [('kind', 'name')]
+            data = list(ItemModel.objects.values_list('kind__name', 'name'))
+            assert data == [('kind', 'name')]
 
-        item = ItemModel.objects.first()
+            item = ItemModel.objects.first()
 
-        self.assert_messages(
-            response,
-            expected_messages=[
-                f'The Item “<a href="/admin/inventory/itemmodel/{item.pk}/change/">name</a>”'
-                ' was added successfully.'
-            ],
-        )
+            self.assert_messages(
+                response,
+                expected_messages=[
+                    f'The Item “<a href="/admin/inventory/itemmodel/{item.pk}/change/">name</a>”'
+                    ' was added successfully.'
+                ],
+            )
 
-        assert item.user_id == self.normaluser.pk
+            assert item.user_id == self.normaluser.pk
 
-        assert ItemImageModel.objects.count() == 1
-        image = ItemImageModel.objects.first()
-        assert image.name == 'test.png'
-        assert image.item == item
-        assert image.user_id == self.normaluser.pk
+            assert ItemImageModel.objects.count() == 1
+            image = ItemImageModel.objects.first()
+            assert image.name == 'test.png'
+            assert image.item == item
+            assert image.user_id == self.normaluser.pk
+
+            # Test image file should be stored:
+            self.assertEqual(storage_stats.save_cnt, 1)
 
     def test_auto_group_items(self):
         self.client.force_login(self.normaluser)

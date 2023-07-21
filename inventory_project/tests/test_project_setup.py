@@ -1,68 +1,28 @@
-import os
-import shutil
 import subprocess
-import sys
 from pathlib import Path
+from unittest import TestCase
 
+from bx_py_utils.path import assert_is_dir, assert_is_file
 from django.conf import settings
 from django.core import checks
 from django.core.cache import cache
-from django.test import TestCase
-from django_tools.unittest_utils.project_setup import check_editor_config
+from django.core.management import call_command
+from manage_django_project.management.commands import code_style
+from manageprojects.test_utils.project_setup import check_editor_config, get_py_max_line_length
 from packaging.version import Version
 
-import inventory
-from inventory_project import PACKAGE_ROOT
+from inventory import __version__
+from manage import BASE_PATH
 
 
-def assert_file_contains_string(file_path, string):
-    with file_path.open('r') as f:
-        for line in f:
-            if string in line:
-                return
-    raise AssertionError(f'File {file_path} does not contain {string!r} !')
-
-
-def test_version(package_root=None, version=None):
-    if package_root is None:
-        package_root = PACKAGE_ROOT
-
-    if version is None:
-        version = inventory.__version__
-
-    ver_obj = Version(inventory.__version__)
-
-    if not ver_obj.is_prerelease:
-        version_string = f'v{version}'
-
-        assert_file_contains_string(file_path=Path(package_root, 'README.md'), string=version_string)
-
-    assert_file_contains_string(file_path=Path(package_root, 'pyproject.toml'), string=f'version = "{version}"')
-
-
-def test_poetry_check(package_root=None):
-    if package_root is None:
-        package_root = PACKAGE_ROOT
-
-    poerty_bin = shutil.which('poetry')
-
-    output = subprocess.check_output(
-        [poerty_bin, 'check'],
-        text=True,
-        env=os.environ,
-        stderr=subprocess.STDOUT,
-        cwd=str(package_root),
-    )
-    print(output)
-    assert output == 'All set!\n'
-
-
-class ProjectSettingsTestCase(TestCase):
+class ProjectSetupTestCase(TestCase):
     def test_project_path(self):
-        project_path = settings.PROJECT_PATH
-        assert project_path.is_dir()
-        assert Path(project_path, 'inventory').is_dir()
-        assert Path(project_path, 'inventory_project').is_dir()
+        project_path = settings.BASE_PATH
+        assert_is_dir(project_path)
+        assert_is_dir(project_path / 'inventory')
+        assert_is_dir(project_path / 'inventory_project')
+
+        self.assertEqual(project_path, BASE_PATH)
 
     def test_template_dirs(self):
         assert len(settings.TEMPLATES) == 1
@@ -80,7 +40,6 @@ class ProjectSettingsTestCase(TestCase):
         )
         all_issue_ids = {issue.id for issue in all_issues}
         excpeted_issues = {
-            'security.W008',  # settings.SECURE_SSL_REDIRECT=False
             'async.E001',  # os.environ['DJANGO_ALLOW_ASYNC_UNSAFE'] exists
         }
         if all_issue_ids != excpeted_issues:
@@ -88,69 +47,56 @@ class ProjectSettingsTestCase(TestCase):
             for issue in all_issues:
                 print(issue)
             print('=' * 100)
-            raise AssertionError('There are check issues!')
+            raise AssertionError(f'There are check issues (see blow): {all_issue_ids ^ excpeted_issues}')
 
     def test_cache(self):
         # django cache should work in tests, because some tests "depends" on it
         cache_key = 'a-cache-key'
-        assert cache.get(cache_key) is None
+        self.assertIs(cache.get(cache_key), None)
         cache.set(cache_key, 'the cache content', timeout=1)
-        assert cache.get(cache_key) == 'the cache content'
+        self.assertEqual(cache.get(cache_key), 'the cache content', f'Check: {settings.CACHES=}')
         cache.delete(cache_key)
-        assert cache.get(cache_key) is None
+        self.assertIs(cache.get(cache_key), None)
 
     def test_settings(self):
-        assert settings.SETTINGS_MODULE == 'inventory_project.settings.tests'
+        self.assertEqual(settings.SETTINGS_MODULE, 'inventory_project.settings.tests')
         middlewares = [entry.rsplit('.', 1)[-1] for entry in settings.MIDDLEWARE]
         assert 'AlwaysLoggedInAsSuperUserMiddleware' not in middlewares
         assert 'DebugToolbarMiddleware' not in middlewares
 
+    def test_version(self):
+        self.assertIsNotNone(__version__)
 
-def test_check_editor_config():
-    check_editor_config(package_root=PACKAGE_ROOT)
+        version = Version(__version__)  # Will raise InvalidVersion() if wrong formatted
+        self.assertEqual(str(version), __version__)
 
+        manage_bin = BASE_PATH / 'manage.py'
+        assert_is_file(manage_bin)
 
-class CodeStyleTestCase(TestCase):
-    def call(self, prog, *args):
-        venv_bin_path = Path(sys.executable).parent
-        prog = shutil.which(prog, path=venv_bin_path)
-        assert prog
+        output = subprocess.check_output([manage_bin, 'version'], text=True)
+        self.assertIn(__version__, output)
 
-        # Darker will call other programs like "flake8", "git"
-        # Use first our venv bin path:
-        env_path = f'{venv_bin_path}{os.pathsep}{os.environ["PATH"]}'
+    def test_manage(self):
+        manage_bin = BASE_PATH / 'manage.py'
+        assert_is_file(manage_bin)
 
-        return subprocess.check_output(
-            (prog,) + args,
-            text=True,
-            env=dict(PATH=env_path),
-            stderr=subprocess.STDOUT,
-            cwd=str(PACKAGE_ROOT),
-        )
+        output = subprocess.check_output([manage_bin, 'project_info'], text=True)
+        self.assertIn('inventory_project', output)
+        self.assertIn('inventory_project.settings.local', output)
+        self.assertIn('inventory_project.settings.tests', output)
+        self.assertIn(__version__, output)
 
-    def check_code_style(self):
-        self.call('darker', '--check')
-        self.call('isort', '--check-only', '.')
-        self.call('flake8', '.')
+        output = subprocess.check_output([manage_bin, 'check'], text=True)
+        self.assertIn('System check identified no issues (0 silenced).', output)
+
+        output = subprocess.check_output([manage_bin, 'makemigrations'], text=True)
+        self.assertIn("No changes detected", output)
 
     def test_code_style(self):
-        # lint: ## Run code formatters and linter
-        # 	poetry run darker --check
-        # 	poetry run isort --check-only .
-        # 	poetry run flake8 .
-        #
-        # fix-code-style: ## Fix code formatting
-        # 	poetry run darker
-        # 	poetry run isort .
+        call_command(code_style.Command())
 
-        # First try:
-        try:
-            self.check_code_style()
-        except subprocess.CalledProcessError:
-            # Fix and test again:
-            try:
-                self.call('darker')
-                self.call('isort', '.')
-                self.check_code_style()  # Check again
-            except subprocess.CalledProcessError as err:
-                raise AssertionError(f'Linting error:\n{"-"*100}\n{err.stdout}\n{"-"*100}')
+    def test_check_editor_config(self):
+        check_editor_config(package_root=BASE_PATH)
+
+        max_line_length = get_py_max_line_length(package_root=BASE_PATH)
+        self.assertEqual(max_line_length, 119)

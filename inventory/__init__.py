@@ -4,7 +4,4 @@
     :license: GNU GPL v3 or above, see LICENSE for more details.
 """
 
-from importlib.metadata import version
-
-
-__version__ = version('PyInventory')
+__version__ = '0.19.0'

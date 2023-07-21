@@ -1,6 +1,6 @@
-'''
+"""
     Base Django settings
-'''
+"""
 
 import logging
 from pathlib import Path as __Path
@@ -12,28 +12,12 @@ from django.utils.translation import gettext_lazy as _
 ###############################################################################
 
 # Build paths relative to the project root:
-PROJECT_PATH = __Path(__file__).parent.parent.parent
-print(f'PROJECT_PATH:{PROJECT_PATH}')
-
-if __Path('/.dockerenv').is_file():
-    # We are inside a docker container
-    BASE_PATH = __Path('/django_volumes')
-    assert BASE_PATH.is_dir()
-else:
-    # Build paths relative to the current working directory:
-    BASE_PATH = __Path().cwd().resolve()
-
+BASE_PATH = __Path(__file__).parent.parent.parent
 print(f'BASE_PATH:{BASE_PATH}')
-
-# Paths with Django dev. server:
-# BASE_PATH...: .../django-for-runners
-# PROJECT_PATH: .../django-for-runners
-#
-# Paths in Docker container:
-# BASE_PATH...: /for_runners_volumes
-# PROJECT_PATH: /usr/local/lib/python3.9/site-packages
+assert __Path(BASE_PATH, 'inventory_project').is_dir()
 
 ###############################################################################
+# PyInventory:
 
 # Max length of Item/Location "path name" in change list:
 TREE_PATH_STR_MAX_LENGTH = 70
@@ -43,10 +27,9 @@ TREE_PATH_STR_MAX_LENGTH = 70
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-TEMPLATE_DEBUG = False
 
 # Serve static/media files by Django?
-# In production Caddy should serve this!
+# In production the Webserver should serve this!
 SERVE_FILES = False
 
 
@@ -70,7 +53,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
     'bx_django_utils',  # https://github.com/boxine/bx_django_utils
     'import_export',  # https://github.com/django-import-export/django-import-export
     'dbbackup',  # https://github.com/django-dbbackup/django-dbbackup
@@ -80,7 +62,6 @@ INSTALLED_APPS = [
     'reversion_compare',  # https://github.com/jedie/django-reversion-compare
     'tagulous',  # https://github.com/radiac/django-tagulous
     'adminsortable2',  # https://github.com/jrief/django-admin-sortable2
-    'axes',  # https://github.com/jazzband/django-axes
     # https://github.com/jedie/django-tools/tree/master/django_tools/serve_media_app
     'django_tools.serve_media_app.apps.UserMediaFilesConfig',
     # https://github.com/jedie/django-tools/tree/master/django_tools/model_version_protect
@@ -90,10 +71,8 @@ INSTALLED_APPS = [
 
 ROOT_URLCONF = 'inventory_project.urls'
 WSGI_APPLICATION = 'inventory_project.wsgi.application'
-SITE_ID = 1
 
 AUTHENTICATION_BACKENDS = [
-    'axes.backends.AxesBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
 
@@ -107,20 +86,26 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'axes.middleware.AxesMiddleware',  # AxesMiddleware should be the last middleware
 ]
 
+__TEMPLATE_DIR = __Path(BASE_PATH, 'inventory_project', 'templates')
+assert __TEMPLATE_DIR.is_dir(), f'Directory not exists: {__TEMPLATE_DIR}'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [str(__Path(PROJECT_PATH, 'inventory_project', 'templates'))],
+        "DIRS": [str(__TEMPLATE_DIR)],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.template.context_processors.media',
+                'django.template.context_processors.csrf',
+                'django.template.context_processors.tz',
+                'django.template.context_processors.static',
                 'inventory.context_processors.inventory_version_string',
             ],
         },
@@ -175,6 +160,16 @@ STATIC_ROOT = str(__Path(BASE_PATH, 'static'))
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = str(__Path(BASE_PATH, 'media'))
+
+# _____________________________________________________________________________
+# Cache Backend
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+    }
+}
 
 # _____________________________________________________________________________
 # Django-dbbackup
@@ -392,7 +387,6 @@ LOGGING = {
     'loggers': {
         '': {'handlers': ['console'], 'level': 'DEBUG', 'propagate': False},
         'django': {'handlers': ['console'], 'level': 'INFO', 'propagate': False},
-        'axes': {'handlers': ['console'], 'level': 'WARNING', 'propagate': False},
         'django_tools': {'handlers': ['console'], 'level': 'INFO', 'propagate': False},
         'inventory': {'handlers': ['console'], 'level': 'DEBUG', 'propagate': False},
     },

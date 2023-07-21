@@ -12,6 +12,7 @@ on:
 
 jobs:
   test:
+    name: 'Python ${{ matrix.python-version }} Django ${{ matrix.django-version }}'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -34,23 +35,29 @@ jobs:
       with:
         python-version: '${{ matrix.python-version }}'
         cache: 'pip' # caching pip dependencies
-        cache-dependency-path: '**/poetry.lock'
+        cache-dependency-path: '**/requirements.*.txt'
 
     - name: 'Bootstrap'
+      # The first manage.py call will create the .venv
       run: |
-        python3 devshell.py quit
+        ./manage.py version
 
-    - name: 'Install Browsers for Playwright tests'
+    - name: 'Install Playwright browsers'
       run: |
-        python3 devshell.py playwright_install
+        .venv/bin/playwright install
 
-    - name: 'List installed packages'
+    - name: 'Display all Django commands'
       run: |
-        python3 devshell.py list_venv_packages
+        ./manage.py --help
 
-    - name: 'Run tests with Python v${{ matrix.python-version }}'
+    # FIXME:
+    #- name: 'Safety'
+    #  run: |
+    #    ./manage.py safety
+
+    - name: 'Python ${{ matrix.python-version }}'
       run: |
-        python3 devshell.py pytest -vv
+        ./manage.py tox -e $(echo py${{ matrix.python-version }} | tr -d .)
 
     - name: 'Upload coverage report'
       uses: codecov/codecov-action@v3

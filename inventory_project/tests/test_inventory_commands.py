@@ -1,43 +1,26 @@
-from cmd2 import CommandResult
-from cmd2_ext_test import ExternalTestMixin
-from dev_shell.tests.fixtures import CmdAppBaseTestCase
-from django import __version__
-
-from inventory_project.dev_shell import DevShellApp, get_devshell_app_kwargs
+import django
+from bx_py_utils.test_utils.snapshot import assert_text_snapshot
+from manage_django_project.tests.cmd2_test_utils import BaseShellTestCase
 
 
-class DevShellAppTester(ExternalTestMixin, DevShellApp):
-    pass
+class PyInventoryDevShellTestCase(BaseShellTestCase):
+    def test_help(self):
+        stdout, stderr = self.execute(command='help')
+        self.assertEqual(stderr, '')
+        self.assertIn('Documented commands', stdout)
 
+        # Django commands:
+        self.assertIn('django.core', stdout)
+        self.assertIn('makemessages', stdout)
+        self.assertIn('makemigrations', stdout)
 
-class DevShellAppBaseTestCase(CmdAppBaseTestCase):
-    """
-    Base class for dev-shell tests
-    """
+        # manage_django_project:
+        self.assertIn('manage_django_project', stdout)
+        self.assertIn('run_dev_server', stdout)
 
-    def get_app_instance(self):
-        # Init the test app with the same kwargs as the real app
-        # see: dev_shell.cmd2app.devshell_cmdloop()
-        app = DevShellAppTester(**get_devshell_app_kwargs())
-        return app
+        # Own commands:
+        self.assertIn('inventory', stdout)
+        self.assertIn('seed_data', stdout)
+        self.assertIn('tree', stdout)
 
-
-class PyInventoryDevShellTestCase(DevShellAppBaseTestCase):
-    def test_help_raw(self):
-        out = self.app.app_cmd('help')
-
-        assert isinstance(out, CommandResult)
-        assert 'Documented commands' in out.stdout
-
-        assert 'Documented commands' in out.stdout
-
-    def test_help_via_execute(self):
-        stdout, stderr = self.execute('help')
-        assert stderr == ''
-        assert 'Documented commands' in stdout
-
-    def test_manage(self):
-        stdout, stderr = self.execute('manage --version')
-        assert stderr == ''
-        assert 'manage.py --version' in stdout
-        assert __version__ in stdout
+        assert_text_snapshot(got=stdout, snapshot_name=f'test_command_shell_help_django{django.__version__}')

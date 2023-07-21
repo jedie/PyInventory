@@ -91,7 +91,7 @@ class ItemModelAdmin(TagulousModelAdminFix, ImportExportMixin, SortableAdminMixi
         return 0
 
     date_hierarchy = 'create_dt'
-    list_display = ('item', 'kind', 'producer', 'location', 'received_date', 'update_dt')
+    list_display = ('producer', 'item', 'kind', 'location', 'received_date', 'update_dt')
     ordering = ('path_str',)
     list_display_links = ()
     list_filter = (LimitTreeDepthListFilter, 'kind', 'location', 'producer', 'tags')

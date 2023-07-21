@@ -42,12 +42,9 @@ readme = 'README.md'
 
 [tool.poetry.dependencies]
 python = ">=3.9,<4.0.0"  # Stay with 3.9 until YunoHost used >=Debian 11 (Bullseye)
-
-django = "<4.1" # FIXME: https://github.com/jedie/django-processinfo/issues/19
-
+django = "*"
 colorlog = "*"  # https://github.com/borntyping/python-colorlog
 gunicorn = "*"  # https://github.com/benoimyproject.wsgitc/gunicorn
-django-processinfo = "*"  # https://github.com/jedie/django-processinfo/
 django-debug-toolbar = "*"  # http://django-debug-toolbar.readthedocs.io/en/stable/changes.html
 django-import-export = "*"  # https://github.com/django-import-export/django-import-export
 django-dbbackup = "*"  # https://github.com/django-dbbackup/django-dbbackup
@@ -211,7 +208,7 @@ skip_missing_interpreters = True
 
 [testenv]
 passenv = *
-whitelist_externals = poetry
+allowlist_externals = poetry
 commands =
     python --version
     poetry run django-admin --version

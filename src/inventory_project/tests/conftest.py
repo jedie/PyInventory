@@ -11,7 +11,13 @@ os.environ.setdefault('DJANGO_ALLOW_ASYNC_UNSAFE', '1')
 
 @pytest.fixture(scope='session')
 def browser_context_args(browser_context_args):
-    browser_context_args['ignore_https_errors'] = True
+    browser_context_args.update(
+        dict(
+            ignore_https_errors=True,
+            locale='en_US',
+            timezone_id='Europe/Berlin',
+        )
+    )
     return browser_context_args
 
 

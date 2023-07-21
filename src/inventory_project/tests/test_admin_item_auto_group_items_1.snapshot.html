@@ -24,26 +24,19 @@
        <label for="searchbar">
         <img alt="Search" src="/static/admin/img/search.svg"/>
        </label>
-       <input autofocus="" id="searchbar" name="q" size="40" type="text" value=""/>
+       <input id="searchbar" name="q" size="40" type="text" value=""/>
        <input type="submit" value="Search"/>
       </div>
      </form>
     </div>
-    <div class="xfull">
-     <ul class="toplinks">
-      <li class="date-back">
-       <a href="?create_dt__year=2000">
-        ‹ 2000
-       </a>
-      </li>
-      <li>
-       <a href="?create_dt__day=1&amp;create_dt__month=1&amp;create_dt__year=2000">
-        January 1
-       </a>
-      </li>
-     </ul>
-     <br class="clear"/>
-    </div>
+    <nav class="toplinks">
+     <a class="date-back" href="?create_dt__year=2000">
+      ‹ 2000
+     </a>
+     <a href="?create_dt__day=1&amp;create_dt__month=1&amp;create_dt__year=2000">
+      January 1
+     </a>
+    </nav>
     <form id="changelist-form" method="post" novalidate="">
      MockedCsrfTokenNode
      <div class="actions">
@@ -322,31 +315,33 @@
     <h2>
      Filter
     </h2>
-    <h3>
-     By Limit tree depth
-    </h3>
-    <ul>
-     <li class="selected">
-      <a href="?" title="All">
-       All
-      </a>
-     </li>
-     <li>
-      <a href="?level=1" title="Only root">
-       Only root
-      </a>
-     </li>
-     <li>
-      <a href="?level=2" title="Root + first sub">
-       Root + first sub
-      </a>
-     </li>
-     <li>
-      <a href="?level=3" title="Root + first + second sub">
-       Root + first + second sub
-      </a>
-     </li>
-    </ul>
+    <details data-filter-title="Limit tree depth" open="">
+     <summary>
+      By Limit tree depth
+     </summary>
+     <ul>
+      <li class="selected">
+       <a href="?">
+        All
+       </a>
+      </li>
+      <li>
+       <a href="?level=1">
+        Only root
+       </a>
+      </li>
+      <li>
+       <a href="?level=2">
+        Root + first sub
+       </a>
+      </li>
+      <li>
+       <a href="?level=3">
+        Root + first + second sub
+       </a>
+      </li>
+     </ul>
+    </details>
    </div>
   </div>
  </div>

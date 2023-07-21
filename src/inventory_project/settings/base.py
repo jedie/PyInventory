@@ -81,7 +81,6 @@ INSTALLED_APPS = [
     'tagulous',  # https://github.com/radiac/django-tagulous
     'adminsortable2',  # https://github.com/jrief/django-admin-sortable2
     'axes',  # https://github.com/jazzband/django-axes
-    'django_processinfo',  # https://github.com/jedie/django-processinfo/
 
     # https://github.com/jedie/django-tools/tree/master/django_tools/serve_media_app
     'django_tools.serve_media_app.apps.UserMediaFilesConfig',
@@ -102,8 +101,6 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 MIDDLEWARE = [
-    'django_processinfo.middlewares.ProcessInfoMiddleware',
-
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -189,14 +186,6 @@ STATIC_ROOT = str(__Path(BASE_PATH, 'static'))
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = str(__Path(BASE_PATH, 'media'))
-
-# _____________________________________________________________________________
-# django-processinfo
-
-from django_processinfo import app_settings as PROCESSINFO  # noqa
-
-
-PROCESSINFO.ADD_INFO = False  # Don't add info in HTML page
 
 # _____________________________________________________________________________
 # Django-dbbackup

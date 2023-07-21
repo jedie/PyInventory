@@ -11,38 +11,52 @@
       Internals
      </h2>
      <div class="form-row field-id field-version">
-      <div class="fieldBox field-id">
-       <label>
-        ID:
-       </label>
-       <div class="readonly">
-        -
+      <div class="flex-container form-multiline">
+       <div>
+        <div class="flex-container fieldBox field-id">
+         <label>
+          ID:
+         </label>
+         <div class="readonly">
+          -
+         </div>
+        </div>
+        <div class="help">
+         <div>
+          ID
+         </div>
+        </div>
        </div>
-       <div class="help">
-        ID
-       </div>
-      </div>
-      <div class="fieldBox field-version">
-       <label class="required inline" for="id_version">
-        Version:
-       </label>
-       <input id="id_version" name="version" required="" type="hidden" value="0"/>
-       0
-       <div class="help">
-        Internal version number of this entry. Used to protect the overwriting of an older entry.
+       <div>
+        <div class="flex-container fieldBox field-version">
+         <label class="required inline" for="id_version">
+          Version:
+         </label>
+         <input id="id_version" name="version" required="" type="hidden" value="0"/>
+         0
+        </div>
+        <div class="help" id="id_version_helptext">
+         <div>
+          Internal version number of this entry. Used to protect the overwriting of an older entry.
+         </div>
+        </div>
        </div>
       </div>
      </div>
      <div class="form-row field-user">
       <div>
-       <label>
-        User:
-       </label>
-       <div class="readonly">
-        -
+       <div class="flex-container">
+        <label>
+         User:
+        </label>
+        <div class="readonly">
+         -
+        </div>
        </div>
        <div class="help">
-        The user who is the owner of this entry and can manage it (will be set automatically)
+        <div>
+         The user who is the owner of this entry and can manage it (will be set automatically)
+        </div>
        </div>
       </div>
      </div>
@@ -53,27 +67,35 @@
      </h2>
      <div class="form-row field-create_dt">
       <div>
-       <label>
-        Create date:
-       </label>
-       <div class="readonly">
-        -
+       <div class="flex-container">
+        <label>
+         Create date:
+        </label>
+        <div class="readonly">
+         -
+        </div>
        </div>
        <div class="help">
-        (will be set automatically)
+        <div>
+         (will be set automatically)
+        </div>
        </div>
       </div>
      </div>
      <div class="form-row field-update_dt">
       <div>
-       <label>
-        Last update:
-       </label>
-       <div class="readonly">
-        -
+       <div class="flex-container">
+        <label>
+         Last update:
+        </label>
+        <div class="readonly">
+         -
+        </div>
        </div>
        <div class="help">
-        (will be set automatically)
+        <div>
+         (will be set automatically)
+        </div>
        </div>
       </div>
      </div>
@@ -84,36 +106,48 @@
      </h2>
      <div class="form-row field-name">
       <div>
-       <label class="required" for="id_name">
-        Name:
-       </label>
-       <input class="vTextField" id="id_name" maxlength="255" name="name" required="" type="text"/>
-       <div class="help">
-        Name
+       <div class="flex-container">
+        <label class="required" for="id_name">
+         Name:
+        </label>
+        <input class="vTextField" id="id_name" maxlength="255" name="name" required="" type="text"/>
+       </div>
+       <div class="help" id="id_name_helptext">
+        <div>
+         Name
+        </div>
        </div>
       </div>
      </div>
      <div class="form-row field-memo">
       <div>
-       <label for="id_memo">
-        Description:
-       </label>
-       <div class="django-ckeditor-widget" data-field-id="id_memo" style="display: inline-block;">
-        <textarea cols="40" data-config='{"skin": "moono-lisa", "toolbar_Basic": [["Source", "-", "Bold", "Italic"]], "toolbar_Full": [["Styles", "Format", "Bold", "Italic", "Underline", "Strike", "SpellChecker", "Undo", "Redo"], ["Link", "Unlink", "Anchor"], ["Image", "Flash", "Table", "HorizontalRule"], ["TextColor", "BGColor"], ["Smiley", "SpecialChar"], ["Source"]], "toolbar": "PyInventoryToolbarConfig", "height": "25em", "width": "100%", "filebrowserWindowWidth": 940, "filebrowserWindowHeight": 725, "removeButtons": "Language,Cut,Copy,Paste,Undo,Redo,Anchor", "removePlugins": ["a11yhelp", "adobeair", "ajax", "autoembed", "autolink", "bbcode", "bidi", "clipboard", "codesnippet", "codesnippetgeshi", "contextmenu", "copyformatting", "devtools", "dialog", "dialogadvtab", "div", "divarea", "docprops", "embed", "embedbase", "embedsemantic", "enterkey", "exportpdf", "find", "flash", "forms", "htmlwriter", "iframe", "iframedialog", "language", "magicline", "mathjax", "newpage", "notification", "notificationaggregator", "pagebreak", "pastefromgdocs", "pastefromword", "pastetext", "pastetools", "placeholder", "preview", "print", "save", "scayt", "selectall", "sharedspace", "smiley", "sourcedialog", "specialchar", "stylescombo", "stylesheetparser", "tab", "templates", "uicolor", "widget", "wsc", "xml"], "toolbar_PyInventoryToolbarConfig": [{"name": "basicstyles", "items": ["Bold", "Italic", "Underline", "Strike", "-", "RemoveFormat"]}, {"name": "paragraph", "items": ["NumberedList", "BulletedList", "-", "Outdent", "Indent", "-", "Blockquote", "-", "JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock"]}, {"name": "links", "items": ["Link", "Unlink", "Anchor"]}, {"name": "insert", "items": ["Image", "Table", "HorizontalRule"]}, "/", {"name": "styles", "items": ["Styles", "Format", "Font", "FontSize"]}, {"name": "colors", "items": ["TextColor", "BGColor"]}, {"name": "tools", "items": ["Maximize", "ShowBlocks", "Source"]}, {"name": "about", "items": ["About"]}], "filebrowserUploadUrl": "/ckeditor/upload/", "filebrowserBrowseUrl": "/ckeditor/browse/", "language": "en"}' data-external-plugin-resources="[]" data-id="id_memo" data-processed="0" data-type="ckeditortype" id="id_memo" name="memo" rows="10"></textarea>
+       <div class="flex-container">
+        <label for="id_memo">
+         Description:
+        </label>
+        <div class="django-ckeditor-widget" data-field-id="id_memo" style="display: inline-block;">
+         <textarea cols="40" data-config='{"skin": "moono-lisa", "toolbar_Basic": [["Source", "-", "Bold", "Italic"]], "toolbar_Full": [["Styles", "Format", "Bold", "Italic", "Underline", "Strike", "SpellChecker", "Undo", "Redo"], ["Link", "Unlink", "Anchor"], ["Image", "Flash", "Table", "HorizontalRule"], ["TextColor", "BGColor"], ["Smiley", "SpecialChar"], ["Source"]], "toolbar": "PyInventoryToolbarConfig", "height": "25em", "width": "100%", "filebrowserWindowWidth": 940, "filebrowserWindowHeight": 725, "removeButtons": "Language,Cut,Copy,Paste,Undo,Redo,Anchor", "removePlugins": ["a11yhelp", "adobeair", "ajax", "autoembed", "autolink", "bbcode", "bidi", "clipboard", "codesnippet", "codesnippetgeshi", "contextmenu", "copyformatting", "devtools", "dialog", "dialogadvtab", "div", "divarea", "docprops", "embed", "embedbase", "embedsemantic", "enterkey", "exportpdf", "find", "flash", "forms", "htmlwriter", "iframe", "iframedialog", "language", "magicline", "mathjax", "newpage", "notification", "notificationaggregator", "pagebreak", "pastefromgdocs", "pastefromword", "pastetext", "pastetools", "placeholder", "preview", "print", "save", "scayt", "selectall", "sharedspace", "smiley", "sourcedialog", "specialchar", "stylescombo", "stylesheetparser", "tab", "templates", "uicolor", "widget", "wsc", "xml"], "toolbar_PyInventoryToolbarConfig": [{"name": "basicstyles", "items": ["Bold", "Italic", "Underline", "Strike", "-", "RemoveFormat"]}, {"name": "paragraph", "items": ["NumberedList", "BulletedList", "-", "Outdent", "Indent", "-", "Blockquote", "-", "JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock"]}, {"name": "links", "items": ["Link", "Unlink", "Anchor"]}, {"name": "insert", "items": ["Image", "Table", "HorizontalRule"]}, "/", {"name": "styles", "items": ["Styles", "Format", "Font", "FontSize"]}, {"name": "colors", "items": ["TextColor", "BGColor"]}, {"name": "tools", "items": ["Maximize", "ShowBlocks", "Source"]}, {"name": "about", "items": ["About"]}], "filebrowserUploadUrl": "/ckeditor/upload/", "filebrowserBrowseUrl": "/ckeditor/browse/", "language": "en"}' data-external-plugin-resources="[]" data-id="id_memo" data-processed="0" data-type="ckeditortype" id="id_memo" name="memo" rows="10"></textarea>
+        </div>
        </div>
-       <div class="help">
+       <div class="help" id="id_memo_helptext">
+        <div>
+        </div>
        </div>
       </div>
      </div>
      <div class="form-row field-tags">
       <div>
-       <label for="id_tags">
-        Tags:
-       </label>
-       <div class="related-widget-wrapper">
-        <input autocomplete="off" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 10, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_tags" name="tags" type="text"/>
+       <div class="flex-container">
+        <label for="id_tags">
+         Tags:
+        </label>
+        <div class="related-widget-wrapper" data-model-ref="Memo Tags">
+         <input autocomplete="off" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 10, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_tags" name="tags" type="text"/>
+        </div>
        </div>
-       <div class="help">
+       <div class="help" id="id_tags_helptext">
+        <div>
+        </div>
        </div>
       </div>
      </div>
@@ -177,7 +211,7 @@
            <input class="vTextField" id="id_memoimagemodel_set-__prefix__-name" maxlength="255" name="memoimagemodel_set-__prefix__-name" type="text"/>
           </td>
           <td class="field-tags">
-           <div class="related-widget-wrapper">
+           <div class="related-widget-wrapper" data-model-ref="Image Tags">
             <input autocomplete="off" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 10, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_memoimagemodel_set-__prefix__-tags" name="memoimagemodel_set-__prefix__-tags" type="text"/>
            </div>
           </td>
@@ -240,7 +274,7 @@
            <input class="vTextField" id="id_memofilemodel_set-__prefix__-name" maxlength="255" name="memofilemodel_set-__prefix__-name" type="text"/>
           </td>
           <td class="field-tags">
-           <div class="related-widget-wrapper">
+           <div class="related-widget-wrapper" data-model-ref="File Tags">
             <input autocomplete="off" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 10, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_memofilemodel_set-__prefix__-tags" name="memofilemodel_set-__prefix__-tags" type="text"/>
            </div>
           </td>
@@ -294,7 +328,7 @@
            <input id="id_memolinkmodel_set-__prefix__-memo" name="memolinkmodel_set-__prefix__-memo" type="hidden"/>
           </td>
           <td class="field-tags">
-           <div class="related-widget-wrapper">
+           <div class="related-widget-wrapper" data-model-ref="Link Tags">
             <input autocomplete="off" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 10, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_memolinkmodel_set-__prefix__-tags" name="memolinkmodel_set-__prefix__-tags" type="text"/>
            </div>
           </td>

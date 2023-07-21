@@ -155,5 +155,15 @@ class ItemModelAdmin(TagulousModelAdminFix, ImportExportMixin, SortableAdminMixi
     readonly_fields = ('id', 'create_dt', 'update_dt', 'user', 'related_items')
     inlines = (ItemImageModelInline, ItemFileModelInline, ItemLinkModelInline)
 
+    def get_list_display(self, request):
+        list_display = list(super().get_list_display(request))
+
+        # FIXME: SortableAdminMixin.get_list_display() adds this, we didn't need here:
+        # See: https://github.com/jrief/django-admin-sortable2/issues/363
+        if '_reorder_' in list_display:
+            list_display.remove('_reorder_')
+
+        return list_display
+
 
 tagulous.admin.enhance(ItemModel, ItemModelAdmin)

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "PyInventory"
-version = "0.18.1"
+version = "0.19.0"
 description = "Web based management to catalog things including state and location etc. using Python/Django."
 authors = [
     "Jens Diemer <PyInventory@jensdiemer.de>",
@@ -58,8 +58,6 @@ django-admin-sortable2 = "*"  # https://github.com/jrief/django-admin-sortable2
 django-axes = "*"  # https://github.com/jazzband/django-axes
 requests = "*"  # https://github.com/psf/requests
 pillow = "*"
-
-docker-compose = { version = "*", optional = true }  # install via: poetry install --extras "docker"
 
 psycopg2-binary = { version = "*", optional = true }  # install via: poetry install --extras "postgres-binary"
 psycopg2 = { version = "*", optional = true }  # install via: poetry install --extras "psycopg2-source"

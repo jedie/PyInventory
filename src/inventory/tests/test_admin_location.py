@@ -4,8 +4,8 @@ from bx_django_utils.test_utils.html_assertion import HtmlAssertionMixin, assert
 from django.template.defaulttags import CsrfTokenNode, NowNode
 from django.test import TestCase, override_settings
 
-from inventory import __version__
 from inventory_project.tests.fixtures import get_normal_user
+from inventory_project.tests.mocks import MockInventoryVersionString
 
 
 @override_settings(SECURE_SSL_REDIRECT=False)
@@ -18,7 +18,7 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
         self.client.force_login(self.normaluser)
         with mock.patch.object(NowNode, 'render', return_value='MockedNowNode'), mock.patch.object(
             CsrfTokenNode, 'render', return_value='MockedCsrfTokenNode'
-        ):
+        ), MockInventoryVersionString():
             response = self.client.get(
                 path='/admin/inventory/locationmodel/',
             )
@@ -26,7 +26,7 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
         self.assert_html_parts(
             response,
             parts=(
-                f'<title>Select Location to change | PyInventory v{__version__}</title>',
+                '<title>Select Location to change | PyInventory vMockedVersionString</title>',
                 '<a href="/admin/inventory/locationmodel/add/" class="addlink">Add Location</a>',
                 '<p class="paginator">0 Locations</p>',
             ),

@@ -10,8 +10,8 @@ maintainers = [
 ]
 homepage = "https://github.com/jedie/PyInventory"
 packages = [
-    { include = "inventory", from = "src" },
-    { include = "inventory_project", from = "src" },
+    { include = "inventory" },
+    { include = "inventory_project" },
 ]
 keywords=['inventory','django']
 classifiers = [

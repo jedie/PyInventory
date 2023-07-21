@@ -154,11 +154,12 @@ Files are separated into: "/src/" and "/development/"
 ## history
 
 
-* [**dev**](https://github.com/jedie/PyInventory/compare/v0.18.1...main)
+* [**dev**](https://github.com/jedie/PyInventory/compare/v0.19.0...main)
+  * tbc
+* [v0.19.0 - 15.06.2023](https://github.com/jedie/PyInventory/compare/v0.18.1...v0.19.0)
   * Update to Django 4.2
   * remove django-processinfo
   * Bugfix ItemModelAdmin
-  * tbc
 * [v0.18.1 - 15.06.2023](https://github.com/jedie/PyInventory/compare/v0.18.0...v0.18.1)
   * Update requirements
 * [v0.18.0 - 04.04.2023](https://github.com/jedie/PyInventory/compare/v0.17.0...v0.18.0)

@@ -10,16 +10,15 @@ from django.utils import timezone
 from django_tools.unittest_utils.mockup import ImageDummy
 from reversion.models import Revision
 
-from inventory import __version__
 from inventory.models import ItemImageModel, ItemModel
 from inventory_project.tests.fixtures import get_normal_user
+from inventory_project.tests.mocks import MockInventoryVersionString
 
 
 ITEM_FORM_DEFAULTS = {
     'version': 0,  # VersionProtectBaseModel field
     'kind': 'kind',
     'name': 'name',
-
     'itemimagemodel_set-TOTAL_FORMS': '0',
     'itemimagemodel_set-INITIAL_FORMS': '0',
     'itemimagemodel_set-MIN_NUM_FORMS': '0',
@@ -55,27 +54,22 @@ class AdminAnonymousTests(HtmlAssertionMixin, TestCase):
             fetch_redirect_response=False
         )
 
-        response = self.client.get(
-            path='/admin/inventory/itemmodel/add/',
-            secure=True,
-            HTTP_ACCEPT_LANGUAGE='en'
-        )
+        response = self.client.get(path='/admin/inventory/itemmodel/add/', secure=True, HTTP_ACCEPT_LANGUAGE='en')
         self.assertRedirects(
-            response,
-            expected_url='/admin/login/?next=/admin/inventory/itemmodel/add/',
-            fetch_redirect_response=False
+            response, expected_url='/admin/login/?next=/admin/inventory/itemmodel/add/', fetch_redirect_response=False
         )
-        with mock.patch.object(CsrfTokenNode, 'render', return_value='MockedCsrfTokenNode'):
-            response = self.client.get(
-                path='/admin/login/',
-                secure=True,
-                HTTP_ACCEPT_LANGUAGE='en'
+        with mock.patch.object(
+            CsrfTokenNode, 'render', return_value='MockedCsrfTokenNode'
+        ), MockInventoryVersionString():
+            response = self.client.get(path='/admin/login/', secure=True, HTTP_ACCEPT_LANGUAGE='en')
+            self.assert_html_parts(
+                response,
+                parts=(
+                    '<title>Log in | PyInventory vMockedVersionString</title>',
+                    '<label class="required" for="id_username">Username:</label>',
+                    '<label class="required" for="id_password">Password:</label>',
+                ),
             )
-            self.assert_html_parts(response, parts=(
-                f'<title>Log in | PyInventory v{__version__}</title>',
-                '<label class="required" for="id_username">Username:</label>',
-                '<label class="required" for="id_password">Password:</label>',
-            ))
         assert_html_response_snapshot(response, validate=False)
 
 
@@ -87,16 +81,16 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
 
     def test_normal_user_create_minimal_item(self):
         offset = datetime.timedelta(minutes=1)
-        with mock.patch.object(timezone, 'now', MockDatetimeGenerator(offset=offset)),\
-                mock.patch.object(NowNode, 'render', return_value='MockedNowNode'), \
-                mock.patch.object(CsrfTokenNode, 'render', return_value='MockedCsrfTokenNode'):
+        with mock.patch.object(timezone, 'now', MockDatetimeGenerator(offset=offset)), mock.patch.object(
+            NowNode, 'render', return_value='MockedNowNode'
+        ), mock.patch.object(
+            CsrfTokenNode, 'render', return_value='MockedCsrfTokenNode'
+        ), MockInventoryVersionString():
             self.client.force_login(self.normaluser)
 
             response = self.client.get('/admin/inventory/itemmodel/add/')
             assert response.status_code == 200
-            self.assert_html_parts(response, parts=(
-                f'<title>Add Item | PyInventory v{__version__}</title>',
-            ))
+            self.assert_html_parts(response, parts=('<title>Add Item | PyInventory vMockedVersionString</title>',))
             assert_html_response_snapshot(response=response, validate=False)
 
             assert ItemModel.objects.count() == 0
@@ -133,11 +127,14 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
                 path=f'/admin/inventory/itemmodel/{item.pk}/change/',
                 data=post_data,
             )
-            self.assert_html_parts(response, parts=(
-                f'<title>Change Item | PyInventory v{__version__}</title>',
-                '<li>Version error: Overwrite version 2 with 1 is forbidden!</li>',
-                '<pre>- &quot;name&quot;\n+ &quot;A new Name!&quot;</pre>'
-            ))
+            self.assert_html_parts(
+                response,
+                parts=(
+                    '<title>Change Item | PyInventory vMockedVersionString</title>',
+                    '<li>Version error: Overwrite version 2 with 1 is forbidden!</li>',
+                    '<pre>- &quot;name&quot;\n+ &quot;A new Name!&quot;</pre>',
+                ),
+            )
             html = response.content.decode('utf-8')
             html = html.replace(str(item.pk), '<removed-UUID>')
             assert_html_snapshot(got=html, validate=False)
@@ -217,7 +214,7 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
 
         with mock.patch.object(NowNode, 'render', return_value='MockedNowNode'), mock.patch.object(
             CsrfTokenNode, 'render', return_value='MockedCsrfTokenNode'
-        ):
+        ), MockInventoryVersionString():
             response = self.client.get(
                 path='/admin/inventory/itemmodel/',
             )
@@ -225,7 +222,7 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
         self.assert_html_parts(
             response,
             parts=(
-                f'<title>Select Item to change | PyInventory v{__version__}</title>',
+                '<title>Select Item to change | PyInventory vMockedVersionString</title>',
                 '<a href="/admin/inventory/itemmodel/00000000-0001-0000-0000-000000000000/change/">'
                 '<strong>main item 1</strong></a>',
                 '<a href="/admin/inventory/itemmodel/00000000-0001-0001-0000-000000000000/change/">'

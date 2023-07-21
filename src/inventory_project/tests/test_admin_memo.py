@@ -8,9 +8,9 @@ from django_tools.unittest_utils.mockup import ImageDummy
 from model_bakery import baker
 from reversion.models import Revision
 
-from inventory import __version__
 from inventory.models import MemoImageModel, MemoModel
 from inventory.permissions import get_or_create_normal_user_group
+from inventory_project.tests.mocks import MockInventoryVersionString
 
 
 class AdminAnonymousTests(TestCase):
@@ -42,13 +42,12 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
     def test_normal_user_create_minimal_item(self):
         self.client.force_login(self.normaluser)
 
-        with mock.patch.object(NowNode, 'render', return_value='MockedNowNode'), \
-                mock.patch.object(CsrfTokenNode, 'render', return_value='MockedCsrfTokenNode'):
+        with mock.patch.object(NowNode, 'render', return_value='MockedNowNode'), mock.patch.object(
+            CsrfTokenNode, 'render', return_value='MockedCsrfTokenNode'
+        ), MockInventoryVersionString():
             response = self.client.get('/admin/inventory/memomodel/add/')
         assert response.status_code == 200
-        self.assert_html_parts(response, parts=(
-            f'<title>Add Memo | PyInventory v{__version__}</title>',
-        ))
+        self.assert_html_parts(response, parts=('<title>Add Memo | PyInventory vMockedVersionString</title>',))
         assert_html_response_snapshot(response=response, validate=False)
 
         assert MemoModel.objects.count() == 0

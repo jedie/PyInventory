@@ -6,6 +6,7 @@ from django.template.defaulttags import CsrfTokenNode, NowNode
 from django.test import TestCase, override_settings
 from django_tools.unittest_utils.mockup import ImageDummy
 from model_bakery import baker
+from override_storage import locmem_stats_override_storage
 from reversion.models import Revision
 
 from inventory.models import MemoImageModel, MemoModel
@@ -99,50 +100,54 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
 
         img = ImageDummy(width=1, height=1, format='png').in_memory_image_file(filename='test.png')
 
-        response = self.client.post(
-            path='/admin/inventory/memomodel/add/',
-            data={
-                'version': 0,  # VersionProtectBaseModel field
-                'name': 'The Memo Name',
-                'memo': 'This is a test Memo',
-                'memoimagemodel_set-TOTAL_FORMS': '1',
-                'memoimagemodel_set-INITIAL_FORMS': '0',
-                'memoimagemodel_set-MIN_NUM_FORMS': '0',
-                'memoimagemodel_set-MAX_NUM_FORMS': '1000',
-                'memoimagemodel_set-0-position': '0',
-                'memoimagemodel_set-__prefix__-position': '0',
-                'memoimagemodel_set-0-image': img,
-                'memofilemodel_set-TOTAL_FORMS': '0',
-                'memofilemodel_set-INITIAL_FORMS': '0',
-                'memofilemodel_set-MIN_NUM_FORMS': '0',
-                'memofilemodel_set-MAX_NUM_FORMS': '1000',
-                'memofilemodel_set-__prefix__-position': '0',
-                'memolinkmodel_set-TOTAL_FORMS': '0',
-                'memolinkmodel_set-INITIAL_FORMS': '0',
-                'memolinkmodel_set-MIN_NUM_FORMS': '0',
-                'memolinkmodel_set-MAX_NUM_FORMS': '1000',
-                'memolinkmodel_set-__prefix__-position': '0',
-                '_save': 'Save',
-            },
-        )
-        assert response.status_code == 302, response.content.decode('utf-8')  # Form error?
-        memo = MemoModel.objects.first() or MemoModel()
-        self.assert_messages(
-            response,
-            expected_messages=[
-                f'The Memo “<a href="/admin/inventory/memomodel/{memo.pk}/change/">The Memo Name</a>”'
-                ' was added successfully.'
-            ],
-        )
-        self.assertRedirects(response, expected_url='/admin/inventory/memomodel/')
+        with locmem_stats_override_storage() as storage_stats:
+            response = self.client.post(
+                path='/admin/inventory/memomodel/add/',
+                data={
+                    'version': 0,  # VersionProtectBaseModel field
+                    'name': 'The Memo Name',
+                    'memo': 'This is a test Memo',
+                    'memoimagemodel_set-TOTAL_FORMS': '1',
+                    'memoimagemodel_set-INITIAL_FORMS': '0',
+                    'memoimagemodel_set-MIN_NUM_FORMS': '0',
+                    'memoimagemodel_set-MAX_NUM_FORMS': '1000',
+                    'memoimagemodel_set-0-position': '0',
+                    'memoimagemodel_set-__prefix__-position': '0',
+                    'memoimagemodel_set-0-image': img,
+                    'memofilemodel_set-TOTAL_FORMS': '0',
+                    'memofilemodel_set-INITIAL_FORMS': '0',
+                    'memofilemodel_set-MIN_NUM_FORMS': '0',
+                    'memofilemodel_set-MAX_NUM_FORMS': '1000',
+                    'memofilemodel_set-__prefix__-position': '0',
+                    'memolinkmodel_set-TOTAL_FORMS': '0',
+                    'memolinkmodel_set-INITIAL_FORMS': '0',
+                    'memolinkmodel_set-MIN_NUM_FORMS': '0',
+                    'memolinkmodel_set-MAX_NUM_FORMS': '1000',
+                    'memolinkmodel_set-__prefix__-position': '0',
+                    '_save': 'Save',
+                },
+            )
+            assert response.status_code == 302, response.content.decode('utf-8')  # Form error?
+            memo = MemoModel.objects.first() or MemoModel()
+            self.assert_messages(
+                response,
+                expected_messages=[
+                    f'The Memo “<a href="/admin/inventory/memomodel/{memo.pk}/change/">The Memo Name</a>”'
+                    ' was added successfully.'
+                ],
+            )
+            self.assertRedirects(response, expected_url='/admin/inventory/memomodel/')
 
-        data = list(MemoModel.objects.values_list('name', 'memo'))
-        assert data == [('The Memo Name', 'This is a test Memo')]
+            data = list(MemoModel.objects.values_list('name', 'memo'))
+            assert data == [('The Memo Name', 'This is a test Memo')]
 
-        assert memo.user_id == self.normaluser.pk
+            assert memo.user_id == self.normaluser.pk
 
-        assert MemoImageModel.objects.count() == 1
-        image = MemoImageModel.objects.first()
-        assert image.name == 'test.png'
-        assert image.memo == memo
-        assert image.user_id == self.normaluser.pk
+            assert MemoImageModel.objects.count() == 1
+            image = MemoImageModel.objects.first()
+            assert image.name == 'test.png'
+            assert image.memo == memo
+            assert image.user_id == self.normaluser.pk
+
+            # Test image file should be stored:
+            self.assertEqual(storage_stats.save_cnt, 1)

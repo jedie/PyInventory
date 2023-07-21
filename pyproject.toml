@@ -1,113 +1,102 @@
-[tool.poetry]
+[project]
 name = "PyInventory"
-version = "0.19.0"
+dynamic = ["version"]
 description = "Web based management to catalog things including state and location etc. using Python/Django."
+license = {text = "GPL-3.0-or-later"}
+readme = "README.md"
 authors = [
-    "Jens Diemer <PyInventory@jensdiemer.de>",
-]
-maintainers = [
-    "Jens Diemer <PyInventory@jensdiemer.de>",
-]
-homepage = "https://github.com/jedie/PyInventory"
-packages = [
-    { include = "inventory" },
-    { include = "inventory_project" },
+    {name = 'Jens Diemer', email = 'PyInventory@jensdiemer.de'}
 ]
 keywords=['inventory','django']
-classifiers = [
-    # http://pypi.python.org/pypi?%3Aaction=list_classifiers
-    "Development Status :: 5 - Production/Stable",
-    "Environment :: Web Environment",
-    "Intended Audience :: End Users/Desktop",
-    "Intended Audience :: Developers",
-    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
-    "Programming Language :: Python :: 3.7",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3 :: Only",
-    'Framework :: Django',
-    "Topic :: Database :: Front-Ends",
-    "Topic :: Documentation",
-    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
-    "Topic :: Internet :: WWW/HTTP :: Site Management",
-    "Topic :: Internet :: WWW/HTTP :: WSGI :: Application",
-    "Operating System :: OS Independent",
+requires-python = ">=3.9,<4" # Keep Python 3.9 until Yunohost contains a newer Python Version ;)
+dependencies = [
+    "colorlog",  # https://github.com/borntyping/python-colorlog
+    "gunicorn",  # https://github.com/benoimyproject.wsgitc/gunicorn
+
+    "django",
+
+    "django-import-export",  # https://github.com/django-import-export/django-import-export
+    "django-dbbackup",  # https://github.com/django-dbbackup/django-dbbackup
+    "django-tools",  # https://github.com/jedie/django-tools/
+    "django-reversion-compare",  # https://github.com/jedie/django-reversion-compare/
+    "django-ckeditor",  # https://github.com/django-ckeditor/django-ckeditor
+    "django-tagulous",  # https://github.com/radiac/django-tagulous
+    "django-admin-sortable2",  # https://github.com/jrief/django-admin-sortable2
+    "pillow",  # https://github.com/jrief/django-admin-sortable2
+
+    "django-debug-toolbar",  # http://django-debug-toolbar.readthedocs.io/en/stable/changes.html
+    "bx_py_utils",  # https://github.com/boxine/bx_py_utils
+    "bx_django_utils",  # https://github.com/boxine/bx_django_utils
 ]
-include = ['AUTHORS', 'LICENSE']
-license = "GPL-3.0-or-later"
-readme = 'README.md'
-[tool.poetry.urls]
-"Bug Tracker" = "https://github.com/jedie/PyInventory/issues"
+[project.optional-dependencies]
+dev = [
+    "manage_django_project>=0.3.0",  # https://github.com/jedie/manage_django_project
+    "cmd2_ext_test",  # https://github.com/python-cmd2/cmd2/tree/master/plugins/ext_test
+    "playwright",  # https://playwright.dev/python/docs/intro
+    "beautifulsoup4",
+
+    "tblib",   # https://github.com/ionelmc/python-tblib
+    "pip-tools",  # https://github.com/jazzband/pip-tools/
+    "tox",  # https://github.com/tox-dev/tox
+    "coverage",  # https://github.com/nedbat/coveragepy
+    "autopep8",  # https://github.com/hhatto/autopep8
+    "pyupgrade",  # https://github.com/asottile/pyupgrade
+    "flake8",  # https://github.com/pycqa/flake8
+    "pyflakes",  # https://github.com/PyCQA/pyflakes
+    "codespell",  # https://github.com/codespell-project/codespell
+    "EditorConfig",  # https://github.com/editorconfig/editorconfig-core-py
+    "safety",  # https://github.com/pyupio/safety
+    "mypy",  # https://github.com/python/mypy
+    "twine",  # https://github.com/pypa/twine
+
+    # https://github.com/akaihola/darker
+    # https://github.com/ikamensh/flynt
+    # https://github.com/pycqa/isort
+    # https://github.com/pygments/pygments
+    "darker[flynt, isort, color]",
+
+    "tomli",  # https://github.com/hukkin/tomli
+    # tomli only needed for Python <3.11, but see bug:
+    # https://github.com/pypa/pip/issues/9644#issuecomment-1456583402
+    #"tomli;python_version<\"3.11\"",  # https://github.com/hukkin/tomli
+
+    # Work-a-round for:
+    # https://github.com/jazzband/pip-tools/issues/994#issuecomment-1321226661
+    "typing-extensions>=3.10",
+
+    "model_bakery",  # https://github.com/model-bakers/model_bakery
+    "requests-mock",
+    "django-override-storage",  # https://github.com/danifus/django-override-storage
+]
+
+[project.urls]
+Documentation = "https://github.com/jedie/PyInventory"
+Source = "https://github.com/jedie/PyInventory"
 
 
-[tool.poetry.dependencies]
-python = ">=3.9,<4.0.0"  # Stay with 3.9 until YunoHost used >=Debian 11 (Bullseye)
-django = "*"
-colorlog = "*"  # https://github.com/borntyping/python-colorlog
-gunicorn = "*"  # https://github.com/benoimyproject.wsgitc/gunicorn
-django-debug-toolbar = "*"  # http://django-debug-toolbar.readthedocs.io/en/stable/changes.html
-django-import-export = "*"  # https://github.com/django-import-export/django-import-export
-django-dbbackup = "*"  # https://github.com/django-dbbackup/django-dbbackup
-django-tools = "*"  # https://github.com/jedie/django-tools/
-django-reversion-compare = "*"  # https://github.com/jedie/django-reversion-compare/
-django-ckeditor = "*"  # https://github.com/django-ckeditor/django-ckeditor
-bx_py_utils = "*"  # https://github.com/boxine/bx_py_utils
-bx_django_utils = "*"  # https://github.com/boxine/bx_django_utils
-django-tagulous = "*"  # https://github.com/radiac/django-tagulous
-django-admin-sortable2 = "*"  # https://github.com/jrief/django-admin-sortable2
-django-axes = "*"  # https://github.com/jazzband/django-axes
-requests = "*"  # https://github.com/psf/requests
-pillow = "*"
+[project.scripts]
+inventory_project = "inventory_project.__main__:main"
 
-psycopg2-binary = { version = "*", optional = true }  # install via: poetry install --extras "postgres-binary"
-psycopg2 = { version = "*", optional = true }  # install via: poetry install --extras "psycopg2-source"
+[manage_django_project]
+module_name="inventory_project"
 
+# Django settings used for all commands except test/coverage/tox:
+local_settings='inventory_project.settings.local'
 
-[tool.poetry.extras]
-postgres-binary = ["psycopg2-binary"]
-psycopg2-source = ["psycopg2"]
-
-[tool.poetry.dev-dependencies]
-dev_shell = "*"  # https://github.com/jedie/dev-shell
-cmd2_ext_test = "*"
-pytest = "*"
-pytest-randomly = "*"
-pytest-cov = "*"
-pytest-django = "*"
-pytest-playwright = "*"  # https://playwright.dev/python/docs/test-runners
-pyupgrade = "*"
-model_bakery = "*"  # https://github.com/model-bakers/model_bakery
-beautifulsoup4 = "*"
-lxml = "*"
-requests-mock = "*"
-tox = "*"  # https://github.com/tox-dev/tox
-coveralls = "*"  # http://github.com/TheKevJames/coveralls-python
-flake8 = "*"  # https://github.com/pycqa/flake8
-EditorConfig = "*"  # https://github.com/editorconfig/editorconfig-core-py
-safety = "*"  # https://github.com/pyupio/safety
-mypy = "*"  # https://github.com/python/mypy
-twine = "*"  # https://github.com/pypa/twine
-poetry-publish = "*"  # https://github.com/jedie/poetry-publish
-
-# https://github.com/akaihola/darker
-# https://github.com/ikamensh/flynt
-# https://github.com/pycqa/isort
-# https://github.com/pygments/pygments
-darker = { version = "*", extras = ["flynt", "isort", "color"]}
-
-tomli = "*"  # https://github.com/hukkin/tomli
-# tomli only needed for Python <3.11, but see bug:
-# https://github.com/pypa/pip/issues/9644#issuecomment-1456583402
-#tomli = {version = "*", markers = "python_version < \"3.11\""}  # https://github.com/hukkin/tomli
-
-[tool.poetry.scripts]
-devshell = 'inventory_project.dev_shell:devshell_cmdloop'
-run_testserver = 'inventory_project.manage:start_test_server'
+# Django settings used for test/coverage/tox commands:
+test_settings='inventory_project.settings.tests'
 
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["setuptools>=61.0", "setuptools_scm>=7.1"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["inventory*", "inventory_project*"]
+
+[tool.setuptools.dynamic]
+version = {attr = "inventory.__version__"}
 
 
 [tool.darker]
@@ -132,21 +121,21 @@ log_level = "INFO"
 # https://pycqa.github.io/isort/docs/configuration/config_files/#pyprojecttoml-preferred-format
 atomic=true
 profile='black'
-skip_glob=[".*", "*/htmlcov/*","*/migrations/*","*/volumes/*"]
-known_first_party=["inventory","inventory_project","inventory_tests"]
+skip_glob=['.*', '*/htmlcov/*','*/migrations/*']
+known_first_party=['inventory']
 line_length=119
 lines_after_imports=2
 
 
 [tool.coverage.run]
-branch = false  # coverage.exceptions.DataError: Can't combine arc data with line data
+branch = true
 parallel = true
-source = ['.']
 concurrency = ["multiprocessing"]
-command_line = "-m unittest --locals --verbose"
+source = ['.']
+command_line = '-m inventory_project test --shuffle --parallel --buffer'
 
 [tool.coverage.report]
-omit = ['.*', '*/tests/*']
+omit = ['.*', '*/tests/*', '*/migrations/*']
 skip_empty = true
 fail_under = 30
 show_missing = true
@@ -158,45 +147,6 @@ exclude_lines = [
 ]
 
 
-[tool.pytest.ini_options]
-# https://docs.pytest.org/en/latest/customize.html#pyproject-toml
-minversion = "6.0"
-DJANGO_SETTINGS_MODULE="inventory_project.settings.tests"
-
-# Don't overwrite settings.DEBUG:
-django_debug_mode="keep"
-
-markers = [
-    "playwright: marks Playwright tests",
-]
-
-norecursedirs = ".* .git __pycache__ coverage* dist htmlcov volumes"
-# sometimes helpfull "addopts" arguments:
-#    -vv
-#    --verbose
-#    --capture=no
-#    --trace-config
-#    --full-trace
-#    -p no:warnings
-#    -m "not playwright"
-addopts = """
-    --ignore-glob=deployment/django/*
-    --reuse-db
-    --nomigrations
-    --cov=.
-    --cov-report term-missing
-    --cov-report xml
-    --no-cov-on-fail
-    --showlocals
-    --doctest-modules
-    --failed-first
-    --last-failed-no-failures all
-    --new-first
-    -p no:randomly
-"""
-# TODO: --mypy
-
-
 [tool.tox]  # https://tox.wiki/en/latest/config.html#pyproject-toml
 legacy_tox_ini = """
 [tox]
@@ -206,11 +156,12 @@ skip_missing_interpreters = True
 
 [testenv]
 passenv = *
-allowlist_externals = poetry
+skip_install = true
+commands_pre =
+    pip install -U pip-tools
+    pip-sync requirements.dev.txt
 commands =
-    python --version
-    poetry run django-admin --version
-    python devshell.py pytest
+    {envpython} -m coverage run --context='{envname}' -m inventory_project test --buffer --shuffle
 """
 
 
@@ -220,23 +171,20 @@ ignore_missing_imports = true
 allow_redefinition = true  # https://github.com/python/mypy/issues/7165
 show_error_codes = true
 plugins = []
-exclude = ['.venv', 'tests']
+exclude = ['.venv', 'tests', 'migrations']
 
 
 [manageprojects] # https://github.com/jedie/manageprojects
-initial_revision = "b33d693"
-initial_date = 2022-12-21T22:53:08+01:00
+initial_revision = "7cece02"
+initial_date = 2023-07-15T16:37:28+02:00
 cookiecutter_template = "https://github.com/jedie/cookiecutter_templates/"
-cookiecutter_directory = "poetry-python"
-applied_migrations = [
-    "183124a", # 2023-04-04T12:26:15+02:00
-]
+cookiecutter_directory = "managed-django-project"
 
 [manageprojects.cookiecutter_context.cookiecutter]
 full_name = "Jens Diemer"
 github_username = "jedie"
 author_email = "PyInventory@jensdiemer.de"
-package_name = "PyInventory"
+package_name = "inventory"
 package_version = "0.18.0"
 package_description = "Web based management to catalog things including state and location etc. using Python/Django."
 package_url = "https://github.com/jedie/PyInventory"

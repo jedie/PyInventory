@@ -7,3 +7,6 @@ import inventory
 
 PACKAGE_ROOT = Path(inventory.__file__).parent.parent
 assert_is_dir(PACKAGE_ROOT / 'inventory')
+
+
+__version__ = inventory.__version__

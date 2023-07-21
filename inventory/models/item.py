@@ -1,0 +1,228 @@
+import logging
+from pathlib import Path
+
+import tagulous.models
+from bx_django_utils.filename import clean_filename
+from ckeditor_uploader.fields import RichTextUploadingField
+from django.db import models
+from django.urls import reverse
+from django.utils.translation import gettext_lazy as _
+from django_tools.model_version_protect.models import VersionProtectBaseModel
+from django_tools.serve_media_app.models import user_directory_path
+
+from inventory.models.base import BaseItemAttachmentModel, BaseParentTreeModel
+from inventory.models.links import BaseLink
+
+
+logger = logging.getLogger(__name__)
+
+
+class ItemQuerySet(models.QuerySet):
+    def sort(self):
+        return self.order_by('kind', 'producer', 'name')
+
+
+class ItemModel(BaseParentTreeModel, VersionProtectBaseModel):
+    """
+    A Item that can be described and store somewhere ;)
+    """
+
+    objects = ItemQuerySet.as_manager()
+
+    kind = tagulous.models.TagField(
+        case_sensitive=False,
+        force_lowercase=False,
+        space_delimiter=False,
+        max_count=3,
+        verbose_name=_('ItemModel.kind.verbose_name'),
+        help_text=_('ItemModel.kind.help_text'),
+    )
+    producer = tagulous.models.TagField(
+        blank=True,
+        case_sensitive=False,
+        force_lowercase=False,
+        space_delimiter=False,
+        max_count=1,
+        verbose_name=_('ItemModel.producer.verbose_name'),
+        help_text=_('ItemModel.producer.help_text'),
+    )
+    description = RichTextUploadingField(
+        blank=True,
+        null=True,
+        config_name='ItemModel.description',
+        verbose_name=_('ItemModel.description.verbose_name'),
+        help_text=_('ItemModel.description.help_text'),
+    )
+    fcc_id = models.CharField(
+        max_length=20,
+        blank=True,
+        null=True,
+        verbose_name=_('ItemModel.fcc_id.verbose_name'),
+        help_text=_('ItemModel.fcc_id.help_text'),
+    )
+    location = models.ForeignKey(
+        'inventory.LocationModel',
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name='items',
+        verbose_name=_('ItemModel.location.verbose_name'),
+        help_text=_('ItemModel.location.help_text'),
+    )
+
+    # ________________________________________________________________________
+    # lent
+
+    lent_to = models.CharField(
+        max_length=64,
+        blank=True,
+        null=True,
+        verbose_name=_('ItemModel.lent_to.verbose_name'),
+        help_text=_('ItemModel.lent_to.help_text'),
+    )
+    lent_from_date = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name=_('ItemModel.lent_from_date.verbose_name'),
+        help_text=_('ItemModel.lent_from_date.help_text'),
+    )
+    lent_until_date = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name=_('ItemModel.lent_until_date.verbose_name'),
+        help_text=_('ItemModel.lent_until_date.help_text'),
+    )
+
+    # ________________________________________________________________________
+    # received
+
+    received_from = models.CharField(
+        max_length=64,
+        blank=True,
+        null=True,
+        verbose_name=_('ItemModel.received_from.verbose_name'),
+        help_text=_('ItemModel.received_from.help_text'),
+    )
+    received_date = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name=_('ItemModel.received_date.verbose_name'),
+        help_text=_('ItemModel.received_date.help_text'),
+    )
+    received_price = models.DecimalField(
+        decimal_places=2,
+        max_digits=6,  # up to 9999 with a resolution of 2 decimal places
+        blank=True,
+        null=True,
+        verbose_name=_('ItemModel.received_price.verbose_name'),
+        help_text=_('ItemModel.received_price.help_text'),
+    )
+
+    # ________________________________________________________________________
+    # handed over
+
+    handed_over_to = models.CharField(
+        max_length=64,
+        blank=True,
+        null=True,
+        verbose_name=_('ItemModel.handed_over_to.verbose_name'),
+        help_text=_('ItemModel.handed_over_to.help_text'),
+    )
+    handed_over_date = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name=_('ItemModel.handed_over_date.verbose_name'),
+        help_text=_('ItemModel.handed_over_date.help_text'),
+    )
+    handed_over_price = models.DecimalField(
+        decimal_places=2,
+        max_digits=6,  # up to 9999 with a resolution of 2 decimal places
+        blank=True,
+        null=True,
+        verbose_name=_('ItemModel.handed_over_price.verbose_name'),
+        help_text=_('ItemModel.handed_over_price.help_text'),
+    )
+
+    def local_admin_link(self):
+        url = reverse('admin:inventory_itemmodel_change', args=[self.id])
+        return url
+
+    def verbose_name(self):
+        parts = [str(part) for part in (self.kind, self.producer, self.name)]
+        return ' - '.join(part for part in parts if part)
+
+    class Meta:
+        ordering = ('path_str',)
+        verbose_name = _('ItemModel.verbose_name')
+        verbose_name_plural = _('ItemModel.verbose_name_plural')
+
+
+class ItemLinkModel(BaseLink):
+    item = models.ForeignKey(ItemModel, on_delete=models.CASCADE)
+
+    def full_clean(self, **kwargs):
+        if self.user_id is None:
+            # inherit owner of this link from item instance
+            self.user_id = self.item.user_id
+        return super().full_clean(**kwargs)
+
+    class Meta:
+        verbose_name = _('ItemLinkModel.verbose_name')
+        verbose_name_plural = _('ItemLinkModel.verbose_name_plural')
+        ordering = ('position',)
+
+
+class ItemImageModel(BaseItemAttachmentModel):
+    """
+    Store images to Items
+    """
+
+    image = models.ImageField(
+        upload_to=user_directory_path,
+        verbose_name=_('ItemImageModel.image.verbose_name'),
+        help_text=_('ItemImageModel.image.help_text'),
+    )
+
+    def __str__(self):
+        return self.name or self.image.name
+
+    def full_clean(self, **kwargs):
+        # Set name by image filename:
+        if not self.name:
+            filename = Path(self.image.name).name
+            self.name = clean_filename(filename)
+
+        return super().full_clean(**kwargs)
+
+    class Meta:
+        verbose_name = _('ItemImageModel.verbose_name')
+        verbose_name_plural = _('ItemImageModel.verbose_name_plural')
+        ordering = ('position',)
+
+
+class ItemFileModel(BaseItemAttachmentModel):
+    """
+    Store files to Items
+    """
+
+    file = models.FileField(
+        upload_to=user_directory_path,
+        verbose_name=_('ItemFileModel.file.verbose_name'),
+        help_text=_('ItemFileModel.file.help_text'),
+    )
+
+    def __str__(self):
+        return self.name or self.file.name
+
+    def full_clean(self, **kwargs):
+        # Set name by filename:
+        if not self.name:
+            filename = Path(self.file.name).name
+            self.name = clean_filename(filename)
+
+        return super().full_clean(**kwargs)
+
+    class Meta:
+        verbose_name = _('ItemFileModel.verbose_name')
+        verbose_name_plural = _('ItemFileModel.verbose_name_plural')
+        ordering = ('position',)

@@ -155,6 +155,9 @@ Files are separated into: "/src/" and "/development/"
 
 
 * [**dev**](https://github.com/jedie/PyInventory/compare/v0.18.1...main)
+  * Update to Django 4.2
+  * remove django-processinfo
+  * Bugfix ItemModelAdmin
   * tbc
 * [v0.18.1 - 15.06.2023](https://github.com/jedie/PyInventory/compare/v0.18.0...v0.18.1)
   * Update requirements

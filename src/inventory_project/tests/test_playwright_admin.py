@@ -78,27 +78,24 @@ def test_normal_user_create_item(live_server, client, page: Page, png_image):
     page.fill('//input[@id="id_name"]', 'TD-20 (8088)')
 
     # Add a Link:
-    page.locator('text=Add another Link').click()
-    link_tags = page.locator(
-        '//input[@id="id_itemlinkmodel_set-0-tags"]/..//input[@role="searchbox"]'
-    )
-    link_tags.click()
-    link_tags.fill('a-link-tag')
-    link_tags.press('Enter')
-    page.locator('input[name="itemlinkmodel_set-0-name"]').fill('The First Link')
-    page.locator('input[name="itemlinkmodel_set-0-url"]').fill('http://test.tld/foo/bar')
+    page.get_by_role('link', name='Add another Link').click()
+    page.locator('#id_itemlinkmodel_set-0-url').click()
+    page.locator('#id_itemlinkmodel_set-0-url').fill('http://test.tld/foo/bar')
+    page.locator('#id_itemlinkmodel_set-0-name').click()
+    page.locator('#id_itemlinkmodel_set-0-name').fill('The First Link')
+    page.locator('#id_itemlinkmodel_set-0-tags').click()
+    page.locator('#id_itemlinkmodel_set-0-tags').fill('a-link-tag')
+    page.locator('#id_itemlinkmodel_set-0-tags').press('Tab')
 
     # Add Image
-    page.locator("text=Add another Image").click()
-    choose_file = page.locator("input[name=\"itemimagemodel_set-0-image\"]")
-    choose_file.set_input_files(png_image.name)
-    page.fill("input[name=\"itemimagemodel_set-0-name\"]", "The Image Name")
-    image_tags = page.locator(
-        '//input[@id="id_itemimagemodel_set-0-tags"]/..//input[@role="searchbox"]'
-    )
-    image_tags.click()
-    image_tags.fill('a-image-tag')
-    image_tags.press("Enter")
+    page.get_by_role('link', name='Add another Image').click()
+    page.locator('#id_itemimagemodel_set-0-image').click()
+    page.locator('#id_itemimagemodel_set-0-image').set_input_files(png_image.name)
+    page.locator('#id_itemimagemodel_set-0-name').click()
+    page.locator('#id_itemimagemodel_set-0-name').fill('The Image Name')
+    page.locator('#id_itemimagemodel_set-0-tags').click()
+    page.locator('#id_itemimagemodel_set-0-tags').fill('a-image-tag')
+    page.locator('#id_itemimagemodel_set-0-tags').press('Tab')
 
     assert ItemModel.objects.count() == 0
 

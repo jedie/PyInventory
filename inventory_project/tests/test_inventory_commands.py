@@ -23,4 +23,7 @@ class PyInventoryDevShellTestCase(BaseShellTestCase):
         self.assertIn('seed_data', stdout)
         self.assertIn('tree', stdout)
 
-        assert_text_snapshot(got=stdout, snapshot_name=f'test_command_shell_help_django{django.__version__}')
+        assert_text_snapshot(
+            got=stdout,
+            snapshot_name=f'test_inventory_commands_help_django{".".join(str(x) for x in django.VERSION[:2])}',
+        )

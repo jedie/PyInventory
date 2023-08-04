@@ -37,9 +37,9 @@ diff-match-patch==20230430 \
     # via
     #   django-import-export
     #   django-reversion-compare
-django==4.2.3 \
-    --hash=sha256:45a747e1c5b3d6df1b141b1481e193b033fd1fdbda3ff52677dc81afdaacbaed \
-    --hash=sha256:f7c7852a5ac5a3da5a8d5b35cc6168f31b605971441798dac845f17ca8028039
+django==4.2.4 \
+    --hash=sha256:7e4225ec065e0f354ccf7349a22d209de09cc1c074832be9eb84c51c1799c432 \
+    --hash=sha256:860ae6a138a238fc4f22c99b52f3ead982bb4b1aad8c0122bcd8c8a3a02e409d
     # via
     #   PyInventory (pyproject.toml)
     #   bx-django-utils
@@ -57,9 +57,9 @@ django-admin-sortable2==2.1.9 \
     --hash=sha256:6de19689cb2f131d256ce19d2fd148728d551943d8463b1d81f6334adfa0b6fc \
     --hash=sha256:bf036785c598685a0019eb08340b88fe6ca74bd178033e2290e6c41b62fa4bf1
     # via PyInventory (pyproject.toml)
-django-ckeditor==6.6.1 \
-    --hash=sha256:44894c2a1050f58edcab6f9e631dbb63fa5532e7432a5650cfd878b6f33b0d46 \
-    --hash=sha256:a804a98137058c00fc092aafc475e9491b2ca7c68c84d6ca12c4fa2453696017
+django-ckeditor==6.7.0 \
+    --hash=sha256:0489f7a6ae93360d328f77cea17c04891103cbdfa6c962af386bbe47e811671b \
+    --hash=sha256:73399fb8f56f565e7519b57adbd7c585623db2cdc8c75666f56918d3eecf7906
     # via PyInventory (pyproject.toml)
 django-dbbackup==4.0.2 \
     --hash=sha256:1874d684abc22260972a67668a6db3331b24d7e1e8af89eaffdcd61eb27dbc2a \

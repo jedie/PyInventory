@@ -30,12 +30,12 @@ dependencies = [
 ]
 [project.optional-dependencies]
 dev = [
-    "manage_django_project>=0.5.0",  # https://github.com/jedie/manage_django_project
+    "manage_django_project>=0.5.2",  # https://github.com/jedie/manage_django_project
 
     "cmd2_ext_test",  # https://github.com/python-cmd2/cmd2/tree/master/plugins/ext_test
     "playwright",  # https://playwright.dev/python/docs/intro
     "beautifulsoup4",
-    
+
     "tblib",   # https://github.com/ionelmc/python-tblib
     "pip-tools",  # https://github.com/jazzband/pip-tools/
     "tox",  # https://github.com/tox-dev/tox

@@ -147,8 +147,10 @@ please use YunoHost ;)
 ## history
 
 
-* [**dev**](https://github.com/jedie/PyInventory/compare/v0.19.1...main)
+* [**dev**](https://github.com/jedie/PyInventory/compare/v0.19.2...main)
   * tbc
+* [v0.19.2 - 17.08.2023](https://github.com/jedie/PyInventory/compare/v0.19.1...v0.19.2)
+  * Bugfix packaging and missing "requests" dependencies
 * [v0.19.1 - 17.08.2023](https://github.com/jedie/PyInventory/compare/v0.19.0...v0.19.1)
   * Update requirements
 * [v0.19.0 - 21.07.2023](https://github.com/jedie/PyInventory/compare/v0.18.1...v0.19.0)

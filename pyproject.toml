@@ -24,6 +24,8 @@ dependencies = [
     "django-admin-sortable2",  # https://github.com/jrief/django-admin-sortable2
     "pillow",  # https://github.com/jrief/django-admin-sortable2
 
+    "requests",  # https://github.com/psf/requests
+
     "django-debug-toolbar",  # http://django-debug-toolbar.readthedocs.io/en/stable/changes.html
     "bx_py_utils",  # https://github.com/boxine/bx_py_utils
     "bx_django_utils",  # https://github.com/boxine/bx_django_utils
@@ -66,7 +68,7 @@ dev = [
     "typing-extensions>=3.10",
 
     "model_bakery",  # https://github.com/model-bakers/model_bakery
-    "requests-mock",
+    "requests-mock",  # https://github.com/jamielennox/requests-mock
     "django-override-storage",  # https://github.com/danifus/django-override-storage
 ]
 

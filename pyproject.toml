@@ -30,7 +30,8 @@ dependencies = [
 ]
 [project.optional-dependencies]
 dev = [
-    "manage_django_project>=0.3.0",  # https://github.com/jedie/manage_django_project
+    "manage_django_project>=0.5.2",  # https://github.com/jedie/manage_django_project
+
     "cmd2_ext_test",  # https://github.com/python-cmd2/cmd2/tree/master/plugins/ext_test
     "playwright",  # https://playwright.dev/python/docs/intro
     "beautifulsoup4",
@@ -191,3 +192,6 @@ package_url = "https://github.com/jedie/PyInventory"
 issues_url = "https://github.com/jedie/PyInventory/issues"
 license = "GPL-3.0-or-later"
 _template = "https://github.com/jedie/cookiecutter_templates/"
+applied_migrations = [
+    "8d0ebe1", # 2023-08-17T18:15:10+02:00
+]

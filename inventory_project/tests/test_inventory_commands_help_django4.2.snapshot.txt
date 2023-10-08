@@ -40,12 +40,12 @@ dumpdata          migrate         sqlsequencereset
 
 inventory
 =========
-seed_data  tree
+playwright  seed_data  tree
 
 manage_django_project
 =====================
 code_style  install       publish         safety  update_req
-coverage    project_info  run_dev_server  tox
+coverage    project_info  run_dev_server  tox     update_test_snapshot_files
 
 reversion
 =========

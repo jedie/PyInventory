@@ -70,7 +70,6 @@ class LocationModelAdmin(ImportExportMixin, BaseUserAdmin):
         ),
         (_('Items in this Location'), {'fields': ('items',)}),
     )
-    autocomplete_fields = ('parent',)
     readonly_fields = ('id', 'create_dt', 'update_dt', 'user', 'item_count', 'items')
     list_display_links = ('location',)
     list_filter = (LimitTreeDepthListFilter,)

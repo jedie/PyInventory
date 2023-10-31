@@ -26,6 +26,8 @@ INTERNAL_IPS = ('127.0.0.1', '0.0.0.0', 'localhost')
 
 ALLOWED_HOSTS = INTERNAL_IPS
 
+SECURE_SSL_REDIRECT = False
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -41,7 +43,7 @@ print(f'Use Database: {DATABASES["default"]["NAME"]!r}', file=__sys.stderr)
 # Download map via geotiler in inventory.gpx_tools.gpxpy2map.generate_map
 MAP_DOWNLOAD = True
 
-if __os.environ.get('AUTOLOGIN') == '1':
+if __os.environ.get('AUTOLOGIN') != '0':
     # Auto login for dev. server:
     MIDDLEWARE = MIDDLEWARE.copy()
     MIDDLEWARE += ['django_tools.middlewares.local_auto_login.AlwaysLoggedInAsSuperUserMiddleware']

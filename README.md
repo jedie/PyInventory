@@ -148,6 +148,7 @@ please use YunoHost ;)
 
 
 * [**dev**](https://github.com/jedie/PyInventory/compare/v0.19.2...main)
+  * Bugfix the "parent" field on location admin page
   * tbc
 * [v0.19.2 - 17.08.2023](https://github.com/jedie/PyInventory/compare/v0.19.1...v0.19.2)
   * Bugfix packaging and missing "requests" dependencies

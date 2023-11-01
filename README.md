@@ -161,7 +161,8 @@ To make a new release, do this:
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
-* [**dev**](https://github.com/jedie/PyInventory/compare/v0.19.2...main)
+* [v0.19.3](https://github.com/jedie/PyInventory/compare/v0.19.2...v0.19.3)
+  * 2023-11-01 - Auto generate README history
   * 2023-11-01 - Update requirements
   * 2023-10-31 - Bugfix the "parent" field on location admin page
   * 2023-10-31 - Bugfix local test settings for development

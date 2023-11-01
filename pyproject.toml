@@ -32,7 +32,7 @@ dependencies = [
 ]
 [project.optional-dependencies]
 dev = [
-    "manage_django_project>=0.6.0",  # https://github.com/jedie/manage_django_project
+    "manage_django_project>=0.6.4",  # https://github.com/jedie/manage_django_project
 
     "cmd2_ext_test",  # https://github.com/python-cmd2/cmd2/tree/master/plugins/ext_test
     "playwright",  # https://playwright.dev/python/docs/intro

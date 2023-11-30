@@ -161,6 +161,8 @@ To make a new release, do this:
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
+* [**dev**](https://github.com/jedie/PyInventory/compare/v0.19.3...main)
+  * 2023-11-30 - Presetup unittest configuration
 * [v0.19.3](https://github.com/jedie/PyInventory/compare/v0.19.2...v0.19.3)
   * 2023-11-01 - Auto generate README history
   * 2023-11-01 - Update requirements
@@ -175,6 +177,9 @@ To make a new release, do this:
 * [v0.19.1](https://github.com/jedie/PyInventory/compare/v0.19.0...v0.19.1)
   * 2023-08-17 - Update requirements
   * 2023-08-17 - Update from project template
+
+<details><summary>Expand older history entries ...</summary>
+
 * [v0.19.0](https://github.com/jedie/PyInventory/compare/v0.18.1...v0.19.0)
   * 2023-07-21 - Update README.md
   * 2023-07-21 - Migrate from "poetry-python" to "managed-django-project"
@@ -184,9 +189,6 @@ To make a new release, do this:
   * 2023-07-21 - Update to Django 4.2
   * 2023-07-21 - FIXME: Remove '_reorder_' from ItemModelAdmin.list_display
   * 2023-07-20 - Change item lust: move "producer" to first
-
-<details><summary>Expand older history entries ...</summary>
-
 * [v0.18.1](https://github.com/jedie/PyInventory/compare/v0.18.0...v0.18.1)
   * 2023-07-15 - Update requirements + fix test snapshot
   * 2023-06-11 - Update requirements

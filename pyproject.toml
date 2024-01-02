@@ -8,12 +8,12 @@ authors = [
     {name = 'Jens Diemer', email = 'PyInventory@jensdiemer.de'}
 ]
 keywords=['inventory','django']
-requires-python = ">=3.9,<4" # Keep Python 3.9 until Yunohost contains a newer Python Version ;)
+requires-python = ">=3.9" # Keep Python 3.9 until Yunohost contains a newer Python Version ;)
 dependencies = [
     "colorlog",  # https://github.com/borntyping/python-colorlog
     "gunicorn",  # https://github.com/benoimyproject.wsgitc/gunicorn
 
-    "django",
+    "django>=4.2,<4.3", # 5.0 needs Python >3.9 !
 
     "django-import-export",  # https://github.com/django-import-export/django-import-export
     "django-dbbackup",  # https://github.com/django-dbbackup/django-dbbackup
@@ -32,7 +32,7 @@ dependencies = [
 ]
 [project.optional-dependencies]
 dev = [
-    "manage_django_project>=0.6.4",  # https://github.com/jedie/manage_django_project
+    "manage_django_project!=0.7.0",  # https://github.com/jedie/manage_django_project
 
     "cmd2_ext_test",  # https://github.com/python-cmd2/cmd2/tree/master/plugins/ext_test
     "playwright",  # https://playwright.dev/python/docs/intro

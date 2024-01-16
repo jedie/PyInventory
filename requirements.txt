@@ -16,9 +16,9 @@ bx-django-utils==70 \
     --hash=sha256:41c8bd54c0eab07ce914ec7bf3eca115324fba577b158a89d827b4312a4e6a98 \
     --hash=sha256:dfc2db1ef019c51ea446687dff1602f75984f3bc410426d3c3ff34d2fab58f1a
     # via PyInventory (pyproject.toml)
-bx-py-utils==90 \
-    --hash=sha256:2c15b3b7d8a8e4f0bc6815517fb732fb303ce6878c3e45bbd60633b2811bf0ea \
-    --hash=sha256:bb8aa9bd59b6c733cc8fe65340a98bbff026bbc5aa3c3c01324f27d84b8c9302
+bx-py-utils==91 \
+    --hash=sha256:d7b595ccafd1b06165d76086760864353b8f561db23398a383e0a49bbd0bcb7d \
+    --hash=sha256:feb75b3b2cdadac5ca034a6b874490f7516d9bcf4980854a0d48703289c387c9
     # via
     #   PyInventory (pyproject.toml)
     #   bx-django-utils
@@ -157,17 +157,17 @@ django-ckeditor==6.7.0 \
     --hash=sha256:0489f7a6ae93360d328f77cea17c04891103cbdfa6c962af386bbe47e811671b \
     --hash=sha256:73399fb8f56f565e7519b57adbd7c585623db2cdc8c75666f56918d3eecf7906
     # via PyInventory (pyproject.toml)
-django-dbbackup==4.0.2 \
-    --hash=sha256:1874d684abc22260972a67668a6db3331b24d7e1e8af89eaffdcd61eb27dbc2a \
-    --hash=sha256:3ccde831f1a8268fb031b37a8e7e2de3abb556623023af1e859cd7104c09ea2a
+django-dbbackup==4.1.0 \
+    --hash=sha256:c411d38d0f8e60ab3254017278c14ebd75d4001b5634fc73be7fbe8a5260583b \
+    --hash=sha256:c539b5246b429a22a8efadbab3719ee6b8eda45c66c4ff6592056c590d51c782
     # via PyInventory (pyproject.toml)
 django-debug-toolbar==4.2.0 \
     --hash=sha256:af99128c06e8e794479e65ab62cc6c7d1e74e1c19beb44dcbf9bad7a9c017327 \
     --hash=sha256:bc7fdaafafcdedefcc67a4a5ad9dac96efd6e41db15bc74d402a54a2ba4854dc
     # via PyInventory (pyproject.toml)
-django-import-export==3.3.5 \
-    --hash=sha256:56b4196d85677989f3d6b15863c23ac351b21d973e53ddaa226f62510acdc034 \
-    --hash=sha256:81bd7a6b35c0ee3c78b99e2bedb7f320c13d551d9482f968864c83f8a24daf58
+django-import-export==3.3.6 \
+    --hash=sha256:12edb7ba1f7f9b392d0257a2ae68086020e53ab2c7bd2b21a56ec17fbb83826b \
+    --hash=sha256:b1b7385627ed61063cd9764e8c19cce3ce8945626f7953262df8162b0feec376
     # via PyInventory (pyproject.toml)
 django-js-asset==2.2.0 \
     --hash=sha256:0c57a82cae2317e83951d956110ce847f58ff0cdc24e314dbc18b35033917e94 \

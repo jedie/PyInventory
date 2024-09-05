@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     'bx_django_utils',  # https://github.com/boxine/bx_django_utils
     'import_export',  # https://github.com/django-import-export/django-import-export
     'dbbackup',  # https://github.com/django-dbbackup/django-dbbackup
-    'django_prose_editor',  # https://github.com/matthiask/django-prose-editor/
+    'tinymce',  # https://github.com/jazzband/django-tinymce/
     'reversion',  # https://github.com/etianen/django-reversion
     'reversion_compare',  # https://github.com/jedie/django-reversion-compare
     'tagulous',  # https://github.com/radiac/django-tagulous
@@ -177,15 +177,34 @@ DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
 DBBACKUP_STORAGE_OPTIONS = {'location': str(__Path(BASE_PATH, 'backups'))}
 
 # _____________________________________________________________________________
-# django-prose-editor
+# django-tinymce
 
-PROSE_EDITOR_DEFAULT_CONFIG = {
-    "types": None,  # Allow all nodes and marks
-    "history": True,  # Enable undo and redo
-    "html": True,  # Add a button which allows editing the raw HTML
-    "typographic": True,  # Highlight typographic characters
-    "headingLevels": [1, 2, 3, 4, 5],  # Available heading levels
+TINYMCE_DEFAULT_CONFIG = {
+    # https://www.tiny.cloud/docs/tinymce/latest/editor-size-options/
+    'height': 500,
+    'width': '90%',
+    'resize': 'both',
+    #
+    # https://www.tiny.cloud/docs/tinymce/latest/menus-configuration-options/
+    'menubar': 'edit view insert format tools table help',
+    'browser_spellcheck': True,
+    #
+    # https://www.tiny.cloud/docs/tinymce/latest/plugins/
+    'plugins': (
+        'advlist,autolink,lists,link,image,charmap,preview,anchor,'
+        'searchreplace,visualblocks,code,fullscreen,insertdatetime,media,table,'
+        'help,wordcount'
+    ),
+    #
+    # https://www.tiny.cloud/docs/tinymce/latest/available-toolbar-buttons/
+    'toolbar': (
+        'undo redo | blocks | '
+        'bold italic backcolor | alignleft aligncenter '
+        'alignright alignjustify | bullist numlist outdent indent | '
+        'removeformat'
+    ),
 }
+
 
 # _____________________________________________________________________________
 # http://radiac.net/projects/django-tagulous/documentation/installation/#settings

@@ -143,9 +143,11 @@ please use YunoHost ;)
 * Remove `poetry`, `pytest` and `devshell`
 * Use `pip-tools`, `unittests` and [manage_django_project](https://github.com/jedie/manage_django_project)
 
-### v0.20.0
+### v0.20
 
 Because of security reasons, the `ckeditor` package was replaced by `prose-editor`.
+
+In 0.20.1 we switched to https://github.com/jazzband/django-tinymce/ because `prose-editor` has no table support.
 
 ## Make new release
 
@@ -164,6 +166,8 @@ To make a new release, do this:
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
+* [v0.20.1](https://github.com/jedie/PyInventory/compare/v0.20.0...v0.20.1)
+  * 2024-09-05 - switched to https://github.com/jazzband/django-tinymce/
 * [v0.20.0](https://github.com/jedie/PyInventory/compare/v0.19.3...v0.20.0)
   * 2024-09-05 - Replace django-ckeditor with django-prose-editor and fix tests
   * 2024-09-05 - Project updates
@@ -180,12 +184,12 @@ To make a new release, do this:
 * [v0.19.2](https://github.com/jedie/PyInventory/compare/v0.19.1...v0.19.2)
   * 2023-08-17 - Bugfix packaging by adding "requests" as normal dependencies
   * 2023-08-17 - Bugfix packageing by adding "requests" as normal dependencies
-* [v0.19.1](https://github.com/jedie/PyInventory/compare/v0.19.0...v0.19.1)
-  * 2023-08-17 - Update requirements
-  * 2023-08-17 - Update from project template
 
 <details><summary>Expand older history entries ...</summary>
 
+* [v0.19.1](https://github.com/jedie/PyInventory/compare/v0.19.0...v0.19.1)
+  * 2023-08-17 - Update requirements
+  * 2023-08-17 - Update from project template
 * [v0.19.0](https://github.com/jedie/PyInventory/compare/v0.18.1...v0.19.0)
   * 2023-07-21 - Update README.md
   * 2023-07-21 - Migrate from "poetry-python" to "managed-django-project"

@@ -20,7 +20,7 @@ dependencies = [
     "django-dbbackup",  # https://github.com/django-dbbackup/django-dbbackup
     "django-tools",  # https://github.com/jedie/django-tools/
     "django-reversion-compare",  # https://github.com/jedie/django-reversion-compare/
-    "django-prose-editor[sanitize]",  # https://github.com/matthiask/django-prose-editor/
+    "django-tinymce",  # https://github.com/jazzband/django-tinymce/
     "django-tagulous",  # https://github.com/radiac/django-tagulous
     "django-admin-sortable2",  # https://github.com/jrief/django-admin-sortable2
     "pillow",  # https://github.com/jrief/django-admin-sortable2

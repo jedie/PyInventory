@@ -143,11 +143,10 @@ django==5.1.1 \
     #   django-dbbackup
     #   django-debug-toolbar
     #   django-import-export
-    #   django-js-asset
-    #   django-prose-editor
     #   django-reversion
     #   django-reversion-compare
     #   django-tagulous
+    #   django-tinymce
     #   django-tools
 django-admin-sortable2==2.2.2 \
     --hash=sha256:efb28eed633e3a008c6938a887096a9887a213628a39458dc748d654f8f12d5c \
@@ -165,14 +164,6 @@ django-import-export==4.1.1 \
     --hash=sha256:16ecc5a9f0df46bde6eb278a3e65ebda0ee1db55656f36440e9fb83f40ab85a3 \
     --hash=sha256:730ae2443a02b1ba27d8dba078a27ae9123adfcabb78161b4f130843607b3df9
     # via PyInventory (pyproject.toml)
-django-js-asset==2.2.0 \
-    --hash=sha256:0c57a82cae2317e83951d956110ce847f58ff0cdc24e314dbc18b35033917e94 \
-    --hash=sha256:7ef3e858e13d06f10799b56eea62b1e76706f42cf4e709be4e13356bc0ae30d8
-    # via django-prose-editor
-django-prose-editor==0.8.0 \
-    --hash=sha256:b3924d489c7ae37f3ce856150afdbaf034ef11cee149af236c5204462577665c \
-    --hash=sha256:e0313a26be6bd9db313d5106c6c0dac78bb75736d7a987302215363c6eec596e
-    # via PyInventory (pyproject.toml)
 django-reversion==5.1.0 \
     --hash=sha256:084d4f117d9e2b4e8dfdfaad83ebb34410a03eed6071c96089e6811fdea82ad3 \
     --hash=sha256:3309821e5b6fceedcce6b6975f1a9c7fab6ae7c7d0e1276a90e345946fa0dcb8
@@ -184,6 +175,10 @@ django-reversion-compare==0.17.0 \
 django-tagulous==2.1.0 \
     --hash=sha256:5ebba5a51f049f6df5f9d2a30eef431c0bf7cd35758aa0a42fc3351be4d239cd \
     --hash=sha256:f629b54ad720052092785b0dce056dc6a68c7b63f8126075af9c25848b250bfd
+    # via PyInventory (pyproject.toml)
+django-tinymce==4.1.0 \
+    --hash=sha256:02e3b70e940fd299f0fbef4315aee5c185664e1eb8cd396b176963954e4357c9 \
+    --hash=sha256:9804836e6d2b08de3b03a27c100f8c2e9633549913eff8b323678a10cd48b94e
     # via PyInventory (pyproject.toml)
 django-tools==0.56.2 \
     --hash=sha256:29c25be814d74cd9f554d7d45bc205f5570e5feaa4232cbd09cc913c46b20c07 \
@@ -211,24 +206,6 @@ mdurl==0.1.2 \
     --hash=sha256:84008a41e51615a49fc9966191ff91509e3c40b939176e643fd50a5c2196b8f8 \
     --hash=sha256:bb413d29f5eea38f31dd4754dd7377d4465116fb207585f97bf925588687c1ba
     # via markdown-it-py
-nh3==0.2.18 \
-    --hash=sha256:0411beb0589eacb6734f28d5497ca2ed379eafab8ad8c84b31bb5c34072b7164 \
-    --hash=sha256:14c5a72e9fe82aea5fe3072116ad4661af5cf8e8ff8fc5ad3450f123e4925e86 \
-    --hash=sha256:19aaba96e0f795bd0a6c56291495ff59364f4300d4a39b29a0abc9cb3774a84b \
-    --hash=sha256:34c03fa78e328c691f982b7c03d4423bdfd7da69cd707fe572f544cf74ac23ad \
-    --hash=sha256:36c95d4b70530b320b365659bb5034341316e6a9b30f0b25fa9c9eff4c27a204 \
-    --hash=sha256:3a157ab149e591bb638a55c8c6bcb8cdb559c8b12c13a8affaba6cedfe51713a \
-    --hash=sha256:42c64511469005058cd17cc1537578eac40ae9f7200bedcfd1fc1a05f4f8c200 \
-    --hash=sha256:5f36b271dae35c465ef5e9090e1fdaba4a60a56f0bb0ba03e0932a66f28b9189 \
-    --hash=sha256:6955369e4d9f48f41e3f238a9e60f9410645db7e07435e62c6a9ea6135a4907f \
-    --hash=sha256:7b7c2a3c9eb1a827d42539aa64091640bd275b81e097cd1d8d82ef91ffa2e811 \
-    --hash=sha256:8ce0f819d2f1933953fca255db2471ad58184a60508f03e6285e5114b6254844 \
-    --hash=sha256:94a166927e53972a9698af9542ace4e38b9de50c34352b962f4d9a7d4c927af4 \
-    --hash=sha256:a7f1b5b2c15866f2db413a3649a8fe4fd7b428ae58be2c0f6bca5eefd53ca2be \
-    --hash=sha256:c8b3a1cebcba9b3669ed1a84cc65bf005728d2f0bc1ed2a6594a992e817f3a50 \
-    --hash=sha256:de3ceed6e661954871d6cd78b410213bdcb136f79aafe22aa7182e028b8c7307 \
-    --hash=sha256:f0eca9ca8628dbb4e916ae2491d72957fdd35f7a5d326b7032a345f111ac07fe
-    # via django-prose-editor
 packaging==24.1 \
     --hash=sha256:026ed72c8ed3fcce5bf8950572258698927fd1dbda10a5e981cdf0ac37f4f002 \
     --hash=sha256:5b8f2217dbdbd2f7f384c41c628544e6d52f2d0f53c6d0c3ea61aa5d1d7ff124

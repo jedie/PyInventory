@@ -3,13 +3,12 @@ from pathlib import Path
 
 import tagulous.models
 from bx_django_utils.filename import clean_filename
-from django.conf import settings
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
-from django_prose_editor.sanitized import SanitizedProseEditorField
 from django_tools.model_version_protect.models import VersionProtectBaseModel
 from django_tools.serve_media_app.models import user_directory_path
+from tinymce.models import HTMLField
 
 from inventory.models.base import BaseItemAttachmentModel, BaseParentTreeModel
 from inventory.models.links import BaseLink
@@ -47,10 +46,9 @@ class ItemModel(BaseParentTreeModel, VersionProtectBaseModel):
         verbose_name=_('ItemModel.producer.verbose_name'),
         help_text=_('ItemModel.producer.help_text'),
     )
-    description = SanitizedProseEditorField(
+    description = HTMLField(
         blank=True,
         null=True,
-        config=settings.PROSE_EDITOR_DEFAULT_CONFIG,
         verbose_name=_('ItemModel.description.verbose_name'),
         help_text=_('ItemModel.description.help_text'),
     )

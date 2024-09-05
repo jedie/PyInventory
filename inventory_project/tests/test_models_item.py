@@ -1,24 +1,23 @@
-from django.forms import modelform_factory
+from django.forms import CharField, modelform_factory
 from django.test import TestCase
-from django_prose_editor.fields import ProseEditorFormField
-from django_prose_editor.sanitized import SanitizedProseEditorField
-from django_prose_editor.widgets import ProseEditorWidget
+from tinymce.models import HTMLField
+from tinymce.widgets import TinyMCE
 
 from inventory.models import ItemModel
 
 
 class ItemModelTestCase(TestCase):
-    def test_item_description_prose_editor(self):
+    def test_item_description_model_field(self):
         item = ItemModel()
         opts = item._meta
         model_description_field = opts.get_field('description')
-        self.assertIsInstance(model_description_field, SanitizedProseEditorField)
+        self.assertIsInstance(model_description_field, HTMLField)
 
-    def test_item_description_form_prose_editor(self):
+    def test_item_description_form_fieldr(self):
         ItemForm = modelform_factory(ItemModel, fields=('description',))
         form = ItemForm()
         form_field = form.fields['description']
-        self.assertIsInstance(form_field, ProseEditorFormField)
+        self.assertIsInstance(form_field, CharField)
         widget = form_field.widget
 
-        self.assertIsInstance(widget, ProseEditorWidget)
+        self.assertIsInstance(widget, TinyMCE)

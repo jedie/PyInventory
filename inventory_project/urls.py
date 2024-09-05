@@ -10,6 +10,7 @@ admin.autodiscover()
 urlpatterns = [  # Don't use i18n_patterns() here
     path('admin/', admin.site.urls),
     re_path(r'^$', RedirectView.as_view(pattern_name='admin:index')),
+    path('tinymce/', include('tinymce.urls')),  # TODO: check permissions?
     path(settings.MEDIA_URL.lstrip('/'), include('django_tools.serve_media_app.urls')),
 ]
 

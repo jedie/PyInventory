@@ -2,7 +2,7 @@
 
 import uuid
 
-import ckeditor_uploader.fields
+
 import django.db.models.deletion
 import django_tools.serve_media_app.models
 import tagulous.models.fields
@@ -194,7 +194,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'memo',
-                    ckeditor_uploader.fields.RichTextUploadingField(
+                    models.TextField(
                         blank=True,
                         help_text='MemoModel.description.help_text',
                         null=True,

@@ -5,10 +5,6 @@ adminsortable2
 ==============
 reorder
 
-ckeditor_uploader
-=================
-generateckeditorthumbnails
-
 dbbackup
 ========
 dbbackup  dbrestore  listbackups  mediabackup  mediarestore
@@ -44,9 +40,9 @@ seed_data  tree
 
 manage_django_project
 =====================
-code_style  playwright    run_dev_server  update_req
-coverage    project_info  safety          update_test_snapshot_files
-install     publish       tox
+code_style  pip_audit     publish         update_req
+coverage    playwright    run_dev_server  update_test_snapshot_files
+install     project_info  tox
 
 reversion
 =========

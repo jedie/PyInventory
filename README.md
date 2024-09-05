@@ -143,6 +143,9 @@ please use YunoHost ;)
 * Remove `poetry`, `pytest` and `devshell`
 * Use `pip-tools`, `unittests` and [manage_django_project](https://github.com/jedie/manage_django_project)
 
+### v0.20.0
+
+Because of security reasons, the `ckeditor` package was replaced by `prose-editor`.
 
 ## Make new release
 
@@ -161,7 +164,8 @@ To make a new release, do this:
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
-* [**dev**](https://github.com/jedie/PyInventory/compare/v0.19.3...main)
+* [v0.20.0](https://github.com/jedie/PyInventory/compare/v0.19.3...v0.20.0)
+  * 2024-09-05 - Replace django-ckeditor with django-prose-editor and fix tests
   * 2024-09-05 - Project updates
   * 2024-01-16 - Use typeguard in tests
   * 2024-01-16 - Update requirements

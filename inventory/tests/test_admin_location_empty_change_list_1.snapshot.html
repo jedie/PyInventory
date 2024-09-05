@@ -28,7 +28,7 @@
   <div class="module filtered" id="changelist">
    <div class="changelist-form-container">
     <div id="toolbar">
-     <form id="changelist-search" method="get">
+     <form id="changelist-search" method="get" role="search">
       <div>
        <!-- DIV needed for valid HTML -->
        <label for="searchbar">
@@ -46,10 +46,17 @@
      </p>
     </form>
    </div>
-   <div id="changelist-filter">
-    <h2>
+   <nav aria-labelledby="changelist-filter-header" id="changelist-filter">
+    <h2 id="changelist-filter-header">
      Filter
     </h2>
+    <div id="changelist-filter-extra-actions">
+     <h3>
+      <a class="viewlink" href="?_facets=True">
+       Show counts
+      </a>
+     </h3>
+    </div>
     <details data-filter-title="Limit tree depth" open="">
      <summary>
       By Limit tree depth
@@ -77,7 +84,7 @@
       </li>
      </ul>
     </details>
-   </div>
+   </nav>
   </div>
  </div>
  <br class="clear"/>

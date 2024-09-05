@@ -18,7 +18,7 @@
   <div class="module filtered" id="changelist">
    <div class="changelist-form-container">
     <div id="toolbar">
-     <form id="changelist-search" method="get">
+     <form id="changelist-search" method="get" role="search">
       <div>
        <!-- DIV needed for valid HTML -->
        <label for="searchbar">
@@ -68,7 +68,7 @@
          <th class="action-checkbox-column" scope="col">
           <div class="text">
            <span>
-            <input id="action-toggle" type="checkbox"/>
+            <input aria-label="Select all objects on this page for an action" id="action-toggle" type="checkbox"/>
            </span>
           </div>
           <div class="clear">
@@ -139,10 +139,11 @@
        <tbody>
         <tr>
          <td class="action-checkbox">
-          <input class="action-select" name="_selected_action" type="checkbox" value="00000000-0001-0000-0000-000000000000"/>
+          <input aria-label="Select this object for an action - main item 1" class="action-select" name="_selected_action" type="checkbox" value="00000000-0001-0000-0000-000000000000"/>
          </td>
          <th class="field-_tagulous_display_producer">
           <a href="/admin/inventory/itemmodel/00000000-0001-0000-0000-000000000000/change/">
+           -
           </a>
          </th>
          <td class="field-item">
@@ -153,6 +154,7 @@
           </a>
          </td>
          <td class="field-_tagulous_display_kind">
+          -
          </td>
          <td class="field-location nowrap">
           -
@@ -166,10 +168,11 @@
         </tr>
         <tr>
          <td class="action-checkbox">
-          <input class="action-select" name="_selected_action" type="checkbox" value="00000000-0001-0001-0000-000000000000"/>
+          <input aria-label="Select this object for an action - main item 1 › sub item 1.1" class="action-select" name="_selected_action" type="checkbox" value="00000000-0001-0001-0000-000000000000"/>
          </td>
          <th class="field-_tagulous_display_producer">
           <a href="/admin/inventory/itemmodel/00000000-0001-0001-0000-000000000000/change/">
+           -
           </a>
          </th>
          <td class="field-item">
@@ -181,6 +184,7 @@
           </a>
          </td>
          <td class="field-_tagulous_display_kind">
+          -
          </td>
          <td class="field-location nowrap">
           -
@@ -194,10 +198,11 @@
         </tr>
         <tr>
          <td class="action-checkbox">
-          <input class="action-select" name="_selected_action" type="checkbox" value="00000000-0001-0002-0000-000000000000"/>
+          <input aria-label="Select this object for an action - main item 1 › sub item 1.2" class="action-select" name="_selected_action" type="checkbox" value="00000000-0001-0002-0000-000000000000"/>
          </td>
          <th class="field-_tagulous_display_producer">
           <a href="/admin/inventory/itemmodel/00000000-0001-0002-0000-000000000000/change/">
+           -
           </a>
          </th>
          <td class="field-item">
@@ -209,6 +214,7 @@
           </a>
          </td>
          <td class="field-_tagulous_display_kind">
+          -
          </td>
          <td class="field-location nowrap">
           -
@@ -222,10 +228,11 @@
         </tr>
         <tr>
          <td class="action-checkbox">
-          <input class="action-select" name="_selected_action" type="checkbox" value="00000000-0002-0000-0000-000000000000"/>
+          <input aria-label="Select this object for an action - main item 2" class="action-select" name="_selected_action" type="checkbox" value="00000000-0002-0000-0000-000000000000"/>
          </td>
          <th class="field-_tagulous_display_producer">
           <a href="/admin/inventory/itemmodel/00000000-0002-0000-0000-000000000000/change/">
+           -
           </a>
          </th>
          <td class="field-item">
@@ -236,6 +243,7 @@
           </a>
          </td>
          <td class="field-_tagulous_display_kind">
+          -
          </td>
          <td class="field-location nowrap">
           -
@@ -249,10 +257,11 @@
         </tr>
         <tr>
          <td class="action-checkbox">
-          <input class="action-select" name="_selected_action" type="checkbox" value="00000000-0002-0001-0000-000000000000"/>
+          <input aria-label="Select this object for an action - main item 2 › sub item 2.1" class="action-select" name="_selected_action" type="checkbox" value="00000000-0002-0001-0000-000000000000"/>
          </td>
          <th class="field-_tagulous_display_producer">
           <a href="/admin/inventory/itemmodel/00000000-0002-0001-0000-000000000000/change/">
+           -
           </a>
          </th>
          <td class="field-item">
@@ -264,6 +273,7 @@
           </a>
          </td>
          <td class="field-_tagulous_display_kind">
+          -
          </td>
          <td class="field-location nowrap">
           -
@@ -277,10 +287,11 @@
         </tr>
         <tr>
          <td class="action-checkbox">
-          <input class="action-select" name="_selected_action" type="checkbox" value="00000000-0002-0002-0000-000000000000"/>
+          <input aria-label="Select this object for an action - main item 2 › sub item 2.2" class="action-select" name="_selected_action" type="checkbox" value="00000000-0002-0002-0000-000000000000"/>
          </td>
          <th class="field-_tagulous_display_producer">
           <a href="/admin/inventory/itemmodel/00000000-0002-0002-0000-000000000000/change/">
+           -
           </a>
          </th>
          <td class="field-item">
@@ -292,6 +303,7 @@
           </a>
          </td>
          <td class="field-_tagulous_display_kind">
+          -
          </td>
          <td class="field-location nowrap">
           -
@@ -311,10 +323,17 @@
      </p>
     </form>
    </div>
-   <div id="changelist-filter">
-    <h2>
+   <nav aria-labelledby="changelist-filter-header" id="changelist-filter">
+    <h2 id="changelist-filter-header">
      Filter
     </h2>
+    <div id="changelist-filter-extra-actions">
+     <h3>
+      <a class="viewlink" href="?_facets=True">
+       Show counts
+      </a>
+     </h3>
+    </div>
     <details data-filter-title="Limit tree depth" open="">
      <summary>
       By Limit tree depth
@@ -342,7 +361,7 @@
       </li>
      </ul>
     </details>
-   </div>
+   </nav>
   </div>
  </div>
  <br class="clear"/>

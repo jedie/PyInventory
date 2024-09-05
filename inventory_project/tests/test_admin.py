@@ -1,4 +1,4 @@
-from bx_django_utils.test_utils.html_assertion import HtmlAssertionMixin
+from bx_django_utils.test_utils.html_assertion import HtmlAssertionMixin, assert_html_response_snapshot
 from django.contrib.auth.models import User
 from django.test import TestCase
 from model_bakery import baker
@@ -12,12 +12,12 @@ class AdminAnonymousTests(HtmlAssertionMixin, TestCase):
     """
 
     def test_login_en(self):
-        response = self.client.get("/en/admin/", HTTP_ACCEPT_LANGUAGE="en")
-        self.assertRedirects(response, expected_url="/en/admin/login/?next=/en/admin/")
+        response = self.client.get('/admin/', secure=True, HTTP_ACCEPT_LANGUAGE='en')
+        self.assertRedirects(response, expected_url='/admin/login/?next=/admin/', fetch_redirect_response=False)
 
     def test_login_de(self):
-        response = self.client.get("/de/admin/", HTTP_ACCEPT_LANGUAGE="de")
-        self.assertRedirects(response, expected_url="/de/admin/login/?next=/de/admin/")
+        response = self.client.get('/admin/', secure=True, HTTP_ACCEPT_LANGUAGE='de')
+        self.assertRedirects(response, expected_url='/admin/login/?next=/admin/', fetch_redirect_response=False)
 
 
 class AdminLoggedinTests(HtmlAssertionMixin, TestCase):
@@ -33,11 +33,11 @@ class AdminLoggedinTests(HtmlAssertionMixin, TestCase):
     def test_staff_admin_index(self):
         self.client.force_login(self.staffuser)
 
-        response = self.client.get("/en/admin/", HTTP_ACCEPT_LANGUAGE="en")
+        response = self.client.get("/admin/", secure=True, HTTP_ACCEPT_LANGUAGE="en")
         self.assert_html_parts(
             response,
             parts=(
-                f"<title>Site administration | your-cool-package v{__version__}</title>",
+                f"<title>Site administration | PyInventory v{__version__}</title>",
                 "<h1>Site administration</h1>",
                 "<strong>staff_test_user</strong>",
                 "<p>You don’t have permission to view or edit anything.</p>",
@@ -47,7 +47,7 @@ class AdminLoggedinTests(HtmlAssertionMixin, TestCase):
 
     def test_superuser_admin_index(self):
         self.client.force_login(self.superuser)
-        response = self.client.get("/en/admin/", HTTP_ACCEPT_LANGUAGE="en")
+        response = self.client.get("/admin/", secure=True, HTTP_ACCEPT_LANGUAGE="en")
         self.assert_html_parts(
             response,
             parts=(
@@ -59,3 +59,4 @@ class AdminLoggedinTests(HtmlAssertionMixin, TestCase):
             ),
         )
         self.assertTemplateUsed(response, template_name="admin/index.html")
+        assert_html_response_snapshot(response, validate=False)

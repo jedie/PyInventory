@@ -18,10 +18,10 @@ class ManagementCommandTestCase(TestCase):
         management.call_command(tree.Command(), stdout=output)
 
         output = output.getvalue()
-        assert 'Repair tree information' in output
+        self.assertIn('Repair tree information', output)
 
-        assert "Old information about model: 'Item'" in output
-        assert "{'level': 1, 'path_str': 'OLD', 'path': ['OLD'], 'name': 'Foo Bar'}" in output
+        self.assertIn("Old information about model: 'Item'", output)
+        self.assertIn("{'level': 1, 'path_str': 'OLD', 'path': ['OLD'], 'name': 'Foo Bar'}", output)
 
-        assert "New information about model: 'Item'" in output
-        assert "{'level': 1, 'path_str': 'foobar', 'path': ['Foo Bar'], 'name': 'Foo Bar'}" in output
+        self.assertIn("New information about model: 'Item'", output)
+        self.assertIn("{'level': 1, 'path_str': 'foobar', 'path': ['Foo Bar'], 'name': 'Foo Bar'}", output)

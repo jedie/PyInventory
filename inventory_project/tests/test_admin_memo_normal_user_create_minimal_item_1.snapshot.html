@@ -6,16 +6,51 @@
   <form enctype="multipart/form-data" id="memomodel_form" method="post" novalidate="">
    MockedCsrfTokenNode
    <div>
-    <fieldset class="module aligned collapse">
-     <h2>
-      Internals
-     </h2>
-     <div class="form-row field-id field-version">
-      <div class="flex-container form-multiline">
+    <fieldset aria-labelledby="fieldset-0-internals-0-heading" class="module aligned collapse">
+     <details>
+      <summary>
+       <h2 class="fieldset-heading" id="fieldset-0-internals-0-heading">
+        Internals
+       </h2>
+      </summary>
+      <div class="form-row field-id field-version">
+       <div class="flex-container form-multiline">
+        <div>
+         <div class="flex-container fieldBox field-id">
+          <label>
+           ID:
+          </label>
+          <div class="readonly">
+           -
+          </div>
+         </div>
+         <div class="help">
+          <div>
+           ID
+          </div>
+         </div>
+        </div>
+        <div>
+         <div class="flex-container fieldBox field-version">
+          <label class="required inline" for="id_version">
+           Version:
+          </label>
+          <input aria-describedby="id_version_helptext" id="id_version" name="version" required="" type="hidden" value="0"/>
+          0
+         </div>
+         <div class="help" id="id_version_helptext">
+          <div>
+           Internal version number of this entry. Used to protect the overwriting of an older entry.
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="form-row field-user">
        <div>
-        <div class="flex-container fieldBox field-id">
+        <div class="flex-container">
          <label>
-          ID:
+          User:
          </label>
          <div class="readonly">
           -
@@ -23,85 +58,58 @@
         </div>
         <div class="help">
          <div>
-          ID
+          The user who is the owner of this entry and can manage it (will be set automatically)
          </div>
         </div>
        </div>
+      </div>
+     </details>
+    </fieldset>
+    <fieldset aria-labelledby="fieldset-0-meta-1-heading" class="module aligned collapse">
+     <details>
+      <summary>
+       <h2 class="fieldset-heading" id="fieldset-0-meta-1-heading">
+        Meta
+       </h2>
+      </summary>
+      <div class="form-row field-create_dt">
        <div>
-        <div class="flex-container fieldBox field-version">
-         <label class="required inline" for="id_version">
-          Version:
+        <div class="flex-container">
+         <label>
+          Create date:
          </label>
-         <input id="id_version" name="version" required="" type="hidden" value="0"/>
-         0
+         <div class="readonly">
+          -
+         </div>
         </div>
-        <div class="help" id="id_version_helptext">
+        <div class="help">
          <div>
-          Internal version number of this entry. Used to protect the overwriting of an older entry.
+          (will be set automatically)
          </div>
         </div>
        </div>
       </div>
-     </div>
-     <div class="form-row field-user">
-      <div>
-       <div class="flex-container">
-        <label>
-         User:
-        </label>
-        <div class="readonly">
-         -
+      <div class="form-row field-update_dt">
+       <div>
+        <div class="flex-container">
+         <label>
+          Last update:
+         </label>
+         <div class="readonly">
+          -
+         </div>
         </div>
-       </div>
-       <div class="help">
-        <div>
-         The user who is the owner of this entry and can manage it (will be set automatically)
+        <div class="help">
+         <div>
+          (will be set automatically)
+         </div>
         </div>
        </div>
       </div>
-     </div>
+     </details>
     </fieldset>
-    <fieldset class="module aligned collapse">
-     <h2>
-      Meta
-     </h2>
-     <div class="form-row field-create_dt">
-      <div>
-       <div class="flex-container">
-        <label>
-         Create date:
-        </label>
-        <div class="readonly">
-         -
-        </div>
-       </div>
-       <div class="help">
-        <div>
-         (will be set automatically)
-        </div>
-       </div>
-      </div>
-     </div>
-     <div class="form-row field-update_dt">
-      <div>
-       <div class="flex-container">
-        <label>
-         Last update:
-        </label>
-        <div class="readonly">
-         -
-        </div>
-       </div>
-       <div class="help">
-        <div>
-         (will be set automatically)
-        </div>
-       </div>
-      </div>
-     </div>
-    </fieldset>
-    <fieldset class="module aligned">
-     <h2>
+    <fieldset aria-labelledby="fieldset-0-basic-2-heading" class="module aligned">
+     <h2 class="fieldset-heading" id="fieldset-0-basic-2-heading">
       Basic
      </h2>
      <div class="form-row field-name">
@@ -110,7 +118,7 @@
         <label class="required" for="id_name">
          Name:
         </label>
-        <input class="vTextField" id="id_name" maxlength="255" name="name" required="" type="text"/>
+        <input aria-describedby="id_name_helptext" class="vTextField" id="id_name" maxlength="255" name="name" required="" type="text"/>
        </div>
        <div class="help" id="id_name_helptext">
         <div>
@@ -125,9 +133,8 @@
         <label for="id_memo">
          Description:
         </label>
-        <div class="django-ckeditor-widget" data-field-id="id_memo" style="display: inline-block;">
-         <textarea cols="40" data-config='{"skin": "moono-lisa", "toolbar_Basic": [["Source", "-", "Bold", "Italic"]], "toolbar_Full": [["Styles", "Format", "Bold", "Italic", "Underline", "Strike", "SpellChecker", "Undo", "Redo"], ["Link", "Unlink", "Anchor"], ["Image", "Flash", "Table", "HorizontalRule"], ["TextColor", "BGColor"], ["Smiley", "SpecialChar"], ["Source"]], "toolbar": "PyInventoryToolbarConfig", "height": "25em", "width": "100%", "filebrowserWindowWidth": 940, "filebrowserWindowHeight": 725, "removeButtons": "Language,Cut,Copy,Paste,Undo,Redo,Anchor", "removePlugins": ["a11yhelp", "adobeair", "ajax", "autoembed", "autolink", "bbcode", "bidi", "clipboard", "codesnippet", "codesnippetgeshi", "contextmenu", "copyformatting", "devtools", "dialog", "dialogadvtab", "div", "divarea", "docprops", "embed", "embedbase", "embedsemantic", "enterkey", "exportpdf", "find", "flash", "forms", "htmlwriter", "iframe", "iframedialog", "language", "magicline", "mathjax", "newpage", "notification", "notificationaggregator", "pagebreak", "pastefromgdocs", "pastefromword", "pastetext", "pastetools", "placeholder", "preview", "print", "save", "scayt", "selectall", "sharedspace", "smiley", "sourcedialog", "specialchar", "stylescombo", "stylesheetparser", "tab", "templates", "uicolor", "widget", "wsc", "xml"], "toolbar_PyInventoryToolbarConfig": [{"name": "basicstyles", "items": ["Bold", "Italic", "Underline", "Strike", "-", "RemoveFormat"]}, {"name": "paragraph", "items": ["NumberedList", "BulletedList", "-", "Outdent", "Indent", "-", "Blockquote", "-", "JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock"]}, {"name": "links", "items": ["Link", "Unlink", "Anchor"]}, {"name": "insert", "items": ["Image", "Table", "HorizontalRule"]}, "/", {"name": "styles", "items": ["Styles", "Format", "Font", "FontSize"]}, {"name": "colors", "items": ["TextColor", "BGColor"]}, {"name": "tools", "items": ["Maximize", "ShowBlocks", "Source"]}, {"name": "about", "items": ["About"]}], "filebrowserUploadUrl": "/ckeditor/upload/", "filebrowserBrowseUrl": "/ckeditor/browse/", "language": "en"}' data-external-plugin-resources="[]" data-id="id_memo" data-processed="0" data-type="ckeditortype" id="id_memo" name="memo" rows="10"></textarea>
-        </div>
+        <textarea aria-describedby="id_memo_helptext" cols="40" data-django-prose-editor='{"types":null,"history":true,"html":true,"typographic":true,"headingLevels":[1,2,3,4,5]}' id="id_memo" name="memo" rows="10">
+</textarea>
        </div>
        <div class="help" id="id_memo_helptext">
         <div>
@@ -141,8 +148,8 @@
         <label for="id_tags">
          Tags:
         </label>
-        <div class="related-widget-wrapper" data-model-ref="Memo Tags">
-         <input autocomplete="off" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 10, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_tags" name="tags" type="text"/>
+        <div class="related-widget-wrapper" data-model-ref="tagulous_memomodel_tags">
+         <input aria-describedby="id_tags_helptext" autocomplete="off" data-context="available-source" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 10, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_tags" name="tags" type="text"/>
         </div>
        </div>
        <div class="help" id="id_tags_helptext">
@@ -158,8 +165,8 @@
       <input id="id_memoimagemodel_set-INITIAL_FORMS" name="memoimagemodel_set-INITIAL_FORMS" type="hidden" value="0"/>
       <input id="id_memoimagemodel_set-MIN_NUM_FORMS" name="memoimagemodel_set-MIN_NUM_FORMS" type="hidden" value="0"/>
       <input id="id_memoimagemodel_set-MAX_NUM_FORMS" name="memoimagemodel_set-MAX_NUM_FORMS" type="hidden" value="1000"/>
-      <fieldset class="module sortable">
-       <h2>
+      <fieldset aria-labelledby="memoimagemodel_set-heading" class="module sortable">
+       <h2 class="inline-heading" id="memoimagemodel_set-heading">
         Images
        </h2>
        <table>
@@ -205,14 +212,14 @@
            </p>
           </td>
           <td class="field-image">
-           <input accept="image/*" id="id_memoimagemodel_set-__prefix__-image" name="memoimagemodel_set-__prefix__-image" type="file"/>
+           <input accept="image/*" aria-describedby="id_memoimagemodel_set-__prefix__-image_helptext" id="id_memoimagemodel_set-__prefix__-image" name="memoimagemodel_set-__prefix__-image" type="file"/>
           </td>
           <td class="field-name">
-           <input class="vTextField" id="id_memoimagemodel_set-__prefix__-name" maxlength="255" name="memoimagemodel_set-__prefix__-name" type="text"/>
+           <input aria-describedby="id_memoimagemodel_set-__prefix__-name_helptext" class="vTextField" id="id_memoimagemodel_set-__prefix__-name" maxlength="255" name="memoimagemodel_set-__prefix__-name" type="text"/>
           </td>
           <td class="field-tags">
-           <div class="related-widget-wrapper" data-model-ref="Image Tags">
-            <input autocomplete="off" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 10, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_memoimagemodel_set-__prefix__-tags" name="memoimagemodel_set-__prefix__-tags" type="text"/>
+           <div class="related-widget-wrapper" data-model-ref="tagulous_memoimagemodel_tags">
+            <input aria-describedby="id_memoimagemodel_set-__prefix__-tags_helptext" autocomplete="off" data-context="available-source" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 10, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_memoimagemodel_set-__prefix__-tags" name="memoimagemodel_set-__prefix__-tags" type="text"/>
            </div>
           </td>
           <td class="delete">
@@ -229,8 +236,8 @@
       <input id="id_memofilemodel_set-INITIAL_FORMS" name="memofilemodel_set-INITIAL_FORMS" type="hidden" value="0"/>
       <input id="id_memofilemodel_set-MIN_NUM_FORMS" name="memofilemodel_set-MIN_NUM_FORMS" type="hidden" value="0"/>
       <input id="id_memofilemodel_set-MAX_NUM_FORMS" name="memofilemodel_set-MAX_NUM_FORMS" type="hidden" value="1000"/>
-      <fieldset class="module sortable">
-       <h2>
+      <fieldset aria-labelledby="memofilemodel_set-heading" class="module sortable">
+       <h2 class="inline-heading" id="memofilemodel_set-heading">
         Files
        </h2>
        <table>
@@ -268,14 +275,14 @@
            <input class="_reorder_" id="id_memofilemodel_set-__prefix__-position" name="memofilemodel_set-__prefix__-position" type="hidden" value="0"/>
           </td>
           <td class="field-file">
-           <input id="id_memofilemodel_set-__prefix__-file" name="memofilemodel_set-__prefix__-file" type="file"/>
+           <input aria-describedby="id_memofilemodel_set-__prefix__-file_helptext" id="id_memofilemodel_set-__prefix__-file" name="memofilemodel_set-__prefix__-file" type="file"/>
           </td>
           <td class="field-name">
-           <input class="vTextField" id="id_memofilemodel_set-__prefix__-name" maxlength="255" name="memofilemodel_set-__prefix__-name" type="text"/>
+           <input aria-describedby="id_memofilemodel_set-__prefix__-name_helptext" class="vTextField" id="id_memofilemodel_set-__prefix__-name" maxlength="255" name="memofilemodel_set-__prefix__-name" type="text"/>
           </td>
           <td class="field-tags">
-           <div class="related-widget-wrapper" data-model-ref="File Tags">
-            <input autocomplete="off" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 10, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_memofilemodel_set-__prefix__-tags" name="memofilemodel_set-__prefix__-tags" type="text"/>
+           <div class="related-widget-wrapper" data-model-ref="tagulous_memofilemodel_tags">
+            <input aria-describedby="id_memofilemodel_set-__prefix__-tags_helptext" autocomplete="off" data-context="available-source" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 10, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_memofilemodel_set-__prefix__-tags" name="memofilemodel_set-__prefix__-tags" type="text"/>
            </div>
           </td>
           <td class="delete">
@@ -292,8 +299,8 @@
       <input id="id_memolinkmodel_set-INITIAL_FORMS" name="memolinkmodel_set-INITIAL_FORMS" type="hidden" value="0"/>
       <input id="id_memolinkmodel_set-MIN_NUM_FORMS" name="memolinkmodel_set-MIN_NUM_FORMS" type="hidden" value="0"/>
       <input id="id_memolinkmodel_set-MAX_NUM_FORMS" name="memolinkmodel_set-MAX_NUM_FORMS" type="hidden" value="1000"/>
-      <fieldset class="module sortable">
-       <h2>
+      <fieldset aria-labelledby="memolinkmodel_set-heading" class="module sortable">
+       <h2 class="inline-heading" id="memolinkmodel_set-heading">
         Links
        </h2>
        <table>
@@ -328,15 +335,15 @@
            <input id="id_memolinkmodel_set-__prefix__-memo" name="memolinkmodel_set-__prefix__-memo" type="hidden"/>
           </td>
           <td class="field-tags">
-           <div class="related-widget-wrapper" data-model-ref="Link Tags">
-            <input autocomplete="off" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 10, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_memolinkmodel_set-__prefix__-tags" name="memolinkmodel_set-__prefix__-tags" type="text"/>
+           <div class="related-widget-wrapper" data-model-ref="tagulous_memolinkmodel_tags">
+            <input aria-describedby="id_memolinkmodel_set-__prefix__-tags_helptext" autocomplete="off" data-context="available-source" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 10, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_memolinkmodel_set-__prefix__-tags" name="memolinkmodel_set-__prefix__-tags" type="text"/>
            </div>
           </td>
           <td class="field-name">
-           <input class="vTextField" id="id_memolinkmodel_set-__prefix__-name" maxlength="255" name="memolinkmodel_set-__prefix__-name" type="text"/>
+           <input aria-describedby="id_memolinkmodel_set-__prefix__-name_helptext" class="vTextField" id="id_memolinkmodel_set-__prefix__-name" maxlength="255" name="memolinkmodel_set-__prefix__-name" type="text"/>
           </td>
           <td class="field-url">
-           <input class="vURLField" id="id_memolinkmodel_set-__prefix__-url" maxlength="200" name="memolinkmodel_set-__prefix__-url" type="url"/>
+           <input aria-describedby="id_memolinkmodel_set-__prefix__-url_helptext" class="vURLField" id="id_memolinkmodel_set-__prefix__-url" maxlength="200" name="memolinkmodel_set-__prefix__-url" type="url"/>
           </td>
           <td class="field-position hidden">
            <input class="_reorder_" id="id_memolinkmodel_set-__prefix__-position" name="memolinkmodel_set-__prefix__-position" type="hidden" value="0"/>

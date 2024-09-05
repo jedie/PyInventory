@@ -20,7 +20,7 @@ dependencies = [
     "django-dbbackup",  # https://github.com/django-dbbackup/django-dbbackup
     "django-tools",  # https://github.com/jedie/django-tools/
     "django-reversion-compare",  # https://github.com/jedie/django-reversion-compare/
-    "django-ckeditor",  # https://github.com/django-ckeditor/django-ckeditor
+    "django-prose-editor[sanitize]",  # https://github.com/matthiask/django-prose-editor/
     "django-tagulous",  # https://github.com/radiac/django-tagulous
     "django-admin-sortable2",  # https://github.com/jrief/django-admin-sortable2
     "pillow",  # https://github.com/jrief/django-admin-sortable2
@@ -39,7 +39,8 @@ dev = [
 
     "cmd2_ext_test",  # https://github.com/python-cmd2/cmd2/tree/master/plugins/ext_test
     "playwright",  # https://playwright.dev/python/docs/intro
-    "beautifulsoup4",
+    "beautifulsoup4",  # https://www.crummy.com/software/BeautifulSoup/
+    'lxml',  # https://github.com/lxml/lxml
 
     "tblib",   # https://github.com/ionelmc/python-tblib
     "pip-tools",  # https://github.com/jazzband/pip-tools/

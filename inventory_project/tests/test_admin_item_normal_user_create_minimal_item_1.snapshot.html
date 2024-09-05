@@ -6,16 +6,51 @@
   <form enctype="multipart/form-data" id="itemmodel_form" method="post" novalidate="">
    MockedCsrfTokenNode
    <div>
-    <fieldset class="module aligned collapse">
-     <h2>
-      Internals
-     </h2>
-     <div class="form-row field-id field-version">
-      <div class="flex-container form-multiline">
+    <fieldset aria-labelledby="fieldset-0-internals-0-heading" class="module aligned collapse">
+     <details>
+      <summary>
+       <h2 class="fieldset-heading" id="fieldset-0-internals-0-heading">
+        Internals
+       </h2>
+      </summary>
+      <div class="form-row field-id field-version">
+       <div class="flex-container form-multiline">
+        <div>
+         <div class="flex-container fieldBox field-id">
+          <label>
+           ID:
+          </label>
+          <div class="readonly">
+           -
+          </div>
+         </div>
+         <div class="help">
+          <div>
+           ID
+          </div>
+         </div>
+        </div>
+        <div>
+         <div class="flex-container fieldBox field-version">
+          <label class="required inline" for="id_version">
+           Version:
+          </label>
+          <input aria-describedby="id_version_helptext" id="id_version" name="version" required="" type="hidden" value="0"/>
+          0
+         </div>
+         <div class="help" id="id_version_helptext">
+          <div>
+           Internal version number of this entry. Used to protect the overwriting of an older entry.
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="form-row field-user">
        <div>
-        <div class="flex-container fieldBox field-id">
+        <div class="flex-container">
          <label>
-          ID:
+          User:
          </label>
          <div class="readonly">
           -
@@ -23,85 +58,58 @@
         </div>
         <div class="help">
          <div>
-          ID
+          The user who is the owner of this entry and can manage it (will be set automatically)
          </div>
         </div>
        </div>
+      </div>
+     </details>
+    </fieldset>
+    <fieldset aria-labelledby="fieldset-0-meta-1-heading" class="module aligned collapse">
+     <details>
+      <summary>
+       <h2 class="fieldset-heading" id="fieldset-0-meta-1-heading">
+        Meta
+       </h2>
+      </summary>
+      <div class="form-row field-create_dt">
        <div>
-        <div class="flex-container fieldBox field-version">
-         <label class="required inline" for="id_version">
-          Version:
+        <div class="flex-container">
+         <label>
+          Create date:
          </label>
-         <input id="id_version" name="version" required="" type="hidden" value="0"/>
-         0
+         <div class="readonly">
+          -
+         </div>
         </div>
-        <div class="help" id="id_version_helptext">
+        <div class="help">
          <div>
-          Internal version number of this entry. Used to protect the overwriting of an older entry.
+          (will be set automatically)
          </div>
         </div>
        </div>
       </div>
-     </div>
-     <div class="form-row field-user">
-      <div>
-       <div class="flex-container">
-        <label>
-         User:
-        </label>
-        <div class="readonly">
-         -
+      <div class="form-row field-update_dt">
+       <div>
+        <div class="flex-container">
+         <label>
+          Last update:
+         </label>
+         <div class="readonly">
+          -
+         </div>
         </div>
-       </div>
-       <div class="help">
-        <div>
-         The user who is the owner of this entry and can manage it (will be set automatically)
+        <div class="help">
+         <div>
+          (will be set automatically)
+         </div>
         </div>
        </div>
       </div>
-     </div>
+     </details>
     </fieldset>
-    <fieldset class="module aligned collapse">
-     <h2>
-      Meta
-     </h2>
-     <div class="form-row field-create_dt">
-      <div>
-       <div class="flex-container">
-        <label>
-         Create date:
-        </label>
-        <div class="readonly">
-         -
-        </div>
-       </div>
-       <div class="help">
-        <div>
-         (will be set automatically)
-        </div>
-       </div>
-      </div>
-     </div>
-     <div class="form-row field-update_dt">
-      <div>
-       <div class="flex-container">
-        <label>
-         Last update:
-        </label>
-        <div class="readonly">
-         -
-        </div>
-       </div>
-       <div class="help">
-        <div>
-         (will be set automatically)
-        </div>
-       </div>
-      </div>
-     </div>
-    </fieldset>
-    <fieldset class="module aligned">
-     <h2>
+    <fieldset aria-labelledby="fieldset-0-basic-2-heading" class="module aligned">
+     <h2 class="fieldset-heading" id="fieldset-0-basic-2-heading">
       Basic
      </h2>
      <div class="form-row field-kind">
@@ -110,8 +118,8 @@
         <label class="required" for="id_kind">
          Kind:
         </label>
-        <div class="related-widget-wrapper" data-model-ref="Item Kind">
-         <input autocomplete="off" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 3, "space_delimiter": false, "required": true}' data-tagulous="true" data-theme="admin-autocomplete" id="id_kind" name="kind" required="" type="text"/>
+        <div class="related-widget-wrapper" data-model-ref="tagulous_itemmodel_kind">
+         <input aria-describedby="id_kind_helptext" autocomplete="off" data-context="available-source" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 3, "space_delimiter": false, "required": true}' data-tagulous="true" data-theme="admin-autocomplete" id="id_kind" name="kind" required="" type="text"/>
         </div>
        </div>
        <div class="help" id="id_kind_helptext">
@@ -127,8 +135,8 @@
          <label for="id_producer">
           Producer:
          </label>
-         <div class="related-widget-wrapper" data-model-ref="Item Producer">
-          <input autocomplete="off" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 1, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_producer" name="producer" type="text"/>
+         <div class="related-widget-wrapper" data-model-ref="tagulous_itemmodel_producer">
+          <input aria-describedby="id_producer_helptext" autocomplete="off" data-context="available-source" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 1, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_producer" name="producer" type="text"/>
          </div>
         </div>
         <div class="help" id="id_producer_helptext">
@@ -141,7 +149,7 @@
          <label class="required inline" for="id_name">
           Name:
          </label>
-         <input class="vTextField" id="id_name" maxlength="255" name="name" required="" type="text"/>
+         <input aria-describedby="id_name_helptext" class="vTextField" id="id_name" maxlength="255" name="name" required="" type="text"/>
         </div>
         <div class="help" id="id_name_helptext">
          <div>
@@ -157,9 +165,8 @@
         <label for="id_description">
          Description:
         </label>
-        <div class="django-ckeditor-widget" data-field-id="id_description" style="display: inline-block;">
-         <textarea cols="40" data-config='{"skin": "moono-lisa", "toolbar_Basic": [["Source", "-", "Bold", "Italic"]], "toolbar_Full": [["Styles", "Format", "Bold", "Italic", "Underline", "Strike", "SpellChecker", "Undo", "Redo"], ["Link", "Unlink", "Anchor"], ["Image", "Flash", "Table", "HorizontalRule"], ["TextColor", "BGColor"], ["Smiley", "SpecialChar"], ["Source"]], "toolbar": "PyInventoryToolbarConfig", "height": "25em", "width": "100%", "filebrowserWindowWidth": 940, "filebrowserWindowHeight": 725, "removeButtons": "Language,Cut,Copy,Paste,Undo,Redo,Anchor", "removePlugins": ["a11yhelp", "adobeair", "ajax", "autoembed", "autolink", "bbcode", "bidi", "clipboard", "codesnippet", "codesnippetgeshi", "contextmenu", "copyformatting", "devtools", "dialog", "dialogadvtab", "div", "divarea", "docprops", "embed", "embedbase", "embedsemantic", "enterkey", "exportpdf", "find", "flash", "forms", "htmlwriter", "iframe", "iframedialog", "language", "magicline", "mathjax", "newpage", "notification", "notificationaggregator", "pagebreak", "pastefromgdocs", "pastefromword", "pastetext", "pastetools", "placeholder", "preview", "print", "save", "scayt", "selectall", "sharedspace", "smiley", "sourcedialog", "specialchar", "stylescombo", "stylesheetparser", "tab", "templates", "uicolor", "widget", "wsc", "xml"], "toolbar_PyInventoryToolbarConfig": [{"name": "basicstyles", "items": ["Bold", "Italic", "Underline", "Strike", "-", "RemoveFormat"]}, {"name": "paragraph", "items": ["NumberedList", "BulletedList", "-", "Outdent", "Indent", "-", "Blockquote", "-", "JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock"]}, {"name": "links", "items": ["Link", "Unlink", "Anchor"]}, {"name": "insert", "items": ["Image", "Table", "HorizontalRule"]}, "/", {"name": "styles", "items": ["Styles", "Format", "Font", "FontSize"]}, {"name": "colors", "items": ["TextColor", "BGColor"]}, {"name": "tools", "items": ["Maximize", "ShowBlocks", "Source"]}, {"name": "about", "items": ["About"]}], "filebrowserUploadUrl": "/ckeditor/upload/", "filebrowserBrowseUrl": "/ckeditor/browse/", "language": "en"}' data-external-plugin-resources="[]" data-id="id_description" data-processed="0" data-type="ckeditortype" id="id_description" name="description" rows="10"></textarea>
-        </div>
+        <textarea aria-describedby="id_description_helptext" cols="40" data-django-prose-editor='{"types":null,"history":true,"html":true,"typographic":true,"headingLevels":[1,2,3,4,5]}' id="id_description" name="description" rows="10">
+</textarea>
        </div>
        <div class="help" id="id_description_helptext">
         <div>
@@ -173,8 +180,8 @@
         <label for="id_tags">
          Tags:
         </label>
-        <div class="related-widget-wrapper" data-model-ref="Item Tags">
-         <input autocomplete="off" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 10, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_tags" name="tags" type="text"/>
+        <div class="related-widget-wrapper" data-model-ref="tagulous_itemmodel_tags">
+         <input aria-describedby="id_tags_helptext" autocomplete="off" data-context="available-source" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 10, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_tags" name="tags" type="text"/>
         </div>
        </div>
        <div class="help" id="id_tags_helptext">
@@ -189,7 +196,7 @@
         <label for="id_fcc_id">
          FCC ID:
         </label>
-        <input class="vTextField" id="id_fcc_id" maxlength="20" name="fcc_id" type="text"/>
+        <input aria-describedby="id_fcc_id_helptext" class="vTextField" id="id_fcc_id" maxlength="20" name="fcc_id" type="text"/>
        </div>
        <div class="help" id="id_fcc_id_helptext">
         <div>
@@ -204,22 +211,22 @@
         <label for="id_parent">
          Parent:
         </label>
-        <div class="related-widget-wrapper" data-model-ref="Item">
-         <select class="admin-autocomplete" data-ajax--cache="true" data-ajax--delay="250" data-ajax--type="GET" data-ajax--url="/admin/autocomplete/" data-allow-clear="true" data-app-label="inventory" data-field-name="parent" data-model-name="itemmodel" data-placeholder="" data-theme="admin-autocomplete" id="id_parent" lang="en" name="parent">
+        <div class="related-widget-wrapper" data-model-ref="itemmodel">
+         <select aria-describedby="id_parent_helptext" class="admin-autocomplete" data-ajax--cache="true" data-ajax--delay="250" data-ajax--type="GET" data-ajax--url="/admin/autocomplete/" data-allow-clear="true" data-app-label="inventory" data-field-name="parent" data-model-name="itemmodel" data-placeholder="" data-theme="admin-autocomplete" id="id_parent" lang="en" name="parent">
           <option value="">
           </option>
          </select>
          <a class="related-widget-wrapper-link change-related" data-href-template="/admin/inventory/itemmodel/__fk__/change/?_to_field=id&amp;_popup=1" data-popup="yes" id="change_id_parent" title="Change selected Item">
-          <img alt="Change" src="/static/admin/img/icon-changelink.svg"/>
+          <img alt="" height="20" src="/static/admin/img/icon-changelink.svg" width="20"/>
          </a>
          <a class="related-widget-wrapper-link add-related" data-popup="yes" href="/admin/inventory/itemmodel/add/?_to_field=id&amp;_popup=1" id="add_id_parent" title="Add another Item">
-          <img alt="Add" src="/static/admin/img/icon-addlink.svg"/>
+          <img alt="" height="20" src="/static/admin/img/icon-addlink.svg" width="20"/>
          </a>
          <a class="related-widget-wrapper-link delete-related" data-href-template="/admin/inventory/itemmodel/__fk__/delete/?_to_field=id&amp;_popup=1" data-popup="yes" id="delete_id_parent" title="Delete selected Item">
-          <img alt="Delete" src="/static/admin/img/icon-deletelink.svg"/>
+          <img alt="" height="20" src="/static/admin/img/icon-deletelink.svg" width="20"/>
          </a>
          <a class="related-widget-wrapper-link view-related" data-href-template="/admin/inventory/itemmodel/__fk__/change/?_to_field=id" id="view_id_parent" title="View selected Item">
-          <img alt="View" src="/static/admin/img/icon-viewlink.svg"/>
+          <img alt="" height="20" src="/static/admin/img/icon-viewlink.svg" width="20"/>
          </a>
         </div>
        </div>
@@ -236,22 +243,22 @@
         <label for="id_location">
          Location:
         </label>
-        <div class="related-widget-wrapper" data-model-ref="Location">
-         <select class="admin-autocomplete" data-ajax--cache="true" data-ajax--delay="250" data-ajax--type="GET" data-ajax--url="/admin/autocomplete/" data-allow-clear="true" data-app-label="inventory" data-field-name="location" data-model-name="itemmodel" data-placeholder="" data-theme="admin-autocomplete" id="id_location" lang="en" name="location">
+        <div class="related-widget-wrapper" data-model-ref="locationmodel">
+         <select aria-describedby="id_location_helptext" class="admin-autocomplete" data-ajax--cache="true" data-ajax--delay="250" data-ajax--type="GET" data-ajax--url="/admin/autocomplete/" data-allow-clear="true" data-app-label="inventory" data-field-name="location" data-model-name="itemmodel" data-placeholder="" data-theme="admin-autocomplete" id="id_location" lang="en" name="location">
           <option value="">
           </option>
          </select>
          <a class="related-widget-wrapper-link change-related" data-href-template="/admin/inventory/locationmodel/__fk__/change/?_to_field=id&amp;_popup=1" data-popup="yes" id="change_id_location" title="Change selected Location">
-          <img alt="Change" src="/static/admin/img/icon-changelink.svg"/>
+          <img alt="" height="20" src="/static/admin/img/icon-changelink.svg" width="20"/>
          </a>
          <a class="related-widget-wrapper-link add-related" data-popup="yes" href="/admin/inventory/locationmodel/add/?_to_field=id&amp;_popup=1" id="add_id_location" title="Add another Location">
-          <img alt="Add" src="/static/admin/img/icon-addlink.svg"/>
+          <img alt="" height="20" src="/static/admin/img/icon-addlink.svg" width="20"/>
          </a>
          <a class="related-widget-wrapper-link delete-related" data-href-template="/admin/inventory/locationmodel/__fk__/delete/?_to_field=id&amp;_popup=1" data-popup="yes" id="delete_id_location" title="Delete selected Location">
-          <img alt="Delete" src="/static/admin/img/icon-deletelink.svg"/>
+          <img alt="" height="20" src="/static/admin/img/icon-deletelink.svg" width="20"/>
          </a>
          <a class="related-widget-wrapper-link view-related" data-href-template="/admin/inventory/locationmodel/__fk__/change/?_to_field=id" id="view_id_location" title="View selected Location">
-          <img alt="View" src="/static/admin/img/icon-viewlink.svg"/>
+          <img alt="" height="20" src="/static/admin/img/icon-viewlink.svg" width="20"/>
          </a>
         </div>
        </div>
@@ -262,167 +269,183 @@
       </div>
      </div>
     </fieldset>
-    <fieldset class="module aligned collapse">
-     <h2>
-      Related items
-     </h2>
-     <div class="form-row field-related_items">
-      <div>
-       <div class="flex-container">
-        <label>
-         Related items:
-        </label>
-        <div class="readonly">
-         -
+    <fieldset aria-labelledby="fieldset-0-related-items-3-heading" class="module aligned collapse">
+     <details>
+      <summary>
+       <h2 class="fieldset-heading" id="fieldset-0-related-items-3-heading">
+        Related items
+       </h2>
+      </summary>
+      <div class="form-row field-related_items">
+       <div>
+        <div class="flex-container">
+         <label>
+          Related items:
+         </label>
+         <div class="readonly">
+          -
+         </div>
         </div>
        </div>
       </div>
-     </div>
+     </details>
     </fieldset>
-    <fieldset class="module aligned collapse">
-     <h2>
-      Lent
-     </h2>
-     <div class="form-row field-lent_to">
-      <div>
-       <div class="flex-container">
-        <label for="id_lent_to">
-         Lent to:
-        </label>
-        <input class="vTextField" id="id_lent_to" maxlength="64" name="lent_to" type="text"/>
+    <fieldset aria-labelledby="fieldset-0-lent-4-heading" class="module aligned collapse">
+     <details>
+      <summary>
+       <h2 class="fieldset-heading" id="fieldset-0-lent-4-heading">
+        Lent
+       </h2>
+      </summary>
+      <div class="form-row field-lent_to">
+       <div>
+        <div class="flex-container">
+         <label for="id_lent_to">
+          Lent to:
+         </label>
+         <input aria-describedby="id_lent_to_helptext" class="vTextField" id="id_lent_to" maxlength="64" name="lent_to" type="text"/>
+        </div>
+        <div class="help" id="id_lent_to_helptext">
+         <div>
+         </div>
+        </div>
        </div>
-       <div class="help" id="id_lent_to_helptext">
+      </div>
+      <div class="form-row field-lent_from_date field-lent_until_date">
+       <div class="flex-container form-multiline">
         <div>
-        </div>
-       </div>
-      </div>
-     </div>
-     <div class="form-row field-lent_from_date field-lent_until_date">
-      <div class="flex-container form-multiline">
-       <div>
-        <div class="flex-container fieldBox field-lent_from_date">
-         <label for="id_lent_from_date">
-          Lent from date:
-         </label>
-         <p class="date">
-          <input class="vDateField" id="id_lent_from_date" name="lent_from_date" size="10" type="text"/>
-         </p>
-        </div>
-        <div class="help" id="id_lent_from_date_helptext">
-         <div>
+         <div class="flex-container fieldBox field-lent_from_date">
+          <label for="id_lent_from_date">
+           Lent from date:
+          </label>
+          <p class="date">
+           <input aria-describedby="id_lent_from_date_helptext" class="vDateField" id="id_lent_from_date" name="lent_from_date" size="10" type="text"/>
+          </p>
+         </div>
+         <div class="help" id="id_lent_from_date_helptext">
+          <div>
+          </div>
          </div>
         </div>
-       </div>
-       <div>
-        <div class="flex-container fieldBox field-lent_until_date">
-         <label class="inline" for="id_lent_until_date">
-          Lent until date:
-         </label>
-         <p class="date">
-          <input class="vDateField" id="id_lent_until_date" name="lent_until_date" size="10" type="text"/>
-         </p>
-        </div>
-        <div class="help" id="id_lent_until_date_helptext">
-         <div>
+        <div>
+         <div class="flex-container fieldBox field-lent_until_date">
+          <label class="inline" for="id_lent_until_date">
+           Lent until date:
+          </label>
+          <p class="date">
+           <input aria-describedby="id_lent_until_date_helptext" class="vDateField" id="id_lent_until_date" name="lent_until_date" size="10" type="text"/>
+          </p>
+         </div>
+         <div class="help" id="id_lent_until_date_helptext">
+          <div>
+          </div>
          </div>
         </div>
        </div>
       </div>
-     </div>
+     </details>
     </fieldset>
-    <fieldset class="module aligned collapse">
-     <h2>
-      Received
-     </h2>
-     <div class="form-row field-received_from field-received_date field-received_price">
-      <div class="flex-container form-multiline">
-       <div>
-        <div class="flex-container fieldBox field-received_from">
-         <label for="id_received_from">
-          Received from:
-         </label>
-         <input class="vTextField" id="id_received_from" maxlength="64" name="received_from" type="text"/>
-        </div>
-        <div class="help" id="id_received_from_helptext">
-         <div>
+    <fieldset aria-labelledby="fieldset-0-received-5-heading" class="module aligned collapse">
+     <details>
+      <summary>
+       <h2 class="fieldset-heading" id="fieldset-0-received-5-heading">
+        Received
+       </h2>
+      </summary>
+      <div class="form-row field-received_from field-received_date field-received_price">
+       <div class="flex-container form-multiline">
+        <div>
+         <div class="flex-container fieldBox field-received_from">
+          <label for="id_received_from">
+           Received from:
+          </label>
+          <input aria-describedby="id_received_from_helptext" class="vTextField" id="id_received_from" maxlength="64" name="received_from" type="text"/>
+         </div>
+         <div class="help" id="id_received_from_helptext">
+          <div>
+          </div>
          </div>
         </div>
-       </div>
-       <div>
-        <div class="flex-container fieldBox field-received_date">
-         <label class="inline" for="id_received_date">
-          Received date:
-         </label>
-         <p class="date">
-          <input class="vDateField" id="id_received_date" name="received_date" size="10" type="text"/>
-         </p>
-        </div>
-        <div class="help" id="id_received_date_helptext">
-         <div>
+        <div>
+         <div class="flex-container fieldBox field-received_date">
+          <label class="inline" for="id_received_date">
+           Received date:
+          </label>
+          <p class="date">
+           <input aria-describedby="id_received_date_helptext" class="vDateField" id="id_received_date" name="received_date" size="10" type="text"/>
+          </p>
+         </div>
+         <div class="help" id="id_received_date_helptext">
+          <div>
+          </div>
          </div>
         </div>
-       </div>
-       <div>
-        <div class="flex-container fieldBox field-received_price">
-         <label class="inline" for="id_received_price">
-          Received price:
-         </label>
-         <input id="id_received_price" name="received_price" step="0.01" type="number"/>
-        </div>
-        <div class="help" id="id_received_price_helptext">
-         <div>
+        <div>
+         <div class="flex-container fieldBox field-received_price">
+          <label class="inline" for="id_received_price">
+           Received price:
+          </label>
+          <input aria-describedby="id_received_price_helptext" id="id_received_price" name="received_price" step="0.01" type="number"/>
+         </div>
+         <div class="help" id="id_received_price_helptext">
+          <div>
+          </div>
          </div>
         </div>
        </div>
       </div>
-     </div>
+     </details>
     </fieldset>
-    <fieldset class="module aligned collapse">
-     <h2>
-      Handed over
-     </h2>
-     <div class="form-row field-handed_over_to field-handed_over_date field-handed_over_price">
-      <div class="flex-container form-multiline">
-       <div>
-        <div class="flex-container fieldBox field-handed_over_to">
-         <label for="id_handed_over_to">
-          Handed over to:
-         </label>
-         <input class="vTextField" id="id_handed_over_to" maxlength="64" name="handed_over_to" type="text"/>
-        </div>
-        <div class="help" id="id_handed_over_to_helptext">
-         <div>
+    <fieldset aria-labelledby="fieldset-0-handed-over-6-heading" class="module aligned collapse">
+     <details>
+      <summary>
+       <h2 class="fieldset-heading" id="fieldset-0-handed-over-6-heading">
+        Handed over
+       </h2>
+      </summary>
+      <div class="form-row field-handed_over_to field-handed_over_date field-handed_over_price">
+       <div class="flex-container form-multiline">
+        <div>
+         <div class="flex-container fieldBox field-handed_over_to">
+          <label for="id_handed_over_to">
+           Handed over to:
+          </label>
+          <input aria-describedby="id_handed_over_to_helptext" class="vTextField" id="id_handed_over_to" maxlength="64" name="handed_over_to" type="text"/>
+         </div>
+         <div class="help" id="id_handed_over_to_helptext">
+          <div>
+          </div>
          </div>
         </div>
-       </div>
-       <div>
-        <div class="flex-container fieldBox field-handed_over_date">
-         <label class="inline" for="id_handed_over_date">
-          Handed over date:
-         </label>
-         <p class="date">
-          <input class="vDateField" id="id_handed_over_date" name="handed_over_date" size="10" type="text"/>
-         </p>
-        </div>
-        <div class="help" id="id_handed_over_date_helptext">
-         <div>
+        <div>
+         <div class="flex-container fieldBox field-handed_over_date">
+          <label class="inline" for="id_handed_over_date">
+           Handed over date:
+          </label>
+          <p class="date">
+           <input aria-describedby="id_handed_over_date_helptext" class="vDateField" id="id_handed_over_date" name="handed_over_date" size="10" type="text"/>
+          </p>
+         </div>
+         <div class="help" id="id_handed_over_date_helptext">
+          <div>
+          </div>
          </div>
         </div>
-       </div>
-       <div>
-        <div class="flex-container fieldBox field-handed_over_price">
-         <label class="inline" for="id_handed_over_price">
-          Handed over price:
-         </label>
-         <input id="id_handed_over_price" name="handed_over_price" step="0.01" type="number"/>
-        </div>
-        <div class="help" id="id_handed_over_price_helptext">
-         <div>
+        <div>
+         <div class="flex-container fieldBox field-handed_over_price">
+          <label class="inline" for="id_handed_over_price">
+           Handed over price:
+          </label>
+          <input aria-describedby="id_handed_over_price_helptext" id="id_handed_over_price" name="handed_over_price" step="0.01" type="number"/>
+         </div>
+         <div class="help" id="id_handed_over_price_helptext">
+          <div>
+          </div>
          </div>
         </div>
        </div>
       </div>
-     </div>
+     </details>
     </fieldset>
     <div class="js-inline-admin-formset inline-group" data-inline-formset='{"name": "#itemimagemodel_set", "options": {"prefix": "itemimagemodel_set", "addText": "Add another Image", "deleteText": "Remove"}}' data-inline-type="tabular" id="itemimagemodel_set-group">
      <div class="tabular inline-related">
@@ -430,8 +453,8 @@
       <input id="id_itemimagemodel_set-INITIAL_FORMS" name="itemimagemodel_set-INITIAL_FORMS" type="hidden" value="0"/>
       <input id="id_itemimagemodel_set-MIN_NUM_FORMS" name="itemimagemodel_set-MIN_NUM_FORMS" type="hidden" value="0"/>
       <input id="id_itemimagemodel_set-MAX_NUM_FORMS" name="itemimagemodel_set-MAX_NUM_FORMS" type="hidden" value="1000"/>
-      <fieldset class="module sortable">
-       <h2>
+      <fieldset aria-labelledby="itemimagemodel_set-heading" class="module sortable">
+       <h2 class="inline-heading" id="itemimagemodel_set-heading">
         Images
        </h2>
        <table>
@@ -477,14 +500,14 @@
            </p>
           </td>
           <td class="field-image">
-           <input accept="image/*" id="id_itemimagemodel_set-__prefix__-image" name="itemimagemodel_set-__prefix__-image" type="file"/>
+           <input accept="image/*" aria-describedby="id_itemimagemodel_set-__prefix__-image_helptext" id="id_itemimagemodel_set-__prefix__-image" name="itemimagemodel_set-__prefix__-image" type="file"/>
           </td>
           <td class="field-name">
-           <input class="vTextField" id="id_itemimagemodel_set-__prefix__-name" maxlength="255" name="itemimagemodel_set-__prefix__-name" type="text"/>
+           <input aria-describedby="id_itemimagemodel_set-__prefix__-name_helptext" class="vTextField" id="id_itemimagemodel_set-__prefix__-name" maxlength="255" name="itemimagemodel_set-__prefix__-name" type="text"/>
           </td>
           <td class="field-tags">
-           <div class="related-widget-wrapper" data-model-ref="Image Tags">
-            <input autocomplete="off" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 10, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_itemimagemodel_set-__prefix__-tags" name="itemimagemodel_set-__prefix__-tags" type="text"/>
+           <div class="related-widget-wrapper" data-model-ref="tagulous_itemimagemodel_tags">
+            <input aria-describedby="id_itemimagemodel_set-__prefix__-tags_helptext" autocomplete="off" data-context="available-source" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 10, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_itemimagemodel_set-__prefix__-tags" name="itemimagemodel_set-__prefix__-tags" type="text"/>
            </div>
           </td>
           <td class="delete">
@@ -501,8 +524,8 @@
       <input id="id_itemfilemodel_set-INITIAL_FORMS" name="itemfilemodel_set-INITIAL_FORMS" type="hidden" value="0"/>
       <input id="id_itemfilemodel_set-MIN_NUM_FORMS" name="itemfilemodel_set-MIN_NUM_FORMS" type="hidden" value="0"/>
       <input id="id_itemfilemodel_set-MAX_NUM_FORMS" name="itemfilemodel_set-MAX_NUM_FORMS" type="hidden" value="1000"/>
-      <fieldset class="module sortable">
-       <h2>
+      <fieldset aria-labelledby="itemfilemodel_set-heading" class="module sortable">
+       <h2 class="inline-heading" id="itemfilemodel_set-heading">
         Files
        </h2>
        <table>
@@ -540,14 +563,14 @@
            <input class="_reorder_" id="id_itemfilemodel_set-__prefix__-position" name="itemfilemodel_set-__prefix__-position" type="hidden" value="0"/>
           </td>
           <td class="field-file">
-           <input id="id_itemfilemodel_set-__prefix__-file" name="itemfilemodel_set-__prefix__-file" type="file"/>
+           <input aria-describedby="id_itemfilemodel_set-__prefix__-file_helptext" id="id_itemfilemodel_set-__prefix__-file" name="itemfilemodel_set-__prefix__-file" type="file"/>
           </td>
           <td class="field-name">
-           <input class="vTextField" id="id_itemfilemodel_set-__prefix__-name" maxlength="255" name="itemfilemodel_set-__prefix__-name" type="text"/>
+           <input aria-describedby="id_itemfilemodel_set-__prefix__-name_helptext" class="vTextField" id="id_itemfilemodel_set-__prefix__-name" maxlength="255" name="itemfilemodel_set-__prefix__-name" type="text"/>
           </td>
           <td class="field-tags">
-           <div class="related-widget-wrapper" data-model-ref="File Tags">
-            <input autocomplete="off" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 10, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_itemfilemodel_set-__prefix__-tags" name="itemfilemodel_set-__prefix__-tags" type="text"/>
+           <div class="related-widget-wrapper" data-model-ref="tagulous_itemfilemodel_tags">
+            <input aria-describedby="id_itemfilemodel_set-__prefix__-tags_helptext" autocomplete="off" data-context="available-source" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 10, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_itemfilemodel_set-__prefix__-tags" name="itemfilemodel_set-__prefix__-tags" type="text"/>
            </div>
           </td>
           <td class="delete">
@@ -564,8 +587,8 @@
       <input id="id_itemlinkmodel_set-INITIAL_FORMS" name="itemlinkmodel_set-INITIAL_FORMS" type="hidden" value="0"/>
       <input id="id_itemlinkmodel_set-MIN_NUM_FORMS" name="itemlinkmodel_set-MIN_NUM_FORMS" type="hidden" value="0"/>
       <input id="id_itemlinkmodel_set-MAX_NUM_FORMS" name="itemlinkmodel_set-MAX_NUM_FORMS" type="hidden" value="1000"/>
-      <fieldset class="module sortable">
-       <h2>
+      <fieldset aria-labelledby="itemlinkmodel_set-heading" class="module sortable">
+       <h2 class="inline-heading" id="itemlinkmodel_set-heading">
         Links
        </h2>
        <table>
@@ -600,15 +623,15 @@
            <input id="id_itemlinkmodel_set-__prefix__-item" name="itemlinkmodel_set-__prefix__-item" type="hidden"/>
           </td>
           <td class="field-tags">
-           <div class="related-widget-wrapper" data-model-ref="Link Tags">
-            <input autocomplete="off" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 10, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_itemlinkmodel_set-__prefix__-tags" name="itemlinkmodel_set-__prefix__-tags" type="text"/>
+           <div class="related-widget-wrapper" data-model-ref="tagulous_itemlinkmodel_tags">
+            <input aria-describedby="id_itemlinkmodel_set-__prefix__-tags_helptext" autocomplete="off" data-context="available-source" data-tag-list="[]" data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 10, "space_delimiter": false, "required": false}' data-tagulous="true" data-theme="admin-autocomplete" id="id_itemlinkmodel_set-__prefix__-tags" name="itemlinkmodel_set-__prefix__-tags" type="text"/>
            </div>
           </td>
           <td class="field-name">
-           <input class="vTextField" id="id_itemlinkmodel_set-__prefix__-name" maxlength="255" name="itemlinkmodel_set-__prefix__-name" type="text"/>
+           <input aria-describedby="id_itemlinkmodel_set-__prefix__-name_helptext" class="vTextField" id="id_itemlinkmodel_set-__prefix__-name" maxlength="255" name="itemlinkmodel_set-__prefix__-name" type="text"/>
           </td>
           <td class="field-url">
-           <input class="vURLField" id="id_itemlinkmodel_set-__prefix__-url" maxlength="200" name="itemlinkmodel_set-__prefix__-url" type="url"/>
+           <input aria-describedby="id_itemlinkmodel_set-__prefix__-url_helptext" class="vURLField" id="id_itemlinkmodel_set-__prefix__-url" maxlength="200" name="itemlinkmodel_set-__prefix__-url" type="url"/>
           </td>
           <td class="field-position hidden">
            <input class="_reorder_" id="id_itemlinkmodel_set-__prefix__-position" name="itemlinkmodel_set-__prefix__-position" type="hidden" value="0"/>

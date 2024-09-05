@@ -2,10 +2,11 @@ import logging
 from pathlib import Path
 
 from bx_django_utils.filename import clean_filename
-from ckeditor_uploader.fields import RichTextUploadingField
+from django.conf import settings
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
+from django_prose_editor.sanitized import SanitizedProseEditorField
 from django_tools.model_version_protect.models import VersionProtectBaseModel
 from django_tools.serve_media_app.models import user_directory_path
 
@@ -18,13 +19,13 @@ logger = logging.getLogger(__name__)
 
 class MemoModel(BaseModel, VersionProtectBaseModel):
     """
-    A Memo to hold some information independ of items/location
+    A Memo to hold some information independent of items/location
     """
 
-    memo = RichTextUploadingField(
+    memo = SanitizedProseEditorField(
         blank=True,
         null=True,
-        config_name='MemoModel.description',
+        config=settings.PROSE_EDITOR_DEFAULT_CONFIG,
         verbose_name=_('MemoModel.description.verbose_name'),
         help_text=_('MemoModel.description.help_text'),
     )

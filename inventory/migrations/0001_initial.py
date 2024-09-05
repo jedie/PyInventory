@@ -2,7 +2,7 @@
 
 import uuid
 
-import ckeditor_uploader.fields
+
 import django.db.models.deletion
 import tagulous.models.fields
 import tagulous.models.models
@@ -216,7 +216,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'description',
-                    ckeditor_uploader.fields.RichTextUploadingField(
+                    models.TextField(
                         help_text='LocationModel.description.help_text',
                         verbose_name='LocationModel.description.verbose_name',
                     ),
@@ -305,7 +305,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'description',
-                    ckeditor_uploader.fields.RichTextUploadingField(
+                    models.TextField(
                         blank=True,
                         help_text='ItemModel.description.help_text',
                         null=True,

@@ -40,7 +40,8 @@ class ProjectSetupTestCase(TestCase):
         )
         all_issue_ids = {issue.id for issue in all_issues}
         excpeted_issues = {
-            'async.E001',  # os.environ['DJANGO_ALLOW_ASYNC_UNSAFE'] exists
+            'async.E001',  # DJANGO_ALLOW_ASYNC_UNSAFE set, because of playwright tests
+            'security.W009',  # ignore fake SECRET_KEY in tests
         }
         if all_issue_ids != excpeted_issues:
             print('=' * 100)

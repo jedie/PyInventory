@@ -5,7 +5,7 @@
 import logging
 from pathlib import Path as __Path
 
-from ckeditor.configs import DEFAULT_CONFIG
+
 from django.utils.translation import gettext_lazy as _
 
 
@@ -56,8 +56,7 @@ INSTALLED_APPS = [
     'bx_django_utils',  # https://github.com/boxine/bx_django_utils
     'import_export',  # https://github.com/django-import-export/django-import-export
     'dbbackup',  # https://github.com/django-dbbackup/django-dbbackup
-    'ckeditor',  # https://github.com/django-ckeditor/django-ckeditor
-    'ckeditor_uploader',  # https://github.com/django-ckeditor/django-ckeditor
+    'django_prose_editor',  # https://github.com/matthiask/django-prose-editor/
     'reversion',  # https://github.com/etianen/django-reversion
     'reversion_compare',  # https://github.com/jedie/django-reversion-compare
     'tagulous',  # https://github.com/radiac/django-tagulous
@@ -178,163 +177,15 @@ DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
 DBBACKUP_STORAGE_OPTIONS = {'location': str(__Path(BASE_PATH, 'backups'))}
 
 # _____________________________________________________________________________
-# django-ckeditor
+# django-prose-editor
 
-CKEDITOR_BASEPATH = STATIC_URL + 'ckeditor/ckeditor/'
-CKEDITOR_FILENAME_GENERATOR = 'inventory.ckeditor_upload.get_filename'
-CKEDITOR_DEFAULT_CONFIG = DEFAULT_CONFIG
-CKEDITOR_DEFAULT_CONFIG.update(
-    {
-        'removeButtons': 'Language,Cut,Copy,Paste,Undo,Redo,Anchor',
-        # plugins are here: .../site-packages/ckeditor/static/ckeditor/ckeditor/plugins
-        # and here: https://github.com/ckeditor/ckeditor4/tree/major/plugins
-        # See also: .../site-packages/ckeditor/static/ckeditor/ckeditor/build-config.js
-        'removePlugins': (
-            # Generated with devshell command:
-            # (inventory) ckeditor_info
-            'a11yhelp',
-            # 'about',
-            'adobeair',
-            'ajax',
-            'autoembed',
-            # 'autogrow',
-            'autolink',
-            # 'basicstyles',
-            'bbcode',
-            'bidi',
-            # 'blockquote',
-            'clipboard',
-            'codesnippet',
-            'codesnippetgeshi',
-            # 'colorbutton',
-            # 'colordialog',
-            'contextmenu',
-            'copyformatting',
-            'devtools',
-            'dialog',
-            'dialogadvtab',
-            'div',
-            'divarea',
-            'docprops',
-            # 'elementspath',
-            'embed',
-            'embedbase',
-            'embedsemantic',
-            'enterkey',
-            # 'entities',
-            'exportpdf',
-            # 'filebrowser',
-            # 'filetools',
-            'find',
-            'flash',
-            # 'floatingspace',
-            # 'font',
-            # 'format',
-            'forms',
-            # 'horizontalrule',
-            'htmlwriter',
-            'iframe',
-            'iframedialog',
-            # 'image',
-            # 'image2',
-            # 'indentblock',
-            # 'indentlist',
-            # 'justify',
-            'language',
-            # 'lineutils',
-            # 'link',
-            # 'list',
-            # 'liststyle',
-            'magicline',
-            'mathjax',
-            # 'maximize',
-            # 'menubutton',
-            'newpage',
-            'notification',
-            'notificationaggregator',
-            'pagebreak',
-            'pastefromgdocs',
-            'pastefromword',
-            'pastetext',
-            'pastetools',
-            'placeholder',
-            'preview',
-            'print',
-            # 'removeformat',
-            # 'resize',
-            'save',
-            'scayt',
-            'selectall',
-            'sharedspace',
-            # 'showblocks',
-            # 'showborders',
-            'smiley',
-            # 'sourcearea',
-            'sourcedialog',
-            'specialchar',
-            'stylescombo',
-            'stylesheetparser',
-            'tab',
-            # 'table',
-            # 'tableresize',
-            # 'tableselection',
-            # 'tabletools',
-            'templates',
-            # 'toolbar',
-            'uicolor',
-            # 'undo',
-            # 'uploadimage',
-            # 'uploadwidget',
-            'widget',
-            'wsc',
-            # 'wysiwygarea',
-            'xml',
-        ),
-        'toolbar_PyInventoryToolbarConfig': [
-            {'name': 'basicstyles', 'items': ['Bold', 'Italic', 'Underline', 'Strike', '-', 'RemoveFormat']},
-            {
-                'name': 'paragraph',
-                'items': [
-                    'NumberedList',
-                    'BulletedList',
-                    '-',
-                    'Outdent',
-                    'Indent',
-                    '-',
-                    'Blockquote',
-                    '-',
-                    'JustifyLeft',
-                    'JustifyCenter',
-                    'JustifyRight',
-                    'JustifyBlock',
-                ],
-            },
-            {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor']},
-            {'name': 'insert', 'items': ['Image', 'Table', 'HorizontalRule']},
-            '/',
-            {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
-            {'name': 'colors', 'items': ['TextColor', 'BGColor']},
-            {'name': 'tools', 'items': ['Maximize', 'ShowBlocks', 'Source']},
-            {'name': 'about', 'items': ['About']},
-        ],
-        'toolbar': 'PyInventoryToolbarConfig',
-        'height': '25em',
-        'width': '100%',
-    }
-)
-CKEDITOR_CONFIGS = {
-    'ItemModel.description': CKEDITOR_DEFAULT_CONFIG,
-    'LocationModel.description': CKEDITOR_DEFAULT_CONFIG,
-    'MemoModel.description': CKEDITOR_DEFAULT_CONFIG,
+PROSE_EDITOR_DEFAULT_CONFIG = {
+    "types": None,  # Allow all nodes and marks
+    "history": True,  # Enable undo and redo
+    "html": True,  # Add a button which allows editing the raw HTML
+    "typographic": True,  # Highlight typographic characters
+    "headingLevels": [1, 2, 3, 4, 5],  # Available heading levels
 }
-CKEDITOR_RESTRICT_BY_USER = True
-CKEDITOR_RESTRICT_BY_DATE = True
-CKEDITOR_UPLOAD_PATH = 'uploads/'
-CKEDITOR_IMAGE_BACKEND = 'pillow'
-CKEDITOR_THUMBNAIL_SIZE = (300, 300)
-CKEDITOR_IMAGE_QUALITY = 40
-CKEDITOR_BROWSE_SHOW_DIRS = True
-CKEDITOR_ALLOW_NONIMAGE_FILES = True
 
 # _____________________________________________________________________________
 # http://radiac.net/projects/django-tagulous/documentation/installation/#settings

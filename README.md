@@ -162,6 +162,7 @@ To make a new release, do this:
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [**dev**](https://github.com/jedie/PyInventory/compare/v0.19.3...main)
+  * 2024-09-05 - Project updates
   * 2024-01-16 - Use typeguard in tests
   * 2024-01-16 - Update requirements
 * [v0.19.3](https://github.com/jedie/PyInventory/compare/v0.19.2...v0.19.3)

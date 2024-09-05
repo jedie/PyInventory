@@ -22,6 +22,8 @@ DATABASES = {
     }
 }
 
+SECRET_KEY = 'No individual secret for tests ;)'
+
 DEBUG = True
 
 # Speedup tests by change the Password hasher:

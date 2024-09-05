@@ -8,12 +8,13 @@ authors = [
     {name = 'Jens Diemer', email = 'PyInventory@jensdiemer.de'}
 ]
 keywords=['inventory','django']
-requires-python = ">=3.9" # Keep Python 3.9 until Yunohost contains a newer Python Version ;)
+requires-python = ">=3.11"
 dependencies = [
+    "django",  # https://docs.djangoproject.com
+
     "colorlog",  # https://github.com/borntyping/python-colorlog
     "gunicorn",  # https://github.com/benoimyproject.wsgitc/gunicorn
 
-    "django>=4.2,<4.3", # 5.0 needs Python >3.9 !
 
     "django-import-export",  # https://github.com/django-import-export/django-import-export
     "django-dbbackup",  # https://github.com/django-dbbackup/django-dbbackup
@@ -32,7 +33,9 @@ dependencies = [
 ]
 [project.optional-dependencies]
 dev = [
-    "manage_django_project!=0.7.0",  # https://github.com/jedie/manage_django_project
+    "django-debug-toolbar",  # http://django-debug-toolbar.readthedocs.io/en/stable/changes.html
+    "manage_django_project",  # https://github.com/jedie/manage_django_project
+    # TODO: "autocron",  # https://github.com/kbr/autocron
 
     "cmd2_ext_test",  # https://github.com/python-cmd2/cmd2/tree/master/plugins/ext_test
     "playwright",  # https://playwright.dev/python/docs/intro
@@ -45,13 +48,15 @@ dev = [
     "autopep8",  # https://github.com/hhatto/autopep8
     "pyupgrade",  # https://github.com/asottile/pyupgrade
     "flake8",  # https://github.com/pycqa/flake8
+    "flake8-bugbear",  # https://github.com/PyCQA/flake8-bugbear
     "pyflakes",  # https://github.com/PyCQA/pyflakes
     "codespell",  # https://github.com/codespell-project/codespell
     "EditorConfig",  # https://github.com/editorconfig/editorconfig-core-py
-    "safety",  # https://github.com/pyupio/safety
+    "pip-audit",  # https://github.com/pypa/pip-audit
     "mypy",  # https://github.com/python/mypy
     "twine",  # https://github.com/pypa/twine
     "typeguard",  # https://github.com/agronholm/typeguard/
+    "pre-commit",  # https://github.com/pre-commit/pre-commit
 
     # https://github.com/akaihola/darker
     # https://github.com/ikamensh/flynt
@@ -59,18 +64,14 @@ dev = [
     # https://github.com/pygments/pygments
     "darker[flynt, isort, color]",
 
-    "tomli",  # https://github.com/hukkin/tomli
-    # tomli only needed for Python <3.11, but see bug:
-    # https://github.com/pypa/pip/issues/9644#issuecomment-1456583402
-    #"tomli;python_version<\"3.11\"",  # https://github.com/hukkin/tomli
-
-    # Work-a-round for:
-    # https://github.com/jazzband/pip-tools/issues/994#issuecomment-1321226661
-    "typing-extensions>=3.10",
-
     "model_bakery",  # https://github.com/model-bakers/model_bakery
     "requests-mock",  # https://github.com/jamielennox/requests-mock
     "django-override-storage",  # https://github.com/danifus/django-override-storage
+
+    # Work-a-round for: https://github.com/jazzband/pip-tools/issues/1866
+    # see also: https://github.com/jazzband/pip-tools/issues/994#issuecomment-1321226661
+    # backports.tarfile is needed for python <3.12
+    'backports.tarfile', # via jaraco-context -> keyring -> twine
 ]
 
 [project.urls]
@@ -79,6 +80,7 @@ Source = "https://github.com/jedie/PyInventory"
 
 
 [project.scripts]
+# Must be set in ./manage.py and PROJECT_SHELL_SCRIPT:
 inventory_project = "inventory_project.__main__:main"
 
 [manage_django_project]
@@ -89,6 +91,20 @@ local_settings='inventory_project.settings.local'
 
 # Django settings used for test/coverage/tox commands:
 test_settings='inventory_project.settings.tests'
+
+
+[tool.cli_base]
+version_module_name = "inventory"  # Used by update_readme_history()
+
+
+[tool.cli_base.pip_audit]
+requirements=["requirements.dev.txt"]
+strict=true
+require_hashes=true
+ignore-vuln=[
+#    "CVE-2019-8341", # Jinja2: Side Template Injection (SSTI)
+]
+
 
 
 [build-system]
@@ -107,14 +123,12 @@ version = {attr = "inventory.__version__"}
 src = ['.']
 revision = "origin/main..."
 line_length = 119
-verbose = true
 color = true
 skip_string_normalization = true
 diff = false
 check = false
 stdout = false
 isort = true
-flynt = true
 lint = [
     "flake8",
 ]
@@ -131,7 +145,7 @@ line_length=119
 lines_after_imports=2
 
 
-[tool.coverage.run]
+[tool.coverage.run]  # https://coverage.readthedocs.io/en/latest/config.html#run
 branch = true
 parallel = true
 concurrency = ["multiprocessing"]
@@ -155,17 +169,18 @@ exclude_lines = [
 legacy_tox_ini = """
 [tox]
 isolated_build = True
-envlist = py{311,310,39}
+envlist = py{312,311}
 skip_missing_interpreters = True
 
 [testenv]
 passenv = *
 skip_install = true
 commands_pre =
+    pip install -U pip
     pip install -U pip-tools
     pip-sync requirements.dev.txt
 commands =
-    {envpython} -m coverage run --context='{envname}' -m inventory_project test --buffer --shuffle
+    {envpython} -m coverage run --context='{envname}'
 """
 
 
@@ -183,6 +198,9 @@ initial_revision = "7cece02"
 initial_date = 2023-07-15T16:37:28+02:00
 cookiecutter_template = "https://github.com/jedie/cookiecutter_templates/"
 cookiecutter_directory = "managed-django-project"
+applied_migrations = [
+    "141b3e4", # 2024-09-05T17:53:31+02:00
+]
 
 [manageprojects.cookiecutter_context.cookiecutter]
 full_name = "Jens Diemer"

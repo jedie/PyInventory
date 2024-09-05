@@ -40,9 +40,6 @@ print(f'Use Database: {DATABASES["default"]["NAME"]!r}', file=__sys.stderr)
 
 # _____________________________________________________________________________
 
-# Download map via geotiler in inventory.gpx_tools.gpxpy2map.generate_map
-MAP_DOWNLOAD = True
-
 if __os.environ.get('AUTOLOGIN') != '0':
     # Auto login for dev. server:
     MIDDLEWARE = MIDDLEWARE.copy()

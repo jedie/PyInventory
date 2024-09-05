@@ -1,11 +1,13 @@
 import os
-import sys
 import unittest.util
 from pathlib import Path
 
-import django
 from bx_py_utils.test_utils.deny_requests import deny_any_real_request
-from manage_django_project.config import project_info
+from typeguard import install_import_hook
+
+
+# Check type annotations via typeguard in all tests:
+install_import_hook(packages=('inventory', 'inventory_project'))
 
 
 def pre_configure_tests() -> None:
@@ -18,14 +20,6 @@ def pre_configure_tests() -> None:
 
     # Deny any request via docket/urllib3 because tests they should mock all requests:
     deny_any_real_request()
-
-    project_info.initialize()
-
-    DJANGO_SETTINGS_MODULE = project_info.config.test_settings
-    print(f'Set {DJANGO_SETTINGS_MODULE=}', file=sys.stderr)
-    os.environ['DJANGO_SETTINGS_MODULE'] = DJANGO_SETTINGS_MODULE
-
-    django.setup()
 
 
 def load_tests(loader, tests, pattern):

@@ -30,21 +30,21 @@ dependencies = [
     "django-debug-toolbar",  # http://django-debug-toolbar.readthedocs.io/en/stable/changes.html
     "bx_py_utils",  # https://github.com/boxine/bx_py_utils
     "bx_django_utils",  # https://github.com/boxine/bx_django_utils
+    "django-axes",  # https://github.com/jazzband/django-axes
 ]
-[project.optional-dependencies]
+[dependency-groups]
 dev = [
     "django-debug-toolbar",  # http://django-debug-toolbar.readthedocs.io/en/stable/changes.html
     "manage_django_project",  # https://github.com/jedie/manage_django_project
     # TODO: "autocron",  # https://github.com/kbr/autocron
 
     "cmd2_ext_test",  # https://github.com/python-cmd2/cmd2/tree/master/plugins/ext_test
-    "playwright",  # https://playwright.dev/python/docs/intro
     "beautifulsoup4",  # https://www.crummy.com/software/BeautifulSoup/
     'lxml',  # https://github.com/lxml/lxml
 
+    "uv",  # https://github.com/astral-sh/uv
+    "playwright",  # https://github.com/microsoft/playwright-python
     "tblib",   # https://github.com/ionelmc/python-tblib
-    "pip-tools",  # https://github.com/jazzband/pip-tools/
-    "tox",  # https://github.com/tox-dev/tox
     "coverage",  # https://github.com/nedbat/coveragepy
     "autopep8",  # https://github.com/hhatto/autopep8
     "pyupgrade",  # https://github.com/asottile/pyupgrade
@@ -56,8 +56,8 @@ dev = [
     "pip-audit",  # https://github.com/pypa/pip-audit
     "mypy",  # https://github.com/python/mypy
     "twine",  # https://github.com/pypa/twine
-    "typeguard",  # https://github.com/agronholm/typeguard/
     "pre-commit",  # https://github.com/pre-commit/pre-commit
+    "typeguard",  # https://github.com/agronholm/typeguard/
 
     # https://github.com/akaihola/darker
     # https://github.com/ikamensh/flynt
@@ -68,11 +68,6 @@ dev = [
     "model_bakery",  # https://github.com/model-bakers/model_bakery
     "requests-mock",  # https://github.com/jamielennox/requests-mock
     "django-override-storage",  # https://github.com/danifus/django-override-storage
-
-    # Work-a-round for: https://github.com/jazzband/pip-tools/issues/1866
-    # see also: https://github.com/jazzband/pip-tools/issues/994#issuecomment-1321226661
-    # backports.tarfile is needed for python <3.12
-    'backports.tarfile', # via jaraco-context -> keyring -> twine
 ]
 
 [project.urls]
@@ -151,7 +146,7 @@ branch = true
 parallel = true
 concurrency = ["multiprocessing"]
 source = ['.']
-command_line = '-m inventory_project test --shuffle --parallel --buffer'
+command_line = '-m unittest --verbose --locals --buffer'
 
 [tool.coverage.report]
 omit = ['.*', '*/tests/*', '*/migrations/*']
@@ -164,26 +159,6 @@ exclude_lines = [
     'raise NotImplementedError',
     'if __name__ == .__main__.:',
 ]
-
-
-[tool.tox]  # https://tox.wiki/en/latest/config.html#pyproject-toml
-legacy_tox_ini = """
-[tox]
-isolated_build = True
-envlist = py{312,311}
-skip_missing_interpreters = True
-
-[testenv]
-passenv = *
-skip_install = true
-commands_pre =
-    pip install -U pip
-    pip install -U pip-tools
-    pip-sync requirements.dev.txt
-commands =
-    {envpython} -m coverage run --context='{envname}'
-"""
-
 
 [tool.mypy]
 warn_unused_configs = true
@@ -201,6 +176,7 @@ cookiecutter_template = "https://github.com/jedie/cookiecutter_templates/"
 cookiecutter_directory = "managed-django-project"
 applied_migrations = [
     "141b3e4", # 2024-09-05T17:53:31+02:00
+    "a36dd75", # 2025-03-23T11:39:23+01:00
 ]
 
 [manageprojects.cookiecutter_context.cookiecutter]
@@ -208,7 +184,7 @@ full_name = "Jens Diemer"
 github_username = "jedie"
 author_email = "PyInventory@jensdiemer.de"
 package_name = "inventory"
-package_version = "0.18.0"
+package_version = "0.21.0"
 package_description = "Web based management to catalog things including state and location etc. using Python/Django."
 package_url = "https://github.com/jedie/PyInventory"
 issues_url = "https://github.com/jedie/PyInventory/issues"

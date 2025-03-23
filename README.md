@@ -166,6 +166,8 @@ To make a new release, do this:
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
+* [v0.21.0](https://github.com/jedie/PyInventory/compare/v0.20.1...v0.21.0)
+  * 2025-03-23 - Migrate "pip-tools" -> "uv" and remove tox
 * [v0.20.1](https://github.com/jedie/PyInventory/compare/v0.20.0...v0.20.1)
   * 2024-09-05 - switched to https://github.com/jazzband/django-tinymce/
 * [v0.20.0](https://github.com/jedie/PyInventory/compare/v0.19.3...v0.20.0)
@@ -181,12 +183,12 @@ To make a new release, do this:
   * 2023-10-08 - Use playwrigth manage command from manage-django-project
   * 2023-09-24 - Update test snapshot files
   * 2023-09-24 - Add playwright CLI wrapper command
-* [v0.19.2](https://github.com/jedie/PyInventory/compare/v0.19.1...v0.19.2)
-  * 2023-08-17 - Bugfix packaging by adding "requests" as normal dependencies
-  * 2023-08-17 - Bugfix packageing by adding "requests" as normal dependencies
 
 <details><summary>Expand older history entries ...</summary>
 
+* [v0.19.2](https://github.com/jedie/PyInventory/compare/v0.19.1...v0.19.2)
+  * 2023-08-17 - Bugfix packaging by adding "requests" as normal dependencies
+  * 2023-08-17 - Bugfix packageing by adding "requests" as normal dependencies
 * [v0.19.1](https://github.com/jedie/PyInventory/compare/v0.19.0...v0.19.1)
   * 2023-08-17 - Update requirements
   * 2023-08-17 - Update from project template

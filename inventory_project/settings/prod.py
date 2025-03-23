@@ -65,7 +65,8 @@ INSTALLED_APPS = [
     'django_tools.serve_media_app.apps.UserMediaFilesConfig',
     # https://github.com/jedie/django-tools/tree/master/django_tools/model_version_protect
     'django_tools.model_version_protect.apps.ModelVersionProtectConfig',
-    'inventory.apps.InventoryConfig',
+    #
+    'inventory.apps.AppConfig',
 ]
 
 ROOT_URLCONF = 'inventory_project.urls'

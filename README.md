@@ -167,6 +167,7 @@ To make a new release, do this:
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [v0.21.0](https://github.com/jedie/PyInventory/compare/v0.20.1...v0.21.0)
+  * 2025-03-23 - Bugfix publish: setuptools missing
   * 2025-03-23 - Migrate "pip-tools" -> "uv" and remove tox
 * [v0.20.1](https://github.com/jedie/PyInventory/compare/v0.20.0...v0.20.1)
   * 2024-09-05 - switched to https://github.com/jazzband/django-tinymce/

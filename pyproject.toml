@@ -59,6 +59,9 @@ dev = [
     "pre-commit",  # https://github.com/pre-commit/pre-commit
     "typeguard",  # https://github.com/agronholm/typeguard/
 
+    # setuptools use by "publish" command:
+    "setuptools",  # https://github.com/pypa/setuptools
+
     # https://github.com/akaihola/darker
     # https://github.com/ikamensh/flynt
     # https://github.com/pycqa/isort

@@ -7,5 +7,6 @@
     :license: GNU GPL v3 or above, see LICENSE for more details.
 """
 
-__version__ = '0.20.1'
+# See https://packaging.python.org/en/latest/specifications/version-specifiers/
+__version__ = '0.21.0'
 __author__ = 'Jens Diemer <PyInventory@jensdiemer.de>'

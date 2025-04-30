@@ -44,6 +44,7 @@ dev = [
     'lxml',  # https://github.com/lxml/lxml
 
     "uv",  # https://github.com/astral-sh/uv
+    "hatchling",  # https://github.com/pypa/hatch/tree/master/backend
     "playwright",  # https://github.com/microsoft/playwright-python
     "tblib",   # https://github.com/ionelmc/python-tblib
     "coverage",  # https://github.com/nedbat/coveragepy
@@ -59,9 +60,6 @@ dev = [
     "twine",  # https://github.com/pypa/twine
     "pre-commit",  # https://github.com/pre-commit/pre-commit
     "typeguard",  # https://github.com/agronholm/typeguard/
-
-    # setuptools use by "publish" command:
-    "setuptools",  # https://github.com/pypa/setuptools
 
     # https://github.com/akaihola/darker
     # https://github.com/ikamensh/flynt
@@ -93,8 +91,19 @@ local_settings='inventory_project.settings.local'
 test_settings='inventory_project.settings.tests'
 
 
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["inventory", "inventory_project"]
+
+[tool.hatch.version]
+path = "inventory/__init__.py"
+
+
 [tool.cli_base]
-version_module_name = "inventory"  # Used by update_readme_history()
+version_module_name = "inventory" # Used by "update-readme-history" pre-commit hook
 
 
 [tool.cli_base.pip_audit]
@@ -107,16 +116,6 @@ ignore-vuln=[
 
 
 
-[build-system]
-requires = ["setuptools>=61.0", "setuptools_scm>=7.1"]
-build-backend = "setuptools.build_meta"
-
-[tool.setuptools.packages.find]
-where = ["."]
-include = ["inventory*", "inventory_project*"]
-
-[tool.setuptools.dynamic]
-version = {attr = "inventory.__version__"}
 
 
 [tool.darker]
@@ -181,6 +180,7 @@ cookiecutter_directory = "managed-django-project"
 applied_migrations = [
     "141b3e4", # 2024-09-05T17:53:31+02:00
     "a36dd75", # 2025-03-23T11:39:23+01:00
+    "b3e0624", # 2025-05-01T00:07:45+02:00
 ]
 
 [manageprojects.cookiecutter_context.cookiecutter]

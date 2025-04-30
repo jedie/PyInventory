@@ -16,7 +16,7 @@ from inventory_project.tests.mocks import MockInventoryVersionString
 
 class AdminAnonymousTests(TestCase):
     def test_login(self):
-        response = self.client.get('/admin/inventory/memomodel/add/', secure=True, HTTP_ACCEPT_LANGUAGE='en')
+        response = self.client.get('/admin/inventory/memomodel/add/', secure=True, headers={"accept-language": 'en'})
         self.assertRedirects(
             response,
             expected_url='/admin/login/?next=/admin/inventory/memomodel/add/',

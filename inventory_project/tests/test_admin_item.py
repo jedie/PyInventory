@@ -44,7 +44,7 @@ ITEM_FORM_DEFAULTS = tuple(ITEM_FORM_DEFAULTS.items())
 class AdminAnonymousTests(HtmlAssertionMixin, TestCase):
     def test_login(self):
         # HTTP -> HTTPS redirect:
-        response = self.client.get('/admin/', HTTP_ACCEPT_LANGUAGE='en')
+        response = self.client.get('/admin/', headers={"accept-language": 'en'})
         self.assertRedirects(
             response,
             expected_url='https://testserver/admin/',
@@ -52,14 +52,16 @@ class AdminAnonymousTests(HtmlAssertionMixin, TestCase):
             fetch_redirect_response=False,
         )
 
-        response = self.client.get(path='/admin/inventory/itemmodel/add/', secure=True, HTTP_ACCEPT_LANGUAGE='en')
+        response = self.client.get(
+            path='/admin/inventory/itemmodel/add/', secure=True, headers={"accept-language": 'en'}
+        )
         self.assertRedirects(
             response, expected_url='/admin/login/?next=/admin/inventory/itemmodel/add/', fetch_redirect_response=False
         )
         with mock.patch.object(
             CsrfTokenNode, 'render', return_value='MockedCsrfTokenNode'
         ), MockInventoryVersionString():
-            response = self.client.get(path='/admin/login/', secure=True, HTTP_ACCEPT_LANGUAGE='en')
+            response = self.client.get(path='/admin/login/', secure=True, headers={"accept-language": 'en'})
             self.assert_html_parts(
                 response,
                 parts=(

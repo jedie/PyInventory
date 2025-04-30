@@ -148,7 +148,6 @@ LANGUAGE_CODE = 'en'
 
 LANGUAGES = [('ca', _('Catalan')), ('de', _('German')), ('en', _('English')), ('es', _('Spanish'))]
 USE_I18N = True
-USE_L10N = True
 TIME_ZONE = 'Europe/Paris'
 USE_TZ = True
 

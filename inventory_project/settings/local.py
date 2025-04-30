@@ -13,6 +13,12 @@ from inventory_project.settings.prod import *  # noqa
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# Disable secure settings from prod.py:
+CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = False
+SECURE_PROXY_SSL_HEADER = None
+SECURE_SSL_REDIRECT = False
+SECURE_HSTS_PRELOAD = False
 
 # Serve static/media files for local development:
 SERVE_FILES = True

@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 
 
 def get_filename(filename, request):
-    random_string = get_random_string()
+    random_string = get_random_string(length=12)
     filename = clean_filename(filename)
     filename = f'{random_string}/{filename}'
     logger.info(f'Upload filename: {filename!r}')

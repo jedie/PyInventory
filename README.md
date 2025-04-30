@@ -166,6 +166,8 @@ To make a new release, do this:
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
+* [**dev**](https://github.com/jedie/PyInventory/compare/v0.21.0...main)
+  * 2025-04-30 - Update requirements and some small code parts
 * [v0.21.0](https://github.com/jedie/PyInventory/compare/v0.20.1...v0.21.0)
   * 2025-03-23 - Bugfix publish: setuptools missing
   * 2025-03-23 - Migrate "pip-tools" -> "uv" and remove tox
@@ -176,6 +178,9 @@ To make a new release, do this:
   * 2024-09-05 - Project updates
   * 2024-01-16 - Use typeguard in tests
   * 2024-01-16 - Update requirements
+
+<details><summary>Expand older history entries ...</summary>
+
 * [v0.19.3](https://github.com/jedie/PyInventory/compare/v0.19.2...v0.19.3)
   * 2023-11-01 - Auto generate README history
   * 2023-11-01 - Update requirements
@@ -184,9 +189,6 @@ To make a new release, do this:
   * 2023-10-08 - Use playwrigth manage command from manage-django-project
   * 2023-09-24 - Update test snapshot files
   * 2023-09-24 - Add playwright CLI wrapper command
-
-<details><summary>Expand older history entries ...</summary>
-
 * [v0.19.2](https://github.com/jedie/PyInventory/compare/v0.19.1...v0.19.2)
   * 2023-08-17 - Bugfix packaging by adding "requests" as normal dependencies
   * 2023-08-17 - Bugfix packageing by adding "requests" as normal dependencies

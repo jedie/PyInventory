@@ -166,7 +166,8 @@ To make a new release, do this:
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
-* [**dev**](https://github.com/jedie/PyInventory/compare/v0.21.0...main)
+* [v0.21.1rc1](https://github.com/jedie/PyInventory/compare/v0.21.0...v0.21.1rc1)
+  * 2025-05-01 - Replace setuptools with hatchling
   * 2025-04-30 - Update requirements and some small code parts
 * [v0.21.0](https://github.com/jedie/PyInventory/compare/v0.20.1...v0.21.0)
   * 2025-03-23 - Bugfix publish: setuptools missing

@@ -895,6 +895,21 @@ wheels = [
 ]
 
 [[package]]
+name = "hatchling"
+version = "1.27.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "packaging" },
+    { name = "pathspec" },
+    { name = "pluggy" },
+    { name = "trove-classifiers" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/8f/8a/cc1debe3514da292094f1c3a700e4ca25442489731ef7c0814358816bb03/hatchling-1.27.0.tar.gz", hash = "sha256:971c296d9819abb3811112fc52c7a9751c8d381898f36533bb16f9791e941fd6", size = 54983, upload-time = "2024-12-15T17:08:11.894Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/08/e7/ae38d7a6dfba0533684e0b2136817d667588ae3ec984c1a4e5df5eb88482/hatchling-1.27.0-py3-none-any.whl", hash = "sha256:d3a2f3567c4f926ea39849cdf924c7e99e6686c9c8e288ae1037c8fa2a5d937b", size = 75794, upload-time = "2024-12-15T17:08:10.364Z" },
+]
+
+[[package]]
 name = "icdiff"
 version = "2.0.7"
 source = { registry = "https://pypi.org/simple" }
@@ -1102,7 +1117,7 @@ wheels = [
 
 [[package]]
 name = "manage-django-project"
-version = "0.9.0"
+version = "0.9.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "bx-py-utils" },
@@ -1113,9 +1128,9 @@ dependencies = [
     { name = "django-tools" },
     { name = "manageprojects" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/9d/6b/6592ca68e94b110cecd9352b4ee386dc1b46e7b9980eeef03cdf5004c807/manage_django_project-0.9.0.tar.gz", hash = "sha256:6067ca983d6c78f1eaa5f9e5f0c21f3dc39dfd6fcb1bb46c8f4d2bc95cc83918", size = 106560, upload-time = "2025-02-12T09:45:09.666Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/71/18/71f064669d777c4c1e04154f12dc8477a58a4af842b20b162dbee45c9ff4/manage_django_project-0.9.1.tar.gz", hash = "sha256:846ee16fc599e319ff3819821c260f1edb1d96d8d30daf4d3acb724399fb187d", size = 106216, upload-time = "2025-04-30T21:59:17.725Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/d8/50/2bf5493d6e4ac74a9e56b75f38525467811670ca48019f1bf44efa115c0a/manage_django_project-0.9.0-py3-none-any.whl", hash = "sha256:75ac665ebe9a2816f3a63863379a6dea649b64210c637104a39ee05bdfd60e51", size = 55369, upload-time = "2025-02-12T09:45:08.186Z" },
+    { url = "https://files.pythonhosted.org/packages/c0/ad/497c8bf3c29cb428ed0f91ee5c36462816f8cf2f907a933d1863384442b8/manage_django_project-0.9.1-py3-none-any.whl", hash = "sha256:b53c742d3113d62d42897ca389fbfc6ed080267bbbb1cfb3fa214e2a2dec383e", size = 55889, upload-time = "2025-04-30T21:59:15.123Z" },
 ]
 
 [[package]]
@@ -1535,6 +1550,15 @@ wheels = [
 ]
 
 [[package]]
+name = "pluggy"
+version = "1.5.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/96/2d/02d4312c973c6050a18b314a5ad0b3210edb65a906f868e31c111dede4a6/pluggy-1.5.0.tar.gz", hash = "sha256:2cffa88e94fdc978c4c574f15f9e59b7f4201d439195c3715ca9e2486f1d0cf1", size = 67955, upload-time = "2024-04-20T21:34:42.531Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/88/5f/e351af9a41f866ac3f1fac4ca0613908d9a41741cfcf2228f4ad853b697d/pluggy-1.5.0-py3-none-any.whl", hash = "sha256:44e1ad92c8ca002de6377e165f3e0f1be63266ab4d554740532335b9d75ea669", size = 20556, upload-time = "2024-04-20T21:34:40.434Z" },
+]
+
+[[package]]
 name = "pprintpp"
 version = "0.4.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1654,6 +1678,7 @@ dev = [
     { name = "editorconfig" },
     { name = "flake8" },
     { name = "flake8-bugbear" },
+    { name = "hatchling" },
     { name = "lxml" },
     { name = "manage-django-project" },
     { name = "model-bakery" },
@@ -1664,7 +1689,6 @@ dev = [
     { name = "pyflakes" },
     { name = "pyupgrade" },
     { name = "requests-mock" },
-    { name = "setuptools" },
     { name = "tblib" },
     { name = "twine" },
     { name = "typeguard" },
@@ -1704,6 +1728,7 @@ dev = [
     { name = "editorconfig" },
     { name = "flake8" },
     { name = "flake8-bugbear" },
+    { name = "hatchling" },
     { name = "lxml" },
     { name = "manage-django-project" },
     { name = "model-bakery" },
@@ -1714,7 +1739,6 @@ dev = [
     { name = "pyflakes" },
     { name = "pyupgrade" },
     { name = "requests-mock" },
-    { name = "setuptools" },
     { name = "tblib" },
     { name = "twine" },
     { name = "typeguard" },
@@ -1958,15 +1982,6 @@ wheels = [
 ]
 
 [[package]]
-name = "setuptools"
-version = "80.1.0"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/aa/b2/bd26ed086b842b68c8fe9aac380ad7e5118cf84fa7abd45bb059a88368a8/setuptools-80.1.0.tar.gz", hash = "sha256:2e308396e1d83de287ada2c2fd6e64286008fe6aca5008e0b6a8cb0e2c86eedd", size = 1354038, upload-time = "2025-04-30T17:41:06.171Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/8b/f6/126c9309c8fe93e5d6bb850593cd58d591daf2da45cc78b61e48d8d95879/setuptools-80.1.0-py3-none-any.whl", hash = "sha256:ea0e7655c05b74819f82e76e11a85b31779fee7c4969e82f72bab0664e8317e4", size = 1240689, upload-time = "2025-04-30T17:41:03.789Z" },
-]
-
-[[package]]
 name = "shtab"
 version = "1.7.2"
 source = { registry = "https://pypi.org/simple" }
@@ -2063,6 +2078,15 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/b1/09/a439bec5888f00a54b8b9f05fa94d7f901d6735ef4e55dcec9bc37b5d8fa/tomlkit-0.13.2.tar.gz", hash = "sha256:fff5fe59a87295b278abd31bec92c15d9bc4a06885ab12bcea52c71119392e79", size = 192885, upload-time = "2024-08-14T08:19:41.488Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/f9/b6/a447b5e4ec71e13871be01ba81f5dfc9d0af7e473da256ff46bc0e24026f/tomlkit-0.13.2-py3-none-any.whl", hash = "sha256:7a974427f6e119197f670fbbbeae7bef749a6c14e793db934baefc1b5f03efde", size = 37955, upload-time = "2024-08-14T08:19:40.05Z" },
+]
+
+[[package]]
+name = "trove-classifiers"
+version = "2025.4.28.22"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/b0/f3/4d82f6d81391237842c4250766ae02c7a178a3a236e0fbd749ec154da17c/trove_classifiers-2025.4.28.22.tar.gz", hash = "sha256:42bef4957a74fe7724b8310dafd4b23e0a71406a4812cf4dfd65e2ee34f1943d", size = 16883, upload-time = "2025-04-28T22:49:32.609Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e5/d6/647f7aca9314bcc83d5608166f89121f55ccc05402b0cd1a1e72cffa3e62/trove_classifiers-2025.4.28.22-py3-none-any.whl", hash = "sha256:fdb453fefa3a0da9c18b8d390846e6df7e961e8924703559ea9be07ec99c0925", size = 14056, upload-time = "2025-04-28T22:49:30.687Z" },
 ]
 
 [[package]]

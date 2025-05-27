@@ -10,9 +10,9 @@ from django.core.management import call_command
 from manage_django_project.management.commands import code_style
 from manageprojects.test_utils.project_setup import check_editor_config, get_py_max_line_length
 from packaging.version import Version
+from test_utilities import CallManagePy
 
-from inventory import __version__
-from manage import BASE_PATH
+import inventory
 
 
 class ProjectSetupTestCase(TestCase):
@@ -22,7 +22,7 @@ class ProjectSetupTestCase(TestCase):
         assert_is_dir(project_path / 'inventory')
         assert_is_dir(project_path / 'inventory_project')
 
-        self.assertEqual(project_path, BASE_PATH)
+        self.assertEqual(project_path, Path(inventory.__file__).parent.parent)
 
     def test_template_dirs(self):
         assert len(settings.TEMPLATES) == 1
@@ -66,38 +66,36 @@ class ProjectSetupTestCase(TestCase):
         assert 'DebugToolbarMiddleware' not in middlewares
 
     def test_version(self):
-        self.assertIsNotNone(__version__)
+        self.assertIsNotNone(inventory.__version__)
 
-        version = Version(__version__)  # Will raise InvalidVersion() if wrong formatted
-        self.assertEqual(str(version), __version__)
+        version = Version(inventory.__version__)  # Will raise InvalidVersion() if wrong formatted
+        self.assertEqual(str(version), inventory.__version__)
 
-        manage_bin = BASE_PATH / 'manage.py'
+        manage_bin = settings.BASE_PATH / 'manage.py'
         assert_is_file(manage_bin)
 
         output = subprocess.check_output([manage_bin, 'version'], text=True)
-        self.assertIn(__version__, output)
+        self.assertIn(inventory.__version__, output)
 
     def test_manage(self):
-        manage_bin = BASE_PATH / 'manage.py'
-        assert_is_file(manage_bin)
-
-        output = subprocess.check_output([manage_bin, 'project_info'], text=True)
+        manage_py = CallManagePy(project_root=settings.BASE_PATH)
+        output = manage_py.verbose_check_output('project_info')
         self.assertIn('inventory_project', output)
         self.assertIn('inventory_project.settings.local', output)
         self.assertIn('inventory_project.settings.tests', output)
-        self.assertIn(__version__, output)
+        self.assertIn(inventory.__version__, output)
 
-        output = subprocess.check_output([manage_bin, 'check'], text=True)
+        output = manage_py.verbose_check_output('check')
         self.assertIn('System check identified no issues (0 silenced).', output)
 
-        output = subprocess.check_output([manage_bin, 'makemigrations'], text=True)
+        output = manage_py.verbose_check_output('makemigrations')
         self.assertIn("No changes detected", output)
 
     def test_code_style(self):
         call_command(code_style.Command())
 
     def test_check_editor_config(self):
-        check_editor_config(package_root=BASE_PATH)
+        check_editor_config(package_root=settings.BASE_PATH)
 
-        max_line_length = get_py_max_line_length(package_root=BASE_PATH)
+        max_line_length = get_py_max_line_length(package_root=settings.BASE_PATH)
         self.assertEqual(max_line_length, 119)

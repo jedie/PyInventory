@@ -8,7 +8,6 @@
 """
 
 import hashlib
-import os
 import shlex
 import signal
 import subprocess
@@ -100,9 +99,6 @@ def main(argv):
         builder = venv.EnvBuilder(symlinks=True, upgrade=True, with_pip=True)
         builder.create(env_dir=VENV_PATH)
 
-    # Set environment variable for uv to use '.venv-app' as project environment:
-    os.environ['UV_PROJECT_ENVIRONMENT'] = str(VENV_PATH.absolute())
-
     if not PROJECT_SHELL_SCRIPT.is_file() or not venv_up2date():
         # Update pip
         verbose_check_call(PYTHON_PATH, '-m', 'pip', 'install', '-U', 'pip')
@@ -111,15 +107,14 @@ def main(argv):
         verbose_check_call(PYTHON_PATH, '-m', 'pip', 'install', '-U', 'uv')
 
         # install requirements
-        verbose_check_call(UV_PATH, 'sync', '--frozen')
+        verbose_check_call(UV_PATH, 'sync')
 
         # install project
         verbose_check_call(PIP_PATH, 'install', '--no-deps', '-e', '.')
+        store_dep_hash()
 
         # Activate git pre-commit hooks:
         verbose_check_call(PYTHON_PATH, '-m', 'pre_commit', 'install')
-
-        store_dep_hash()
 
     signal.signal(signal.SIGINT, noop_sigint_handler)  # ignore "Interrupt from keyboard" signals
 

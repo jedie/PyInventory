@@ -11,7 +11,7 @@ keywords=['inventory','django']
 requires-python = ">=3.11"
 dependencies = [
     # Stay with Django v5.1.x until https://github.com/radiac/django-tagulous/issues/187 is fixed
-    "django!=5.2.0",  # https://docs.djangoproject.com
+    "django>=5.1,<5.2",  # https://docs.djangoproject.com
 
     "colorlog",  # https://github.com/borntyping/python-colorlog
     "gunicorn",  # https://github.com/benoimyproject.wsgitc/gunicorn

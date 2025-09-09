@@ -2,9 +2,9 @@ from unittest import TestCase
 
 from bx_py_utils.auto_doc import assert_readme_block
 from cli_base.cli_tools.git_history import get_git_history
+from django.conf import settings
 
 import inventory
-from manage import BASE_PATH
 
 
 class ReadmeHistoryTestCase(TestCase):
@@ -15,7 +15,7 @@ class ReadmeHistoryTestCase(TestCase):
         )
         history = '\n'.join(git_history)
         assert_readme_block(
-            readme_path=BASE_PATH / 'README.md',
+            readme_path=settings.BASE_PATH / 'README.md',
             text_block=f'\n{history}\n',
             start_marker_line='[comment]: <> (✂✂✂ auto generated history start ✂✂✂)',
             end_marker_line='[comment]: <> (✂✂✂ auto generated history end ✂✂✂)',

@@ -1,9 +1,11 @@
-# flake8: noqa: E405
-"""
-    Settings used to run tests
-"""
 import os
 
+
+# ruff: noqa: F405
+
+"""
+    Django settings for running tests
+"""
 from inventory_project.settings.prod import *  # noqa
 
 
@@ -25,7 +27,11 @@ DATABASES = {
     }
 }
 
-SECRET_KEY = 'No individual secret for tests ;)'
+SECRET_KEY = '''
+    No individual secret for tests...
+    But it must be longer than 50 characters, less than 5 unique characters.
+    Or the "security.W009" check will fail ;)
+'''
 
 DEBUG = True
 

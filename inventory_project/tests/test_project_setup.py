@@ -1,28 +1,24 @@
 import subprocess
 from pathlib import Path
-from unittest import TestCase
 
 from bx_py_utils.path import assert_is_dir, assert_is_file
+from cli_base.cli_tools.code_style import assert_code_style
 from django.conf import settings
 from django.core import checks
 from django.core.cache import cache
-from django.core.management import call_command
-from manage_django_project.management.commands import code_style
+from django.test import SimpleTestCase, override_settings
 from manageprojects.test_utils.project_setup import check_editor_config, get_py_max_line_length
 from packaging.version import Version
 
 from inventory import __version__
-from manage import BASE_PATH
 
 
-class ProjectSetupTestCase(TestCase):
+class ProjectSetupTestCase(SimpleTestCase):
     def test_project_path(self):
         project_path = settings.BASE_PATH
         assert_is_dir(project_path)
         assert_is_dir(project_path / 'inventory')
         assert_is_dir(project_path / 'inventory_project')
-
-        self.assertEqual(project_path, BASE_PATH)
 
     def test_template_dirs(self):
         assert len(settings.TEMPLATES) == 1
@@ -32,16 +28,16 @@ class ProjectSetupTestCase(TestCase):
         assert template_path.is_dir()
 
     def test_manage_check(self):
-        all_issues = checks.run_checks(
-            app_configs=None,
-            tags=None,
-            include_deployment_checks=True,
-            databases=None,
-        )
+        with override_settings(DEBUG=False):
+            all_issues = checks.run_checks(
+                app_configs=None,
+                tags=None,
+                include_deployment_checks=True,
+                databases=None,
+            )
         all_issue_ids = {issue.id for issue in all_issues}
         excpeted_issues = {
             'async.E001',  # DJANGO_ALLOW_ASYNC_UNSAFE set, because of playwright tests
-            'security.W009',  # ignore fake SECRET_KEY in tests
         }
         if all_issue_ids != excpeted_issues:
             print('=' * 100)
@@ -71,14 +67,14 @@ class ProjectSetupTestCase(TestCase):
         version = Version(__version__)  # Will raise InvalidVersion() if wrong formatted
         self.assertEqual(str(version), __version__)
 
-        manage_bin = BASE_PATH / 'manage.py'
+        manage_bin = settings.BASE_PATH / 'manage.py'
         assert_is_file(manage_bin)
 
         output = subprocess.check_output([manage_bin, 'version'], text=True)
         self.assertIn(__version__, output)
 
     def test_manage(self):
-        manage_bin = BASE_PATH / 'manage.py'
+        manage_bin = settings.BASE_PATH / 'manage.py'
         assert_is_file(manage_bin)
 
         output = subprocess.check_output([manage_bin, 'project_info'], text=True)
@@ -94,10 +90,11 @@ class ProjectSetupTestCase(TestCase):
         self.assertIn("No changes detected", output)
 
     def test_code_style(self):
-        call_command(code_style.Command())
+        return_code = assert_code_style(package_root=settings.BASE_PATH)
+        self.assertEqual(return_code, 0, 'Code style error, see output above!')
 
     def test_check_editor_config(self):
-        check_editor_config(package_root=BASE_PATH)
+        check_editor_config(package_root=settings.BASE_PATH)
 
-        max_line_length = get_py_max_line_length(package_root=BASE_PATH)
+        max_line_length = get_py_max_line_length(package_root=settings.BASE_PATH)
         self.assertEqual(max_line_length, 119)

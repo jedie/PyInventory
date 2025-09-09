@@ -2,7 +2,6 @@
 
 import uuid
 
-
 import django.db.models.deletion
 import tagulous.models.fields
 import tagulous.models.models

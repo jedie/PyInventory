@@ -166,7 +166,8 @@ To make a new release, do this:
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
-* [**dev**](https://github.com/jedie/PyInventory/compare/v0.21.1...main)
+* [v0.21.2](https://github.com/jedie/PyInventory/compare/v0.21.1...v0.21.2)
+  * 2025-09-09 - Update project, e.g.: Darker -> Ruff and fix tests
   * 2025-05-01 - Fix local dev server: Don't enforce https
 * [v0.21.1](https://github.com/jedie/PyInventory/compare/v0.21.0...v0.21.1)
   * 2025-05-01 - Replace setuptools with hatchling

@@ -11,7 +11,7 @@ keywords=['inventory','django']
 requires-python = ">=3.11"
 dependencies = [
     # Stay with Django v5.1.x until https://github.com/radiac/django-tagulous/issues/187 is fixed
-    "django!=5.2.0",  # https://docs.djangoproject.com
+    "django<5.2,>5.1",  # https://docs.djangoproject.com
 
     "colorlog",  # https://github.com/borntyping/python-colorlog
     "gunicorn",  # https://github.com/benoimyproject.wsgitc/gunicorn
@@ -47,12 +47,9 @@ dev = [
     "hatchling",  # https://github.com/pypa/hatch/tree/master/backend
     "playwright",  # https://github.com/microsoft/playwright-python
     "tblib",   # https://github.com/ionelmc/python-tblib
+    # TODO: "nox",  # https://github.com/wntrblm/nox
     "coverage",  # https://github.com/nedbat/coveragepy
-    "autopep8",  # https://github.com/hhatto/autopep8
-    "pyupgrade",  # https://github.com/asottile/pyupgrade
-    "flake8",  # https://github.com/pycqa/flake8
-    "flake8-bugbear",  # https://github.com/PyCQA/flake8-bugbear
-    "pyflakes",  # https://github.com/PyCQA/pyflakes
+    "ruff", # https://github.com/astral-sh/ruff
     "codespell",  # https://github.com/codespell-project/codespell
     "EditorConfig",  # https://github.com/editorconfig/editorconfig-core-py
     "pip-audit",  # https://github.com/pypa/pip-audit
@@ -60,12 +57,6 @@ dev = [
     "twine",  # https://github.com/pypa/twine
     "pre-commit",  # https://github.com/pre-commit/pre-commit
     "typeguard",  # https://github.com/agronholm/typeguard/
-
-    # https://github.com/akaihola/darker
-    # https://github.com/ikamensh/flynt
-    # https://github.com/pycqa/isort
-    # https://github.com/pygments/pygments
-    "darker[flynt, isort, color]",
 
     "model_bakery",  # https://github.com/model-bakers/model_bakery
     "requests-mock",  # https://github.com/jamielennox/requests-mock
@@ -115,33 +106,30 @@ ignore-vuln=[
 ]
 
 
-
-
-
-[tool.darker]
-src = ['.']
-revision = "origin/main..."
-line_length = 119
-color = true
-skip_string_normalization = true
-diff = false
-check = false
-stdout = false
-isort = true
-lint = [
-    "flake8",
+[tool.ruff]
+# https://docs.astral.sh/ruff/configuration/
+line-length = 120
+exclude = [
+  ".*/",
 ]
-log_level = "INFO"
 
+[tool.ruff.lint]
+preview = true  # Needed for some of the rules
+extend-select = [
+    "E", # pycodestyle: https://docs.astral.sh/ruff/rules/#error-e
+    "I", # isort: https://docs.astral.sh/ruff/rules/#isort-i
+]
+ignore = [
+    "E402", # https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file/
+    "E731", # https://docs.astral.sh/ruff/rules/lambda-assignment/
+]
 
-[tool.isort]
-# https://pycqa.github.io/isort/docs/configuration/config_files/#pyprojecttoml-preferred-format
-atomic=true
-profile='black'
-skip_glob=['.*', '*/htmlcov/*','*/migrations/*']
-known_first_party=['inventory']
-line_length=119
-lines_after_imports=2
+[tool.ruff.lint.isort]
+# https://docs.astral.sh/ruff/settings/#lintisort
+lines-after-imports = 2
+
+[tool.ruff.format]
+quote-style = "single"
 
 
 [tool.coverage.run]  # https://coverage.readthedocs.io/en/latest/config.html#run
@@ -181,6 +169,7 @@ applied_migrations = [
     "141b3e4", # 2024-09-05T17:53:31+02:00
     "a36dd75", # 2025-03-23T11:39:23+01:00
     "b3e0624", # 2025-05-01T00:07:45+02:00
+    "46497a1", # 2025-09-05T08:45:19+02:00
 ]
 
 [manageprojects.cookiecutter_context.cookiecutter]

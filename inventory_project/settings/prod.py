@@ -1,10 +1,9 @@
 """
-    Base Django settings
+    Django settings for production
 """
 
 import logging
 from pathlib import Path as __Path
-
 
 from django.utils.translation import gettext_lazy as _
 

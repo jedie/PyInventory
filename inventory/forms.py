@@ -1,5 +1,7 @@
 from django import forms
 from django.core.exceptions import FieldDoesNotExist
+from django.db.models import QuerySet
+from django.db.models.options import Options
 
 from inventory.request_dict import get_request_dict
 
@@ -17,8 +19,8 @@ class OnlyUserRelationsModelForm(forms.ModelForm):
             if not hasattr(formfield, 'queryset'):
                 continue
 
-            queryset = formfield.queryset
-            opts = queryset.model._meta
+            queryset: QuerySet = formfield.queryset
+            opts: Options = queryset.model._meta
             try:
                 opts.get_field('user')
             except FieldDoesNotExist:

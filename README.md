@@ -167,6 +167,7 @@ To make a new release, do this:
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [**dev**](https://github.com/jedie/PyInventory/compare/v0.21.2...main)
+  * 2025-09-20 - Add type hints
   * 2025-09-20 - Cleanup: We didn't have make files
   * 2025-09-20 - Cleanup: Remove obsolete files
   * 2025-09-20 - Add PyCharm run configs

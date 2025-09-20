@@ -167,6 +167,7 @@ To make a new release, do this:
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [**dev**](https://github.com/jedie/PyInventory/compare/v0.21.2...main)
+  * 2025-09-20 - Update ReadmeHistoryTestCase
   * 2025-09-20 - Update requirements
 * [v0.21.2](https://github.com/jedie/PyInventory/compare/v0.21.1...v0.21.2)
   * 2025-09-09 - Update project, e.g.: Darker -> Ruff and fix tests

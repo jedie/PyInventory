@@ -247,7 +247,7 @@ wheels = [
 
 [[package]]
 name = "cli-base-utilities"
-version = "0.23.1"
+version = "0.23.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "bx-py-utils" },
@@ -257,9 +257,9 @@ dependencies = [
     { name = "tomlkit" },
     { name = "tyro" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/53/e5/483a6f528dea953fcdc8e8ce8bc59249d5954133971d9106e2a47e7ed5a9/cli_base_utilities-0.23.1.tar.gz", hash = "sha256:44a15feb4ce6fd485decfa9d6ddf73b412cdbdc7754e2d32f10185b611a57b55", size = 128219, upload-time = "2025-09-20T13:04:12.938Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/95/bd/5bc1d6fb2c4a7fe413be757ae6ffac89dc77a644684df6e14b7be80726ec/cli_base_utilities-0.23.3.tar.gz", hash = "sha256:1045c1f1b3990a3cda0ad9f0da8edc6e9ae2b0cf02861c11f104fda4a3b660e3", size = 128329, upload-time = "2025-09-20T18:44:30.883Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/91/86/93f3c469dc9ea379c52deb5300a6ccff53112f972dcad29ac51504c9340a/cli_base_utilities-0.23.1-py3-none-any.whl", hash = "sha256:9649dd3ec116cc80afce5ae137021cc1a2db02f83a9ca23d91b5541db1835e14", size = 87788, upload-time = "2025-09-20T13:04:11.289Z" },
+    { url = "https://files.pythonhosted.org/packages/ce/61/e13d130e647e0be784a5e5ae7b1b68128d9156f577f8e563e5f916f86666/cli_base_utilities-0.23.3-py3-none-any.whl", hash = "sha256:d0cc4d5475869c781f3afded4ad64de25fa080ee0c2a88cf66f216f0e4290c55", size = 87834, upload-time = "2025-09-20T18:44:29.692Z" },
 ]
 
 [[package]]
@@ -697,11 +697,11 @@ wheels = [
 
 [[package]]
 name = "docutils"
-version = "0.22.1"
+version = "0.22.2"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/e4/47/d869000fb74438584858acc628a364b277fc012695f0dfd513cb10f99768/docutils-0.22.1.tar.gz", hash = "sha256:d2fb50923a313532b6d41a77776d24cb459a594be9b7e4afa1fbcb5bda1893e6", size = 2291655, upload-time = "2025-09-17T17:58:45.409Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/4a/c0/89fe6215b443b919cb98a5002e107cb5026854ed1ccb6b5833e0768419d1/docutils-0.22.2.tar.gz", hash = "sha256:9fdb771707c8784c8f2728b67cb2c691305933d68137ef95a75db5f4dfbc213d", size = 2289092, upload-time = "2025-09-20T17:55:47.994Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/8c/dc/1948b90c5d9dbfa4d1fd3991013a042ba3ac62ebd3afdcb3fac08366e755/docutils-0.22.1-py3-none-any.whl", hash = "sha256:806e896f256a17466426544038f30cb860a99f5d4af640e36c284bfcb1824512", size = 638455, upload-time = "2025-09-17T17:58:42.498Z" },
+    { url = "https://files.pythonhosted.org/packages/66/dd/f95350e853a4468ec37478414fc04ae2d61dad7a947b3015c3dcc51a09b9/docutils-0.22.2-py3-none-any.whl", hash = "sha256:b0e98d679283fc3bb0ead8a5da7f501baa632654e7056e9c5846842213d674d8", size = 632667, upload-time = "2025-09-20T17:55:43.052Z" },
 ]
 
 [[package]]

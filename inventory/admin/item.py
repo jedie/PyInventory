@@ -71,10 +71,10 @@ class ItemModelAdmin(TagulousModelAdminFix, ImportExportMixin, SortableAdminMixi
         item = path[-1]
         url = reverse('admin:inventory_itemmodel_change', args=[obj.pk])
         return format_html(
-            '<a href="{}">{}<strong>{}</strong></a>',
-            url,
-            prefixes,
-            item,
+            format_string='<a href="{url}">{prefixes}<strong>{item}</strong></a>',
+            url=url,
+            prefixes=prefixes,
+            item=item,
         )
 
     def get_queryset(self, request):

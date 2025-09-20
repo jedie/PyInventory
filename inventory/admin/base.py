@@ -67,7 +67,7 @@ class BaseUserAdmin(CompareVersionAdmin):
 class BaseImageModelInline(UserInlineMixin, SortableInlineAdminMixin, admin.TabularInline):
     def preview(self, instance):
         return format_html(
-            (
+            format_string=(
                 '<a href="{url}" title="{name}"'
                 ' target="_blank" class="image_file_input_preview">'
                 '<img style="width:9em;" src="{url}"></a>'

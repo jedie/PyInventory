@@ -167,6 +167,7 @@ To make a new release, do this:
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [**dev**](https://github.com/jedie/PyInventory/compare/v0.21.2...main)
+  * 2025-09-20 - pre-commit: remove "default_install_hook_types"
   * 2025-09-20 - Remove obsolete config files
   * 2025-09-20 - Update ReadmeHistoryTestCase
   * 2025-09-20 - Update requirements

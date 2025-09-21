@@ -44,7 +44,7 @@ class MemoModelAdmin(TagulousModelAdminFix, ImportExportMixin, SortableAdminBase
     list_display = ('name', 'update_dt')
     ordering = ('-update_dt',)
     list_display_links = ('name',)
-    list_filter = ('tags',)
+    list_filter = (('tags', admin.RelatedOnlyFieldListFilter),)
     search_fields = ('name', 'memo', 'tags__name')
     fieldsets = (
         (

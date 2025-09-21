@@ -49,7 +49,7 @@ class BaseUserAdmin(CompareVersionAdmin):
         if request.user.is_superuser:
             # Superuser sees entries from all users -> Add "By user" filter
             list_filter = list(list_filter)
-            list_filter.insert(0, 'user')
+            list_filter.insert(0, ('user', admin.RelatedOnlyFieldListFilter))
 
         return list_filter
 

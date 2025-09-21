@@ -669,7 +669,7 @@ wheels = [
 
 [[package]]
 name = "django-tools"
-version = "0.56.2"
+version = "0.57.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "bleach" },
@@ -677,13 +677,14 @@ dependencies = [
     { name = "bx-py-utils" },
     { name = "colorlog" },
     { name = "django" },
+    { name = "django-debug-toolbar" },
     { name = "gunicorn" },
     { name = "icdiff" },
     { name = "pprintpp" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/24/ec/0f0c55599c348dd209427a5dc64c59a9d803b52274914e49dd8bba3a7166/django_tools-0.56.2.tar.gz", hash = "sha256:88a192f2873f0411b99ee1aba04f2779133284cd18a5c78976e8e4605ba5d7f7", size = 354732, upload-time = "2024-08-25T14:12:24.287Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/63/39/e7ebc9e1bc816fbe37ec8d5cb9a8ee106f918f0c14b3a1418423db14ec31/django_tools-0.57.0.tar.gz", hash = "sha256:663870a9edce4252217e504c3de8b5886bba594f4e03acf71fe27374435ea880", size = 267026, upload-time = "2025-09-21T08:50:22.041Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ee/90/a3c9f923b229afffa8e68eb1cded654ffa42e2b96552a8fa1d153f017f32/django_tools-0.56.2-py3-none-any.whl", hash = "sha256:29c25be814d74cd9f554d7d45bc205f5570e5feaa4232cbd09cc913c46b20c07", size = 239036, upload-time = "2024-08-25T14:12:21.63Z" },
+    { url = "https://files.pythonhosted.org/packages/42/e3/26bbc4cc70109bdade090103d23d88ea8b1e402cc7acc35f24343f6b1a11/django_tools-0.57.0-py3-none-any.whl", hash = "sha256:a22bf403d1ca2946b9e76d343d8ed0435be449fa244ea3bc34ac71d95dbb81f8", size = 255020, upload-time = "2025-09-21T08:50:20.047Z" },
 ]
 
 [[package]]
@@ -1027,7 +1028,7 @@ wheels = [
 
 [[package]]
 name = "manage-django-project"
-version = "0.10.0"
+version = "0.10.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "bx-py-utils" },
@@ -1038,9 +1039,9 @@ dependencies = [
     { name = "django-tools" },
     { name = "manageprojects" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/52/56/fe00b3feac05a7a21673cf5d1a14b8d3ec388af5d00aaafd017e8a078a94/manage_django_project-0.10.0.tar.gz", hash = "sha256:30f77e21eb85fa7d37814c32e16638a52e5e02f3292ca1e3f24ad12d1830131e", size = 106865, upload-time = "2025-09-03T15:31:32.749Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/5b/0d/6f8adbbceb2349028fbc3f06f9661339274a879c76164d7dfc16c6bf382c/manage_django_project-0.10.1.tar.gz", hash = "sha256:b8527289568f0c352da449cc06530713232b23cafec5c4a791e1c682c251588b", size = 109668, upload-time = "2025-09-21T08:54:53.002Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/6d/9b/8e6b64ba164f4af7dadb51435c18134058fe32977b4bd05f2cfe35aac9bc/manage_django_project-0.10.0-py3-none-any.whl", hash = "sha256:bb97811f05adce705ef60688c8d3efb35a5164dc387c7265cc0da4e9f07fbbc7", size = 56673, upload-time = "2025-09-03T15:31:30.883Z" },
+    { url = "https://files.pythonhosted.org/packages/20/f0/56666800bd3dff22011126839f965dcbd6bafd391933d5454fcebcdc9b67/manage_django_project-0.10.1-py3-none-any.whl", hash = "sha256:c3d69b12cf60fb6f802d8f243c75c36d6d956dcdb02bde7b6491cffa8dc8db2a", size = 56695, upload-time = "2025-09-21T08:54:51.414Z" },
 ]
 
 [[package]]
@@ -1643,11 +1644,11 @@ dev = [
 
 [[package]]
 name = "pyparsing"
-version = "3.2.4"
+version = "3.2.5"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/98/c9/b4594e6a81371dfa9eb7a2c110ad682acf985d96115ae8b25a1d63b4bf3b/pyparsing-3.2.4.tar.gz", hash = "sha256:fff89494f45559d0f2ce46613b419f632bbb6afbdaed49696d322bcf98a58e99", size = 1098809, upload-time = "2025-09-13T05:47:19.732Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/f2/a5/181488fc2b9d093e3972d2a472855aae8a03f000592dbfce716a512b3359/pyparsing-3.2.5.tar.gz", hash = "sha256:2df8d5b7b2802ef88e8d016a2eb9c7aeaa923529cd251ed0fe4608275d4105b6", size = 1099274, upload-time = "2025-09-21T04:11:06.277Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/53/b8/fbab973592e23ae313042d450fc26fa24282ebffba21ba373786e1ce63b4/pyparsing-3.2.4-py3-none-any.whl", hash = "sha256:91d0fcde680d42cd031daf3a6ba20da3107e08a75de50da58360e7d94ab24d36", size = 113869, upload-time = "2025-09-13T05:47:17.863Z" },
+    { url = "https://files.pythonhosted.org/packages/10/5e/1aa9a93198c6b64513c9d7752de7422c06402de6600a8767da1524f9570b/pyparsing-3.2.5-py3-none-any.whl", hash = "sha256:e38a4f02064cf41fe6593d328d0512495ad1f3d8a91c4f73fc401b3079a59a5e", size = 113890, upload-time = "2025-09-21T04:11:04.117Z" },
 ]
 
 [[package]]

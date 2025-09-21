@@ -16,7 +16,6 @@ dependencies = [
     "colorlog",  # https://github.com/borntyping/python-colorlog
     "gunicorn",  # https://github.com/benoimyproject.wsgitc/gunicorn
 
-
     "django-import-export",  # https://github.com/django-import-export/django-import-export
     "django-dbbackup",  # https://github.com/django-dbbackup/django-dbbackup
     "django-tools",  # https://github.com/jedie/django-tools/
@@ -36,7 +35,7 @@ dependencies = [
 [dependency-groups]
 dev = [
     "django-debug-toolbar",  # http://django-debug-toolbar.readthedocs.io/en/stable/changes.html
-    "manage_django_project",  # https://github.com/jedie/manage_django_project
+    "manage_django_project>=0.11.0",  # https://github.com/jedie/manage_django_project
     # TODO: "autocron",  # https://github.com/kbr/autocron
 
     "cmd2_ext_test",  # https://github.com/python-cmd2/cmd2/tree/master/plugins/ext_test
@@ -110,7 +109,8 @@ ignore-vuln=[
 # https://docs.astral.sh/ruff/configuration/
 line-length = 120
 exclude = [
-  ".*/",
+    ".*/",
+    "*/migrations/*",
 ]
 
 [tool.ruff.lint]

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-30 20:48+0200\n"
+"POT-Creation-Date: 2025-09-21 20:43+0200\n"
 "PO-Revision-Date: 2022-09-30 20:07+0200\n"
 "Last-Translator: Jaume López\n"
 "Language-Team: \n"
@@ -28,6 +28,16 @@ msgid "Root + first sub"
 msgstr ""
 
 msgid "Root + first + second sub"
+msgstr ""
+
+msgid "ItemMainCategory.verbose_name"
+msgstr ""
+
+#, python-format
+msgid "Uncategorized (%(count)s)"
+msgstr ""
+
+msgid "Uncategorized"
 msgstr ""
 
 msgid "Related items"
@@ -101,6 +111,34 @@ msgstr "Nom"
 
 msgid "BaseItemAttachmentModel.name.help_text"
 msgstr ""
+
+#| msgid "ItemModel.verbose_name"
+msgid "ItemMainCategory.name.verbose_name"
+msgstr ""
+
+#| msgid "BaseLink.name.help_text"
+msgid "ItemMainCategory.name.help_text"
+msgstr " "
+
+#| msgid "ItemModel.verbose_name"
+msgid "ItemMainCategory.slug.verbose_name"
+msgstr ""
+
+#| msgid "ItemFileModel.file.help_text"
+msgid "ItemMainCategory.slug.help_text"
+msgstr " "
+
+#| msgid "ItemModel.verbose_name_plural"
+msgid "ItemMainCategory.verbose_name_plural"
+msgstr ""
+
+#| msgid "ItemModel.location.verbose_name"
+msgid "ItemModel.category.verbose_name"
+msgstr ""
+
+#| msgid "ItemModel.location.help_text"
+msgid "ItemModel.category.help_text"
+msgstr " "
 
 msgid "ItemModel.kind.verbose_name"
 msgstr "Tipus"

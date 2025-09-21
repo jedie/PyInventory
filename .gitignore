@@ -9,7 +9,6 @@ __pycache__
 !.github
 !.run
 !.editorconfig
-!.flake8
 !.gitignore
 !.pre-commit-config.yaml
 !.pre-commit-hooks.yaml
@@ -20,8 +19,8 @@ __pycache__
 !/backups/.gitkeep
 
 # from test projects:
-**/static/*
-**/media/*
+/static/
+/media/
 *.sqlite3
 *.json
 

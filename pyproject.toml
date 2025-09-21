@@ -47,7 +47,7 @@ dev = [
     "hatchling",  # https://github.com/pypa/hatch/tree/master/backend
     "playwright",  # https://github.com/microsoft/playwright-python
     "tblib",   # https://github.com/ionelmc/python-tblib
-    # TODO: "nox",  # https://github.com/wntrblm/nox
+    "nox",  # https://github.com/wntrblm/nox
     "coverage",  # https://github.com/nedbat/coveragepy
     "ruff", # https://github.com/astral-sh/ruff
     "codespell",  # https://github.com/codespell-project/codespell
@@ -170,6 +170,7 @@ applied_migrations = [
     "a36dd75", # 2025-03-23T11:39:23+01:00
     "b3e0624", # 2025-05-01T00:07:45+02:00
     "46497a1", # 2025-09-05T08:45:19+02:00
+    "ae399b9", # 2025-09-21T09:34:36+02:00
 ]
 
 [manageprojects.cookiecutter_context.cookiecutter]

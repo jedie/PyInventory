@@ -166,6 +166,8 @@ To make a new release, do this:
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
+* [**dev**](https://github.com/jedie/PyInventory/compare/v0.21.4...main)
+  * 2025-09-21 - fix for django-admin-sortable2/issues/363
 * [v0.21.4](https://github.com/jedie/PyInventory/compare/v0.21.3...v0.21.4)
   * 2025-09-21 - Because of PyPi download errors: release as v0.21.4
 * [v0.21.3](https://github.com/jedie/PyInventory/compare/v0.21.2...v0.21.3)
@@ -183,12 +185,12 @@ To make a new release, do this:
 * [v0.21.2](https://github.com/jedie/PyInventory/compare/v0.21.1...v0.21.2)
   * 2025-09-09 - Update project, e.g.: Darker -> Ruff and fix tests
   * 2025-05-01 - Fix local dev server: Don't enforce https
-* [v0.21.1](https://github.com/jedie/PyInventory/compare/v0.21.0...v0.21.1)
-  * 2025-05-01 - Replace setuptools with hatchling
-  * 2025-04-30 - Update requirements and some small code parts
 
 <details><summary>Expand older history entries ...</summary>
 
+* [v0.21.1](https://github.com/jedie/PyInventory/compare/v0.21.0...v0.21.1)
+  * 2025-05-01 - Replace setuptools with hatchling
+  * 2025-04-30 - Update requirements and some small code parts
 * [v0.21.0](https://github.com/jedie/PyInventory/compare/v0.20.1...v0.21.0)
   * 2025-03-23 - Bugfix publish: setuptools missing
   * 2025-03-23 - Migrate "pip-tools" -> "uv" and remove tox

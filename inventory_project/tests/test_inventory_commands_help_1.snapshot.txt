@@ -44,9 +44,9 @@ seed_data  tree
 
 manage_django_project
 =====================
-code_style  nox         project_info    update_req
-coverage    pip_audit   publish         update_test_snapshot_files
-install     playwright  run_dev_server
+code_style  make_messages  playwright    run_dev_server
+coverage    nox            project_info  update_req
+install     pip_audit      publish       update_test_snapshot_files
 
 reversion
 =========

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-30 20:48+0200\n"
-"PO-Revision-Date: 2022-09-30 20:48+0200\n"
+"POT-Creation-Date: 2025-10-16 10:51+0200\n"
+"PO-Revision-Date: 2025-09-21 17:34+0200\n"
 "Last-Translator: Jens Diemer\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.4.2\n"
 
 msgid "Limit tree depth"
 msgstr "Tiefe des Baumes"
@@ -100,6 +100,24 @@ msgstr "Name"
 
 msgid "BaseItemAttachmentModel.name.help_text"
 msgstr "Optionalen Namen (Wird automatisch aus dem Dateinamen gesetzt)"
+
+msgid "ItemMainCategory.name.verbose_name"
+msgstr "Kategorie"
+
+msgid "ItemMainCategory.name.help_text"
+msgstr " "
+
+msgid "ItemMainCategory.verbose_name"
+msgstr "Kategorie"
+
+msgid "ItemMainCategory.verbose_name_plural"
+msgstr "Kategorien"
+
+msgid "ItemModel.category.verbose_name"
+msgstr "Kategorie"
+
+msgid "ItemModel.category.help_text"
+msgstr " "
 
 msgid "ItemModel.kind.verbose_name"
 msgstr "Art"

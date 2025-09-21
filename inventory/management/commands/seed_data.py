@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.core.management.base import BaseCommand
 
 from inventory.models import ItemModel, LocationModel
+from inventory.models.item import ItemMainCategory
 
 
 SEED_DATA_USER_PREFIX = 'seed-data-user-'
@@ -46,7 +47,8 @@ def iter_location_chain(user, location_count):
 
 
 class ItemCreator:
-    def __init__(self):
+    def __init__(self, categories: list[ItemMainCategory]):
+        self.categories = itertools.cycle(categories)
         self.equipment_no = itertools.count(start=1)
         self.item_no = itertools.count(start=1)
         self.part_no = itertools.count(start=1)
@@ -57,10 +59,13 @@ class ItemCreator:
         assert user
         assert location
         while True:
+            category = next(self.categories)
+
             equipment = ItemModel.objects.create(
                 user=user,
+                category=category,
                 location=location,
-                name=f'Equipment {next(self.equipment_no):03}',
+                name=f'{category.name} {next(self.equipment_no):03}',
             )
             equipment.full_clean()
             yield equipment
@@ -68,6 +73,7 @@ class ItemCreator:
             while True:
                 item = ItemModel.objects.create(
                     user=user,
+                    category=category,
                     location=location,
                     name=f'Item {next(self.item_no):03}',
                     parent=equipment,
@@ -78,6 +84,7 @@ class ItemCreator:
                 while True:
                     part = ItemModel.objects.create(
                         user=user,
+                        category=category,
                         location=location,
                         name=f'Part {next(self.part_no):03}',
                         parent=item,
@@ -87,6 +94,14 @@ class ItemCreator:
                     self.part_per_location[location] += 1
                     if self.part_per_location[location] >= item_count:
                         return
+
+
+def create_categories() -> list[ItemMainCategory]:
+    categories = []
+    for category in ('Retrocomputing', 'Photo Equipment', 'Household Goods'):
+        instance = ItemMainCategory.objects.get_or_create(name=category)[0]
+        categories.append(instance)
+    return categories
 
 
 class Command(BaseCommand):
@@ -111,13 +126,15 @@ class Command(BaseCommand):
             log_level = logging.WARNING
 
         with SetupLogger(level=log_level):
+            categories = create_categories()
+
             existing_users = User.objects.filter(username__startswith=SEED_DATA_USER_PREFIX)
             for user in existing_users:
                 self.stdout.write(f'Clean data from user {user}...')
                 info = user.delete()
                 self.stdout.write(f'done: {info}')
 
-            item_creator = ItemCreator()
+            item_creator = ItemCreator(categories)
 
             for user_no in range(1, user_count + 1):
                 self.stdout.write('_' * 100)

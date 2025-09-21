@@ -1,7 +1,7 @@
 import logging
 
 import tagulous
-from adminsortable2.admin import SortableAdminBase, SortableInlineAdminMixin
+from adminsortable2.admin import SortableAdminBase, SortableAdminMixin, SortableInlineAdminMixin
 from django.conf import settings
 from django.contrib import admin
 from django.template.loader import render_to_string
@@ -20,11 +20,17 @@ from inventory.admin.base import (
 )
 from inventory.admin.tagulous_fix import TagulousModelAdminFix
 from inventory.models import ItemLinkModel, ItemModel
-from inventory.models.item import ItemFileModel, ItemImageModel
+from inventory.models.item import ItemFileModel, ItemImageModel, ItemMainCategory
+from inventory.persistent_filters import PersistentRelatedFieldListFilter
 from inventory.string_utils import ltruncatechars
 
 
 logger = logging.getLogger(__name__)
+
+
+@admin.register(ItemMainCategory)
+class ItemMainCategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
+    list_display = ('order', 'name')
 
 
 class ItemLinkModelInline(UserInlineMixin, SortableInlineAdminMixin, admin.TabularInline):
@@ -95,6 +101,7 @@ class ItemModelAdmin(TagulousModelAdminFix, ImportExportMixin, SortableAdminBase
     ordering = ('path_str',)
     list_display_links = ()
     list_filter = (
+        ('category', PersistentRelatedFieldListFilter),
         LimitTreeDepthListFilter,
         ('kind', admin.RelatedOnlyFieldListFilter),
         ('location', admin.RelatedOnlyFieldListFilter),
@@ -118,7 +125,7 @@ class ItemModelAdmin(TagulousModelAdminFix, ImportExportMixin, SortableAdminBase
             _('Basic'),
             {
                 'fields': (
-                    'kind',
+                    ('category', 'kind'),
                     ('producer', 'name'),
                     'description',
                     'tags',

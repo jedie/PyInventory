@@ -12,12 +12,14 @@ on:
 
 jobs:
   test:
-    name: 'Python ${{ matrix.python-version }}'
+    name: 'Python ${{ matrix.python-version }} Django ${{ matrix.django-version }}'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         python-version: ['3.13', '3.12', '3.11']
+        # Stay with Django v5.1.x until https://github.com/radiac/django-tagulous/issues/187 is fixed
+        django-version: ['5.1']
     steps:
     - name: Checkout
       run: |
@@ -51,12 +53,12 @@ jobs:
       run: |
         ./manage.py pip_audit
 
-    - name: 'Python ${{ matrix.python-version }}'
+    - name: 'Python ${{ matrix.python-version }} Django ${{ matrix.django-version }}'
       env:
         PYTHONUNBUFFERED: 1
         PYTHONWARNINGS: always
       run: |
-        ./manage.py test
+        ./manage.py nox -e "tests-${{ matrix.python-version }}(django='${{ matrix.django-version }}')"
 
     - name: 'Upload coverage report'
       uses: codecov/codecov-action@v5

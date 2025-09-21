@@ -1028,7 +1028,7 @@ wheels = [
 
 [[package]]
 name = "manage-django-project"
-version = "0.10.1"
+version = "0.11.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "bx-py-utils" },
@@ -1039,9 +1039,9 @@ dependencies = [
     { name = "django-tools" },
     { name = "manageprojects" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/5b/0d/6f8adbbceb2349028fbc3f06f9661339274a879c76164d7dfc16c6bf382c/manage_django_project-0.10.1.tar.gz", hash = "sha256:b8527289568f0c352da449cc06530713232b23cafec5c4a791e1c682c251588b", size = 109668, upload-time = "2025-09-21T08:54:53.002Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/4f/15/e4c7a0c31f5b09940f205171b95b9aa8a092d6611de06d28758fcadd7ab4/manage_django_project-0.11.0.tar.gz", hash = "sha256:7990cb06e10d0058e9136511423aa83faff783caf92b06ab72f7381321fcf950", size = 110898, upload-time = "2025-09-21T18:40:20.146Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/20/f0/56666800bd3dff22011126839f965dcbd6bafd391933d5454fcebcdc9b67/manage_django_project-0.10.1-py3-none-any.whl", hash = "sha256:c3d69b12cf60fb6f802d8f243c75c36d6d956dcdb02bde7b6491cffa8dc8db2a", size = 56695, upload-time = "2025-09-21T08:54:51.414Z" },
+    { url = "https://files.pythonhosted.org/packages/f6/f0/907e1cc10e33a3aa48222fc8a79e851471cd6cd1733eea3ac993d55db853/manage_django_project-0.11.0-py3-none-any.whl", hash = "sha256:e75ed1ae92a54766ac6abfd2968b579533c9e4e7ea8b09794ad379e7e4a04761", size = 57744, upload-time = "2025-09-21T18:40:18.886Z" },
 ]
 
 [[package]]
@@ -1628,7 +1628,7 @@ dev = [
     { name = "editorconfig" },
     { name = "hatchling" },
     { name = "lxml" },
-    { name = "manage-django-project" },
+    { name = "manage-django-project", specifier = ">=0.11.0" },
     { name = "model-bakery" },
     { name = "mypy" },
     { name = "pip-audit" },

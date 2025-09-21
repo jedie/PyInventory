@@ -335,18 +335,38 @@
           <h2 class="fieldset-heading" id="fieldset-0-2-heading">
            Basic
           </h2>
-          <div class="form-row field-kind">
-           <div>
-            <div class="flex-container">
-             <label class="required" for="id_kind">
-              Kind:
-             </label>
-             <div class="related-widget-wrapper" data-model-ref="tagulous_itemmodel_kind">
-              <input aria-describedby="id_kind_helptext" autocomplete="off" data-context="available-source" data-tag-list='["kind"]' data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 3, "space_delimiter": false, "required": true}' data-tagulous="true" data-theme="admin-autocomplete" id="id_kind" name="kind" required="" type="text" value="kind"/>
+          <div class="form-row field-category field-kind">
+           <div class="flex-container form-multiline">
+            <div>
+             <div class="flex-container fieldBox field-category">
+              <label for="id_category">
+               Category:
+              </label>
+              <div class="related-widget-wrapper" data-model-ref="itemmaincategory">
+               <select aria-describedby="id_category_helptext" data-context="available-source" id="id_category" name="category">
+                <option selected="" value="">
+                 ---------
+                </option>
+               </select>
+              </div>
+             </div>
+             <div class="help" id="id_category_helptext">
+              <div>
+              </div>
              </div>
             </div>
-            <div class="help" id="id_kind_helptext">
-             <div>
+            <div>
+             <div class="flex-container fieldBox field-kind">
+              <label class="required inline" for="id_kind">
+               Kind:
+              </label>
+              <div class="related-widget-wrapper" data-model-ref="tagulous_itemmodel_kind">
+               <input aria-describedby="id_kind_helptext" autocomplete="off" data-context="available-source" data-tag-list='["kind"]' data-tag-options='{"case_sensitive": false, "force_lowercase": false, "max_count": 3, "space_delimiter": false, "required": true}' data-tagulous="true" data-theme="admin-autocomplete" id="id_kind" name="kind" required="" type="text" value="kind"/>
+              </div>
+             </div>
+             <div class="help" id="id_kind_helptext">
+              <div>
+              </div>
              </div>
             </div>
            </div>

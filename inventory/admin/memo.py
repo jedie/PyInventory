@@ -1,7 +1,7 @@
 import logging
 
 import tagulous
-from adminsortable2.admin import SortableAdminMixin, SortableInlineAdminMixin
+from adminsortable2.admin import SortableAdminBase, SortableInlineAdminMixin
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 from import_export.admin import ImportExportMixin
@@ -35,7 +35,7 @@ class MemoModelResource(ModelResource):
 
 
 @admin.register(MemoModel)
-class MemoModelAdmin(TagulousModelAdminFix, ImportExportMixin, SortableAdminMixin, BaseUserAdmin):
+class MemoModelAdmin(TagulousModelAdminFix, ImportExportMixin, SortableAdminBase, BaseUserAdmin):
     def get_max_order(self, request, obj=None):
         # Work-a-round for: https://github.com/jrief/django-admin-sortable2/issues/341
         return 0
@@ -44,7 +44,7 @@ class MemoModelAdmin(TagulousModelAdminFix, ImportExportMixin, SortableAdminMixi
     list_display = ('name', 'update_dt')
     ordering = ('-update_dt',)
     list_display_links = ('name',)
-    list_filter = ('tags',)
+    list_filter = (('tags', admin.RelatedOnlyFieldListFilter),)
     search_fields = ('name', 'memo', 'tags__name')
     fieldsets = (
         (

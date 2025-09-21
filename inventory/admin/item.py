@@ -94,7 +94,13 @@ class ItemModelAdmin(TagulousModelAdminFix, ImportExportMixin, SortableAdminMixi
     list_display = ('producer', 'item', 'kind', 'location', 'received_date', 'update_dt')
     ordering = ('path_str',)
     list_display_links = ()
-    list_filter = (LimitTreeDepthListFilter, 'kind', 'location', 'producer', 'tags')
+    list_filter = (
+        LimitTreeDepthListFilter,
+        ('kind', admin.RelatedOnlyFieldListFilter),
+        ('location', admin.RelatedOnlyFieldListFilter),
+        ('producer', admin.RelatedOnlyFieldListFilter),
+        ('tags', admin.RelatedOnlyFieldListFilter),
+    )
     search_fields = ('name', 'description', 'kind__name', 'tags__name')
     fieldsets = (
         (

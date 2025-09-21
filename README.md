@@ -166,13 +166,15 @@ To make a new release, do this:
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
-* [**dev**](https://github.com/jedie/PyInventory/compare/v0.21.2...main)
+* [v0.21.3](https://github.com/jedie/PyInventory/compare/v0.21.2...v0.21.3)
+  * 2025-09-21 - Enhance change list filters by using RelatedOnlyFieldListFilter
+  * 2025-09-21 - Update requirements
+  * 2025-09-21 - Bugfix Memo changelist ordering
   * 2025-09-20 - Code cleanup: Use format_html() with kwargs
   * 2025-09-20 - Add type hints
   * 2025-09-20 - Cleanup: We didn't have make files
   * 2025-09-20 - Cleanup: Remove obsolete files
   * 2025-09-20 - Add PyCharm run configs
-  * 2025-09-20 - Update requirements
   * 2025-09-20 - pre-commit: remove "default_install_hook_types"
   * 2025-09-20 - Remove obsolete config files
   * 2025-09-20 - Update ReadmeHistoryTestCase

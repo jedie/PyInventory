@@ -166,7 +166,8 @@ To make a new release, do this:
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
-* [**dev**](https://github.com/jedie/PyInventory/compare/v0.21.2...main)
+* [v0.21.3](https://github.com/jedie/PyInventory/compare/v0.21.2...v0.21.3)
+  * 2025-09-21 - Enhance change list filters by using RelatedOnlyFieldListFilter
   * 2025-09-21 - Update requirements
   * 2025-09-21 - Bugfix Memo changelist ordering
   * 2025-09-20 - Code cleanup: Use format_html() with kwargs

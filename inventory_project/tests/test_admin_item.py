@@ -1,4 +1,5 @@
 import datetime
+import logging
 from unittest import mock
 
 from bx_django_utils.test_utils.datetime import MockDatetimeGenerator
@@ -8,10 +9,12 @@ from django.template.defaulttags import CsrfTokenNode, NowNode
 from django.test import TestCase, override_settings
 from django.utils import timezone
 from django_tools.unittest_utils.mockup import ImageDummy
+from model_bakery import baker
 from override_storage import locmem_stats_override_storage
 from reversion.models import Revision
 
 from inventory.models import ItemImageModel, ItemModel
+from inventory.models.item import ItemMainCategory
 from inventory_project.tests.fixtures import get_normal_user
 from inventory_project.tests.mocks import MockInventoryVersionString
 
@@ -75,6 +78,8 @@ class AdminAnonymousTests(HtmlAssertionMixin, TestCase):
 
 @override_settings(SECURE_SSL_REDIRECT=False)
 class AdminTestCase(HtmlAssertionMixin, TestCase):
+    maxDiff = None
+
     @classmethod
     def setUpTestData(cls):
         cls.normaluser = get_normal_user()
@@ -240,3 +245,85 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
             ),
         )
         assert_html_response_snapshot(response=response, validate=False)
+
+    def test_persistent_main_category(self):
+        self.client.force_login(self.normaluser)
+
+        baker.make(
+            ItemModel,
+            id='80dddef9-0000-0000-0000-000000000001',
+            user=self.normaluser,
+            name='Item 1',
+            category=baker.make(ItemMainCategory, id=1, name='Category 1'),
+        )
+        baker.make(
+            ItemModel,
+            id='80dddef9-0000-0000-0000-000000000002',
+            user=self.normaluser,
+            name='Item 2',
+            category=baker.make(ItemMainCategory, id=2, name='Category 2'),
+        )
+        with self.assertLogs('inventory.persistent_filters', level=logging.DEBUG) as logs:
+            response = self.client.get(path='/admin/inventory/itemmodel/')
+
+        self.assertEqual(
+            list(response.context_data['cl'].queryset.values_list('name', flat=True)), ['Item 1', 'Item 2']
+        )
+        self.assert_html_parts(
+            response,
+            parts=(
+                '<h1>Select Item to change</h1>',
+                '<a href="/admin/inventory/itemmodel/80dddef9-0000-0000-0000-000000000001/change/">'
+                '<strong>Item 1</strong></a>',
+                '<a href="/admin/inventory/itemmodel/80dddef9-0000-0000-0000-000000000002/change/">'
+                '<strong>Item 2</strong></a>',
+                '<a href="?category__id__exact=1">Category 1</a>',
+                '<a href="?category__id__exact=2">Category 2</a>',
+            ),
+        )
+        self.assertEqual(
+            logs.output,
+            [
+                'DEBUG:inventory.persistent_filters:'
+                "Restore None from 'persistent_parameter_1_inventory_itemmodel_category__id__exact'"
+            ],
+        )
+
+        with self.assertLogs('inventory.persistent_filters', level=logging.DEBUG) as logs:
+            response = self.client.get(path='/admin/inventory/itemmodel/?category__id__exact=2')
+        self.assertEqual(
+            logs.output,
+            [
+                'DEBUG:inventory.persistent_filters:'
+                "Store '2' to 'persistent_parameter_1_inventory_itemmodel_category__id__exact'"
+            ],
+        )
+        # Only items from category 2:
+        self.assertEqual(list(response.context_data['cl'].queryset.values_list('name', flat=True)), ['Item 2'])
+
+        # Restore the filter from cache:
+        with self.assertLogs('inventory.persistent_filters', level=logging.DEBUG) as logs:
+            response = self.client.get(path='/admin/inventory/itemmodel/')
+        self.assertEqual(
+            logs.output,
+            [
+                "DEBUG:inventory.persistent_filters:"
+                "Restore '2' from 'persistent_parameter_1_inventory_itemmodel_category__id__exact'",
+                "INFO:inventory.persistent_filters:Restore 'category' filter for itemmodel with '2'",
+            ],
+        )
+        # Only items from category 2:
+        self.assertEqual(list(response.context_data['cl'].queryset.values_list('name', flat=True)), ['Item 2'])
+
+        # Change to category 1:
+        with self.assertLogs('inventory.persistent_filters', level=logging.DEBUG) as logs:
+            response = self.client.get(path='/admin/inventory/itemmodel/?category__id__exact=1')
+        self.assertEqual(
+            logs.output,
+            [
+                'DEBUG:inventory.persistent_filters:'
+                "Store '1' to 'persistent_parameter_1_inventory_itemmodel_category__id__exact'"
+            ],
+        )
+        # Only items from category 1:
+        self.assertEqual(list(response.context_data['cl'].queryset.values_list('name', flat=True)), ['Item 1'])

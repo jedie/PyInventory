@@ -166,7 +166,8 @@ To make a new release, do this:
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
-* [**dev**](https://github.com/jedie/PyInventory/compare/v0.21.4...main)
+* [v0.22.0](https://github.com/jedie/PyInventory/compare/v0.21.4...v0.22.0)
+  * 2025-09-21 - NEW: Add a persistent "Main Category"
   * 2025-09-21 - fix for django-admin-sortable2/issues/363
 * [v0.21.4](https://github.com/jedie/PyInventory/compare/v0.21.3...v0.21.4)
   * 2025-09-21 - Because of PyPi download errors: release as v0.21.4

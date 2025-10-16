@@ -24,9 +24,6 @@ SECURE_HSTS_PRELOAD = False
 SERVE_FILES = True
 
 
-# Disable caches:
-CACHES = {'default': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'}}
-
 # Required for the debug toolbar to be displayed:
 INTERNAL_IPS = ('127.0.0.1', '0.0.0.0', 'localhost')
 

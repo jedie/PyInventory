@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-30 20:48+0200\n"
+"POT-Creation-Date: 2025-10-16 10:51+0200\n"
 "PO-Revision-Date: 2022-09-30 20:07+0200\n"
 "Last-Translator: Jaume López\n"
 "Language-Team: \n"
@@ -101,6 +101,24 @@ msgstr "Nom"
 
 msgid "BaseItemAttachmentModel.name.help_text"
 msgstr ""
+
+msgid "ItemMainCategory.name.verbose_name"
+msgstr ""
+
+msgid "ItemMainCategory.name.help_text"
+msgstr " "
+
+msgid "ItemMainCategory.verbose_name"
+msgstr ""
+
+msgid "ItemMainCategory.verbose_name_plural"
+msgstr ""
+
+msgid "ItemModel.category.verbose_name"
+msgstr ""
+
+msgid "ItemModel.category.help_text"
+msgstr " "
 
 msgid "ItemModel.kind.verbose_name"
 msgstr "Tipus"

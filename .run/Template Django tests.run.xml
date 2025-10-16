@@ -6,6 +6,7 @@
     <option name="PARENT_ENVS" value="true" />
     <envs>
       <env name="PYTHONUNBUFFERED" value="1" />
+      <env name="RAISE_SNAPSHOT_ERRORS" value="0" />
       <env name="DJANGO_SETTINGS_MODULE" value="inventory_project.settings.tests" />
     </envs>
     <option name="SDK_HOME" value="" />

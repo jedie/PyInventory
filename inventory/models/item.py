@@ -17,6 +17,29 @@ from inventory.models.links import BaseLink
 logger = logging.getLogger(__name__)
 
 
+class ItemMainCategory(models.Model):
+    id = models.SmallAutoField(primary_key=True)
+    name = models.CharField(
+        max_length=32,
+        unique=True,
+        verbose_name=_('ItemMainCategory.name.verbose_name'),
+        help_text=_('ItemMainCategory.name.help_text'),
+    )
+    order = models.SmallIntegerField(
+        default=0,
+        blank=False,
+        null=False,
+    )
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ('order', 'name')
+        verbose_name = _('ItemMainCategory.verbose_name')
+        verbose_name_plural = _('ItemMainCategory.verbose_name_plural')
+
+
 class ItemQuerySet(models.QuerySet):
     def sort(self):
         return self.order_by('kind', 'producer', 'name')
@@ -28,6 +51,16 @@ class ItemModel(BaseParentTreeModel, VersionProtectBaseModel):
     """
 
     objects = ItemQuerySet.as_manager()
+
+    category = models.ForeignKey(
+        ItemMainCategory,
+        null=True,
+        blank=True,
+        on_delete=models.PROTECT,
+        related_name='items',
+        verbose_name=_('ItemModel.category.verbose_name'),
+        help_text=_('ItemModel.category.help_text'),
+    )
 
     kind = tagulous.models.TagField(
         case_sensitive=False,

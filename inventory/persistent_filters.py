@@ -38,10 +38,35 @@ class PersistentRelatedFieldListFilter(admin.RelatedFieldListFilter):
 
     def __init__(self, field, request, params, model, model_admin, field_path):
         opts: Options = model._meta
+
+        # Our own parameter to display all choices:
+        self.lookup_kwarg_display_all = '%s__all' % field_path
+        display_all = bool(params.pop(self.lookup_kwarg_display_all, None))
+
         super().__init__(field, request, params, model, model_admin, field_path)
 
-        current_parameter = persistent_parameter(request, opts, parameter_name=self.lookup_kwarg)
-        if current_parameter and not self.lookup_val:
-            logger.info('Restore %r filter for %s with %r', field_path, opts.model_name, current_parameter)
-            self.lookup_val = [current_parameter]
-            self.used_parameters = {self.lookup_kwarg: self.lookup_val}
+        if display_all:
+            logger.info('Display all choice for %s, ignore persistent filter for %r', opts.model_name, field_path)
+        else:
+            current_parameter = persistent_parameter(request, opts, parameter_name=self.lookup_kwarg)
+            if current_parameter and not self.lookup_val and not self.lookup_val_isnull:
+                logger.info('Restore %r filter for %s with %r', field_path, opts.model_name, current_parameter)
+                self.lookup_val = [current_parameter]
+                self.used_parameters = {self.lookup_kwarg: self.lookup_val}
+
+    @property
+    def include_empty_choice(self):
+        return True
+
+    def choices(self, changelist):
+        choices = iter(super().choices(changelist))
+
+        # Change the "All" choice to our own "display all" choice:
+        all_choice = next(choices)
+        all_choice['query_string'] = changelist.get_query_string(
+            new_params={self.lookup_kwarg_display_all: True},
+            remove=[self.lookup_kwarg, self.lookup_kwarg_isnull],
+        )
+        yield all_choice
+
+        yield from choices

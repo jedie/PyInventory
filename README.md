@@ -166,6 +166,8 @@ To make a new release, do this:
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
+* [**dev**](https://github.com/jedie/PyInventory/compare/v0.22.0...main)
+  * 2025-11-18 - Update requirements
 * [v0.22.0](https://github.com/jedie/PyInventory/compare/v0.21.4...v0.22.0)
   * 2025-10-16 - Add tests for PersistentRelatedFieldListFilter
   * 2025-09-21 - NEW: Add a persistent "Main Category"
@@ -184,12 +186,12 @@ To make a new release, do this:
   * 2025-09-20 - pre-commit: remove "default_install_hook_types"
   * 2025-09-20 - Remove obsolete config files
   * 2025-09-20 - Update ReadmeHistoryTestCase
-* [v0.21.2](https://github.com/jedie/PyInventory/compare/v0.21.1...v0.21.2)
-  * 2025-09-09 - Update project, e.g.: Darker -> Ruff and fix tests
-  * 2025-05-01 - Fix local dev server: Don't enforce https
 
 <details><summary>Expand older history entries ...</summary>
 
+* [v0.21.2](https://github.com/jedie/PyInventory/compare/v0.21.1...v0.21.2)
+  * 2025-09-09 - Update project, e.g.: Darker -> Ruff and fix tests
+  * 2025-05-01 - Fix local dev server: Don't enforce https
 * [v0.21.1](https://github.com/jedie/PyInventory/compare/v0.21.0...v0.21.1)
   * 2025-05-01 - Replace setuptools with hatchling
   * 2025-04-30 - Update requirements and some small code parts

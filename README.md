@@ -166,7 +166,8 @@ To make a new release, do this:
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
-* [**dev**](https://github.com/jedie/PyInventory/compare/v0.22.0...main)
+* [v0.22.1](https://github.com/jedie/PyInventory/compare/v0.22.0...v0.22.1)
+  * 2025-11-18 - Fix #207 "All" Category can't be selected
   * 2025-11-18 - Update requirements
 * [v0.22.0](https://github.com/jedie/PyInventory/compare/v0.21.4...v0.22.0)
   * 2025-10-16 - Add tests for PersistentRelatedFieldListFilter

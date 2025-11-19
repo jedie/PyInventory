@@ -167,6 +167,8 @@ To make a new release, do this:
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [**dev**](https://github.com/jedie/PyInventory/compare/v0.22.1...main)
+  * 2025-11-19 - Add admin action to change the category of selected items
+  * 2025-11-19 - Remove "GHSA-4xh5-x5gv-qwph" exception
 * [v0.22.1](https://github.com/jedie/PyInventory/compare/v0.22.0...v0.22.1)
   * 2025-11-18 - Fix #207 "All" Category can't be selected
   * 2025-11-18 - Update requirements

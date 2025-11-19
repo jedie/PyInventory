@@ -1,0 +1,12 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+{% block content %}
+<h2>{% trans "Change category for selected items" %}</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="hidden" name="action" value="mass_change_category_action">
+    {% for obj in items %}<input type="hidden" name="{{ action_checkbox_name }}" value="{{ obj.pk }}">{% endfor %}
+    <button type="submit" name="apply">{% trans "Change category" %}</button>
+</form>
+{% endblock %}

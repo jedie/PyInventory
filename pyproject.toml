@@ -100,9 +100,7 @@ version_module_name = "inventory" # Used by "update-readme-history" pre-commit h
 requirements=["requirements.dev.txt"]
 strict=true
 require_hashes=true
-ignore-vuln=[
-    "GHSA-4xh5-x5gv-qwph",  # https://github.com/advisories/GHSA-4xh5-x5gv-qwph
-]
+ignore-vuln=[]
 
 
 [tool.ruff]

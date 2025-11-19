@@ -2,8 +2,11 @@ import logging
 
 import tagulous
 from adminsortable2.admin import SortableAdminBase, SortableAdminMixin, SortableInlineAdminMixin
+from django import forms
 from django.conf import settings
-from django.contrib import admin
+from django.contrib import admin, messages
+from django.contrib.admin.helpers import ACTION_CHECKBOX_NAME
+from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils.html import format_html
@@ -49,6 +52,42 @@ class ItemFileModelInline(BaseFileModelInline):
 class ItemModelResource(ModelResource):
     class Meta:
         model = ItemModel
+
+
+class ChangeCategoryForm(forms.Form):
+    category = forms.ModelChoiceField(
+        queryset=ItemMainCategory.objects.all(),
+        label=_('New category'),
+        required=True,
+    )
+
+
+@admin.action(description=_('Change category for selected items'))
+def mass_change_category_action(modeladmin, request, queryset):
+    if 'apply' in request.POST:
+        form = ChangeCategoryForm(request.POST)
+        if form.is_valid():
+            category = form.cleaned_data['category']
+            updated = queryset.update(category=category)
+            messages.info(
+                request,
+                _('%(count)d items have been assigned to the category "%(category)s".')
+                % {'count': updated, 'category': str(category)},
+            )
+            return None
+    else:
+        form = ChangeCategoryForm()
+
+    return render(
+        request,
+        'admin/item/mass_change_category_action.html',
+        context={
+            'items': queryset,
+            'form': form,
+            'action_checkbox_name': ACTION_CHECKBOX_NAME,
+            **modeladmin.admin_site.each_context(request),
+        },
+    )
 
 
 @admin.register(ItemModel)
@@ -167,6 +206,7 @@ class ItemModelAdmin(TagulousModelAdminFix, ImportExportMixin, SortableAdminBase
     autocomplete_fields = ('parent', 'location')
     readonly_fields = ('id', 'create_dt', 'update_dt', 'user', 'related_items')
     inlines = (ItemImageModelInline, ItemFileModelInline, ItemLinkModelInline)
+    actions = (mass_change_category_action,)
 
 
 tagulous.admin.enhance(ItemModel, ItemModelAdmin)

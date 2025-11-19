@@ -166,6 +166,7 @@ To make a new release, do this:
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
+* [**dev**](https://github.com/jedie/PyInventory/compare/v0.22.1...main)
 * [v0.22.1](https://github.com/jedie/PyInventory/compare/v0.22.0...v0.22.1)
   * 2025-11-18 - Fix #207 "All" Category can't be selected
   * 2025-11-18 - Update requirements
@@ -175,6 +176,9 @@ To make a new release, do this:
   * 2025-09-21 - fix for django-admin-sortable2/issues/363
 * [v0.21.4](https://github.com/jedie/PyInventory/compare/v0.21.3...v0.21.4)
   * 2025-09-21 - Because of PyPi download errors: release as v0.21.4
+
+<details><summary>Expand older history entries ...</summary>
+
 * [v0.21.3](https://github.com/jedie/PyInventory/compare/v0.21.2...v0.21.3)
   * 2025-09-21 - Enhance change list filters by using RelatedOnlyFieldListFilter
   * 2025-09-21 - Update requirements
@@ -187,9 +191,6 @@ To make a new release, do this:
   * 2025-09-20 - pre-commit: remove "default_install_hook_types"
   * 2025-09-20 - Remove obsolete config files
   * 2025-09-20 - Update ReadmeHistoryTestCase
-
-<details><summary>Expand older history entries ...</summary>
-
 * [v0.21.2](https://github.com/jedie/PyInventory/compare/v0.21.1...v0.21.2)
   * 2025-09-09 - Update project, e.g.: Darker -> Ruff and fix tests
   * 2025-05-01 - Fix local dev server: Don't enforce https

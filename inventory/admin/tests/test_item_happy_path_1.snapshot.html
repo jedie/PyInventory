@@ -1,0 +1,48 @@
+<div class="colM" id="content">
+ <h1>
+  Change category for selected items
+ </h1>
+ <p>
+  Number of selected items: 2
+ </p>
+ <p>
+  Currently used categories are:
+ </p>
+ <ul>
+  <li>
+   Category 1
+  </li>
+  <li>
+   Category 2
+  </li>
+ </ul>
+ <form method="post">
+  MockedCsrfTokenNode
+  <div>
+   <p>
+    <label for="id_category">
+     New category:
+    </label>
+    <select id="id_category" name="category" required="">
+     <option selected="" value="">
+      ---------
+     </option>
+     <option value="1">
+      Category 1
+     </option>
+     <option value="2">
+      Category 2
+     </option>
+    </select>
+   </p>
+   <input name="action" type="hidden" value="mass_change_category_action"/>
+   <input name="_selected_action" type="hidden" value="80dddef9-0000-0000-0000-000000000002"/>
+   <input name="_selected_action" type="hidden" value="80dddef9-0000-0000-0000-000000000003"/>
+   <input type="submit" value="Yes, I’m sure"/>
+   <a class="button cancel-link" href="/admin/inventory/itemmodel/">
+    No, take me back
+   </a>
+  </div>
+ </form>
+ <br class="clear"/>
+</div>

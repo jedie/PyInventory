@@ -21,7 +21,6 @@ from inventory.admin.base import (
     LimitTreeDepthListFilter,
     UserInlineMixin,
 )
-from inventory.admin.tagulous_fix import TagulousModelAdminFix
 from inventory.models import ItemLinkModel, ItemModel
 from inventory.models.item import ItemFileModel, ItemImageModel, ItemMainCategory
 from inventory.persistent_filters import PersistentRelatedFieldListFilter
@@ -91,7 +90,7 @@ def mass_change_category_action(modeladmin, request, queryset):
 
 
 @admin.register(ItemModel)
-class ItemModelAdmin(TagulousModelAdminFix, ImportExportMixin, SortableAdminBase, BaseUserAdmin):
+class ItemModelAdmin(ImportExportMixin, SortableAdminBase, BaseUserAdmin):
     @admin.display(description=_('Related items'))
     def related_items(self, obj):
         if obj.pk is None:

@@ -167,6 +167,7 @@ To make a new release, do this:
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [**dev**](https://github.com/jedie/PyInventory/compare/v0.22.1...main)
+  * 2025-11-25 - Update requirements
   * 2025-11-25 - Remove django-tagulous work-a-round, because it's fixed.
   * 2025-11-19 - Add admin action to change the category of selected items
   * 2025-11-19 - Remove "GHSA-4xh5-x5gv-qwph" exception

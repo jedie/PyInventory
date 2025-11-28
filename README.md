@@ -169,6 +169,8 @@ To make a new release, do this:
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
+* [v0.23.2](https://github.com/jedie/PyInventory/compare/v0.23.1...v0.23.2)
+  * 2025-11-28 - Fix logo if static path is not just "/static/"
 * [v0.23.1](https://github.com/jedie/PyInventory/compare/v0.23.0...v0.23.1)
   * 2025-11-28 - Update README.md
   * 2025-11-28 - Add logo
@@ -181,13 +183,13 @@ To make a new release, do this:
 * [v0.22.1](https://github.com/jedie/PyInventory/compare/v0.22.0...v0.22.1)
   * 2025-11-18 - Fix #207 "All" Category can't be selected
   * 2025-11-18 - Update requirements
+
+<details><summary>Expand older history entries ...</summary>
+
 * [v0.22.0](https://github.com/jedie/PyInventory/compare/v0.21.4...v0.22.0)
   * 2025-10-16 - Add tests for PersistentRelatedFieldListFilter
   * 2025-09-21 - NEW: Add a persistent "Main Category"
   * 2025-09-21 - fix for django-admin-sortable2/issues/363
-
-<details><summary>Expand older history entries ...</summary>
-
 * [v0.21.4](https://github.com/jedie/PyInventory/compare/v0.21.3...v0.21.4)
   * 2025-09-21 - Because of PyPi download errors: release as v0.21.4
 * [v0.21.3](https://github.com/jedie/PyInventory/compare/v0.21.2...v0.21.3)

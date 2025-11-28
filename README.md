@@ -1,4 +1,7 @@
-# PyInventory
+<h1>
+  <img src="https://raw.githubusercontent.com/jedie/PyInventory/main/inventory/static/PyInventory_Logo.svg" width="48px" alt="Logo">
+  PyInventory
+</h1>
 
 Web based management to catalog things including state and location etc. using Python/Django.
 Store information in WYSIWYG-HTML-Editor field and tag them and add Files, Images and Links to them.

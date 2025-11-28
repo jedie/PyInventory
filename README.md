@@ -1,5 +1,5 @@
 <h1>
-  <img src="https://raw.githubusercontent.com/jedie/PyInventory/main/inventory/static/PyInventory_Logo.svg" width="48px" alt="Logo">
+  <img src="https://raw.githubusercontent.com/jedie/PyInventory/main/inventory/static/PyInventory_Logo.svg" width="96px" alt="Logo">
   PyInventory
 </h1>
 

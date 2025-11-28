@@ -5,6 +5,7 @@
     <meta name="google" content="notranslate">
     <meta name="robots" content="noindex,nofollow" />
     <link rel="stylesheet" type="text/css" href="{% static 'inventory.css' %}">
+    <link rel="icon" type="image/svg+xml" href="{% static 'PyInventory_Logo.svg' %}">
 {% endblock %}
 
 {% block title %}{{ title }} | PyInventory {{ inventory_version_string }}{% endblock %}
@@ -17,6 +18,6 @@
 
 {% block nav-global %}{% endblock %}
 
-{% block footer %}<div id="footer">
+{% block footer %}
     <a href="https://github.com/jedie/PyInventory">https://github.com/jedie/PyInventory</a>
-</div>{% endblock %}
+{% endblock %}

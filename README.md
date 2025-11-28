@@ -166,6 +166,8 @@ To make a new release, do this:
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
+* [**dev**](https://github.com/jedie/PyInventory/compare/v0.23.0...main)
+  * 2025-11-28 - Add logo
 * [v0.23.0](https://github.com/jedie/PyInventory/compare/v0.22.1...v0.23.0)
   * 2025-11-25 - Enhance 'Change category for selected items' and add tests for it
   * 2025-11-25 - Update requirements
@@ -179,11 +181,11 @@ To make a new release, do this:
   * 2025-10-16 - Add tests for PersistentRelatedFieldListFilter
   * 2025-09-21 - NEW: Add a persistent "Main Category"
   * 2025-09-21 - fix for django-admin-sortable2/issues/363
-* [v0.21.4](https://github.com/jedie/PyInventory/compare/v0.21.3...v0.21.4)
-  * 2025-09-21 - Because of PyPi download errors: release as v0.21.4
 
 <details><summary>Expand older history entries ...</summary>
 
+* [v0.21.4](https://github.com/jedie/PyInventory/compare/v0.21.3...v0.21.4)
+  * 2025-09-21 - Because of PyPi download errors: release as v0.21.4
 * [v0.21.3](https://github.com/jedie/PyInventory/compare/v0.21.2...v0.21.3)
   * 2025-09-21 - Enhance change list filters by using RelatedOnlyFieldListFilter
   * 2025-09-21 - Update requirements

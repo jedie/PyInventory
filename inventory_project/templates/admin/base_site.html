@@ -12,7 +12,10 @@
 
 {% block branding %}
 <h1 id="site-name">
-    <a href="{% url 'admin:index' %}">PyInventory {{ inventory_version_string }}</a>
+    <a href="{% url 'admin:index' %}">
+        <img src="{% static 'PyInventory_Logo.svg' %}" alt="Logo">
+        PyInventory {{ inventory_version_string }}
+    </a>
 </h1>
 {% endblock %}
 

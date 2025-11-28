@@ -169,7 +169,8 @@ To make a new release, do this:
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
-* [**dev**](https://github.com/jedie/PyInventory/compare/v0.23.0...main)
+* [v0.23.1](https://github.com/jedie/PyInventory/compare/v0.23.0...v0.23.1)
+  * 2025-11-28 - Update README.md
   * 2025-11-28 - Add logo
 * [v0.23.0](https://github.com/jedie/PyInventory/compare/v0.22.1...v0.23.0)
   * 2025-11-25 - Enhance 'Change category for selected items' and add tests for it

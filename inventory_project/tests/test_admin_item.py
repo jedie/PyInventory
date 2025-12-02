@@ -265,28 +265,27 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
         )
         with self.assertLogs('inventory.persistent_filters', level=logging.DEBUG) as logs:
             response = self.client.get(path='/admin/inventory/itemmodel/')
-
-        self.assertEqual(
-            list(response.context_data['cl'].queryset.values_list('name', flat=True)), ['Item 1', 'Item 2']
-        )
-        self.assert_html_parts(
-            response,
-            parts=(
-                '<h1>Select Item to change</h1>',
-                '<a href="/admin/inventory/itemmodel/80dddef9-0000-0000-0000-000000000001/change/">'
-                '<strong>Item 1</strong></a>',
-                '<a href="/admin/inventory/itemmodel/80dddef9-0000-0000-0000-000000000002/change/">'
-                '<strong>Item 2</strong></a>',
-                '<a href="?category__id__exact=1">Category 1</a>',
-                '<a href="?category__id__exact=2">Category 2</a>',
-            ),
-        )
+            self.assertEqual(
+                list(response.context_data['cl'].queryset.values_list('name', flat=True)), ['Item 1', 'Item 2']
+            )
+            self.assert_html_parts(
+                response,
+                parts=(
+                    '<h1>Select Item to change</h1>',
+                    '<a href="/admin/inventory/itemmodel/80dddef9-0000-0000-0000-000000000001/change/">'
+                    '<strong>Item 1</strong></a>',
+                    '<a href="/admin/inventory/itemmodel/80dddef9-0000-0000-0000-000000000002/change/">'
+                    '<strong>Item 2</strong></a>',
+                    '<a href="?category__id__exact=1">Category 1 (1)</a>',
+                    '<a href="?category__id__exact=2">Category 2 (1)</a>',
+                ),
+            )
         self.assertEqual(
             logs.output,
             [
                 'DEBUG:inventory.persistent_filters:'
                 "Restore None from 'persistent_parameter_1_inventory_itemmodel_category__id__exact'"
-            ],
+            ] * 3,  # 3 times called because of facet counts :(
         )
 
         with self.assertLogs('inventory.persistent_filters', level=logging.DEBUG) as logs:
@@ -296,7 +295,7 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
             [
                 'DEBUG:inventory.persistent_filters:'
                 "Store '2' to 'persistent_parameter_1_inventory_itemmodel_category__id__exact'"
-            ],
+            ] * 3,  # 3 times called because of facet counts :(
         )
         # Only items from category 2:
         self.assertEqual(list(response.context_data['cl'].queryset.values_list('name', flat=True)), ['Item 2'])
@@ -310,7 +309,7 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
                 "DEBUG:inventory.persistent_filters:"
                 "Restore '2' from 'persistent_parameter_1_inventory_itemmodel_category__id__exact'",
                 "INFO:inventory.persistent_filters:Restore 'category' filter for itemmodel with '2'",
-            ],
+            ] * 3,  # 3 times called because of facet counts :(
         )
         # Only items from category 2:
         self.assertEqual(list(response.context_data['cl'].queryset.values_list('name', flat=True)), ['Item 2'])
@@ -323,7 +322,7 @@ class AdminTestCase(HtmlAssertionMixin, TestCase):
             [
                 'DEBUG:inventory.persistent_filters:'
                 "Store '1' to 'persistent_parameter_1_inventory_itemmodel_category__id__exact'"
-            ],
+            ] * 3,  # 3 times called because of facet counts :(
         )
         # Only items from category 1:
         self.assertEqual(list(response.context_data['cl'].queryset.values_list('name', flat=True)), ['Item 1'])

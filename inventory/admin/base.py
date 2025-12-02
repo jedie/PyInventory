@@ -19,6 +19,7 @@ class UserInlineMixin:
 
 
 class BaseUserAdmin(CompareVersionAdmin):
+    show_facets = admin.ShowFacets.ALWAYS
     form = OnlyUserRelationsModelForm
 
     def get_changelist(self, request, **kwargs):
@@ -102,3 +103,38 @@ class LimitTreeDepthListFilter(admin.SimpleListFilter):
         if level:
             level = int(level)
             return queryset.filter(level__lte=level)
+
+
+class NoneEmptyRelatedFieldListFilter(admin.RelatedOnlyFieldListFilter):
+    """
+    Display only choices that results **not** in an empty change list!
+    """
+
+    def choices(self, changelist):
+        assert changelist.add_facets, f'Facets must be enabled to use {self.__class__.__name__}'
+
+        facet_counts = self.get_facet_queryset(changelist)
+        yield {
+            'selected': self.lookup_val is None and not self.lookup_val_isnull,
+            'query_string': changelist.get_query_string(remove=[self.lookup_kwarg, self.lookup_kwarg_isnull]),
+            'display': _('All'),
+        }
+        for pk_val, val in self.lookup_choices:
+            if count := facet_counts[f'{pk_val}__c']:
+                yield {
+                    'selected': self.lookup_val is not None and str(pk_val) in self.lookup_val,
+                    'query_string': changelist.get_query_string(
+                        {self.lookup_kwarg: pk_val}, [self.lookup_kwarg_isnull]
+                    ),
+                    'display': f'{val} ({count})',
+                }
+
+        if self.include_empty_choice:
+            if count := facet_counts['__c']:
+                yield {
+                    'selected': bool(self.lookup_val_isnull),
+                    'query_string': changelist.get_query_string(
+                        {self.lookup_kwarg_isnull: 'True'}, [self.lookup_kwarg]
+                    ),
+                    'display': f'{self.empty_value_display} ({count})',
+                }

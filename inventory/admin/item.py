@@ -19,6 +19,7 @@ from inventory.admin.base import (
     BaseImageModelInline,
     BaseUserAdmin,
     LimitTreeDepthListFilter,
+    NoneEmptyRelatedFieldListFilter,
     UserInlineMixin,
 )
 from inventory.models import ItemLinkModel, ItemModel
@@ -150,10 +151,10 @@ class ItemModelAdmin(ImportExportMixin, SortableAdminBase, BaseUserAdmin):
     list_filter = (
         ('category', PersistentRelatedFieldListFilter),
         LimitTreeDepthListFilter,
-        ('kind', admin.RelatedOnlyFieldListFilter),
-        ('location', admin.RelatedOnlyFieldListFilter),
-        ('producer', admin.RelatedOnlyFieldListFilter),
-        ('tags', admin.RelatedOnlyFieldListFilter),
+        ('kind', NoneEmptyRelatedFieldListFilter),
+        ('location', NoneEmptyRelatedFieldListFilter),
+        ('producer', NoneEmptyRelatedFieldListFilter),
+        ('tags', NoneEmptyRelatedFieldListFilter),
     )
     search_fields = ('name', 'description', 'kind__name', 'tags__name')
     fieldsets = (

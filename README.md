@@ -169,6 +169,8 @@ To make a new release, do this:
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
+* [**dev**](https://github.com/jedie/PyInventory/compare/v0.24.0...main)
+  * 2025-12-22 - Update requirements
 * [v0.24.0](https://github.com/jedie/PyInventory/compare/v0.23.2...v0.24.0)
   * 2025-12-02 - Use facets always and auto hide empty item filters
   * 2025-12-02 - Update requirements
@@ -177,15 +179,15 @@ To make a new release, do this:
 * [v0.23.1](https://github.com/jedie/PyInventory/compare/v0.23.0...v0.23.1)
   * 2025-11-28 - Update README.md
   * 2025-11-28 - Add logo
+
+<details><summary>Expand older history entries ...</summary>
+
 * [v0.23.0](https://github.com/jedie/PyInventory/compare/v0.22.1...v0.23.0)
   * 2025-11-25 - Enhance 'Change category for selected items' and add tests for it
   * 2025-11-25 - Update requirements
   * 2025-11-25 - Remove django-tagulous work-a-round, because it's fixed.
   * 2025-11-19 - Add admin action to change the category of selected items
   * 2025-11-19 - Remove "GHSA-4xh5-x5gv-qwph" exception
-
-<details><summary>Expand older history entries ...</summary>
-
 * [v0.22.1](https://github.com/jedie/PyInventory/compare/v0.22.0...v0.22.1)
   * 2025-11-18 - Fix #207 "All" Category can't be selected
   * 2025-11-18 - Update requirements

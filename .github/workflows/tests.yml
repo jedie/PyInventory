@@ -29,7 +29,7 @@ jobs:
         git checkout $GITHUB_SHA || (git fetch && git checkout $GITHUB_SHA)
 
     - name: 'Set up Python ${{ matrix.python-version }}'
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@main
       # https://github.com/marketplace/actions/setup-python
       with:
         python-version: '${{ matrix.python-version }}'
@@ -61,8 +61,10 @@ jobs:
         ./manage.py test
 
     - name: 'Upload coverage report'
-      uses: codecov/codecov-action@v5
+      uses: codecov/codecov-action@main
       # https://github.com/marketplace/actions/codecov
       with:
+        # https://docs.codecov.com/docs/codecov-tokens#example-github-actions--official-codecov-action
+        token: ${{ secrets.CODECOV_TOKEN }}
         fail_ci_if_error: false
         verbose: true

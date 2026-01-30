@@ -170,7 +170,7 @@ To make a new release, do this:
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [**dev**](https://github.com/jedie/PyInventory/compare/v0.24.0...main)
-  * 2025-12-22 - Update requirements
+  * 2026-01-30 - Update requirements
 * [v0.24.0](https://github.com/jedie/PyInventory/compare/v0.23.2...v0.24.0)
   * 2025-12-02 - Use facets always and auto hide empty item filters
   * 2025-12-02 - Update requirements

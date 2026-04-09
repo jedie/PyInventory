@@ -170,6 +170,7 @@ To make a new release, do this:
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [**dev**](https://github.com/jedie/PyInventory/compare/v0.24.0...main)
+  * 2026-04-09 - Apply project updates
   * 2026-04-08 - Bump cryptography from 46.0.6 to 46.0.7
   * 2026-03-30 - Bump pygments from 2.19.2 to 2.20.0
   * 2026-03-29 - Bump cryptography from 46.0.4 to 46.0.6

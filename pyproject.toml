@@ -78,7 +78,7 @@ django = "2026-04-08T12:00:00Z"
 strict=true
 require_hashes=true
 ignore-vuln=[
-    "CVE-2026-4539", # https://github.com/pygments/pygments/issues/3058#issuecomment-4127344972
+    # e.g.: "CVE-2026-1234",
 ]
 
 [tool.cli_base]

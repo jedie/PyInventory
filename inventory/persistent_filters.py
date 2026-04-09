@@ -40,7 +40,7 @@ class PersistentRelatedFieldListFilter(admin.RelatedFieldListFilter):
         opts: Options = model._meta
 
         # Our own parameter to display all choices:
-        self.lookup_kwarg_display_all = '%s__all' % field_path
+        self.lookup_kwarg_display_all = f'{field_path}__all'
         display_all = bool(params.pop(self.lookup_kwarg_display_all, None))
 
         super().__init__(field, request, params, model, model_admin, field_path)

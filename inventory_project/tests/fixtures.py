@@ -27,7 +27,7 @@ class TempImageFile:
     def __init__(self, prefix='test_image', format='png', size=(1, 1)):
         self.format = format
         self.image_size = size
-        self.temp = tempfile.NamedTemporaryFile(prefix=prefix, suffix=f'.{format}')
+        self.temp = tempfile.NamedTemporaryFile(prefix=prefix, suffix=f'.{format}')  # noqa: SIM115
 
     def __enter__(self):
         self.temp_file = self.temp.__enter__()

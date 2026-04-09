@@ -1,12 +1,10 @@
 import os
 
 
-# ruff: noqa: F405
-
 """
     Django settings for running tests
 """
-from inventory_project.settings.prod import *  # noqa
+from inventory_project.settings.prod import *
 
 
 ALLOWED_HOSTS = ['testserver']

@@ -129,12 +129,11 @@ class NoneEmptyRelatedFieldListFilter(admin.RelatedOnlyFieldListFilter):
                     'display': f'{val} ({count})',
                 }
 
-        if self.include_empty_choice:
-            if count := facet_counts['__c']:
-                yield {
-                    'selected': bool(self.lookup_val_isnull),
-                    'query_string': changelist.get_query_string(
-                        {self.lookup_kwarg_isnull: 'True'}, [self.lookup_kwarg]
-                    ),
-                    'display': f'{self.empty_value_display} ({count})',
-                }
+        if self.include_empty_choice and (count := facet_counts['__c']):
+            yield {
+                'selected': bool(self.lookup_val_isnull),
+                'query_string': changelist.get_query_string(
+                    {self.lookup_kwarg_isnull: 'True'}, [self.lookup_kwarg]
+                ),
+                'display': f'{self.empty_value_display} ({count})',
+            }

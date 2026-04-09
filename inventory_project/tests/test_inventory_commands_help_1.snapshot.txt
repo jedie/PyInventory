@@ -28,11 +28,11 @@ collectstatic  findstatic  runserver
 django.core
 ===========
 check             flush           optimizemigration  squashmigrations
-compilemessages   inspectdb       sendtestemail      startapp
-createcachetable  loaddata        showmigrations     startproject
-dbshell           makemessages    sqlflush           test
-diffsettings      makemigrations  sqlmigrate         testserver
-dumpdata          migrate         sqlsequencereset
+compilemessages   inspectdb       sendtestemail      startapp        
+createcachetable  loaddata        showmigrations     startproject    
+dbshell           makemessages    sqlflush           test            
+diffsettings      makemigrations  sqlmigrate         testserver      
+dumpdata          migrate         sqlsequencereset 
 
 import_export
 =============
@@ -44,8 +44,8 @@ seed_data  tree
 
 manage_django_project
 =====================
-code_style  make_messages  playwright    run_dev_server
-coverage    nox            project_info  update_req
+code_style  make_messages  playwright    run_dev_server            
+coverage    nox            project_info  update_req                
 install     pip_audit      publish       update_test_snapshot_files
 
 reversion
@@ -59,3 +59,4 @@ initial_tags
 Uncategorized
 =============
 alias  help  history  macro  quit  set  shortcuts
+

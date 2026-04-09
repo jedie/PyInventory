@@ -6,9 +6,7 @@ from django.test import TestCase, override_settings
 
 
 class TestMigrations(TestCase):
-    databases = [
-        'default',
-    ]
+    databases = ('default',)
 
     @override_settings(MIGRATION_MODULES={})
     def test_missing_migrations(self):

@@ -68,8 +68,8 @@ class BaseLink(BaseModel):
 
         try:
             r = requests.get(url=self.url, allow_redirects=True, timeout=10)
-        except Exception as err:
-            logger.exception('Error get %s: %s', self.url, err)
+        except Exception:
+            logger.exception('Error get %s', self.url)
             self.status_code = None
             self.page_title = None
             return
